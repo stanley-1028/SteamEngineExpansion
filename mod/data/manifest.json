@@ -1,0 +1,13 @@
+﻿{
+    "Name":  "Steam Engine Expansion",
+    "Version":  "0.1.0",
+    "Id":  "SteamEngineExpansion",
+    "MinimumGameVersion":  "1.1.0.0",
+    "Description":  "Twelve worker-free steam engines: three sizes (Small/Medium/Large) across four tiers (Mk.I-Mk.IV), buildable by both Folktails and Iron Teeth. Each engine consumes Log fuel and Water, produces mechanical power, and needs periodic maintenance. Fuel stock, water tank and maintenance values are data-driven; Timber Pipes, Power Lines and Conveyor Belts are detected at runtime and never required.",
+    "RequiredMods":  [
+
+                     ],
+    "OptionalMods":  [
+
+                     ]
+}

@@ -1,0 +1,64 @@
+ID,Text,Comment
+Building.SEE.SteamBoiler.Small.T1.DisplayName,Small Steam Engine Mk.I,req 15.5
+Building.SEE.SteamBoiler.Medium.T1.DisplayName,Medium Steam Engine Mk.I,req 15.5
+Building.SEE.SteamBoiler.Large.T1.DisplayName,Large Steam Engine Mk.I,req 15.5
+Building.SEE.SteamBoiler.Small.T2.DisplayName,Small Steam Engine Mk.II,req 15.5
+Building.SEE.SteamBoiler.Medium.T2.DisplayName,Medium Steam Engine Mk.II,req 15.5
+Building.SEE.SteamBoiler.Large.T2.DisplayName,Large Steam Engine Mk.II,req 15.5
+Building.SEE.SteamBoiler.Small.T3.DisplayName,Small Steam Engine Mk.III,req 15.5
+Building.SEE.SteamBoiler.Medium.T3.DisplayName,Medium Steam Engine Mk.III,req 15.5
+Building.SEE.SteamBoiler.Large.T3.DisplayName,Large Steam Engine Mk.III,req 15.5
+Building.SEE.SteamBoiler.Small.T4.DisplayName,Small Steam Engine Mk.IV,req 15.5
+Building.SEE.SteamBoiler.Medium.T4.DisplayName,Medium Steam Engine Mk.IV,req 15.5
+Building.SEE.SteamBoiler.Large.T4.DisplayName,Large Steam Engine Mk.IV,req 15.5
+Building.SEE.SteamBoiler.Description,Consumes fuel and water to produce power. Requires periodic maintenance.,req 15.5
+Building.SEE.SteamBoiler.Flavor.T1,A humble boiler that asks for a little wood and a little water.,req 15.5
+Building.SEE.SteamBoiler.Flavor.T2,"Pressure, timber and brass—now with a gauge.",req 15.5
+Building.SEE.SteamBoiler.Flavor.T3,Cast iron rumbles; rivets hold the promise of power.,req 15.5
+Building.SEE.SteamBoiler.Flavor.T4,"Precision in every valve, and a price in every turn.",req 15.5
+Status.SEE.Running,Running,req 15.5
+Status.SEE.Idle,Idle (no demand),req 15.5
+Status.SEE.Paused,Paused,req 15.5
+Status.SEE.NoFuel,No fuel,req 15.5
+Status.SEE.NoWater,No water,req 15.5
+Status.SEE.NeedsMaintenance,Needs maintenance,req 15.5
+Status.SEE.Critical,Condition critical: output ×0.40,req 15.5
+Status.SEE.Worn,Worn: output ×0.85,req 15.5
+Status.SEE.MaintenanceDue,Maintenance due: output ×0.93,req 15.5
+Status.SEE.Maintaining,Maintaining ({0} left),req 15.5
+Status.SEE.MissingMaintenanceMaterials,Missing maintenance materials,req 15.5
+Status.SEE.NoAccessForMaintenance,No access for maintenance,req 15.5
+Status.SEE.LowFuel,Fuel low ({0} h left),req 15.5
+Status.SEE.LowWater,Water low ({0} h left),req 15.5
+Status.SEE.PipeSupply,Water supplied by pipes,req 15.5
+Status.SEE.BeltSupply,Fuel supplied by conveyor,req 15.5
+Status.SEE.BeltNoPower,Conveyor has no power,req 15.5
+Status.SEE.PipeContaminated,Pipe network contaminated,req 15.5
+Status.SEE.WaterMode.Tank,Water supply: tank (pipes),req 15.5
+Status.SEE.WaterMode.Valve,Water supply: valve,req 15.5
+Status.SEE.WaterMode.Hauler,Water supply: haulers,req 15.5
+Status.SEE.WaterMode.Auto,Water supply: auto,req 15.5
+UI.SEE.Panel.Power,Power,req 15.5
+UI.SEE.Panel.Network,Network power supply / demand: {0} / {1},req 15.5
+UI.SEE.Panel.Output,Output: {0} / {1} hp,req 15.5
+UI.SEE.Panel.Fuel,Fuel,req 15.5
+UI.SEE.Panel.Water,Water,req 15.5
+UI.SEE.Panel.Condition,Condition: {0} / 100,req 15.5
+UI.SEE.Panel.NextMaintenance,Next maintenance in {0} days,req 15.5
+UI.SEE.Panel.Materials,Maintenance materials: {0},req 15.5
+UI.SEE.Panel.WaterSupplyMode,Water supply mode,req 15.5
+UI.SEE.Action.Pause,Pause,req 15.5
+UI.SEE.Action.Resume,Resume,req 15.5
+UI.SEE.Action.MaintainNow,Maintain now,req 15.5
+UI.SEE.Action.AutoMaintenance,Auto maintenance,req 15.5
+UI.SEE.Error.MaterialsMissing,Cannot maintain: {0} missing,req 15.5
+UI.SEE.Error.BeltNoPower,Conveyor network has no power,req 15.5
+UI.SEE.Panel.WaterBeaverEquivalent,Water use: ≈{0} beavers' drinking water per day,req 15.5
+UI.SEE.Panel.Efficiency,Network efficiency: {0}%,req 15.5
+UI.SEE.Panel.MaterialsDetail,Maintenance materials: {0} (missing {1}),req 15.5
+UI.SEE.Panel.MaterialEntry,{0}: {1}/{2},req 15.5
+UI.SEE.Panel.NextMaintenanceDay,Next maintenance: day {0},req 15.5
+UI.SEE.Hint.FixNoFuel,Refill fuel (logs or planks) or connect a conveyor.,req 15.5
+UI.SEE.Hint.FixNoWater,Fill the water tank or connect a pipe.,req 15.5
+UI.SEE.Hint.FixNeedsMaintenance,Run maintenance: keep the required materials in the district.,req 15.5
+UI.SEE.WaterModeUnavailable,Selected water mode unavailable: {0},req 15.5

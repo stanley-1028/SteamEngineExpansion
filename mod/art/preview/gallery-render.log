@@ -1,0 +1,1137 @@
+﻿blender.exe : TBBmalloc: skip allocation functions replacement in ucrtbase.dll: unknown prologue for function _msize
+At line:1 char:227
++ ... er-config"; & 'C:\Users\user\.hdbf\sdk\blender-4.2.1-windows-x64\blen ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (TBBmalloc: skip...function _msize:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Blender 4.2.1 LTS (hash 396f546c9d82 built 2024-08-19 11:29:52)
+Fra:1 Mem:11.31M (Peak 11.31M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Small.T1.Folktails
+Fra:1 Mem:13.78M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.48M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.48M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.48M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.48M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:13.57M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:13.57M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:13.57M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:13.57M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:13.57M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:13.57M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:13.57M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:13.57M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:13.57M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:13.57M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:13.60M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:13.73M (Peak 14.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:13.73M (Peak 14.68M) | Time:00:00.00 | Mem:0.14M, Peak:0.14M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:13.73M (Peak 14.68M) | Time:00:00.00 | Mem:0.14M, Peak:0.14M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:13.73M (Peak 14.68M) | Time:00:00.00 | Mem:0.21M, Peak:0.21M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:13.73M (Peak 14.68M) | Time:00:00.00 | Mem:0.30M, Peak:0.37M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:13.73M (Peak 14.68M) | Time:00:00.00 | Mem:0.30M, Peak:0.37M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:13.99M (Peak 14.68M) | Time:00:00.00 | Mem:0.30M, Peak:0.37M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:13.99M (Peak 14.68M) | Time:00:00.00 | Mem:0.55M, Peak:0.55M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:13.99M (Peak 14.68M) | Time:00:00.00 | Mem:0.55M, Peak:0.55M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:13.99M (Peak 14.68M) | Time:00:00.00 | Mem:0.55M, Peak:0.55M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:13.99M (Peak 14.68M) | Time:00:00.00 | Mem:0.55M, Peak:0.55M | Scene, ViewLayer | Updating Images | Loading BaseWood_1K_D_Brown.png
+Fra:1 Mem:17.99M (Peak 17.99M) | Time:00:00.00 | Mem:0.55M, Peak:0.55M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D1.png
+Fra:1 Mem:22.00M (Peak 22.00M) | Time:00:00.04 | Mem:8.55M, Peak:8.55M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.00M (Peak 22.00M) | Time:00:00.04 | Mem:8.55M, Peak:8.55M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.00M (Peak 22.00M) | Time:00:00.04 | Mem:8.63M, Peak:8.63M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.04 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.04 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.04 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.04 | Mem:8.55M, Peak:8.64M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.04 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.04 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.04 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.04 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:44.32M (Peak 44.32M) | Time:00:00.09 | Remaining:00:02.03 | Mem:30.92M, Peak:30.92M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:53.70M (Peak 67.76M) | Time:00:05.66 | Mem:30.92M, Peak:30.92M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:53.70M (Peak 67.76M) | Time:00:05.66 | Mem:30.92M, Peak:30.92M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T1.Folktails_iso.png'
+Time: 00:05.75 (Saving: 00:00.08)
+
+Fra:1 Mem:13.31M (Peak 13.31M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Small.T1.IronTeeth
+Fra:1 Mem:13.79M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.48M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.49M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.49M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.49M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:13.57M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:13.57M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:13.57M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:13.57M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:13.57M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:13.57M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:13.57M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:13.57M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:13.57M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:13.57M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:13.61M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:13.74M (Peak 14.69M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:13.74M (Peak 14.69M) | Time:00:00.00 | Mem:0.14M, Peak:0.14M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:13.74M (Peak 14.69M) | Time:00:00.00 | Mem:0.14M, Peak:0.14M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:13.74M (Peak 14.69M) | Time:00:00.00 | Mem:0.21M, Peak:0.21M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:13.74M (Peak 14.69M) | Time:00:00.00 | Mem:0.30M, Peak:0.37M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:13.74M (Peak 14.69M) | Time:00:00.00 | Mem:0.30M, Peak:0.37M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.00M (Peak 14.69M) | Time:00:00.00 | Mem:0.30M, Peak:0.37M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.00M (Peak 14.69M) | Time:00:00.00 | Mem:0.56M, Peak:0.56M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.00M (Peak 14.69M) | Time:00:00.00 | Mem:0.56M, Peak:0.56M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.00M (Peak 14.69M) | Time:00:00.00 | Mem:0.56M, Peak:0.56M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.00M (Peak 14.69M) | Time:00:00.00 | Mem:0.56M, Peak:0.56M | Scene, ViewLayer | Updating Images | Loading BaseWood_1K_D_Grey.png
+Fra:1 Mem:18.00M (Peak 18.00M) | Time:00:00.00 | Mem:0.56M, Peak:0.56M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D2.png
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.06 | Mem:8.56M, Peak:8.56M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.06 | Mem:8.56M, Peak:8.56M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.06 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.06 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.06 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.01M (Peak 22.01M) | Time:00:00.06 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.02M (Peak 22.02M) | Time:00:00.06 | Mem:8.56M, Peak:8.64M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.02M (Peak 22.02M) | Time:00:00.06 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.02M (Peak 22.02M) | Time:00:00.06 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.02M (Peak 22.02M) | Time:00:00.06 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.02M (Peak 22.02M) | Time:00:00.06 | Mem:8.64M, Peak:8.64M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:44.33M (Peak 44.33M) | Time:00:00.14 | Remaining:00:02.97 | Mem:30.92M, Peak:30.92M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:53.70M (Peak 67.77M) | Time:00:06.04 | Mem:30.92M, Peak:30.92M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:53.70M (Peak 67.77M) | Time:00:06.04 | Mem:30.92M, Peak:30.92M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T1.IronTeeth_iso.png'
+Time: 00:06.11 (Saving: 00:00.06)
+
+Fra:1 Mem:13.44M (Peak 13.44M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Small.T2.Folktails
+Fra:1 Mem:14.06M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.75M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.76M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.76M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.76M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:13.84M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:13.84M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:13.84M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:13.84M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:13.84M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:13.84M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:13.84M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:13.84M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:13.84M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:13.84M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:13.88M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.06M (Peak 15.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.06M (Peak 15.21M) | Time:00:00.00 | Mem:0.18M, Peak:0.18M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.06M (Peak 15.21M) | Time:00:00.00 | Mem:0.18M, Peak:0.18M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.06M (Peak 15.21M) | Time:00:00.00 | Mem:0.27M, Peak:0.27M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.06M (Peak 15.21M) | Time:00:00.00 | Mem:0.38M, Peak:0.47M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.06M (Peak 15.21M) | Time:00:00.00 | Mem:0.38M, Peak:0.47M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.39M (Peak 15.21M) | Time:00:00.00 | Mem:0.38M, Peak:0.47M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.39M (Peak 15.21M) | Time:00:00.00 | Mem:0.71M, Peak:0.71M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.39M (Peak 15.21M) | Time:00:00.00 | Mem:0.71M, Peak:0.71M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.39M (Peak 15.21M) | Time:00:00.00 | Mem:0.71M, Peak:0.71M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.39M (Peak 15.21M) | Time:00:00.00 | Mem:0.71M, Peak:0.71M | Scene, ViewLayer | Updating Images | Loading BaseWood_1K_D_White.png
+Fra:1 Mem:18.39M (Peak 18.39M) | Time:00:00.00 | Mem:0.71M, Peak:0.71M | Scene, ViewLayer | Updating Images | Loading Details_D.Folktails.png
+Fra:1 Mem:22.40M (Peak 22.40M) | Time:00:00.05 | Mem:8.71M, Peak:8.71M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.40M (Peak 22.40M) | Time:00:00.05 | Mem:8.71M, Peak:8.71M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.40M (Peak 22.40M) | Time:00:00.05 | Mem:8.79M, Peak:8.79M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.40M (Peak 22.40M) | Time:00:00.05 | Mem:8.79M, Peak:8.79M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.40M (Peak 22.40M) | Time:00:00.05 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.40M (Peak 22.40M) | Time:00:00.05 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.05 | Mem:8.71M, Peak:8.80M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.05 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.05 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.05 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.05 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:44.72M (Peak 44.72M) | Time:00:00.12 | Remaining:00:02.57 | Mem:31.08M, Peak:31.08M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.10M (Peak 68.16M) | Time:00:06.00 | Mem:31.08M, Peak:31.08M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.10M (Peak 68.16M) | Time:00:06.00 | Mem:31.08M, Peak:31.08M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T2.Folktails_iso.png'
+Time: 00:06.09 (Saving: 00:00.08)
+
+Fra:1 Mem:13.45M (Peak 13.45M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Small.T2.IronTeeth
+Fra:1 Mem:14.06M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.76M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.76M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.76M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.76M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:13.84M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:13.84M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:13.84M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:13.84M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:13.84M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:13.84M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:13.84M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:13.84M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:13.84M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:13.84M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:13.89M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.06M (Peak 15.22M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.06M (Peak 15.22M) | Time:00:00.00 | Mem:0.18M, Peak:0.18M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.06M (Peak 15.22M) | Time:00:00.00 | Mem:0.18M, Peak:0.18M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.06M (Peak 15.22M) | Time:00:00.00 | Mem:0.27M, Peak:0.27M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.06M (Peak 15.22M) | Time:00:00.00 | Mem:0.38M, Peak:0.47M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.06M (Peak 15.22M) | Time:00:00.00 | Mem:0.38M, Peak:0.47M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.40M (Peak 15.22M) | Time:00:00.00 | Mem:0.38M, Peak:0.47M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.40M (Peak 15.22M) | Time:00:00.00 | Mem:0.71M, Peak:0.71M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.40M (Peak 15.22M) | Time:00:00.00 | Mem:0.71M, Peak:0.71M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.40M (Peak 15.22M) | Time:00:00.00 | Mem:0.71M, Peak:0.71M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.40M (Peak 15.22M) | Time:00:00.00 | Mem:0.71M, Peak:0.71M | Scene, ViewLayer | Updating Images | Loading BaseWood_1K_D_Grey.png
+Fra:1 Mem:18.40M (Peak 18.40M) | Time:00:00.00 | Mem:0.71M, Peak:0.71M | Scene, ViewLayer | Updating Images | Loading Details_D.IronTeeth.png
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.06 | Mem:8.71M, Peak:8.71M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.06 | Mem:8.71M, Peak:8.71M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.06 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.06 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.06 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.06 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.06 | Mem:8.72M, Peak:8.80M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.06 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.06 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.06 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.41M (Peak 22.41M) | Time:00:00.06 | Mem:8.80M, Peak:8.80M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:44.72M (Peak 44.72M) | Time:00:00.12 | Remaining:00:02.47 | Mem:31.08M, Peak:31.08M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.10M (Peak 68.17M) | Time:00:06.41 | Mem:31.08M, Peak:31.08M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.10M (Peak 68.17M) | Time:00:06.41 | Mem:31.08M, Peak:31.08M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T2.IronTeeth_iso.png'
+Time: 00:06.51 (Saving: 00:00.09)
+
+Fra:1 Mem:13.54M (Peak 13.54M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Small.T3.Folktails
+Fra:1 Mem:14.25M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.95M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.95M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.95M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.95M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.08M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.28M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.28M (Peak 15.59M) | Time:00:00.00 | Mem:0.20M, Peak:0.20M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.28M (Peak 15.59M) | Time:00:00.00 | Mem:0.20M, Peak:0.20M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.28M (Peak 15.59M) | Time:00:00.00 | Mem:0.31M, Peak:0.31M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.28M (Peak 15.59M) | Time:00:00.00 | Mem:0.43M, Peak:0.53M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.28M (Peak 15.59M) | Time:00:00.00 | Mem:0.43M, Peak:0.53M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.67M (Peak 15.59M) | Time:00:00.00 | Mem:0.43M, Peak:0.53M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.67M (Peak 15.59M) | Time:00:00.00 | Mem:0.81M, Peak:0.81M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.67M (Peak 15.59M) | Time:00:00.00 | Mem:0.81M, Peak:0.81M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.67M (Peak 15.59M) | Time:00:00.00 | Mem:0.81M, Peak:0.81M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.67M (Peak 15.59M) | Time:00:00.00 | Mem:0.81M, Peak:0.81M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D1.png
+Fra:1 Mem:18.67M (Peak 18.67M) | Time:00:00.00 | Mem:0.81M, Peak:0.81M | Scene, ViewLayer | Updating Images | Loading Details_D.Folktails.png
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.06 | Mem:8.81M, Peak:8.81M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.06 | Mem:8.81M, Peak:8.81M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.06 | Mem:8.89M, Peak:8.89M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.06 | Mem:8.89M, Peak:8.89M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.06 | Mem:8.89M, Peak:8.89M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.06 | Mem:8.89M, Peak:8.89M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.81M, Peak:8.89M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.00M (Peak 45.00M) | Time:00:00.12 | Remaining:00:02.32 | Mem:31.18M, Peak:31.18M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.37M (Peak 68.44M) | Time:00:06.72 | Mem:31.18M, Peak:31.18M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.37M (Peak 68.44M) | Time:00:06.72 | Mem:31.18M, Peak:31.18M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T3.Folktails_iso.png'
+Time: 00:06.82 (Saving: 00:00.08)
+
+Fra:1 Mem:13.54M (Peak 13.54M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Small.T3.IronTeeth
+Fra:1 Mem:14.25M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.95M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.95M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.95M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.95M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.09M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.29M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.29M (Peak 15.60M) | Time:00:00.00 | Mem:0.20M, Peak:0.20M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.29M (Peak 15.60M) | Time:00:00.00 | Mem:0.20M, Peak:0.20M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.29M (Peak 15.60M) | Time:00:00.00 | Mem:0.31M, Peak:0.31M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.29M (Peak 15.60M) | Time:00:00.00 | Mem:0.43M, Peak:0.54M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.29M (Peak 15.60M) | Time:00:00.01 | Mem:0.43M, Peak:0.54M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.68M (Peak 15.60M) | Time:00:00.01 | Mem:0.43M, Peak:0.54M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.68M (Peak 15.60M) | Time:00:00.01 | Mem:0.82M, Peak:0.82M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.68M (Peak 15.60M) | Time:00:00.01 | Mem:0.82M, Peak:0.82M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.68M (Peak 15.60M) | Time:00:00.01 | Mem:0.82M, Peak:0.82M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.68M (Peak 15.60M) | Time:00:00.01 | Mem:0.82M, Peak:0.82M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D2.png
+Fra:1 Mem:18.68M (Peak 18.68M) | Time:00:00.01 | Mem:0.82M, Peak:0.82M | Scene, ViewLayer | Updating Images | Loading Details_D.IronTeeth.png
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.82M, Peak:8.82M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.82M, Peak:8.82M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.82M, Peak:8.90M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.06 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.00M (Peak 45.00M) | Time:00:00.14 | Remaining:00:02.76 | Mem:31.18M, Peak:31.18M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.38M (Peak 68.45M) | Time:00:06.41 | Mem:31.18M, Peak:31.18M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.38M (Peak 68.45M) | Time:00:06.41 | Mem:31.18M, Peak:31.18M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T3.IronTeeth_iso.png'
+Time: 00:06.49 (Saving: 00:00.07)
+
+Fra:1 Mem:13.68M (Peak 13.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Small.T4.Folktails
+Fra:1 Mem:14.34M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.98M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.98M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.98M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.98M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.06M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.06M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.06M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.06M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.06M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.06M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.06M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.06M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.06M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.06M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.11M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.30M (Peak 15.59M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.30M (Peak 15.59M) | Time:00:00.00 | Mem:0.19M, Peak:0.19M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.30M (Peak 15.59M) | Time:00:00.00 | Mem:0.19M, Peak:0.19M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.30M (Peak 15.59M) | Time:00:00.00 | Mem:0.29M, Peak:0.29M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.30M (Peak 15.59M) | Time:00:00.00 | Mem:0.41M, Peak:0.51M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.30M (Peak 15.59M) | Time:00:00.00 | Mem:0.41M, Peak:0.51M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.66M (Peak 15.59M) | Time:00:00.00 | Mem:0.41M, Peak:0.51M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.66M (Peak 15.59M) | Time:00:00.00 | Mem:0.77M, Peak:0.77M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.66M (Peak 15.59M) | Time:00:00.00 | Mem:0.77M, Peak:0.77M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.66M (Peak 15.59M) | Time:00:00.00 | Mem:0.77M, Peak:0.77M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.66M (Peak 15.59M) | Time:00:00.00 | Mem:0.77M, Peak:0.77M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D1.png
+Fra:1 Mem:18.66M (Peak 18.66M) | Time:00:00.00 | Mem:0.77M, Peak:0.77M | Scene, ViewLayer | Updating Images | Loading Details_D.Folktails.png
+Fra:1 Mem:22.67M (Peak 22.67M) | Time:00:00.07 | Mem:8.77M, Peak:8.77M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.67M (Peak 22.67M) | Time:00:00.07 | Mem:8.77M, Peak:8.77M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.67M (Peak 22.67M) | Time:00:00.07 | Mem:8.85M, Peak:8.85M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.67M (Peak 22.67M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.67M (Peak 22.67M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.67M (Peak 22.67M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.07 | Mem:8.77M, Peak:8.86M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:44.99M (Peak 44.99M) | Time:00:00.15 | Remaining:00:03.02 | Mem:31.14M, Peak:31.14M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.36M (Peak 68.43M) | Time:00:06.88 | Mem:31.14M, Peak:31.14M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.36M (Peak 68.43M) | Time:00:06.88 | Mem:31.14M, Peak:31.14M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T4.Folktails_iso.png'
+Time: 00:06.97 (Saving: 00:00.08)
+
+Fra:1 Mem:13.68M (Peak 13.68M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Small.T4.IronTeeth
+Fra:1 Mem:14.34M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.98M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.98M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.98M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.98M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.07M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.07M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.07M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.07M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.07M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.07M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.07M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.07M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.07M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.07M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.12M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.30M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.30M (Peak 15.60M) | Time:00:00.01 | Mem:0.19M, Peak:0.19M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.30M (Peak 15.60M) | Time:00:00.01 | Mem:0.19M, Peak:0.19M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.30M (Peak 15.60M) | Time:00:00.01 | Mem:0.29M, Peak:0.29M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.30M (Peak 15.60M) | Time:00:00.01 | Mem:0.41M, Peak:0.51M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.30M (Peak 15.60M) | Time:00:00.01 | Mem:0.41M, Peak:0.51M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.67M (Peak 15.60M) | Time:00:00.01 | Mem:0.41M, Peak:0.51M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.67M (Peak 15.60M) | Time:00:00.01 | Mem:0.78M, Peak:0.78M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.67M (Peak 15.60M) | Time:00:00.01 | Mem:0.78M, Peak:0.78M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.67M (Peak 15.60M) | Time:00:00.01 | Mem:0.78M, Peak:0.78M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.67M (Peak 15.60M) | Time:00:00.01 | Mem:0.78M, Peak:0.78M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D2.png
+Fra:1 Mem:18.67M (Peak 18.67M) | Time:00:00.01 | Mem:0.78M, Peak:0.78M | Scene, ViewLayer | Updating Images | Loading Details_D.IronTeeth.png
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.08 | Mem:8.78M, Peak:8.78M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.08 | Mem:8.78M, Peak:8.78M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.08 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.08 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.08 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.08 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.08 | Mem:8.78M, Peak:8.86M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.08 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.08 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.08 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.08 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:44.99M (Peak 44.99M) | Time:00:00.15 | Remaining:00:02.67 | Mem:31.14M, Peak:31.14M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.37M (Peak 68.44M) | Time:00:06.49 | Mem:31.14M, Peak:31.14M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.37M (Peak 68.44M) | Time:00:06.49 | Mem:31.14M, Peak:31.14M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T4.IronTeeth_iso.png'
+Time: 00:06.57 (Saving: 00:00.08)
+
+Fra:1 Mem:13.41M (Peak 13.41M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Medium.T1.Folktails
+Fra:1 Mem:13.99M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.69M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.69M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.69M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.69M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:13.77M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:13.77M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:13.77M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:13.77M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:13.77M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:13.77M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:13.77M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:13.77M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:13.77M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:13.77M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:13.82M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:13.98M (Peak 15.08M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:13.98M (Peak 15.08M) | Time:00:00.00 | Mem:0.17M, Peak:0.17M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:13.98M (Peak 15.08M) | Time:00:00.00 | Mem:0.17M, Peak:0.17M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:13.98M (Peak 15.08M) | Time:00:00.00 | Mem:0.25M, Peak:0.25M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:13.98M (Peak 15.08M) | Time:00:00.00 | Mem:0.36M, Peak:0.45M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:13.98M (Peak 15.08M) | Time:00:00.00 | Mem:0.36M, Peak:0.45M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.29M (Peak 15.08M) | Time:00:00.00 | Mem:0.36M, Peak:0.45M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.29M (Peak 15.08M) | Time:00:00.00 | Mem:0.68M, Peak:0.68M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.29M (Peak 15.08M) | Time:00:00.00 | Mem:0.68M, Peak:0.68M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.29M (Peak 15.08M) | Time:00:00.00 | Mem:0.68M, Peak:0.68M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.29M (Peak 15.08M) | Time:00:00.00 | Mem:0.68M, Peak:0.68M | Scene, ViewLayer | Updating Images | Loading BaseWood_1K_D_Brown.png
+Fra:1 Mem:18.29M (Peak 18.29M) | Time:00:00.00 | Mem:0.68M, Peak:0.68M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D1.png
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.07 | Mem:8.68M, Peak:8.68M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.07 | Mem:8.68M, Peak:8.68M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.07 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.07 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.07 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.07 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.07 | Mem:8.68M, Peak:8.76M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.07 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.07 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.07 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.07 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:44.62M (Peak 44.62M) | Time:00:00.15 | Remaining:00:03.29 | Mem:31.04M, Peak:31.04M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.00M (Peak 68.06M) | Time:00:06.34 | Mem:31.04M, Peak:31.04M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.00M (Peak 68.06M) | Time:00:06.34 | Mem:31.04M, Peak:31.04M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T1.Folktails_iso.png'
+Time: 00:06.43 (Saving: 00:00.08)
+
+Fra:1 Mem:13.41M (Peak 13.41M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Medium.T1.IronTeeth
+Fra:1 Mem:13.99M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.69M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.69M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.69M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.69M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:13.78M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:13.78M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:13.78M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:13.78M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:13.78M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:13.78M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:13.78M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:13.78M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:13.78M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:13.78M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:13.82M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:13.99M (Peak 15.09M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:13.99M (Peak 15.09M) | Time:00:00.00 | Mem:0.17M, Peak:0.17M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:13.99M (Peak 15.09M) | Time:00:00.00 | Mem:0.17M, Peak:0.17M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:13.99M (Peak 15.09M) | Time:00:00.00 | Mem:0.25M, Peak:0.25M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:13.99M (Peak 15.09M) | Time:00:00.01 | Mem:0.36M, Peak:0.45M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:13.99M (Peak 15.09M) | Time:00:00.01 | Mem:0.36M, Peak:0.45M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.30M (Peak 15.09M) | Time:00:00.01 | Mem:0.36M, Peak:0.45M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.30M (Peak 15.09M) | Time:00:00.01 | Mem:0.68M, Peak:0.68M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.30M (Peak 15.09M) | Time:00:00.01 | Mem:0.68M, Peak:0.68M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.30M (Peak 15.09M) | Time:00:00.01 | Mem:0.68M, Peak:0.68M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.30M (Peak 15.09M) | Time:00:00.01 | Mem:0.68M, Peak:0.68M | Scene, ViewLayer | Updating Images | Loading BaseWood_1K_D_Grey.png
+Fra:1 Mem:14.30M (Peak 15.09M) | Time:00:00.01 | Mem:0.68M, Peak:0.68M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D2.png
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.08 | Mem:8.68M, Peak:8.68M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.08 | Mem:8.68M, Peak:8.68M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.08 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.08 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.08 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.31M (Peak 22.31M) | Time:00:00.08 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.32M (Peak 22.32M) | Time:00:00.08 | Mem:8.68M, Peak:8.76M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.32M (Peak 22.32M) | Time:00:00.08 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.32M (Peak 22.32M) | Time:00:00.08 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.32M (Peak 22.32M) | Time:00:00.08 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.32M (Peak 22.32M) | Time:00:00.08 | Mem:8.76M, Peak:8.76M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:44.63M (Peak 44.63M) | Time:00:00.19 | Remaining:00:04.29 | Mem:31.04M, Peak:31.04M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.01M (Peak 68.07M) | Time:00:07.50 | Mem:31.04M, Peak:31.04M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.01M (Peak 68.07M) | Time:00:07.50 | Mem:31.04M, Peak:31.04M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T1.IronTeeth_iso.png'
+Time: 00:07.59 (Saving: 00:00.08)
+
+Fra:1 Mem:13.54M (Peak 13.54M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Medium.T2.Folktails
+Fra:1 Mem:14.25M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.94M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.95M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.95M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.95M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.03M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.08M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.28M (Peak 15.59M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.28M (Peak 15.59M) | Time:00:00.01 | Mem:0.20M, Peak:0.20M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.28M (Peak 15.59M) | Time:00:00.01 | Mem:0.20M, Peak:0.20M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.28M (Peak 15.59M) | Time:00:00.01 | Mem:0.31M, Peak:0.31M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.28M (Peak 15.59M) | Time:00:00.01 | Mem:0.44M, Peak:0.54M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.28M (Peak 15.59M) | Time:00:00.01 | Mem:0.44M, Peak:0.54M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.67M (Peak 15.59M) | Time:00:00.01 | Mem:0.44M, Peak:0.54M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.67M (Peak 15.59M) | Time:00:00.01 | Mem:0.82M, Peak:0.82M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.67M (Peak 15.59M) | Time:00:00.01 | Mem:0.82M, Peak:0.82M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.67M (Peak 15.59M) | Time:00:00.01 | Mem:0.82M, Peak:0.82M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.67M (Peak 15.59M) | Time:00:00.01 | Mem:0.82M, Peak:0.82M | Scene, ViewLayer | Updating Images | Loading BaseWood_1K_D_White.png
+Fra:1 Mem:14.67M (Peak 15.59M) | Time:00:00.01 | Mem:0.82M, Peak:0.82M | Scene, ViewLayer | Updating Images | Loading Details_D.Folktails.png
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.11 | Mem:8.82M, Peak:8.82M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.11 | Mem:8.82M, Peak:8.82M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.11 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.11 | Mem:8.90M, Peak:8.90M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.11 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.11 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.11 | Mem:8.82M, Peak:8.91M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.12 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.68M (Peak 22.68M) | Time:00:00.12 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.12 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.12 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.00M (Peak 45.00M) | Time:00:00.21 | Remaining:00:03.53 | Mem:31.19M, Peak:31.19M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.37M (Peak 68.44M) | Time:00:12.14 | Mem:31.19M, Peak:31.19M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.37M (Peak 68.44M) | Time:00:12.14 | Mem:31.19M, Peak:31.19M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T2.Folktails_iso.png'
+Time: 00:12.35 (Saving: 00:00.21)
+
+Fra:1 Mem:13.54M (Peak 13.54M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Medium.T2.IronTeeth
+Fra:1 Mem:14.25M (Peak 15.60M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.95M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.95M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.95M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.95M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.04M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.09M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.29M (Peak 15.60M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.29M (Peak 15.60M) | Time:00:00.01 | Mem:0.20M, Peak:0.20M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.29M (Peak 15.60M) | Time:00:00.01 | Mem:0.20M, Peak:0.20M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.29M (Peak 15.60M) | Time:00:00.01 | Mem:0.31M, Peak:0.31M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.29M (Peak 15.60M) | Time:00:00.01 | Mem:0.44M, Peak:0.55M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.29M (Peak 15.60M) | Time:00:00.01 | Mem:0.44M, Peak:0.55M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.67M (Peak 15.60M) | Time:00:00.01 | Mem:0.44M, Peak:0.55M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.67M (Peak 15.60M) | Time:00:00.01 | Mem:0.83M, Peak:0.83M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.67M (Peak 15.60M) | Time:00:00.01 | Mem:0.83M, Peak:0.83M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.67M (Peak 15.60M) | Time:00:00.01 | Mem:0.83M, Peak:0.83M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.67M (Peak 15.60M) | Time:00:00.01 | Mem:0.83M, Peak:0.83M | Scene, ViewLayer | Updating Images | Loading BaseWood_1K_D_Grey.png
+Fra:1 Mem:14.67M (Peak 15.60M) | Time:00:00.01 | Mem:0.83M, Peak:0.83M | Scene, ViewLayer | Updating Images | Loading Details_D.IronTeeth.png
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.11 | Mem:8.83M, Peak:8.83M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.11 | Mem:8.83M, Peak:8.83M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.11 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.11 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.11 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.11 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.11 | Mem:8.83M, Peak:8.91M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.11 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.11 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.11 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.69M (Peak 22.69M) | Time:00:00.11 | Mem:8.91M, Peak:8.91M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.00M (Peak 45.00M) | Time:00:00.20 | Remaining:00:03.75 | Mem:31.19M, Peak:31.19M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.38M (Peak 68.44M) | Time:00:13.03 | Mem:31.19M, Peak:31.19M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.38M (Peak 68.44M) | Time:00:13.04 | Mem:31.19M, Peak:31.19M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T2.IronTeeth_iso.png'
+Time: 00:13.37 (Saving: 00:00.30)
+
+Fra:1 Mem:13.72M (Peak 13.72M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Medium.T3.Folktails
+Fra:1 Mem:14.60M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:14.30M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:14.30M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:14.30M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:14.30M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.39M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.39M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.39M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.39M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.39M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.39M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.39M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.39M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.39M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.39M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.45M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.70M (Peak 16.28M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.70M (Peak 16.28M) | Time:00:00.01 | Mem:0.25M, Peak:0.25M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.70M (Peak 16.28M) | Time:00:00.01 | Mem:0.25M, Peak:0.25M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.70M (Peak 16.28M) | Time:00:00.01 | Mem:0.39M, Peak:0.39M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.70M (Peak 16.28M) | Time:00:00.01 | Mem:0.55M, Peak:0.68M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.70M (Peak 16.28M) | Time:00:00.01 | Mem:0.55M, Peak:0.68M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:15.19M (Peak 16.28M) | Time:00:00.01 | Mem:0.55M, Peak:0.68M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:15.19M (Peak 16.28M) | Time:00:00.01 | Mem:1.03M, Peak:1.03M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:15.19M (Peak 16.28M) | Time:00:00.01 | Mem:1.03M, Peak:1.03M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:15.19M (Peak 16.28M) | Time:00:00.01 | Mem:1.03M, Peak:1.03M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:15.19M (Peak 16.28M) | Time:00:00.01 | Mem:1.03M, Peak:1.03M | Scene, ViewLayer | Updating Images | Loading Details_D.Folktails.png
+Fra:1 Mem:19.19M (Peak 19.19M) | Time:00:00.01 | Mem:1.03M, Peak:1.03M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D1.png
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.16 | Mem:9.03M, Peak:9.03M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.16 | Mem:9.03M, Peak:9.03M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.16 | Mem:9.11M, Peak:9.11M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.16 | Mem:9.11M, Peak:9.11M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.16 | Mem:9.11M, Peak:9.11M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.16 | Mem:9.11M, Peak:9.11M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.16 | Mem:9.03M, Peak:9.11M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.16 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.16 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.16 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.16 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.51M (Peak 45.51M) | Time:00:00.37 | Remaining:00:08.13 | Mem:31.39M, Peak:31.39M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.89M (Peak 68.96M) | Time:00:11.04 | Mem:31.39M, Peak:31.39M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.89M (Peak 68.96M) | Time:00:11.04 | Mem:31.39M, Peak:31.39M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T3.Folktails_iso.png'
+Time: 00:11.17 (Saving: 00:00.12)
+
+Fra:1 Mem:13.72M (Peak 13.72M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Medium.T3.IronTeeth
+Fra:1 Mem:14.61M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:14.31M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:14.31M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:14.31M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:14.31M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.39M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.39M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.39M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.39M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.39M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.39M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.39M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.39M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.39M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.39M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.46M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.71M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.71M (Peak 16.29M) | Time:00:00.01 | Mem:0.25M, Peak:0.25M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.71M (Peak 16.29M) | Time:00:00.01 | Mem:0.25M, Peak:0.25M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.71M (Peak 16.29M) | Time:00:00.01 | Mem:0.39M, Peak:0.39M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.71M (Peak 16.29M) | Time:00:00.02 | Mem:0.55M, Peak:0.68M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.71M (Peak 16.29M) | Time:00:00.02 | Mem:0.55M, Peak:0.68M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:15.19M (Peak 16.29M) | Time:00:00.02 | Mem:0.55M, Peak:0.68M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:15.19M (Peak 16.29M) | Time:00:00.02 | Mem:1.03M, Peak:1.03M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:15.19M (Peak 16.29M) | Time:00:00.02 | Mem:1.03M, Peak:1.03M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:15.19M (Peak 16.29M) | Time:00:00.02 | Mem:1.03M, Peak:1.03M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:15.19M (Peak 16.29M) | Time:00:00.02 | Mem:1.03M, Peak:1.03M | Scene, ViewLayer | Updating Images | Loading Details_D.IronTeeth.png
+Fra:1 Mem:19.19M (Peak 19.19M) | Time:00:00.02 | Mem:1.03M, Peak:1.03M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D2.png
+Fra:1 Mem:23.21M (Peak 23.21M) | Time:00:00.17 | Mem:9.03M, Peak:9.03M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:23.21M (Peak 23.21M) | Time:00:00.17 | Mem:9.03M, Peak:9.03M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.21M (Peak 23.21M) | Time:00:00.17 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:23.21M (Peak 23.21M) | Time:00:00.17 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:23.21M (Peak 23.21M) | Time:00:00.17 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:23.21M (Peak 23.21M) | Time:00:00.17 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:23.21M (Peak 23.21M) | Time:00:00.17 | Mem:9.04M, Peak:9.12M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.21M (Peak 23.21M) | Time:00:00.17 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:23.21M (Peak 23.21M) | Time:00:00.17 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:23.21M (Peak 23.21M) | Time:00:00.17 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:23.21M (Peak 23.21M) | Time:00:00.17 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.52M (Peak 45.52M) | Time:00:00.40 | Remaining:00:09.12 | Mem:31.40M, Peak:31.40M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.90M (Peak 68.96M) | Time:00:12.77 | Mem:31.40M, Peak:31.40M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.90M (Peak 68.96M) | Time:00:12.77 | Mem:31.40M, Peak:31.40M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T3.IronTeeth_iso.png'
+Time: 00:12.88 (Saving: 00:00.09)
+
+Fra:1 Mem:13.85M (Peak 13.85M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Medium.T4.Folktails
+Fra:1 Mem:14.70M (Peak 16.29M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:14.33M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:14.33M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:14.33M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:14.33M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.42M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.42M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.42M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.42M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.42M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.42M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.42M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.42M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.42M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.42M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.48M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.72M (Peak 16.29M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.72M (Peak 16.29M) | Time:00:00.01 | Mem:0.24M, Peak:0.24M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.72M (Peak 16.29M) | Time:00:00.01 | Mem:0.24M, Peak:0.24M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.72M (Peak 16.29M) | Time:00:00.01 | Mem:0.37M, Peak:0.37M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.72M (Peak 16.29M) | Time:00:00.01 | Mem:0.52M, Peak:0.65M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.72M (Peak 16.29M) | Time:00:00.01 | Mem:0.52M, Peak:0.65M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:15.18M (Peak 16.29M) | Time:00:00.01 | Mem:0.52M, Peak:0.65M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:15.18M (Peak 16.29M) | Time:00:00.01 | Mem:0.98M, Peak:0.98M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:15.18M (Peak 16.29M) | Time:00:00.01 | Mem:0.98M, Peak:0.98M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:15.18M (Peak 16.29M) | Time:00:00.01 | Mem:0.98M, Peak:0.98M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:15.18M (Peak 16.29M) | Time:00:00.01 | Mem:0.98M, Peak:0.98M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D1.png
+Fra:1 Mem:15.18M (Peak 16.29M) | Time:00:00.01 | Mem:0.98M, Peak:0.98M | Scene, ViewLayer | Updating Images | Loading Details_D.Folktails.png
+Fra:1 Mem:23.19M (Peak 23.19M) | Time:00:00.14 | Mem:8.98M, Peak:8.98M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:23.19M (Peak 23.19M) | Time:00:00.14 | Mem:8.98M, Peak:8.98M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.19M (Peak 23.19M) | Time:00:00.14 | Mem:9.06M, Peak:9.06M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:23.19M (Peak 23.19M) | Time:00:00.14 | Mem:9.06M, Peak:9.06M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:23.19M (Peak 23.19M) | Time:00:00.14 | Mem:9.06M, Peak:9.06M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:23.19M (Peak 23.19M) | Time:00:00.14 | Mem:9.06M, Peak:9.06M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:23.19M (Peak 23.19M) | Time:00:00.14 | Mem:8.98M, Peak:9.06M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.19M (Peak 23.19M) | Time:00:00.14 | Mem:9.07M, Peak:9.07M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:23.19M (Peak 23.19M) | Time:00:00.14 | Mem:9.07M, Peak:9.07M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:23.19M (Peak 23.19M) | Time:00:00.14 | Mem:9.07M, Peak:9.07M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:23.19M (Peak 23.19M) | Time:00:00.14 | Mem:9.07M, Peak:9.07M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.50M (Peak 45.50M) | Time:00:00.34 | Remaining:00:07.59 | Mem:31.34M, Peak:31.34M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.88M (Peak 68.95M) | Time:00:11.25 | Mem:31.34M, Peak:31.34M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.88M (Peak 68.95M) | Time:00:11.25 | Mem:31.34M, Peak:31.34M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T4.Folktails_iso.png'
+Time: 00:11.39 (Saving: 00:00.13)
+
+Fra:1 Mem:13.86M (Peak 13.86M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Medium.T4.IronTeeth
+Fra:1 Mem:14.70M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:14.34M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:14.34M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:14.34M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:14.34M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.42M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.42M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.42M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.42M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.42M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.42M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.42M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.42M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.42M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.42M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.49M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.72M (Peak 16.30M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.72M (Peak 16.30M) | Time:00:00.01 | Mem:0.24M, Peak:0.24M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.72M (Peak 16.30M) | Time:00:00.01 | Mem:0.24M, Peak:0.24M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.72M (Peak 16.30M) | Time:00:00.01 | Mem:0.37M, Peak:0.37M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.72M (Peak 16.30M) | Time:00:00.01 | Mem:0.52M, Peak:0.65M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.72M (Peak 16.30M) | Time:00:00.01 | Mem:0.52M, Peak:0.65M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:15.18M (Peak 16.30M) | Time:00:00.01 | Mem:0.52M, Peak:0.65M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:15.18M (Peak 16.30M) | Time:00:00.01 | Mem:0.98M, Peak:0.98M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:15.18M (Peak 16.30M) | Time:00:00.01 | Mem:0.98M, Peak:0.98M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:15.18M (Peak 16.30M) | Time:00:00.01 | Mem:0.98M, Peak:0.98M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:15.18M (Peak 16.30M) | Time:00:00.02 | Mem:0.98M, Peak:0.98M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D2.png
+Fra:1 Mem:15.18M (Peak 16.30M) | Time:00:00.02 | Mem:0.98M, Peak:0.98M | Scene, ViewLayer | Updating Images | Loading Details_D.IronTeeth.png
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.13 | Mem:8.98M, Peak:8.98M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.13 | Mem:8.98M, Peak:8.98M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.13 | Mem:9.06M, Peak:9.06M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.13 | Mem:9.06M, Peak:9.06M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.13 | Mem:9.06M, Peak:9.06M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.13 | Mem:9.06M, Peak:9.06M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.13 | Mem:8.98M, Peak:9.06M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.13 | Mem:9.07M, Peak:9.07M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.13 | Mem:9.07M, Peak:9.07M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.13 | Mem:9.07M, Peak:9.07M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:23.20M (Peak 23.20M) | Time:00:00.13 | Mem:9.07M, Peak:9.07M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.51M (Peak 45.51M) | Time:00:00.28 | Remaining:00:05.97 | Mem:31.35M, Peak:31.35M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.89M (Peak 68.95M) | Time:00:09.86 | Mem:31.35M, Peak:31.35M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.89M (Peak 68.95M) | Time:00:09.86 | Mem:31.35M, Peak:31.35M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T4.IronTeeth_iso.png'
+Time: 00:09.95 (Saving: 00:00.08)
+
+Fra:1 Mem:13.50M (Peak 13.50M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Large.T1.Folktails
+Fra:1 Mem:14.17M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.86M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.87M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.87M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.87M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:13.95M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:13.95M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:13.95M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:13.95M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:13.95M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:13.95M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:13.95M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:13.95M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:13.95M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:13.95M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.00M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.19M (Peak 15.43M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.19M (Peak 15.43M) | Time:00:00.00 | Mem:0.19M, Peak:0.19M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.19M (Peak 15.43M) | Time:00:00.00 | Mem:0.19M, Peak:0.19M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.19M (Peak 15.43M) | Time:00:00.00 | Mem:0.29M, Peak:0.29M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.19M (Peak 15.43M) | Time:00:00.00 | Mem:0.41M, Peak:0.51M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.19M (Peak 15.43M) | Time:00:00.00 | Mem:0.41M, Peak:0.51M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.55M (Peak 15.43M) | Time:00:00.00 | Mem:0.41M, Peak:0.51M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.55M (Peak 15.43M) | Time:00:00.00 | Mem:0.78M, Peak:0.78M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.55M (Peak 15.43M) | Time:00:00.00 | Mem:0.78M, Peak:0.78M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.55M (Peak 15.43M) | Time:00:00.00 | Mem:0.78M, Peak:0.78M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.55M (Peak 15.43M) | Time:00:00.00 | Mem:0.78M, Peak:0.78M | Scene, ViewLayer | Updating Images | Loading BaseWood_1K_D_Brown.png
+Fra:1 Mem:18.55M (Peak 18.55M) | Time:00:00.00 | Mem:0.78M, Peak:0.78M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D1.png
+Fra:1 Mem:22.56M (Peak 22.56M) | Time:00:00.07 | Mem:8.78M, Peak:8.78M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.56M (Peak 22.56M) | Time:00:00.07 | Mem:8.78M, Peak:8.78M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.56M (Peak 22.56M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.56M (Peak 22.56M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.56M (Peak 22.56M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.56M (Peak 22.56M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.07 | Mem:8.78M, Peak:8.86M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.07 | Mem:8.86M, Peak:8.86M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:44.88M (Peak 44.88M) | Time:00:00.16 | Remaining:00:03.63 | Mem:31.14M, Peak:31.14M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.26M (Peak 68.32M) | Time:00:07.07 | Mem:31.14M, Peak:31.14M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.26M (Peak 68.32M) | Time:00:07.07 | Mem:31.14M, Peak:31.14M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T1.Folktails_iso.png'
+Time: 00:07.16 (Saving: 00:00.08)
+
+Fra:1 Mem:13.50M (Peak 13.50M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Large.T1.IronTeeth
+Fra:1 Mem:14.17M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:13.87M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:13.87M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:13.87M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:13.87M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:13.95M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:13.95M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:13.95M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:13.95M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:13.95M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:13.95M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:13.95M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:13.95M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:13.95M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:13.96M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.01M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.19M (Peak 15.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.19M (Peak 15.44M) | Time:00:00.01 | Mem:0.19M, Peak:0.19M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.19M (Peak 15.44M) | Time:00:00.01 | Mem:0.19M, Peak:0.19M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.19M (Peak 15.44M) | Time:00:00.01 | Mem:0.29M, Peak:0.29M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.19M (Peak 15.44M) | Time:00:00.01 | Mem:0.40M, Peak:0.50M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.19M (Peak 15.44M) | Time:00:00.01 | Mem:0.40M, Peak:0.50M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.56M (Peak 15.44M) | Time:00:00.01 | Mem:0.40M, Peak:0.50M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.56M (Peak 15.44M) | Time:00:00.01 | Mem:0.77M, Peak:0.77M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.56M (Peak 15.44M) | Time:00:00.01 | Mem:0.77M, Peak:0.77M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.56M (Peak 15.44M) | Time:00:00.01 | Mem:0.77M, Peak:0.77M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.56M (Peak 15.44M) | Time:00:00.01 | Mem:0.77M, Peak:0.77M | Scene, ViewLayer | Updating Images | Loading BaseWood_1K_D_Grey.png
+Fra:1 Mem:14.56M (Peak 15.44M) | Time:00:00.01 | Mem:0.77M, Peak:0.77M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D2.png
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.09 | Mem:8.77M, Peak:8.77M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.09 | Mem:8.77M, Peak:8.77M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.09 | Mem:8.85M, Peak:8.85M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.09 | Mem:8.85M, Peak:8.85M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.09 | Mem:8.85M, Peak:8.85M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.09 | Mem:8.85M, Peak:8.85M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.09 | Mem:8.77M, Peak:8.85M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.09 | Mem:8.85M, Peak:8.85M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.57M (Peak 22.57M) | Time:00:00.09 | Mem:8.85M, Peak:8.85M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.58M (Peak 22.58M) | Time:00:00.09 | Mem:8.85M, Peak:8.85M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.58M (Peak 22.58M) | Time:00:00.09 | Mem:8.85M, Peak:8.85M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:44.89M (Peak 44.89M) | Time:00:00.21 | Remaining:00:04.55 | Mem:31.13M, Peak:31.13M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.26M (Peak 68.33M) | Time:00:08.82 | Mem:31.13M, Peak:31.13M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.26M (Peak 68.33M) | Time:00:08.82 | Mem:31.13M, Peak:31.13M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T1.IronTeeth_iso.png'
+Time: 00:08.92 (Saving: 00:00.09)
+
+Fra:1 Mem:13.64M (Peak 13.64M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Large.T2.Folktails
+Fra:1 Mem:14.44M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:14.14M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:14.14M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:14.14M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:14.14M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.22M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.22M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.22M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.22M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.22M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.22M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.22M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.22M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.22M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.22M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.28M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.51M (Peak 15.96M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.51M (Peak 15.96M) | Time:00:00.00 | Mem:0.23M, Peak:0.23M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.51M (Peak 15.96M) | Time:00:00.00 | Mem:0.23M, Peak:0.23M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.51M (Peak 15.96M) | Time:00:00.00 | Mem:0.35M, Peak:0.35M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.51M (Peak 15.96M) | Time:00:00.01 | Mem:0.49M, Peak:0.61M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.51M (Peak 15.96M) | Time:00:00.01 | Mem:0.49M, Peak:0.61M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.95M (Peak 15.96M) | Time:00:00.01 | Mem:0.49M, Peak:0.61M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.95M (Peak 15.96M) | Time:00:00.01 | Mem:0.92M, Peak:0.92M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.95M (Peak 15.96M) | Time:00:00.01 | Mem:0.92M, Peak:0.92M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.95M (Peak 15.96M) | Time:00:00.01 | Mem:0.92M, Peak:0.92M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.95M (Peak 15.96M) | Time:00:00.01 | Mem:0.92M, Peak:0.92M | Scene, ViewLayer | Updating Images | Loading BaseWood_1K_D_White.png
+Fra:1 Mem:14.95M (Peak 15.96M) | Time:00:00.01 | Mem:0.92M, Peak:0.92M | Scene, ViewLayer | Updating Images | Loading Details_D.Folktails.png
+Fra:1 Mem:22.96M (Peak 22.96M) | Time:00:00.07 | Mem:8.92M, Peak:8.92M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.96M (Peak 22.96M) | Time:00:00.07 | Mem:8.92M, Peak:8.92M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.96M (Peak 22.96M) | Time:00:00.07 | Mem:9.00M, Peak:9.00M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.96M (Peak 22.96M) | Time:00:00.07 | Mem:9.01M, Peak:9.01M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.96M (Peak 22.96M) | Time:00:00.07 | Mem:9.01M, Peak:9.01M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.96M (Peak 22.96M) | Time:00:00.07 | Mem:9.01M, Peak:9.01M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.07 | Mem:8.92M, Peak:9.01M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.07 | Mem:9.01M, Peak:9.01M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.07 | Mem:9.01M, Peak:9.01M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.07 | Mem:9.01M, Peak:9.01M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.07 | Mem:9.01M, Peak:9.01M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.28M (Peak 45.28M) | Time:00:00.16 | Remaining:00:03.40 | Mem:31.29M, Peak:31.29M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.65M (Peak 68.72M) | Time:00:07.74 | Mem:31.29M, Peak:31.29M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.65M (Peak 68.72M) | Time:00:07.74 | Mem:31.29M, Peak:31.29M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T2.Folktails_iso.png'
+Time: 00:07.85 (Saving: 00:00.09)
+
+Fra:1 Mem:13.64M (Peak 13.64M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Large.T2.IronTeeth
+Fra:1 Mem:14.44M (Peak 15.97M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:14.14M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:14.14M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:14.14M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:14.14M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.23M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.23M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.23M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.23M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.23M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.23M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.23M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.23M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.23M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.23M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.29M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.52M (Peak 15.97M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.52M (Peak 15.97M) | Time:00:00.01 | Mem:0.23M, Peak:0.23M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.52M (Peak 15.97M) | Time:00:00.01 | Mem:0.23M, Peak:0.23M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.52M (Peak 15.97M) | Time:00:00.01 | Mem:0.35M, Peak:0.35M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.52M (Peak 15.97M) | Time:00:00.01 | Mem:0.50M, Peak:0.62M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.52M (Peak 15.97M) | Time:00:00.01 | Mem:0.50M, Peak:0.62M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:14.96M (Peak 15.97M) | Time:00:00.01 | Mem:0.50M, Peak:0.62M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:14.96M (Peak 15.97M) | Time:00:00.01 | Mem:0.94M, Peak:0.94M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:14.96M (Peak 15.97M) | Time:00:00.01 | Mem:0.94M, Peak:0.94M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:14.96M (Peak 15.97M) | Time:00:00.01 | Mem:0.94M, Peak:0.94M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:14.96M (Peak 15.97M) | Time:00:00.01 | Mem:0.94M, Peak:0.94M | Scene, ViewLayer | Updating Images | Loading Details_D.IronTeeth.png
+Fra:1 Mem:18.96M (Peak 18.96M) | Time:00:00.01 | Mem:0.94M, Peak:0.94M | Scene, ViewLayer | Updating Images | Loading BaseWood_1K_D_Grey.png
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.11 | Mem:8.94M, Peak:8.94M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.11 | Mem:8.94M, Peak:8.94M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.11 | Mem:9.02M, Peak:9.02M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.11 | Mem:9.02M, Peak:9.02M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.11 | Mem:9.02M, Peak:9.02M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.11 | Mem:9.02M, Peak:9.02M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.11 | Mem:8.94M, Peak:9.02M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.11 | Mem:9.02M, Peak:9.02M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.11 | Mem:9.02M, Peak:9.02M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.11 | Mem:9.02M, Peak:9.02M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:22.97M (Peak 22.97M) | Time:00:00.11 | Mem:9.02M, Peak:9.02M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.28M (Peak 45.28M) | Time:00:00.22 | Remaining:00:04.30 | Mem:31.30M, Peak:31.30M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:54.66M (Peak 68.73M) | Time:00:07.76 | Mem:31.30M, Peak:31.30M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:54.66M (Peak 68.73M) | Time:00:07.76 | Mem:31.30M, Peak:31.30M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T2.IronTeeth_iso.png'
+Time: 00:07.86 (Saving: 00:00.09)
+
+Fra:1 Mem:13.83M (Peak 13.83M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Large.T3.Folktails
+Fra:1 Mem:14.84M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:14.54M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:14.54M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:14.54M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:14.54M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.62M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.62M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.62M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.62M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.62M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.62M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.62M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.62M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.62M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.62M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.70M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.98M (Peak 16.74M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.98M (Peak 16.74M) | Time:00:00.00 | Mem:0.29M, Peak:0.29M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.98M (Peak 16.74M) | Time:00:00.00 | Mem:0.29M, Peak:0.29M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.98M (Peak 16.74M) | Time:00:00.00 | Mem:0.44M, Peak:0.44M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.98M (Peak 16.74M) | Time:00:00.01 | Mem:0.60M, Peak:0.75M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.98M (Peak 16.74M) | Time:00:00.01 | Mem:0.60M, Peak:0.75M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:15.53M (Peak 16.74M) | Time:00:00.01 | Mem:0.60M, Peak:0.75M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:15.53M (Peak 16.74M) | Time:00:00.01 | Mem:1.15M, Peak:1.15M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:15.53M (Peak 16.74M) | Time:00:00.01 | Mem:1.15M, Peak:1.15M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:15.53M (Peak 16.74M) | Time:00:00.01 | Mem:1.15M, Peak:1.15M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:15.53M (Peak 16.74M) | Time:00:00.01 | Mem:1.15M, Peak:1.15M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D1.png
+Fra:1 Mem:19.53M (Peak 19.53M) | Time:00:00.01 | Mem:1.15M, Peak:1.15M | Scene, ViewLayer | Updating Images | Loading Details_D.Folktails.png
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.07 | Mem:9.15M, Peak:9.15M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.07 | Mem:9.15M, Peak:9.15M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.07 | Mem:9.23M, Peak:9.23M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.07 | Mem:9.23M, Peak:9.23M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.07 | Mem:9.23M, Peak:9.23M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.07 | Mem:9.23M, Peak:9.23M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.15M, Peak:9.23M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.24M, Peak:9.24M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.24M, Peak:9.24M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.24M, Peak:9.24M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.24M, Peak:9.24M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.86M (Peak 45.86M) | Time:00:00.15 | Remaining:00:03.12 | Mem:31.51M, Peak:31.51M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:55.23M (Peak 69.30M) | Time:00:07.42 | Mem:31.51M, Peak:31.51M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:55.23M (Peak 69.30M) | Time:00:07.42 | Mem:31.51M, Peak:31.51M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T3.Folktails_iso.png'
+Time: 00:07.50 (Saving: 00:00.07)
+
+Fra:1 Mem:13.84M (Peak 13.84M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Large.T3.IronTeeth
+Fra:1 Mem:14.84M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:14.54M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:14.54M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:14.54M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:14.54M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.63M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.63M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.63M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.63M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.63M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.63M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.63M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.63M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.63M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.63M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.70M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:14.99M (Peak 16.75M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:14.99M (Peak 16.75M) | Time:00:00.01 | Mem:0.29M, Peak:0.29M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:14.99M (Peak 16.75M) | Time:00:00.01 | Mem:0.29M, Peak:0.29M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:14.99M (Peak 16.75M) | Time:00:00.01 | Mem:0.44M, Peak:0.44M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:14.99M (Peak 16.75M) | Time:00:00.01 | Mem:0.61M, Peak:0.76M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:14.99M (Peak 16.75M) | Time:00:00.01 | Mem:0.61M, Peak:0.76M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:15.54M (Peak 16.75M) | Time:00:00.01 | Mem:0.61M, Peak:0.76M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:15.54M (Peak 16.75M) | Time:00:00.01 | Mem:1.15M, Peak:1.15M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:15.54M (Peak 16.75M) | Time:00:00.01 | Mem:1.15M, Peak:1.15M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:15.54M (Peak 16.75M) | Time:00:00.01 | Mem:1.15M, Peak:1.15M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:15.54M (Peak 16.75M) | Time:00:00.01 | Mem:1.15M, Peak:1.15M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D2.png
+Fra:1 Mem:15.54M (Peak 16.75M) | Time:00:00.01 | Mem:1.15M, Peak:1.15M | Scene, ViewLayer | Updating Images | Loading Details_D.IronTeeth.png
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.15M, Peak:9.15M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.15M, Peak:9.15M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.24M, Peak:9.24M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.24M, Peak:9.24M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.24M, Peak:9.24M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.24M, Peak:9.24M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.16M, Peak:9.24M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.24M, Peak:9.24M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.24M, Peak:9.24M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.24M, Peak:9.24M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:23.55M (Peak 23.55M) | Time:00:00.07 | Mem:9.24M, Peak:9.24M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.86M (Peak 45.86M) | Time:00:00.16 | Remaining:00:03.15 | Mem:31.52M, Peak:31.52M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:55.24M (Peak 69.31M) | Time:00:05.86 | Mem:31.52M, Peak:31.52M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:55.24M (Peak 69.31M) | Time:00:05.86 | Mem:31.52M, Peak:31.52M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T3.IronTeeth_iso.png'
+Time: 00:05.96 (Saving: 00:00.08)
+
+Fra:1 Mem:13.97M (Peak 13.97M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Large.T4.Folktails
+Fra:1 Mem:14.93M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:14.57M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:14.57M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:14.57M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:14.57M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.65M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.65M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.65M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.65M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.65M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.65M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.65M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.65M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.65M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.65M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.73M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:15.00M (Peak 16.75M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:15.00M (Peak 16.75M) | Time:00:00.00 | Mem:0.27M, Peak:0.27M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:15.00M (Peak 16.75M) | Time:00:00.00 | Mem:0.27M, Peak:0.27M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:15.00M (Peak 16.75M) | Time:00:00.00 | Mem:0.42M, Peak:0.42M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:15.00M (Peak 16.75M) | Time:00:00.00 | Mem:0.59M, Peak:0.74M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:15.00M (Peak 16.75M) | Time:00:00.00 | Mem:0.59M, Peak:0.74M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:15.52M (Peak 16.75M) | Time:00:00.00 | Mem:0.59M, Peak:0.74M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:15.52M (Peak 16.75M) | Time:00:00.00 | Mem:1.12M, Peak:1.12M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:15.52M (Peak 16.75M) | Time:00:00.00 | Mem:1.12M, Peak:1.12M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:15.52M (Peak 16.75M) | Time:00:00.00 | Mem:1.12M, Peak:1.12M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:15.52M (Peak 16.75M) | Time:00:00.00 | Mem:1.12M, Peak:1.12M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D1.png
+Fra:1 Mem:19.52M (Peak 19.52M) | Time:00:00.00 | Mem:1.12M, Peak:1.12M | Scene, ViewLayer | Updating Images | Loading Details_D.Folktails.png
+Fra:1 Mem:23.53M (Peak 23.53M) | Time:00:00.06 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:23.53M (Peak 23.53M) | Time:00:00.06 | Mem:9.12M, Peak:9.12M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.53M (Peak 23.53M) | Time:00:00.06 | Mem:9.20M, Peak:9.20M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:23.53M (Peak 23.53M) | Time:00:00.06 | Mem:9.20M, Peak:9.20M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:23.53M (Peak 23.53M) | Time:00:00.06 | Mem:9.20M, Peak:9.20M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:23.53M (Peak 23.53M) | Time:00:00.06 | Mem:9.20M, Peak:9.20M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:23.53M (Peak 23.53M) | Time:00:00.06 | Mem:9.12M, Peak:9.20M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.53M (Peak 23.53M) | Time:00:00.06 | Mem:9.20M, Peak:9.20M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:23.53M (Peak 23.53M) | Time:00:00.06 | Mem:9.20M, Peak:9.20M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.20M, Peak:9.20M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.20M, Peak:9.20M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.85M (Peak 45.85M) | Time:00:00.12 | Remaining:00:02.37 | Mem:31.48M, Peak:31.48M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:55.22M (Peak 69.29M) | Time:00:06.03 | Mem:31.48M, Peak:31.48M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:55.22M (Peak 69.29M) | Time:00:06.03 | Mem:31.48M, Peak:31.48M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T4.Folktails_iso.png'
+Time: 00:06.12 (Saving: 00:00.08)
+
+Fra:1 Mem:13.97M (Peak 13.97M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | SteamBoiler.Large.T4.IronTeeth
+Fra:1 Mem:14.94M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
+Fra:1 Mem:14.57M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Waiting for render to start
+Fra:1 Mem:14.57M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:1 Mem:14.57M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Scene
+Fra:1 Mem:14.57M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Shaders
+Fra:1 Mem:14.66M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Procedurals
+Fra:1 Mem:14.66M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Background
+Fra:1 Mem:14.66M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Camera
+Fra:1 Mem:14.66M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes Flags
+Fra:1 Mem:14.66M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects
+Fra:1 Mem:14.66M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:1 Mem:14.66M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:1 Mem:14.66M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems
+Fra:1 Mem:14.66M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:1 Mem:14.66M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Meshes
+Fra:1 Mem:14.73M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Computing attributes
+Fra:1 Mem:15.00M (Peak 16.76M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:1 Mem:15.00M (Peak 16.76M) | Time:00:00.00 | Mem:0.27M, Peak:0.27M | Scene, ViewLayer | Updating Scene BVH | Building
+Fra:1 Mem:15.00M (Peak 16.76M) | Time:00:00.00 | Mem:0.27M, Peak:0.27M | Scene, ViewLayer | Updating Scene BVH | Building BVH
+Fra:1 Mem:15.00M (Peak 16.76M) | Time:00:00.00 | Mem:0.42M, Peak:0.42M | Scene, ViewLayer | Updating Scene BVH | Building BVH 0%
+Fra:1 Mem:15.00M (Peak 16.76M) | Time:00:00.00 | Mem:0.58M, Peak:0.72M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:1 Mem:15.00M (Peak 16.76M) | Time:00:00.00 | Mem:0.58M, Peak:0.72M | Scene, ViewLayer | Updating Mesh | Computing normals
+Fra:1 Mem:15.53M (Peak 16.76M) | Time:00:00.00 | Mem:0.58M, Peak:0.72M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:1 Mem:15.53M (Peak 16.76M) | Time:00:00.00 | Mem:1.10M, Peak:1.10M | Scene, ViewLayer | Updating Objects Flags
+Fra:1 Mem:15.53M (Peak 16.76M) | Time:00:00.00 | Mem:1.10M, Peak:1.10M | Scene, ViewLayer | Updating Primitive Offsets
+Fra:1 Mem:15.53M (Peak 16.76M) | Time:00:00.00 | Mem:1.10M, Peak:1.10M | Scene, ViewLayer | Updating Images
+Fra:1 Mem:15.53M (Peak 16.76M) | Time:00:00.00 | Mem:1.10M, Peak:1.10M | Scene, ViewLayer | Updating Images | Loading BaseMetal_D2.png
+Fra:1 Mem:15.53M (Peak 16.76M) | Time:00:00.00 | Mem:1.10M, Peak:1.10M | Scene, ViewLayer | Updating Images | Loading Details_D.IronTeeth.png
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.10M, Peak:9.10M | Scene, ViewLayer | Updating Camera Volume
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.10M, Peak:9.10M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.18M, Peak:9.18M | Scene, ViewLayer | Updating Lights
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.18M, Peak:9.18M | Scene, ViewLayer | Updating Lights | Computing tree
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.19M, Peak:9.19M | Scene, ViewLayer | Updating Integrator
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.19M, Peak:9.19M | Scene, ViewLayer | Updating Film
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.10M, Peak:9.19M | Scene, ViewLayer | Updating Lookup Tables
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.19M, Peak:9.19M | Scene, ViewLayer | Updating Baking
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.19M, Peak:9.19M | Scene, ViewLayer | Updating Device | Writing constant memory
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.19M, Peak:9.19M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:1 Mem:23.54M (Peak 23.54M) | Time:00:00.06 | Mem:9.19M, Peak:9.19M | Scene, ViewLayer | Sample 0/40
+Fra:1 Mem:45.85M (Peak 45.85M) | Time:00:00.12 | Remaining:00:02.36 | Mem:31.47M, Peak:31.47M | Scene, ViewLayer | Sample 1/40
+Fra:1 Mem:55.23M (Peak 69.30M) | Time:00:06.24 | Mem:31.47M, Peak:31.47M | Scene, ViewLayer | Sample 40/40
+Fra:1 Mem:55.23M (Peak 69.30M) | Time:00:06.24 | Mem:31.47M, Peak:31.47M | Scene, ViewLayer | Finished
+Saved: 'C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T4.IronTeeth_iso.png'
+Time: 00:06.32 (Saving: 00:00.07)
+
+gallery 1/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T1.Folktails_iso.png
+gallery 2/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T1.IronTeeth_iso.png
+gallery 3/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T2.Folktails_iso.png
+gallery 4/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T2.IronTeeth_iso.png
+gallery 5/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T3.Folktails_iso.png
+gallery 6/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T3.IronTeeth_iso.png
+gallery 7/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T4.Folktails_iso.png
+gallery 8/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Small.T4.IronTeeth_iso.png
+gallery 9/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T1.Folktails_iso.png
+gallery 10/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T1.IronTeeth_iso.png
+gallery 11/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T2.Folktails_iso.png
+gallery 12/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T2.IronTeeth_iso.png
+gallery 13/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T3.Folktails_iso.png
+gallery 14/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T3.IronTeeth_iso.png
+gallery 15/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T4.Folktails_iso.png
+gallery 16/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Medium.T4.IronTeeth_iso.png
+gallery 17/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T1.Folktails_iso.png
+gallery 18/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T1.IronTeeth_iso.png
+gallery 19/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T2.Folktails_iso.png
+gallery 20/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T2.IronTeeth_iso.png
+gallery 21/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T3.Folktails_iso.png
+gallery 22/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T3.IronTeeth_iso.png
+gallery 23/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T4.Folktails_iso.png
+gallery 24/24 C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery\SteamBoiler.Large.T4.IronTeeth_iso.png
+gallery done: 24 images -> C:\Users\user\Downloads\timber steam engine\mod\art\preview\gallery

@@ -1,0 +1,323 @@
+{
+  "dataVersion": 1,
+  "fullInventoryWorkHours": 25,
+  "tierFuelRatePer100Hp": {
+    "T1": 0.032,
+    "T2": 0.025,
+    "T3": 0.021,
+    "T4": 0.016
+  },
+  "tierWaterRatePer100Hp": {
+    "T1": 0.080,
+    "T2": 0.070,
+    "T3": 0.040,
+    "T4": 0.018
+  },
+  "waterTankHours": 200,
+  "factions": {
+    "Folktails": {
+      "output": 1.00,
+      "fuel": 0.90
+    },
+    "IronTeeth": {
+      "output": 1.05,
+      "fuel": 1.00
+    }
+  },
+  "toolOrders": {
+    "T1": {
+      "Small": 110,
+      "Medium": 112,
+      "Large": 114
+    },
+    "T2": {
+      "Small": 116,
+      "Medium": 118,
+      "Large": 120
+    },
+    "T3": {
+      "Small": 122,
+      "Medium": 124,
+      "Large": 126
+    },
+    "T4": {
+      "Small": 128,
+      "Medium": 130,
+      "Large": 132
+    }
+  },
+  "artPlaceholders": {
+    "models": {
+      "Folktails": {
+        "finished": "Buildings/Power/WaterWheel/WaterWheel.Folktails.Model",
+        "constructionStage": "Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model"
+      },
+      "IronTeeth": {
+        "finished": "Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model",
+        "constructionStage": "Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model"
+      }
+    },
+    "constructionBases": {
+      "Small": "ConstructionBases/ConstructionBase2x2/ConstructionBase2x2.blueprint",
+      "Medium": "ConstructionBases/ConstructionBase3x3/ConstructionBase3x3.blueprint",
+      "Large": "ConstructionBases/ConstructionBase4x4WithoutCorners/ConstructionBase4x4WithoutCorners.blueprint"
+    }
+  },
+  "engines": [
+    {
+      "size": "Small",
+      "tier": "T1",
+      "footprint": { "x": 2, "y": 2 },
+      "height": 3,
+      "ratedHorsepower": 130,
+      "scienceCost": 90,
+      "buildCost": [
+        { "good": "Log", "amount": 20 }
+      ],
+      "fuelPerHour": 0.04,
+      "waterPerHour": 0.10,
+      "fuelStock": 1,
+      "waterTankGoods": 20,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 6,
+      "maintenanceMaterials": [
+        { "good": "Log", "amount": 8 }
+      ]
+    },
+    {
+      "size": "Medium",
+      "tier": "T1",
+      "footprint": { "x": 3, "y": 3 },
+      "height": 3,
+      "ratedHorsepower": 230,
+      "scienceCost": 150,
+      "buildCost": [
+        { "good": "Log", "amount": 30 }
+      ],
+      "fuelPerHour": 0.07,
+      "waterPerHour": 0.18,
+      "fuelStock": 2,
+      "waterTankGoods": 36,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 6,
+      "maintenanceMaterials": [
+        { "good": "Log", "amount": 8 }
+      ]
+    },
+    {
+      "size": "Large",
+      "tier": "T1",
+      "footprint": { "x": 4, "y": 4 },
+      "height": 4,
+      "ratedHorsepower": 360,
+      "scienceCost": 225,
+      "buildCost": [
+        { "good": "Log", "amount": 45 }
+      ],
+      "fuelPerHour": 0.12,
+      "waterPerHour": 0.29,
+      "fuelStock": 3,
+      "waterTankGoods": 58,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 6,
+      "maintenanceMaterials": [
+        { "good": "Log", "amount": 8 }
+      ]
+    },
+    {
+      "size": "Small",
+      "tier": "T2",
+      "footprint": { "x": 2, "y": 2 },
+      "height": 3,
+      "ratedHorsepower": 260,
+      "scienceCost": 240,
+      "buildCost": [
+        { "good": "Plank", "amount": 25 },
+        { "good": "Log", "amount": 5 }
+      ],
+      "fuelPerHour": 0.07,
+      "waterPerHour": 0.18,
+      "fuelStock": 2,
+      "waterTankGoods": 36,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 8,
+      "maintenanceMaterials": [
+        { "good": "Plank", "amount": 12 },
+        { "good": "Gear", "amount": 2 }
+      ]
+    },
+    {
+      "size": "Medium",
+      "tier": "T2",
+      "footprint": { "x": 3, "y": 3 },
+      "height": 3,
+      "ratedHorsepower": 460,
+      "scienceCost": 400,
+      "buildCost": [
+        { "good": "Plank", "amount": 40 },
+        { "good": "Log", "amount": 10 }
+      ],
+      "fuelPerHour": 0.12,
+      "waterPerHour": 0.32,
+      "fuelStock": 3,
+      "waterTankGoods": 64,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 8,
+      "maintenanceMaterials": [
+        { "good": "Plank", "amount": 12 },
+        { "good": "Gear", "amount": 2 }
+      ]
+    },
+    {
+      "size": "Large",
+      "tier": "T2",
+      "footprint": { "x": 4, "y": 4 },
+      "height": 4,
+      "ratedHorsepower": 720,
+      "scienceCost": 600,
+      "buildCost": [
+        { "good": "Plank", "amount": 60 },
+        { "good": "Log", "amount": 15 }
+      ],
+      "fuelPerHour": 0.18,
+      "waterPerHour": 0.50,
+      "fuelStock": 5,
+      "waterTankGoods": 100,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 8,
+      "maintenanceMaterials": [
+        { "good": "Plank", "amount": 12 },
+        { "good": "Gear", "amount": 2 }
+      ]
+    },
+    {
+      "size": "Small",
+      "tier": "T3",
+      "footprint": { "x": 2, "y": 2 },
+      "height": 3,
+      "ratedHorsepower": 380,
+      "scienceCost": 420,
+      "buildCost": [
+        { "good": "MetalBlock", "amount": 30 },
+        { "good": "Plank", "amount": 10 }
+      ],
+      "fuelPerHour": 0.08,
+      "waterPerHour": 0.15,
+      "fuelStock": 2,
+      "waterTankGoods": 30,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 10,
+      "maintenanceMaterials": [
+        { "good": "MetalBlock", "amount": 10 },
+        { "good": "Plank", "amount": 10 }
+      ]
+    },
+    {
+      "size": "Medium",
+      "tier": "T3",
+      "footprint": { "x": 3, "y": 3 },
+      "height": 3,
+      "ratedHorsepower": 680,
+      "scienceCost": 700,
+      "buildCost": [
+        { "good": "MetalBlock", "amount": 50 },
+        { "good": "Plank", "amount": 20 }
+      ],
+      "fuelPerHour": 0.14,
+      "waterPerHour": 0.27,
+      "fuelStock": 4,
+      "waterTankGoods": 54,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 10,
+      "maintenanceMaterials": [
+        { "good": "MetalBlock", "amount": 10 },
+        { "good": "Plank", "amount": 10 }
+      ]
+    },
+    {
+      "size": "Large",
+      "tier": "T3",
+      "footprint": { "x": 4, "y": 4 },
+      "height": 4,
+      "ratedHorsepower": 1060,
+      "scienceCost": 1050,
+      "buildCost": [
+        { "good": "MetalBlock", "amount": 75 },
+        { "good": "Plank", "amount": 30 }
+      ],
+      "fuelPerHour": 0.22,
+      "waterPerHour": 0.42,
+      "fuelStock": 6,
+      "waterTankGoods": 84,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 10,
+      "maintenanceMaterials": [
+        { "good": "MetalBlock", "amount": 10 },
+        { "good": "Plank", "amount": 10 }
+      ]
+    },
+    {
+      "size": "Small",
+      "tier": "T4",
+      "footprint": { "x": 2, "y": 2 },
+      "height": 3,
+      "ratedHorsepower": 520,
+      "scienceCost": 900,
+      "buildCost": [
+        { "good": "MetalBlock", "amount": 45 }
+      ],
+      "fuelPerHour": 0.08,
+      "waterPerHour": 0.09,
+      "fuelStock": 2,
+      "waterTankGoods": 18,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 12,
+      "maintenanceMaterials": [
+        { "good": "MetalBlock", "amount": 12 },
+        { "good": "Gear", "amount": 6 }
+      ]
+    },
+    {
+      "size": "Medium",
+      "tier": "T4",
+      "footprint": { "x": 3, "y": 3 },
+      "height": 3,
+      "ratedHorsepower": 920,
+      "scienceCost": 1500,
+      "buildCost": [
+        { "good": "MetalBlock", "amount": 70 }
+      ],
+      "fuelPerHour": 0.15,
+      "waterPerHour": 0.17,
+      "fuelStock": 4,
+      "waterTankGoods": 34,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 12,
+      "maintenanceMaterials": [
+        { "good": "MetalBlock", "amount": 12 },
+        { "good": "Gear", "amount": 6 }
+      ]
+    },
+    {
+      "size": "Large",
+      "tier": "T4",
+      "footprint": { "x": 4, "y": 4 },
+      "height": 4,
+      "ratedHorsepower": 1500,
+      "scienceCost": 2250,
+      "buildCost": [
+        { "good": "MetalBlock", "amount": 105 }
+      ],
+      "fuelPerHour": 0.24,
+      "waterPerHour": 0.27,
+      "fuelStock": 6,
+      "waterTankGoods": 54,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 12,
+      "maintenanceMaterials": [
+        { "good": "MetalBlock", "amount": 12 },
+        { "good": "Gear", "amount": 6 }
+      ]
+    }
+  ]
+}

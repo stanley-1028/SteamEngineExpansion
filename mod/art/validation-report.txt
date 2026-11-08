@@ -1,0 +1,11 @@
+SEE P9 art validation - art
+==============================================================================
+
+==============================================================================
+finished LOD0 tris: total=87768  min=2332  max=4956
+  Small  LOD0 max=3496  budget=3500  headroom=   4
+  Medium LOD0 max=4376  budget=6000  headroom=1624
+  Large  LOD0 max=4956  budget=9000  headroom=4044
+
+Checks: 6545/6545 passed, 0 failed
+RESULT: PASS

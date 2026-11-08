@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    L1 test runner. Zero NuGet dependencies on purpose: this machine cannot reach nuget.org,
+    and the requirements only need deterministic assertions over pure Core functions
+    (REQ-NFR-07 / REQ-TEST-01..05).
+
+    The UI contract tests also exercise the pure data layer of SEE.UI. That project targets the
+    game runtime (netstandard2.1 + game assemblies), and on this machine a cross-target
+    ProjectReference from the net9 runner to a game project breaks `dotnet restore` silently
+    (the known parallel/restore quirk documented in mod/build.ps1 line 14 and
+    docs/API_FACTS_SEE.md chapter 7). The built assembly is therefore referenced directly: build
+    SEE.UI before running the tests (build.ps1 does this in dependency order; the explicit
+    command is printed by the target below when the DLL is missing).
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>SEE.Tests</AssemblyName>
+    <RootNamespace>SEE.Tests</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <SeeUiAssembly>$(MSBuildThisFileDirectory)..\..\src\SEE.UI\bin\$(Configuration)\netstandard2.1\SEE.UI.dll</SeeUiAssembly>
+    <SeeIntegrationAssembly>$(MSBuildThisFileDirectory)..\..\src\SEE.Integration\bin\$(Configuration)\netstandard2.1\SEE.Integration.dll</SeeIntegrationAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\SEE.Core\SEE.Core.csproj" />
+    <Reference Include="SEE.UI">
+      <HintPath>$(SeeUiAssembly)</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <!-- Direct assembly reference (not ProjectReference) for the same restore quirk as SEE.UI:
+         the runner is net9.0 and SEE.Integration is a netstandard2.1 game-facing assembly. The
+         P5 tests only touch the pure detection/policy/save-bridge types; game assemblies stay
+         unresolved at runtime because those types carry no game base types. -->
+    <Reference Include="SEE.Integration">
+      <HintPath>$(SeeIntegrationAssembly)</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="EnsureSeeUiBuilt" BeforeTargets="CoreCompile">
+    <Error Condition="!Exists('$(SeeUiAssembly)')"
+           Text="SEE.UI.dll is missing at $(SeeUiAssembly). Build it first: dotnet build mod/src/SEE.UI/SEE.UI.csproj -c Release -m:1" />
+  </Target>
+
+  <Target Name="EnsureSeeIntegrationBuilt" BeforeTargets="CoreCompile">
+    <Error Condition="!Exists('$(SeeIntegrationAssembly)')"
+           Text="SEE.Integration.dll is missing at $(SeeIntegrationAssembly). Build it first: dotnet build mod/src/SEE.Integration/SEE.Integration.csproj -c Release -m:1" />
+  </Target>
+
+</Project>

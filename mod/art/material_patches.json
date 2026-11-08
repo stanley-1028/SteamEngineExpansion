@@ -1,0 +1,456 @@
+{
+  "schema": "see.material_patches/v1",
+  "generated_by": "mod/art/tools/sync_material_map.py",
+  "source": {
+    "project": "HighDensityBoxFarm (sister project, read-only)",
+    "file": "art/material_texture_map.json",
+    "schema": "hdbf.material_texture_map/v1",
+    "note": "HDBF ART-05/ART-07 real per-material patch map; SEE reuses the vanilla material asset names and the measured UV patches only."
+  },
+  "uv_convention": "UV space of the material's own 1024x1024 _D albedo texture; AutoAtlaser preserves the normalised position inside the atlas cell.",
+  "material_count": 13,
+  "materials": {
+    "BaseWood_Brown.Folktails": {
+      "role": "wood",
+      "patch_class": "wood",
+      "texture": "BaseWood_1K_D_Brown.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_Brown.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "f623aac2bb48cdb8e11ae11b82f11615801db7c5052aa5c106398a61bb11b006",
+      "uv_rect": [
+        0.00390625,
+        0.56640625,
+        0.5,
+        0.99609375
+      ],
+      "pixel_rect": [
+        4,
+        4,
+        512,
+        444
+      ],
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mean_rgb": [
+        47.21,
+        33.02,
+        21.69
+      ],
+      "reason": "ART-07 large canvas: vertical-plank field of the wood sheet; the variant bundles, plank ends and blank canvas margins of the artefact sheet are excluded"
+    },
+    "BaseWood_LightBrown.Folktails": {
+      "role": "wood",
+      "patch_class": "wood",
+      "texture": "BaseWood_1K_D_White.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_White.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "02adce75b4809d6c0c4c3bef8775cc73f8c867ef025455ad8d20c08676d371c4",
+      "uv_rect": [
+        0.00390625,
+        0.56640625,
+        0.5,
+        0.99609375
+      ],
+      "pixel_rect": [
+        4,
+        4,
+        512,
+        444
+      ],
+      "material_color_tint": [
+        0.6604,
+        0.5552,
+        0.4081
+      ],
+      "mean_rgb": [
+        151.21,
+        138.31,
+        121.93
+      ],
+      "reason": "ART-07 large canvas: vertical-plank field of the whitewashed wood sheet (vanilla _Color tints it light brown); canvas margins excluded"
+    },
+    "BaseWood_White.Folktails": {
+      "role": "wood",
+      "patch_class": "wood",
+      "texture": "BaseWood_1K_D_White.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_White.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "02adce75b4809d6c0c4c3bef8775cc73f8c867ef025455ad8d20c08676d371c4",
+      "uv_rect": [
+        0.00390625,
+        0.56640625,
+        0.5,
+        0.99609375
+      ],
+      "pixel_rect": [
+        4,
+        4,
+        512,
+        444
+      ],
+      "material_color_tint": [
+        0.8868,
+        0.8641,
+        0.8324
+      ],
+      "mean_rgb": [
+        151.21,
+        138.31,
+        121.93
+      ],
+      "reason": "ART-07 large canvas: vertical-plank field of the whitewashed wood sheet (vanilla _Color tints it pale); canvas margins excluded"
+    },
+    "BaseWood_DarkBrown.IronTeeth": {
+      "role": "wood",
+      "patch_class": "wood",
+      "texture": "BaseWood_1K_D_Grey.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_Grey.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "4aae49ffbf9f6014f6f96849ba98136ccb8975b0a38fe91fa64fc96de827da70",
+      "uv_rect": [
+        0.00390625,
+        0.56640625,
+        0.5,
+        0.99609375
+      ],
+      "pixel_rect": [
+        4,
+        4,
+        512,
+        444
+      ],
+      "material_color_tint": [
+        0.3113,
+        0.2673,
+        0.2071
+      ],
+      "mean_rgb": [
+        140.8,
+        135.09,
+        126.49
+      ],
+      "reason": "ART-07 large canvas: vertical-plank field of the grey wood sheet (vanilla _Color tints it dark brown); variant bundles and canvas margins excluded"
+    },
+    "BaseWood_Grey.IronTeeth": {
+      "role": "wood",
+      "patch_class": "wood",
+      "texture": "BaseWood_1K_D_Grey.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\BaseWood_1K_D_Grey.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "4aae49ffbf9f6014f6f96849ba98136ccb8975b0a38fe91fa64fc96de827da70",
+      "uv_rect": [
+        0.00390625,
+        0.56640625,
+        0.5,
+        0.99609375
+      ],
+      "pixel_rect": [
+        4,
+        4,
+        512,
+        444
+      ],
+      "material_color_tint": [
+        0.6226,
+        0.5796,
+        0.5257
+      ],
+      "mean_rgb": [
+        140.8,
+        135.09,
+        126.49
+      ],
+      "reason": "ART-07 large canvas: vertical-plank field of the grey wood sheet (vanilla _Color tints it grey); variant bundles and canvas margins excluded"
+    },
+    "IrregularPlanks_MetalForged.IronTeeth": {
+      "role": "wood",
+      "patch_class": "forged_planks",
+      "texture": "PlanksWithMetal_D.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-all\\PlanksWithMetal_D.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "8dbe8731000415e14b45a7ee8ed25badc13af11b0b19ae809f3f2739554f23a8",
+      "uv_rect": [
+        0.621094,
+        0.417969,
+        0.839844,
+        0.636719
+      ],
+      "pixel_rect": [
+        636,
+        372,
+        860,
+        596
+      ],
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mean_rgb": [
+        94.91,
+        73.74,
+        57.63
+      ],
+      "reason": "copper/forged plank field between the forged steel bands (small detail/accent material on the advanced/top tiers); the class budget 27 is the texture's inherent flat-window minimum for painted planks + steel bands"
+    },
+    "RoofPlanks.IronTeeth": {
+      "role": "wood",
+      "patch_class": "roof_planks",
+      "texture": "RoofPlanks_D.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\RoofPlanks_D.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "e3379a99496304fae3817a8678491998a2f2b85cba186ef96a41fdf1b7c7599a",
+      "uv_rect": [
+        0.003906,
+        0.011719,
+        0.253906,
+        0.261719
+      ],
+      "pixel_rect": [
+        4,
+        756,
+        260,
+        1012
+      ],
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mean_rgb": [
+        37.85,
+        39.6,
+        30.42
+      ],
+      "reason": "shared construction-stage UV window (construction_wood): construction stage shares one UV set across factions: BaseWood_Brown.Folktails (wood slot, FT) and RoofPlanks.IronTeeth (wood slot, IT) must sample the same normalized window; both are representative dark raw-timber tones and both stay under their class std budget inside this window"
+    },
+    "BaseMetal.Folktails": {
+      "role": "metal",
+      "patch_class": "metal",
+      "texture": "BaseMetal_D1.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\BaseMetal_D1.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "e8d758b0f22a02224534f15e742100d2862b3e4e3c7303de3800253c4ccea9aa",
+      "uv_rect": [
+        0.0078125,
+        0.5078125,
+        0.4921875,
+        0.9921875
+      ],
+      "pixel_rect": [
+        8,
+        8,
+        504,
+        504
+      ],
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mean_rgb": [
+        109.45,
+        97.55,
+        74.21
+      ],
+      "reason": "ART-07 large canvas: plain worn sheet-metal plate of the metal sheet; the grille, ribs, hexagon grid and tile blocks are excluded"
+    },
+    "BaseMetal.IronTeeth": {
+      "role": "metal",
+      "patch_class": "metal",
+      "texture": "BaseMetal_D2.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\BaseMetal_D2.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "56e4cac79f4e52f3857b7443101222284c6b7a82355f8adcbcf8e658ccb11a29",
+      "uv_rect": [
+        0.0078125,
+        0.5078125,
+        0.4921875,
+        0.9921875
+      ],
+      "pixel_rect": [
+        8,
+        8,
+        504,
+        504
+      ],
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mean_rgb": [
+        107.96,
+        103.25,
+        103.34
+      ],
+      "reason": "ART-07 large canvas: plain worn sheet-metal plate of the second metal sheet (same atlas layout, so the shared construction UV set stays valid)"
+    },
+    "Details.Folktails": {
+      "role": "detail",
+      "patch_class": "details",
+      "texture": "Details_D.Folktails.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\Details_D.Folktails.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "14ac2d0ecaf25153dda260fd66e2d88a52d8f61db953982de94337bb76da237e",
+      "uv_rect": [
+        0.00390625,
+        0.01171875,
+        0.49609375,
+        0.49609375
+      ],
+      "pixel_rect": [
+        4,
+        516,
+        508,
+        1012
+      ],
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mean_rgb": [
+        105.93,
+        81.34,
+        48.89
+      ],
+      "reason": "ART-07 large canvas: framed dark-timber wall/roof panels of the detail atlas; the faction banner, sack, flag ribbon and crate half are excluded"
+    },
+    "Details.IronTeeth": {
+      "role": "detail",
+      "patch_class": "details",
+      "texture": "Details_D.IronTeeth.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\Details_D.IronTeeth.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "8c45aee96164608273d106d4a529e5776d277af290561327f04cbc44ab6b4298",
+      "uv_rect": [
+        0.00390625,
+        0.01171875,
+        0.49609375,
+        0.49609375
+      ],
+      "pixel_rect": [
+        4,
+        516,
+        508,
+        1012
+      ],
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mean_rgb": [
+        84.63,
+        72.14,
+        55.46
+      ],
+      "reason": "ART-07 large canvas: framed dark-timber wall/roof panels of the IronTeeth detail atlas; the faction banner, sack, flag ribbon and crate half are excluded"
+    },
+    "WindowsAtlas.Folktails": {
+      "role": "glass",
+      "patch_class": "glass",
+      "texture": "WindowsAtlas_D.Folktails.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\WindowsAtlas_D.Folktails.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "32b5598efeb9f92c581e71d894724266bbfa5366bc45d6d8967e4dfb1b3c13ef",
+      "uv_rect": [
+        0.75390625,
+        0.00390625,
+        0.99609375,
+        0.24609375
+      ],
+      "pixel_rect": [
+        772,
+        772,
+        1020,
+        1020
+      ],
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mean_rgb": [
+        128.04,
+        138.22,
+        144.23
+      ],
+      "reason": "ART-07 large canvas: flat glass gradient pane (bottom-right of the window atlas); frames, round windows and the atlas backdrop are excluded"
+    },
+    "WindowsAtlas.IronTeeth": {
+      "role": "glass",
+      "patch_class": "glass",
+      "texture": "WindowsAtlas_D.IronTeeth.png",
+      "texture_path": "C:\\Users\\user\\.hdbf\\sdk\\vanilla-tex-extra\\WindowsAtlas_D.IronTeeth.png",
+      "texture_size": [
+        1024,
+        1024
+      ],
+      "texture_sha256": "f8caf53222c65e17ef16c34edbca8abf7cdfd0b928105239ee137a5bd28751f2",
+      "uv_rect": [
+        0.75390625,
+        0.00390625,
+        0.99609375,
+        0.24609375
+      ],
+      "pixel_rect": [
+        772,
+        772,
+        1020,
+        1020
+      ],
+      "material_color_tint": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mean_rgb": [
+        128.04,
+        138.22,
+        144.23
+      ],
+      "reason": "ART-07 large canvas: flat glass gradient pane (bottom-right of the window atlas); frames, round windows and the atlas backdrop are excluded"
+    }
+  }
+}

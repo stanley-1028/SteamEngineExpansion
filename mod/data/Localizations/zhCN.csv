@@ -1,0 +1,64 @@
+ID,Text,Comment
+Building.SEE.SteamBoiler.Small.T1.DisplayName,小型蒸汽引擎 Mk.I,req 15.5
+Building.SEE.SteamBoiler.Medium.T1.DisplayName,中型蒸汽引擎 Mk.I,req 15.5
+Building.SEE.SteamBoiler.Large.T1.DisplayName,大型蒸汽引擎 Mk.I,req 15.5
+Building.SEE.SteamBoiler.Small.T2.DisplayName,小型蒸汽引擎 Mk.II,req 15.5
+Building.SEE.SteamBoiler.Medium.T2.DisplayName,中型蒸汽引擎 Mk.II,req 15.5
+Building.SEE.SteamBoiler.Large.T2.DisplayName,大型蒸汽引擎 Mk.II,req 15.5
+Building.SEE.SteamBoiler.Small.T3.DisplayName,小型蒸汽引擎 Mk.III,req 15.5
+Building.SEE.SteamBoiler.Medium.T3.DisplayName,中型蒸汽引擎 Mk.III,req 15.5
+Building.SEE.SteamBoiler.Large.T3.DisplayName,大型蒸汽引擎 Mk.III,req 15.5
+Building.SEE.SteamBoiler.Small.T4.DisplayName,小型蒸汽引擎 Mk.IV,req 15.5
+Building.SEE.SteamBoiler.Medium.T4.DisplayName,中型蒸汽引擎 Mk.IV,req 15.5
+Building.SEE.SteamBoiler.Large.T4.DisplayName,大型蒸汽引擎 Mk.IV,req 15.5
+Building.SEE.SteamBoiler.Description,消耗燃料与水产生动力。需要定期维护。,req 15.5
+Building.SEE.SteamBoiler.Flavor.T1,谦卑的小锅炉，只要一点木头和一点水。,req 15.5
+Building.SEE.SteamBoiler.Flavor.T2,压力、木材与黄铜——现在还多了压力表。,req 15.5
+Building.SEE.SteamBoiler.Flavor.T3,铸铁低鸣，铆钉撑起动力的承诺。,req 15.5
+Building.SEE.SteamBoiler.Flavor.T4,每个阀门都精准，每一转都有代价。,req 15.5
+Status.SEE.Running,运转中,req 15.5
+Status.SEE.Idle,待机（无负载）,req 15.5
+Status.SEE.Paused,已暂停,req 15.5
+Status.SEE.NoFuel,缺燃料,req 15.5
+Status.SEE.NoWater,缺水,req 15.5
+Status.SEE.NeedsMaintenance,需要维护,req 15.5
+Status.SEE.Critical,机况危急：输出 ×0.40,req 15.5
+Status.SEE.Worn,机件磨损：输出 ×0.85,req 15.5
+Status.SEE.MaintenanceDue,保养到期：输出 ×0.93,req 15.5
+Status.SEE.Maintaining,维护中（剩 {0}）,req 15.5
+Status.SEE.MissingMaintenanceMaterials,缺少维护材料,req 15.5
+Status.SEE.NoAccessForMaintenance,无道路可达，无法维护,req 15.5
+Status.SEE.LowFuel,燃料将尽（剩 {0} 小时）,req 15.5
+Status.SEE.LowWater,水将尽（剩 {0} 小时）,req 15.5
+Status.SEE.PipeSupply,管道供水,req 15.5
+Status.SEE.BeltSupply,燃料由输送带供应,req 15.5
+Status.SEE.BeltNoPower,输送带断电,req 15.5
+Status.SEE.PipeContaminated,管网受污染,req 15.5
+Status.SEE.WaterMode.Tank,供水：水舱（管道）,req 15.5
+Status.SEE.WaterMode.Valve,供水：阀门,req 15.5
+Status.SEE.WaterMode.Hauler,供水：搬运工,req 15.5
+Status.SEE.WaterMode.Auto,供水：自动,req 15.5
+UI.SEE.Panel.Power,动力,req 15.5
+UI.SEE.Panel.Network,电网供给／需求：{0}／{1},req 15.5
+UI.SEE.Panel.Output,输出：{0}／{1} 马力,req 15.5
+UI.SEE.Panel.Fuel,燃料,req 15.5
+UI.SEE.Panel.Water,水,req 15.5
+UI.SEE.Panel.Condition,机况：{0}／100,req 15.5
+UI.SEE.Panel.NextMaintenance,下次维护：{0} 日后,req 15.5
+UI.SEE.Panel.Materials,维护材料：{0},req 15.5
+UI.SEE.Panel.WaterSupplyMode,供水模式,req 15.5
+UI.SEE.Action.Pause,暂停,req 15.5
+UI.SEE.Action.Resume,继续,req 15.5
+UI.SEE.Action.MaintainNow,立即维护,req 15.5
+UI.SEE.Action.AutoMaintenance,自动维护,req 15.5
+UI.SEE.Error.MaterialsMissing,无法维护：缺少 {0},req 15.5
+UI.SEE.Error.BeltNoPower,输送带网络没有电力,req 15.5
+UI.SEE.Panel.WaterBeaverEquivalent,用水量：约 {0} 只海狸的每日饮水,req 15.5
+UI.SEE.Panel.Efficiency,电网效率：{0}%,req 15.5
+UI.SEE.Panel.MaterialsDetail,维护材料：{0}（缺 {1} 件）,req 15.5
+UI.SEE.Panel.MaterialEntry,{0}：{1}／{2},req 15.5
+UI.SEE.Panel.NextMaintenanceDay,下次维护：第 {0} 日,req 15.5
+UI.SEE.Hint.FixNoFuel,补充燃料（原木或木板）或接通输送带。,req 15.5
+UI.SEE.Hint.FixNoWater,补满水舱或接上管道。,req 15.5
+UI.SEE.Hint.FixNeedsMaintenance,进行维护：确保地区内备有维护材料。,req 15.5
+UI.SEE.WaterModeUnavailable,所选供水模式无法使用：{0},req 15.5

@@ -1,0 +1,19 @@
+{
+  "TemplateCollectionSpec": {
+    "CollectionId": "Buildings.Folktails",
+    "Blueprints#append": [
+      "Buildings/Power/SteamBoiler/SteamBoiler.Small.T1.Folktails.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Medium.T1.Folktails.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Large.T1.Folktails.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Small.T2.Folktails.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Medium.T2.Folktails.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Large.T2.Folktails.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Small.T3.Folktails.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Medium.T3.Folktails.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Large.T3.Folktails.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Small.T4.Folktails.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Medium.T4.Folktails.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Large.T4.Folktails.blueprint"
+    ]
+  }
+}

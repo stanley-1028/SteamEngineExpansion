@@ -1,0 +1,245 @@
+﻿{
+  "schemaVersion": 1,
+  "modId": "SteamEngineExpansion",
+  "description": "Machine-readable release gate list for Steam Engine Expansion (SEE). mod/build.ps1 evaluates every blocking gate in this file on every run; a blocking gate that was not evaluated, or that failed, aborts the build with a non-zero exit code. See mod/docs/RELEASE_GATES.md for the human-readable table and the requirements mapping.",
+  "versionTrack": {
+    "modVersion": "0.1.0",
+    "saveSchemaVersion": 1,
+    "configSchemaVersion": 1
+  },
+  "generatedBy": "SEE-P6 (validator and build pipeline)",
+  "gates": [
+    {
+      "id": "G01",
+      "name": "0 warnings in all four shipping assemblies",
+      "blocking": true,
+      "enforcedBy": "mod/build.ps1",
+      "evidence": "dotnet build <project> -c Release -m:1 -> '0 Warning(s)' (TreatWarningsAsErrors=true in Directory.Build.props)",
+      "req": ["REQ-NFR-01", "REQ-NFR-02", "REQ-NFR-06", "REQ-ARCH-09"],
+      "ac": [],
+      "goNoGo": ["19.2-6"]
+    },
+    {
+      "id": "G02",
+      "name": "offline test runner passes PASS n/n",
+      "blocking": true,
+      "enforcedBy": "mod/build.ps1",
+      "evidence": "dotnet run --project tests/SEE.Tests -> 'PASS 495/495', exit code 0",
+      "req": ["REQ-TEST-01", "REQ-NFR-07", "REQ-NFR-08"],
+      "ac": ["AC-05", "AC-07", "AC-08", "AC-12", "AC-13"],
+      "goNoGo": ["19.2-6"]
+    },
+    {
+      "id": "G03",
+      "name": "blueprint generator --check reproduces every generated file",
+      "blocking": true,
+      "enforcedBy": "mod/build.ps1 (tools/generate-blueprints --check)",
+      "evidence": "'CHECK PASS (0 differences, 79 files, 24 blueprints)'",
+      "req": ["REQ-ARCH-04", "REQ-ARCH-06", "REQ-NFR-09", "REQ-IMPL-02"],
+      "ac": ["AC-01"],
+      "goNoGo": ["19.2-3", "19.2-6"]
+    },
+    {
+      "id": "G04",
+      "name": "generator's five data gates pass",
+      "blocking": true,
+      "enforcedBy": "mod/build.ps1 (tools/generate-blueprints)",
+      "evidence": "'gates : 5/5 PASS' (water tank / fuel stock >= 8x, dedicated water tank: no Water in ConsumedGoods and table tank size, efficiency criterion, fuel capacity equals the table cell by cell, no BuildingPipeSpec/PowerLineSpec/WorkplaceSpec)",
+      "req": ["REQ-BLD-09", "REQ-FUEL-08", "REQ-COMPAT-04", "REQ-COMPAT-05", "REQ-BAL-11"],
+      "ac": ["AC-01", "AC-03"],
+      "goNoGo": ["19.2-3", "19.2-6"]
+    },
+    {
+      "id": "G05",
+      "name": "data validator prints VALIDATION PASSED for every gate group",
+      "blocking": true,
+      "enforcedBy": "mod/build.ps1 (tools/validate)",
+      "evidence": "'VALIDATION PASSED', 12/12 gate groups passed, exit code 0",
+      "req": ["REQ-TEST-01", "REQ-TEST-02", "REQ-TEST-03", "REQ-ARCH-05"],
+      "ac": ["AC-01", "AC-02", "AC-03", "AC-16"],
+      "goNoGo": ["19.2-3", "19.2-6"]
+    },
+    {
+      "id": "G06",
+      "name": "manifest.json contract (7 fields, Id, empty mod lists, version 0.1.0)",
+      "blocking": true,
+      "enforcedBy": "tools/validate",
+      "validatorCheck": "manifest.json",
+      "evidence": "PASS  manifest.json",
+      "req": ["REQ-ARCH-11", "REQ-COMPAT-01"],
+      "ac": [],
+      "goNoGo": ["19.2-5"]
+    },
+    {
+      "id": "G07",
+      "name": "engines.json is the single 12-row number source",
+      "blocking": true,
+      "enforcedBy": "tools/validate",
+      "validatorCheck": "engines.json (12 rows)",
+      "evidence": "PASS  engines.json (12 rows)",
+      "req": ["REQ-ARCH-04", "REQ-ARCH-05", "REQ-ARCH-06", "REQ-IMPL-02"],
+      "ac": ["AC-01"],
+      "goNoGo": ["19.2-6"]
+    },
+    {
+      "id": "G08",
+      "name": "blueprint documents resolve against the game and SEE spec metadata",
+      "blocking": true,
+      "enforcedBy": "tools/validate",
+      "validatorCheck": "blueprint spec schema",
+      "evidence": "PASS  blueprint spec schema (all 26 documents)",
+      "req": ["REQ-IMPL-01", "REQ-IMPL-15", "REQ-CORE-04"],
+      "ac": ["AC-01", "AC-03"],
+      "goNoGo": ["19.2-3"]
+    },
+    {
+      "id": "G09",
+      "name": "24 blueprints x 12 authoritative fields match engines.json + engines.derived.json with zero error",
+      "blocking": true,
+      "enforcedBy": "tools/validate",
+      "validatorCheck": "blueprint table (24 x 12 authoritative fields)",
+      "evidence": "PASS  blueprint table (24 x 12 authoritative fields); '24/24 files x 12/12 fields, 0 mismatch(es)'",
+      "req": ["REQ-TEST-01", "REQ-ARCH-14", "REQ-IMPL-02", "REQ-BLD-09", "REQ-FUEL-01", "REQ-FUEL-08"],
+      "ac": ["AC-01", "AC-03"],
+      "goNoGo": ["19.2-3", "19.2-6"]
+    },
+    {
+      "id": "G10",
+      "name": "fuel capacity and dedicated water tank derive exactly to the tabulated values",
+      "blocking": true,
+      "enforcedBy": "tools/validate",
+      "validatorCheck": "fuel/water capacity derivation",
+      "evidence": "PASS  fuel/water capacity derivation (float32 ceil(GoodPerHour x 25) fuel; SEE.SEEBoilerSpec.WaterCapacityGoods = waterTankGoods for the code-created dedicated water inventory; no StockpileSpec and no Water ConsumedGood allowed)",
+      "req": ["REQ-BLD-09", "REQ-FUEL-08", "REQ-FUEL-11", "REQ-COMPAT-04"],
+      "ac": ["AC-01", "AC-03"],
+      "goNoGo": ["19.2-3"]
+    },
+    {
+      "id": "G11",
+      "name": "boiler blueprint rules (no GoodPoweredGeneratorSpec / BuildingPipeSpec / PowerLineSpec / WorkplaceSpec, PowerOutput = Horsepower, Log+Plank fuel whitelist, no Up/Top transput)",
+      "blocking": true,
+      "enforcedBy": "tools/validate",
+      "validatorCheck": "boiler blueprint rules (AD-9 / AD-5)",
+      "evidence": "PASS  boiler blueprint rules (AD-9 / AD-5)",
+      "req": ["REQ-BLD-04", "REQ-BLD-05", "REQ-POWER-16", "REQ-COMPAT-07", "REQ-COMPAT-11", "REQ-RISK-06"],
+      "ac": ["AC-03", "AC-09", "AC-10", "AC-11"],
+      "goNoGo": ["19.2-3"]
+    },
+    {
+      "id": "G12",
+      "name": "localization: enUS, zhTW and zhCN each carry exactly the 63 canonical keys (54-key requirements baseline + 9 P4B additions; AC-16 requires >= 54), no raw key, no simplified characters, no vanilla key overwrite",
+      "blocking": true,
+      "enforcedBy": "tools/validate",
+      "validatorCheck": "localization (63 keys >= 54, enUS/zhTW/zhCN)",
+      "evidence": "PASS  localization (63 keys >= 54, enUS/zhTW/zhCN)",
+      "req": ["REQ-UI-04", "REQ-UI-05", "REQ-UI-08", "REQ-UI-09"],
+      "ac": ["AC-02", "AC-16"],
+      "goNoGo": ["19.2-3"]
+    },
+    {
+      "id": "G13",
+      "name": "SEE_Config.json schema 1, all documented groups, every default inside its clamp range",
+      "blocking": true,
+      "enforcedBy": "tools/validate",
+      "validatorCheck": "config schema and clamp",
+      "evidence": "PASS  config schema and clamp",
+      "req": ["REQ-SAFE-04", "REQ-SAFE-12", "REQ-OPS-04"],
+      "ac": [],
+      "goNoGo": ["19.2-5", "19.2-6"]
+    },
+    {
+      "id": "G14",
+      "name": "golden hash: the 24 shipped blueprints are byte-identical to tests/SEE.Tests/Golden/blueprints.sha256 (validator and build.ps1 re-hash independently)",
+      "blocking": true,
+      "enforcedBy": "tools/validate + mod/build.ps1",
+      "validatorCheck": "golden hash (24 blueprints)",
+      "evidence": "PASS  golden hash (24 blueprints); '24/24 golden entries verified'",
+      "req": ["REQ-ARCH-14", "REQ-NFR-09", "REQ-ARCH-06"],
+      "ac": ["AC-01"],
+      "goNoGo": ["19.2-3", "19.2-6"]
+    },
+    {
+      "id": "G15",
+      "name": "forbidden static scan: no per-frame Update work/FindObjects, no unsafe/P-Invoke/process/network/thread, no Harmony outside Integration, no hard-coded balance table, no SteamEngine/SteamPlant template or loc names",
+      "blocking": true,
+      "enforcedBy": "tools/validate",
+      "validatorCheck": "forbidden static scan",
+      "evidence": "PASS  forbidden static scan; '0 red-line hit(s)'",
+      "req": ["REQ-SAFE-07", "REQ-SAFE-15", "REQ-NFR-15", "REQ-OPS-05", "REQ-OPS-07", "REQ-AFR-09", "REQ-RISK-09"],
+      "ac": ["AC-18"],
+      "goNoGo": ["19.2-6"]
+    },
+    {
+      "id": "G16",
+      "name": "shipping-assembly whitelist and layering: exactly SEE.Core/Gameplay/Integration/UI, no SEE.Tests, no external mod DLL, no NuGet, no Harmony reference, Core game-independent, frozen specs intact",
+      "blocking": true,
+      "enforcedBy": "tools/validate",
+      "validatorCheck": "assembly whitelist and layering",
+      "evidence": "PASS  assembly whitelist and layering",
+      "req": ["REQ-ARCH-02", "REQ-ARCH-03", "REQ-NFR-10", "REQ-COMPAT-08", "REQ-NFR-15"],
+      "ac": ["AC-09", "AC-10"],
+      "goNoGo": ["19.2-6"]
+    },
+    {
+      "id": "G17",
+      "name": "source facts: no fork leftovers, no compile-time external-mod reference, no NuGet PackageReference, file/line limits",
+      "blocking": true,
+      "enforcedBy": "tools/validate",
+      "validatorCheck": "source facts",
+      "evidence": "PASS  source facts",
+      "req": ["REQ-ARCH-10", "REQ-NFR-03", "REQ-NFR-05", "REQ-RISK-09"],
+      "ac": [],
+      "goNoGo": ["19.2-4", "19.2-6"]
+    },
+    {
+      "id": "G18",
+      "name": "staged package contains exactly the four shipping assemblies; no .deps.json, .pdb, SEE.Tests.dll, src/, tools/ or tests/",
+      "blocking": true,
+      "enforcedBy": "mod/build.ps1",
+      "evidence": "staged file inventory: 4 SEE.*.dll, zero other .dll/.deps.json/.pdb/.exe, no src/tools/tests path",
+      "req": ["REQ-ARCH-05", "REQ-RISK-09"],
+      "ac": [],
+      "goNoGo": ["19.2-3", "19.2-4"]
+    },
+    {
+      "id": "G19",
+      "name": "staged package carries 24 generated blueprints (12 size/tier x 2 factions) and the two TemplateCollection appends",
+      "blocking": true,
+      "enforcedBy": "mod/build.ps1",
+      "evidence": "staged inventory: Buildings/**/*.blueprint.json = 24, TemplateCollections = 2",
+      "req": ["REQ-ARCH-05", "REQ-BLD-01"],
+      "ac": ["AC-01", "AC-02"],
+      "goNoGo": ["19.2-3"]
+    },
+    {
+      "id": "G20",
+      "name": "staged localizations: enUS.csv, zhTW.csv and zhCN.csv each contain the same key count, at least 54 (currently 63)",
+      "blocking": true,
+      "enforcedBy": "mod/build.ps1",
+      "evidence": "staged key count: 63 rows (+header) per language file, both languages equal and >= 54",
+      "req": ["REQ-UI-04", "REQ-UI-05", "REQ-UI-09"],
+      "ac": ["AC-02", "AC-16"],
+      "goNoGo": ["19.2-3"]
+    },
+    {
+      "id": "G21",
+      "name": "staged icons: 24 PNG sprites plus 24 .png.meta.json with isSprite=true",
+      "blocking": true,
+      "enforcedBy": "mod/build.ps1",
+      "evidence": "staged inventory: Icons/*.png = 24, Icons/*.png.meta.json = 24, every meta parses to isSprite=true",
+      "req": ["REQ-UI-07", "REQ-ART-03"],
+      "ac": ["AC-16"],
+      "goNoGo": ["19.2-3"]
+    },
+    {
+      "id": "G22",
+      "name": "version tracks are consistent (manifest 0.1.0 / save schema 1 / config schema 1) and the package hash file is written",
+      "blocking": true,
+      "enforcedBy": "mod/build.ps1",
+      "evidence": "manifest.json Version=0.1.0, SEEVersion.cs 0.1.0/1/1, staged SEE_Config.json configSchemaVersion=1, build/SteamEngineExpansion.sha256 written",
+      "req": ["REQ-ARCH-11", "REQ-SAVE-01"],
+      "ac": ["AC-12"],
+      "goNoGo": ["19.2-5"]
+    }
+  ]
+}

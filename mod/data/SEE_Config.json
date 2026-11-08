@@ -1,0 +1,129 @@
+{
+  "configSchemaVersion": 1,
+  "balance": {
+    "fuelRatePer100hp": {
+      "T1": 0.032,
+      "T2": 0.025,
+      "T3": 0.021,
+      "T4": 0.016
+    },
+    "waterRatePer100hp": {
+      "T1": 0.08,
+      "T2": 0.07,
+      "T3": 0.04,
+      "T4": 0.018
+    },
+    "faction": {
+      "outputMultiplier": {
+        "Folktails": 1.0,
+        "IronTeeth": 1.05
+      },
+      "fuelMultiplier": {
+        "Folktails": 0.9,
+        "IronTeeth": 1.0
+      }
+    },
+    "fullInventoryWorkHours": 25,
+    "waterTankHours": 200,
+    "fuelScaling": "proportional",
+    "standbyLoadRatio": 0.1,
+    "scienceCost": {
+      "Small": {
+        "T1": 90,
+        "T2": 240,
+        "T3": 420,
+        "T4": 900
+      },
+      "Medium": {
+        "T1": 150,
+        "T2": 400,
+        "T3": 700,
+        "T4": 1500
+      },
+      "Large": {
+        "T1": 225,
+        "T2": 600,
+        "T3": 1050,
+        "T4": 2250
+      }
+    },
+    "buildCostMultiplier": 1.0
+  },
+  "maintenance": {
+    "enabled": true,
+    "intervalDays": {
+      "T1": 6,
+      "T2": 8,
+      "T3": 10,
+      "T4": 12
+    },
+    "loadFactorBase": 0.4,
+    "autoThreshold": 50,
+    "manualWarnAbove": 90,
+    "durationHours": 2,
+    "manualMaterialsEnabled": true
+  },
+  "compat": {
+    "waterSupplyMode": "auto",
+    "detectionBudgetSeconds": 2,
+    "enablePowerLineInjection": true,
+    "beltFuelMode": "auto",
+    "logThrottleSeconds": 30,
+    "pipePollutionWarn": true
+  },
+  "perf": {
+    "tickSeconds": 1.0,
+    "uiRefreshHz": 4,
+    "badgeRefreshHz": 1,
+    "maxBadgesVisible": 64,
+    "lodDistances": [18, 40]
+  },
+  "anim": {
+    "enable": true,
+    "updateHz": 30,
+    "lod0MaxDistance": 18,
+    "lod1MaxDistance": 40,
+    "baseRevPerSec": {
+      "T1": 1.2,
+      "T2": 1.8,
+      "T3": 2.6,
+      "T4": 4.0
+    },
+    "sizeSpeed": {
+      "Small": 1.0,
+      "Medium": 0.92,
+      "Large": 0.85
+    },
+    "factionSpeed": {
+      "Folktails": 0.9,
+      "IronTeeth": 1.1
+    },
+    "vfxEmissionScale": 1.0,
+    "startSeconds": 1.5,
+    "stopSeconds": 3.0,
+    "pistonPhaseDeg": 90,
+    "jitterDeg": [0.5, 1.5, 3, 5],
+    "maxParticlesPerBuilding": 120,
+    "exhaustPulseSeconds": 0.2
+  },
+  "art": {
+    "trisLod0": {
+      "Small": 3500,
+      "Medium": 6000,
+      "Large": 9000
+    },
+    "lod1Ratio": 0.5,
+    "lod2Ratio": 0.15,
+    "textureSize": {
+      "Small": 512,
+      "Medium": 1024,
+      "Large": 1024
+    },
+    "smokeAttachmentCount": 3,
+    "chimneyOverhangTiles": 1
+  },
+  "ui": {
+    "lowSupplyHours": 8,
+    "showIdleBadge": false
+  }
+}

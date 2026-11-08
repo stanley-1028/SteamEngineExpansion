@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    SEE.Gameplay: the in-game half of the steam boiler mod.
+
+    Two custom blueprint specs (SEE.SEEBoilerSpec, SEE.SEEMaintenanceSpec), the per-boiler
+    controller that will drive steam output, fuel/water accounting and maintenance, the single
+    1 s tick system, the world-node save bridge, the DI wiring and the IModStarter.
+
+    Compiles against the installed Timberborn assemblies; nothing from those assemblies is
+    copied into the output. References SEE.Core only (single ProjectReference).
+  -->
+
+  <PropertyGroup>
+    <SeeGameProject>true</SeeGameProject>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>SEE.Gameplay</AssemblyName>
+    <RootNamespace>SEE.Gameplay</RootNamespace>
+  </PropertyGroup>
+
+  <!--
+    Single ProjectReference by design. The build environment rejects a project that declares
+    two project references during NuGet restore (MSBuild _GenerateRestoreProjectPathWalk fails
+    silently). Dependency chain: Core <- Gameplay / Integration / UI (each referencing Core only).
+  -->
+  <ItemGroup>
+    <ProjectReference Include="..\SEE.Core\SEE.Core.csproj" />
+  </ItemGroup>
+
+  <!--
+    One game assembly the shared reference set in Directory.Build.targets does not list yet
+    (P3 needs it for the fuel inventory, CONTRACT_SEE §3.5/§4.7):
+      * Timberborn.GoodConsumingBuildingSystem: GoodConsumingBuilding / GoodConsumingToggle (AD-3).
+    The water tank is a plain Inventory created by SEEWaterInventoryInitializer, so
+    Timberborn.Stockpiles is no longer referenced (bug fix 2026-11-08).
+    Private=false keeps the reference out of the shipped output (the game supplies it).
+  -->
+  <ItemGroup>
+    <Reference Include="Timberborn.GoodConsumingBuildingSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.GoodConsumingBuildingSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

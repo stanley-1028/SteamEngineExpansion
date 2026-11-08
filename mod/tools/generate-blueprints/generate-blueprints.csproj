@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    SEE blueprint generator (P1 scope, contract CONTRACT_SEE 4.10 / requirements 11.3).
+
+    Single offline command that turns data/engines.json into the 24 shipped blueprints,
+    the two template collections, the two localization files, the 24 icons and the golden
+    hash file. Runs on net9.0 with zero NuGet packages, exactly like tools/validate.
+
+        dotnet run (project mod/tools/generate-blueprints, config Release, -m:1)
+        dotnet run (project mod/tools/generate-blueprints, config Release, -m:1) in check mode (see README)
+
+    The tool is a build-time asset; it is never loaded by the game and not shipped.
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>SeeGenerateBlueprints</AssemblyName>
+    <RootNamespace>SEE.Tools.GenerateBlueprints</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+</Project>
+
+

@@ -1,0 +1,259 @@
+SEE P9 blueprint diff vs P8 baseline
+baseline: build/_install-backup-20261106/SteamEngineExpansion.bak-20261106-214744/Buildings/Power/SteamBoiler
+current : data/Buildings/Power/SteamBoiler
+
+SteamBoiler.Large.T1.Folktails.blueprint.json: 9 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T1.Folktails.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T1.Folktails.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] PowerGeneratorParticleControllerSpec: <missing> => {'AttachmentIds': ['Smoke1', 'Smoke2', 'Smoke3']}
+  [OK ] TemplateAttachmentsSpec: <missing> => {'Attachments': [{'AttachmentId': 'Smoke1', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke1', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke2', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke2', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke3', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke3', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}]}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 2 => 3
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 2
+
+SteamBoiler.Large.T1.IronTeeth.blueprint.json: 7 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T1.IronTeeth.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T1.IronTeeth.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 2 => 3
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 2
+
+SteamBoiler.Large.T2.Folktails.blueprint.json: 9 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T2.Folktails.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T2.Folktails.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] PowerGeneratorParticleControllerSpec: <missing> => {'AttachmentIds': ['Smoke1', 'Smoke2', 'Smoke3']}
+  [OK ] TemplateAttachmentsSpec: <missing> => {'Attachments': [{'AttachmentId': 'Smoke1', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke1', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke2', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke2', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke3', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke3', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}]}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 2 => 3
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 2
+
+SteamBoiler.Large.T2.IronTeeth.blueprint.json: 7 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T2.IronTeeth.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T2.IronTeeth.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 2 => 3
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 2
+
+SteamBoiler.Large.T3.Folktails.blueprint.json: 9 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T3.Folktails.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T3.Folktails.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] PowerGeneratorParticleControllerSpec: <missing> => {'AttachmentIds': ['Smoke1', 'Smoke2', 'Smoke3']}
+  [OK ] TemplateAttachmentsSpec: <missing> => {'Attachments': [{'AttachmentId': 'Smoke1', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke1', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke2', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke2', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke3', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke3', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}]}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 2 => 3
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 2
+
+SteamBoiler.Large.T3.IronTeeth.blueprint.json: 7 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T3.IronTeeth.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T3.IronTeeth.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 2 => 3
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 2
+
+SteamBoiler.Large.T4.Folktails.blueprint.json: 9 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T4.Folktails.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T4.Folktails.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] PowerGeneratorParticleControllerSpec: <missing> => {'AttachmentIds': ['Smoke1', 'Smoke2', 'Smoke3']}
+  [OK ] TemplateAttachmentsSpec: <missing> => {'Attachments': [{'AttachmentId': 'Smoke1', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke1', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke2', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke2', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke3', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke3', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}]}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 2 => 3
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 2
+
+SteamBoiler.Large.T4.IronTeeth.blueprint.json: 7 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T4.IronTeeth.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Large.T4.IronTeeth.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 2 => 3
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 2
+
+SteamBoiler.Medium.T1.Folktails.blueprint.json: 9 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T1.Folktails.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T1.Folktails.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] PowerGeneratorParticleControllerSpec: <missing> => {'AttachmentIds': ['Smoke1', 'Smoke2', 'Smoke3']}
+  [OK ] TemplateAttachmentsSpec: <missing> => {'Attachments': [{'AttachmentId': 'Smoke1', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke1', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke2', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke2', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke3', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke3', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}]}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 1 => 2
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 1
+
+SteamBoiler.Medium.T1.IronTeeth.blueprint.json: 7 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T1.IronTeeth.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T1.IronTeeth.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 1 => 2
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 1
+
+SteamBoiler.Medium.T2.Folktails.blueprint.json: 9 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T2.Folktails.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T2.Folktails.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] PowerGeneratorParticleControllerSpec: <missing> => {'AttachmentIds': ['Smoke1', 'Smoke2', 'Smoke3']}
+  [OK ] TemplateAttachmentsSpec: <missing> => {'Attachments': [{'AttachmentId': 'Smoke1', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke1', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke2', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke2', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke3', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke3', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}]}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 1 => 2
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 1
+
+SteamBoiler.Medium.T2.IronTeeth.blueprint.json: 7 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T2.IronTeeth.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T2.IronTeeth.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 1 => 2
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 1
+
+SteamBoiler.Medium.T3.Folktails.blueprint.json: 9 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T3.Folktails.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T3.Folktails.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] PowerGeneratorParticleControllerSpec: <missing> => {'AttachmentIds': ['Smoke1', 'Smoke2', 'Smoke3']}
+  [OK ] TemplateAttachmentsSpec: <missing> => {'Attachments': [{'AttachmentId': 'Smoke1', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke1', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke2', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke2', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke3', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke3', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}]}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 1 => 2
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 1
+
+SteamBoiler.Medium.T3.IronTeeth.blueprint.json: 7 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T3.IronTeeth.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T3.IronTeeth.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 1 => 2
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 1
+
+SteamBoiler.Medium.T4.Folktails.blueprint.json: 9 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T4.Folktails.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T4.Folktails.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] PowerGeneratorParticleControllerSpec: <missing> => {'AttachmentIds': ['Smoke1', 'Smoke2', 'Smoke3']}
+  [OK ] TemplateAttachmentsSpec: <missing> => {'Attachments': [{'AttachmentId': 'Smoke1', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke1', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke2', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke2', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke3', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke3', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}]}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 1 => 2
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 1
+
+SteamBoiler.Medium.T4.IronTeeth.blueprint.json: 7 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T4.IronTeeth.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Medium.T4.IronTeeth.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 1 => 2
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.Y: 0 => 1
+
+SteamBoiler.Small.T1.Folktails.blueprint.json: 10 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T1.Folktails.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T1.Folktails.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] PowerGeneratorParticleControllerSpec: <missing> => {'AttachmentIds': ['Smoke1', 'Smoke2', 'Smoke3']}
+  [OK ] TemplateAttachmentsSpec: <missing> => {'Attachments': [{'AttachmentId': 'Smoke1', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke1', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke2', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke2', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke3', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke3', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}]}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.X: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.X: 1 => 0
+
+SteamBoiler.Small.T1.IronTeeth.blueprint.json: 8 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T1.IronTeeth.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T1.IronTeeth.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.X: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.X: 1 => 0
+
+SteamBoiler.Small.T2.Folktails.blueprint.json: 10 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T2.Folktails.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T2.Folktails.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] PowerGeneratorParticleControllerSpec: <missing> => {'AttachmentIds': ['Smoke1', 'Smoke2', 'Smoke3']}
+  [OK ] TemplateAttachmentsSpec: <missing> => {'Attachments': [{'AttachmentId': 'Smoke1', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke1', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke2', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke2', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke3', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke3', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}]}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.X: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.X: 1 => 0
+
+SteamBoiler.Small.T2.IronTeeth.blueprint.json: 8 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T2.IronTeeth.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T2.IronTeeth.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.X: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.X: 1 => 0
+
+SteamBoiler.Small.T3.Folktails.blueprint.json: 10 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T3.Folktails.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T3.Folktails.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] PowerGeneratorParticleControllerSpec: <missing> => {'AttachmentIds': ['Smoke1', 'Smoke2', 'Smoke3']}
+  [OK ] TemplateAttachmentsSpec: <missing> => {'Attachments': [{'AttachmentId': 'Smoke1', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke1', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke2', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke2', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke3', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke3', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}]}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.X: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.X: 1 => 0
+
+SteamBoiler.Small.T3.IronTeeth.blueprint.json: 8 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T3.IronTeeth.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T3.IronTeeth.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.X: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.X: 1 => 0
+
+SteamBoiler.Small.T4.Folktails.blueprint.json: 10 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T4.Folktails.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/WaterWheel/WaterWheel.Folktails.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T4.Folktails.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] PowerGeneratorParticleControllerSpec: <missing> => {'AttachmentIds': ['Smoke1', 'Smoke2', 'Smoke3']}
+  [OK ] TemplateAttachmentsSpec: <missing> => {'Attachments': [{'AttachmentId': 'Smoke1', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke1', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke2', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke2', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}, {'AttachmentId': 'Smoke3', 'Prefab': 'Buildings/Power/SteamEngine/SteamEngineSmoke', 'Parent': '#EmptySmoke3', 'Position': {'X': 0, 'Y': 0, 'Z': 0}, 'Rotation': {'X': 0, 'Y': 0, 'Z': 0}, 'Scale': {'X': 1, 'Y': 1, 'Z': 1}, 'CreateInstantly': True}]}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.X: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.X: 1 => 0
+
+SteamBoiler.Small.T4.IronTeeth.blueprint.json: 8 leaf change(s)
+  [OK ] Children.#Finished.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T4.IronTeeth.Model
+  [OK ] Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model: Buildings/Power/SteamEngine/SteamEngine.IronTeeth.ConstructionStage0.Model => Buildings/Power/SteamBoiler/SteamBoiler.Small.T4.IronTeeth.ConstructionStage0.Model
+  [OK ] GoodPoweredGeneratorAnimatorSpec: <missing> => {}
+  [OK ] TransputProviderSpec.Transputs[]: len=4 => len=5
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.X: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Coordinates.Y: 0 => 1
+  [OK ] TransputProviderSpec.Transputs[2].Directions: Bottom => Up
+  [OK ] TransputProviderSpec.Transputs[3].Coordinates.X: 1 => 0
+
+SUMMARY
+  files compared          : 24
+  changed leaf values     : 200
+  art-only allow-list     : Children.#Finished.TimbermeshSpec.Model, Children.#Unfinished.Children.ConstructionStage0.TimbermeshSpec.Model, TransputProviderSpec, TemplateAttachmentsSpec, PowerGeneratorParticleControllerSpec, GoodPoweredGeneratorAnimatorSpec, LabeledEntitySpec.Icon, Children.#Finished.CollidersSpec, Children.#Unfinished.Children.ConstructionStage0.CollidersSpec
+  disallowed changes      : 0
+
+RESULT: PASS

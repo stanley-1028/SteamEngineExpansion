@@ -1,0 +1,82 @@
+{
+  "source": "requirements 15.5 (verbatim) - static B/C/D texts, the A display names are derived from engines.json",
+  "segments": {
+    "description": {
+      "enUS": "Consumes fuel and water to produce power. Requires periodic maintenance.",
+      "zhTW": "消耗燃料與水產生動能。需定期維護。",
+      "zhCN": "消耗燃料与水产生动力。需要定期维护。"
+    },
+    "flavor": {
+      "T1": {
+        "enUS": "A humble boiler that asks for a little wood and a little water.",
+        "zhTW": "謙卑的小鍋爐，只要一點木頭和一點水。",
+        "zhCN": "谦卑的小锅炉，只要一点木头和一点水。"
+      },
+      "T2": {
+        "enUS": "Pressure, timber and brass—now with a gauge.",
+        "zhTW": "壓力、木材與黃銅——現在還多了壓力錶。",
+        "zhCN": "压力、木材与黄铜——现在还多了压力表。"
+      },
+      "T3": {
+        "enUS": "Cast iron rumbles; rivets hold the promise of power.",
+        "zhTW": "鑄鐵低鳴，鉚釘撐起動能的承諾。",
+        "zhCN": "铸铁低鸣，铆钉撑起动力的承诺。"
+      },
+      "T4": {
+        "enUS": "Precision in every valve, and a price in every turn.",
+        "zhTW": "每個閥門都精準，每一轉都有代價。",
+        "zhCN": "每个阀门都精准，每一转都有代价。"
+      }
+    },
+    "status": [
+      { "key": "Status.SEE.Running", "enUS": "Running", "zhTW": "運轉中", "zhCN": "运转中" },
+      { "key": "Status.SEE.Idle", "enUS": "Idle (no demand)", "zhTW": "待機（無負載）", "zhCN": "待机（无负载）" },
+      { "key": "Status.SEE.Paused", "enUS": "Paused", "zhTW": "已暫停", "zhCN": "已暂停" },
+      { "key": "Status.SEE.NoFuel", "enUS": "No fuel", "zhTW": "缺燃料", "zhCN": "缺燃料" },
+      { "key": "Status.SEE.NoWater", "enUS": "No water", "zhTW": "缺水", "zhCN": "缺水" },
+      { "key": "Status.SEE.NeedsMaintenance", "enUS": "Needs maintenance", "zhTW": "需要維護", "zhCN": "需要维护" },
+      { "key": "Status.SEE.Critical", "enUS": "Condition critical: output ×0.40", "zhTW": "機況危急：輸出 ×0.40", "zhCN": "机况危急：输出 ×0.40" },
+      { "key": "Status.SEE.Worn", "enUS": "Worn: output ×0.85", "zhTW": "機件磨損：輸出 ×0.85", "zhCN": "机件磨损：输出 ×0.85" },
+      { "key": "Status.SEE.MaintenanceDue", "enUS": "Maintenance due: output ×0.93", "zhTW": "保養到期：輸出 ×0.93", "zhCN": "保养到期：输出 ×0.93" },
+      { "key": "Status.SEE.Maintaining", "enUS": "Maintaining ({0} left)", "zhTW": "維護中（剩 {0}）", "zhCN": "维护中（剩 {0}）" },
+      { "key": "Status.SEE.MissingMaintenanceMaterials", "enUS": "Missing maintenance materials", "zhTW": "缺少維護材料", "zhCN": "缺少维护材料" },
+      { "key": "Status.SEE.NoAccessForMaintenance", "enUS": "No access for maintenance", "zhTW": "無道路可達，無法維護", "zhCN": "无道路可达，无法维护" },
+      { "key": "Status.SEE.LowFuel", "enUS": "Fuel low ({0} h left)", "zhTW": "燃料將盡（剩 {0} 小時）", "zhCN": "燃料将尽（剩 {0} 小时）" },
+      { "key": "Status.SEE.LowWater", "enUS": "Water low ({0} h left)", "zhTW": "水將盡（剩 {0} 小時）", "zhCN": "水将尽（剩 {0} 小时）" },
+      { "key": "Status.SEE.PipeSupply", "enUS": "Water supplied by pipes", "zhTW": "管路供水", "zhCN": "管道供水" },
+      { "key": "Status.SEE.BeltSupply", "enUS": "Fuel supplied by conveyor", "zhTW": "燃料由輸送帶供應", "zhCN": "燃料由输送带供应" },
+      { "key": "Status.SEE.BeltNoPower", "enUS": "Conveyor has no power", "zhTW": "輸送帶斷電", "zhCN": "输送带断电" },
+      { "key": "Status.SEE.PipeContaminated", "enUS": "Pipe network contaminated", "zhTW": "管網受汙染", "zhCN": "管网受污染" },
+      { "key": "Status.SEE.WaterMode.Tank", "enUS": "Water supply: tank (pipes)", "zhTW": "供水：水艙（管路）", "zhCN": "供水：水舱（管道）" },
+      { "key": "Status.SEE.WaterMode.Valve", "enUS": "Water supply: valve", "zhTW": "供水：閥門", "zhCN": "供水：阀门" },
+      { "key": "Status.SEE.WaterMode.Hauler", "enUS": "Water supply: haulers", "zhTW": "供水：搬運工", "zhCN": "供水：搬运工" },
+      { "key": "Status.SEE.WaterMode.Auto", "enUS": "Water supply: auto", "zhTW": "供水：自動", "zhCN": "供水：自动" }
+    ],
+    "panel": [
+      { "key": "UI.SEE.Panel.Power", "enUS": "Power", "zhTW": "動力", "zhCN": "动力" },
+      { "key": "UI.SEE.Panel.Network", "enUS": "Network power supply / demand: {0} / {1}", "zhTW": "電網供給／需求：{0}／{1}", "zhCN": "电网供给／需求：{0}／{1}" },
+      { "key": "UI.SEE.Panel.Output", "enUS": "Output: {0} / {1} hp", "zhTW": "輸出：{0}／{1} 馬力", "zhCN": "输出：{0}／{1} 马力" },
+      { "key": "UI.SEE.Panel.Fuel", "enUS": "Fuel", "zhTW": "燃料", "zhCN": "燃料" },
+      { "key": "UI.SEE.Panel.Water", "enUS": "Water", "zhTW": "水", "zhCN": "水" },
+      { "key": "UI.SEE.Panel.Condition", "enUS": "Condition: {0} / 100", "zhTW": "機況：{0}／100", "zhCN": "机况：{0}／100" },
+      { "key": "UI.SEE.Panel.NextMaintenance", "enUS": "Next maintenance in {0} days", "zhTW": "下次維護：{0} 日後", "zhCN": "下次维护：{0} 日后" },
+      { "key": "UI.SEE.Panel.Materials", "enUS": "Maintenance materials: {0}", "zhTW": "維護材料：{0}", "zhCN": "维护材料：{0}" },
+      { "key": "UI.SEE.Panel.WaterSupplyMode", "enUS": "Water supply mode", "zhTW": "供水模式", "zhCN": "供水模式" },
+      { "key": "UI.SEE.Action.Pause", "enUS": "Pause", "zhTW": "暫停", "zhCN": "暂停" },
+      { "key": "UI.SEE.Action.Resume", "enUS": "Resume", "zhTW": "繼續", "zhCN": "继续" },
+      { "key": "UI.SEE.Action.MaintainNow", "enUS": "Maintain now", "zhTW": "立即維護", "zhCN": "立即维护" },
+      { "key": "UI.SEE.Action.AutoMaintenance", "enUS": "Auto maintenance", "zhTW": "自動維護", "zhCN": "自动维护" },
+      { "key": "UI.SEE.Error.MaterialsMissing", "enUS": "Cannot maintain: {0} missing", "zhTW": "無法維護：缺少 {0}", "zhCN": "无法维护：缺少 {0}" },
+      { "key": "UI.SEE.Error.BeltNoPower", "enUS": "Conveyor network has no power", "zhTW": "輸送帶網路沒有電力", "zhCN": "输送带网络没有电力" },
+      { "key": "UI.SEE.Panel.WaterBeaverEquivalent", "enUS": "Water use: ≈{0} beavers' drinking water per day", "zhTW": "用水量：約 {0} 隻海狸的每日飲水", "zhCN": "用水量：约 {0} 只海狸的每日饮水" },
+      { "key": "UI.SEE.Panel.Efficiency", "enUS": "Network efficiency: {0}%", "zhTW": "電網效率：{0}%", "zhCN": "电网效率：{0}%" },
+      { "key": "UI.SEE.Panel.MaterialsDetail", "enUS": "Maintenance materials: {0} (missing {1})", "zhTW": "維護材料：{0}（缺 {1} 件）", "zhCN": "维护材料：{0}（缺 {1} 件）" },
+      { "key": "UI.SEE.Panel.MaterialEntry", "enUS": "{0}: {1}/{2}", "zhTW": "{0}：{1}／{2}", "zhCN": "{0}：{1}／{2}" },
+      { "key": "UI.SEE.Panel.NextMaintenanceDay", "enUS": "Next maintenance: day {0}", "zhTW": "下次維護：第 {0} 日", "zhCN": "下次维护：第 {0} 日" },
+      { "key": "UI.SEE.Hint.FixNoFuel", "enUS": "Refill fuel (logs or planks) or connect a conveyor.", "zhTW": "補充燃料（原木或木板）或接通輸送帶。", "zhCN": "补充燃料（原木或木板）或接通输送带。" },
+      { "key": "UI.SEE.Hint.FixNoWater", "enUS": "Fill the water tank or connect a pipe.", "zhTW": "補滿水艙或接上管路。", "zhCN": "补满水舱或接上管道。" },
+      { "key": "UI.SEE.Hint.FixNeedsMaintenance", "enUS": "Run maintenance: keep the required materials in the district.", "zhTW": "進行維護：確保地區內備有維護材料。", "zhCN": "进行维护：确保地区内备有维护材料。" },
+      { "key": "UI.SEE.WaterModeUnavailable", "enUS": "Selected water mode unavailable: {0}", "zhTW": "所選供水模式無法使用：{0}", "zhCN": "所选供水模式无法使用：{0}" }
+    ]
+  }
+}

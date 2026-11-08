@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    SEE data validator (P0 scope). Verifies the shippable data\ folder, the built assemblies and
+    the source tree:
+
+      * manifest.json fields / ids / empty RequiredMods+OptionalMods;
+      * data/engines.json: dataVersion, 12 unique (size,tier) rows, every §11.3 field, and the
+        derived fuel/water/stock/tank values recomputed in decimal;
+      * every blueprint top-level key resolves to a real ComponentSpec subclass / [SpecAlias]
+        (including SEE.SEEBoilerSpec and SEE.SEEMaintenanceSpec) and every field/enum value exists
+        in the game or mod metadata; blueprint-referenced loc keys are collected;
+      * fuel capacity derived by the vanilla GoodConsumingBuildingSpec equals the tabulated
+        fuelStock, and the water StockpileSpec/boiler capacities equal waterTankGoods (D-3/AD-3);
+      * boiler blueprints: no GoodPoweredGeneratorSpec/PoweredGoodConsumingBuildingSpec,
+        no BuildingPipeSpec/PowerLineSpec/WorkplaceSpec, PowerOutput == Horsepower,
+        ConsumedGoods only names FuelGoodIds goods, no Up/Top transput (AD-5);
+      * enUS/zhTW carry exactly the 54 canonical keys, non-empty, placeholder-consistent,
+        zhTW free of simplified characters, no raw keys;
+      * SEE_Config.json: configSchemaVersion 1, documented groups, every key's type and §20 clamp
+        range (unknown keys fail);
+      * shipping-assembly whitelist (Core/Gameplay/Integration/UI, SEE.Tests excluded), assembly
+        identity/version, no external-mod/Harmony/NuGet reference, layering, and the two frozen
+        ComponentSpecs with their exact [Serialize] field lists (Mono.Cecil, no assembly load);
+      * source facts: old-business identifiers, compile-time external-mod references, NuGet
+        PackageReference, 400/600-line limits;
+      * the 24 x 12 authoritative-field table (TemplateName, footprint/height, horsepower,
+        fuel/water rate, fuel stock, water tank, PowerOutput, Stockpile capacity, science cost,
+        build cost, ToolOrder) against engines.json and engines.derived.json, plus the
+        TemplateCollection append lists and the Children/ConstructionBase structure;
+      * golden hash: the 24 blueprints are byte-identical to
+        tests/SEE.Tests/Golden/blueprints.sha256;
+      * forbidden static scan: per-frame Update work / FindObjects / interpolation / config reads,
+        unsafe / P-Invoke / process / network / threads, Harmony outside SEE.Integration,
+        hard-coded balance tables, SteamEngine/SteamPlant template or loc names.
+
+    Every gate group prints one PASS/FAIL line; the report ends with VALIDATION PASSED (exit 0)
+    or VALIDATION FAILED with one actionable error per broken item (exit 1). mod/build.ps1
+    re-checks every gate id in tools/release/release-gates.json.
+
+    No ProjectReference and no NuGet package is used: Mono.Cecil is referenced from the local
+    package cache, exactly like tools/ApiIndex (this machine is offline; see API_FACTS_SEE.md §7).
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>SeeValidate</AssemblyName>
+    <RootNamespace>SEE.Tools.Validate</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Mono.Cecil">
+      <HintPath>$(UserProfile)\.nuget\packages\mono.cecil\0.11.5\lib\netstandard2.0\Mono.Cecil.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

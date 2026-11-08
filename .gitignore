@@ -1,0 +1,18 @@
+# build artifacts
+mod/build/
+**/bin/
+**/obj/
+**/.tmp-*/
+*_wpftmp.csproj
+*.user
+
+# local investigation (contains third-party game data / probe binaries)
+_investigate/
+
+# python caches
+__pycache__/
+*.pyc
+
+# os
+.DS_Store
+Thumbs.db

@@ -1,0 +1,19 @@
+{
+  "TemplateCollectionSpec": {
+    "CollectionId": "Buildings.IronTeeth",
+    "Blueprints#append": [
+      "Buildings/Power/SteamBoiler/SteamBoiler.Small.T1.IronTeeth.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Medium.T1.IronTeeth.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Large.T1.IronTeeth.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Small.T2.IronTeeth.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Medium.T2.IronTeeth.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Large.T2.IronTeeth.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Small.T3.IronTeeth.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Medium.T3.IronTeeth.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Large.T3.IronTeeth.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Small.T4.IronTeeth.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Medium.T4.IronTeeth.blueprint",
+      "Buildings/Power/SteamBoiler/SteamBoiler.Large.T4.IronTeeth.blueprint"
+    ]
+  }
+}

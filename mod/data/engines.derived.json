@@ -1,0 +1,1094 @@
+{
+  "generated": true,
+  "notice": "GENERATED, DO NOT EDIT - produced by mod/tools/generate-blueprints from mod/data/engines.json",
+  "generator": "tools/generate-blueprints",
+  "dataVersion": 1,
+  "source": "data/engines.json",
+  "sourceSha256": "501cdf6664c7a6f452e04eafbb82201588e7257d59ba938515501599d42ada74",
+  "blueprintCount": 24,
+  "authoritativeFields": {
+    "files": 24,
+    "fieldsPerFile": 12
+  },
+  "gates": [
+    {
+      "id": 1,
+      "name": "water tank / fuel stock >= 8x",
+      "pass": true,
+      "detail": "min 8.5 (Medium.T4)"
+    },
+    {
+      "id": 2,
+      "name": "dedicated water tank (no Water in ConsumedGoods, table tank size)",
+      "pass": true,
+      "detail": "12 rows x 2 factions"
+    },
+    {
+      "id": 3,
+      "name": "efficiency criterion (T2-T4 <= vanilla, T1 <= 1.3 x T2)",
+      "pass": true,
+      "detail": "T2 fuel 0.025/0.025 water 0.07/0.075, T3 fuel 0.021/0.025 water 0.04/0.075, T4 fuel 0.016/0.025 water 0.018/0.075, T1 fuel 0.032 <= 1.3 x T2 0.0325"
+    },
+    {
+      "id": 4,
+      "name": "capacity equals the table cell by cell",
+      "pass": true,
+      "detail": "12 rows x 2 factions, float32 ceil derivation verified"
+    },
+    {
+      "id": 5,
+      "name": "no BuildingPipeSpec / PowerLineSpec / WorkplaceSpec",
+      "pass": true,
+      "detail": "24 blueprints scanned"
+    }
+  ],
+  "factionFuelCollapsed": [
+    "Small.T1"
+  ],
+  "rows": [
+    {
+      "size": "Small",
+      "tier": "T1",
+      "footprint": {
+        "x": 2,
+        "y": 2
+      },
+      "height": 3,
+      "ratedHorsepower": 130,
+      "scienceCost": 90,
+      "buildCost": [
+        {
+          "good": "Log",
+          "amount": 20
+        }
+      ],
+      "fuelPerHour": 0.04,
+      "waterPerHour": 0.1,
+      "fuelStock": 1,
+      "waterTankGoods": 20,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 6,
+      "maintenanceMaterials": [
+        {
+          "good": "Log",
+          "amount": 8
+        }
+      ],
+      "factionFuelCollapsed": true,
+      "variants": {
+        "Folktails": {
+          "horsepower": 130,
+          "fuelPerHour": 0.04,
+          "waterPerHour": 0.1,
+          "fuelStock": 1,
+          "waterTankGoods": 20,
+          "fuelGoodIds": [
+            "Log"
+          ],
+          "fuelValues": [
+            1
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.02
+            }
+          ],
+          "toolOrder": 110,
+          "templateName": "SteamBoiler.Small.T1.Folktails",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Small.T1.Folktails.blueprint.json"
+        },
+        "IronTeeth": {
+          "horsepower": 137,
+          "fuelPerHour": 0.04,
+          "waterPerHour": 0.1,
+          "fuelStock": 1,
+          "waterTankGoods": 20,
+          "fuelGoodIds": [
+            "Log"
+          ],
+          "fuelValues": [
+            1
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.02
+            }
+          ],
+          "toolOrder": 110,
+          "templateName": "SteamBoiler.Small.T1.IronTeeth",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Small.T1.IronTeeth.blueprint.json"
+        }
+      }
+    },
+    {
+      "size": "Medium",
+      "tier": "T1",
+      "footprint": {
+        "x": 3,
+        "y": 3
+      },
+      "height": 3,
+      "ratedHorsepower": 230,
+      "scienceCost": 150,
+      "buildCost": [
+        {
+          "good": "Log",
+          "amount": 30
+        }
+      ],
+      "fuelPerHour": 0.07,
+      "waterPerHour": 0.18,
+      "fuelStock": 2,
+      "waterTankGoods": 36,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 6,
+      "maintenanceMaterials": [
+        {
+          "good": "Log",
+          "amount": 8
+        }
+      ],
+      "factionFuelCollapsed": false,
+      "variants": {
+        "Folktails": {
+          "horsepower": 230,
+          "fuelPerHour": 0.06,
+          "waterPerHour": 0.18,
+          "fuelStock": 2,
+          "waterTankGoods": 36,
+          "fuelGoodIds": [
+            "Log"
+          ],
+          "fuelValues": [
+            1
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.06
+            }
+          ],
+          "toolOrder": 112,
+          "templateName": "SteamBoiler.Medium.T1.Folktails",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Medium.T1.Folktails.blueprint.json"
+        },
+        "IronTeeth": {
+          "horsepower": 242,
+          "fuelPerHour": 0.07,
+          "waterPerHour": 0.18,
+          "fuelStock": 2,
+          "waterTankGoods": 36,
+          "fuelGoodIds": [
+            "Log"
+          ],
+          "fuelValues": [
+            1
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.06
+            }
+          ],
+          "toolOrder": 112,
+          "templateName": "SteamBoiler.Medium.T1.IronTeeth",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Medium.T1.IronTeeth.blueprint.json"
+        }
+      }
+    },
+    {
+      "size": "Large",
+      "tier": "T1",
+      "footprint": {
+        "x": 4,
+        "y": 4
+      },
+      "height": 4,
+      "ratedHorsepower": 360,
+      "scienceCost": 225,
+      "buildCost": [
+        {
+          "good": "Log",
+          "amount": 45
+        }
+      ],
+      "fuelPerHour": 0.12,
+      "waterPerHour": 0.29,
+      "fuelStock": 3,
+      "waterTankGoods": 58,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 6,
+      "maintenanceMaterials": [
+        {
+          "good": "Log",
+          "amount": 8
+        }
+      ],
+      "factionFuelCollapsed": false,
+      "variants": {
+        "Folktails": {
+          "horsepower": 360,
+          "fuelPerHour": 0.11,
+          "waterPerHour": 0.29,
+          "fuelStock": 3,
+          "waterTankGoods": 58,
+          "fuelGoodIds": [
+            "Log"
+          ],
+          "fuelValues": [
+            1
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.1
+            }
+          ],
+          "toolOrder": 114,
+          "templateName": "SteamBoiler.Large.T1.Folktails",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Large.T1.Folktails.blueprint.json"
+        },
+        "IronTeeth": {
+          "horsepower": 378,
+          "fuelPerHour": 0.12,
+          "waterPerHour": 0.29,
+          "fuelStock": 3,
+          "waterTankGoods": 58,
+          "fuelGoodIds": [
+            "Log"
+          ],
+          "fuelValues": [
+            1
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.1
+            }
+          ],
+          "toolOrder": 114,
+          "templateName": "SteamBoiler.Large.T1.IronTeeth",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Large.T1.IronTeeth.blueprint.json"
+        }
+      }
+    },
+    {
+      "size": "Small",
+      "tier": "T2",
+      "footprint": {
+        "x": 2,
+        "y": 2
+      },
+      "height": 3,
+      "ratedHorsepower": 260,
+      "scienceCost": 240,
+      "buildCost": [
+        {
+          "good": "Plank",
+          "amount": 25
+        },
+        {
+          "good": "Log",
+          "amount": 5
+        }
+      ],
+      "fuelPerHour": 0.07,
+      "waterPerHour": 0.18,
+      "fuelStock": 2,
+      "waterTankGoods": 36,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 8,
+      "maintenanceMaterials": [
+        {
+          "good": "Plank",
+          "amount": 12
+        },
+        {
+          "good": "Gear",
+          "amount": 2
+        }
+      ],
+      "factionFuelCollapsed": false,
+      "variants": {
+        "Folktails": {
+          "horsepower": 260,
+          "fuelPerHour": 0.06,
+          "waterPerHour": 0.18,
+          "fuelStock": 2,
+          "waterTankGoods": 36,
+          "fuelGoodIds": [
+            "Log"
+          ],
+          "fuelValues": [
+            1
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.06
+            }
+          ],
+          "toolOrder": 116,
+          "templateName": "SteamBoiler.Small.T2.Folktails",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Small.T2.Folktails.blueprint.json"
+        },
+        "IronTeeth": {
+          "horsepower": 273,
+          "fuelPerHour": 0.07,
+          "waterPerHour": 0.18,
+          "fuelStock": 2,
+          "waterTankGoods": 36,
+          "fuelGoodIds": [
+            "Log"
+          ],
+          "fuelValues": [
+            1
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.06
+            }
+          ],
+          "toolOrder": 116,
+          "templateName": "SteamBoiler.Small.T2.IronTeeth",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Small.T2.IronTeeth.blueprint.json"
+        }
+      }
+    },
+    {
+      "size": "Medium",
+      "tier": "T2",
+      "footprint": {
+        "x": 3,
+        "y": 3
+      },
+      "height": 3,
+      "ratedHorsepower": 460,
+      "scienceCost": 400,
+      "buildCost": [
+        {
+          "good": "Plank",
+          "amount": 40
+        },
+        {
+          "good": "Log",
+          "amount": 10
+        }
+      ],
+      "fuelPerHour": 0.12,
+      "waterPerHour": 0.32,
+      "fuelStock": 3,
+      "waterTankGoods": 64,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 8,
+      "maintenanceMaterials": [
+        {
+          "good": "Plank",
+          "amount": 12
+        },
+        {
+          "good": "Gear",
+          "amount": 2
+        }
+      ],
+      "factionFuelCollapsed": false,
+      "variants": {
+        "Folktails": {
+          "horsepower": 460,
+          "fuelPerHour": 0.11,
+          "waterPerHour": 0.32,
+          "fuelStock": 3,
+          "waterTankGoods": 64,
+          "fuelGoodIds": [
+            "Log"
+          ],
+          "fuelValues": [
+            1
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.1
+            }
+          ],
+          "toolOrder": 118,
+          "templateName": "SteamBoiler.Medium.T2.Folktails",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Medium.T2.Folktails.blueprint.json"
+        },
+        "IronTeeth": {
+          "horsepower": 483,
+          "fuelPerHour": 0.12,
+          "waterPerHour": 0.32,
+          "fuelStock": 3,
+          "waterTankGoods": 64,
+          "fuelGoodIds": [
+            "Log"
+          ],
+          "fuelValues": [
+            1
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.1
+            }
+          ],
+          "toolOrder": 118,
+          "templateName": "SteamBoiler.Medium.T2.IronTeeth",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Medium.T2.IronTeeth.blueprint.json"
+        }
+      }
+    },
+    {
+      "size": "Large",
+      "tier": "T2",
+      "footprint": {
+        "x": 4,
+        "y": 4
+      },
+      "height": 4,
+      "ratedHorsepower": 720,
+      "scienceCost": 600,
+      "buildCost": [
+        {
+          "good": "Plank",
+          "amount": 60
+        },
+        {
+          "good": "Log",
+          "amount": 15
+        }
+      ],
+      "fuelPerHour": 0.18,
+      "waterPerHour": 0.5,
+      "fuelStock": 5,
+      "waterTankGoods": 100,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 8,
+      "maintenanceMaterials": [
+        {
+          "good": "Plank",
+          "amount": 12
+        },
+        {
+          "good": "Gear",
+          "amount": 2
+        }
+      ],
+      "factionFuelCollapsed": false,
+      "variants": {
+        "Folktails": {
+          "horsepower": 720,
+          "fuelPerHour": 0.16,
+          "waterPerHour": 0.5,
+          "fuelStock": 5,
+          "waterTankGoods": 100,
+          "fuelGoodIds": [
+            "Log"
+          ],
+          "fuelValues": [
+            1
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.18
+            }
+          ],
+          "toolOrder": 120,
+          "templateName": "SteamBoiler.Large.T2.Folktails",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Large.T2.Folktails.blueprint.json"
+        },
+        "IronTeeth": {
+          "horsepower": 756,
+          "fuelPerHour": 0.18,
+          "waterPerHour": 0.5,
+          "fuelStock": 5,
+          "waterTankGoods": 100,
+          "fuelGoodIds": [
+            "Log"
+          ],
+          "fuelValues": [
+            1
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.18
+            }
+          ],
+          "toolOrder": 120,
+          "templateName": "SteamBoiler.Large.T2.IronTeeth",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Large.T2.IronTeeth.blueprint.json"
+        }
+      }
+    },
+    {
+      "size": "Small",
+      "tier": "T3",
+      "footprint": {
+        "x": 2,
+        "y": 2
+      },
+      "height": 3,
+      "ratedHorsepower": 380,
+      "scienceCost": 420,
+      "buildCost": [
+        {
+          "good": "MetalBlock",
+          "amount": 30
+        },
+        {
+          "good": "Plank",
+          "amount": 10
+        }
+      ],
+      "fuelPerHour": 0.08,
+      "waterPerHour": 0.15,
+      "fuelStock": 2,
+      "waterTankGoods": 30,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 10,
+      "maintenanceMaterials": [
+        {
+          "good": "MetalBlock",
+          "amount": 10
+        },
+        {
+          "good": "Plank",
+          "amount": 10
+        }
+      ],
+      "factionFuelCollapsed": false,
+      "variants": {
+        "Folktails": {
+          "horsepower": 380,
+          "fuelPerHour": 0.07,
+          "waterPerHour": 0.15,
+          "fuelStock": 2,
+          "waterTankGoods": 30,
+          "fuelGoodIds": [
+            "Log",
+            "Plank"
+          ],
+          "fuelValues": [
+            1,
+            2
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.02
+            },
+            {
+              "goodId": "Plank",
+              "goodPerHour": 0.02
+            }
+          ],
+          "toolOrder": 122,
+          "templateName": "SteamBoiler.Small.T3.Folktails",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Small.T3.Folktails.blueprint.json"
+        },
+        "IronTeeth": {
+          "horsepower": 399,
+          "fuelPerHour": 0.08,
+          "waterPerHour": 0.15,
+          "fuelStock": 2,
+          "waterTankGoods": 30,
+          "fuelGoodIds": [
+            "Log",
+            "Plank"
+          ],
+          "fuelValues": [
+            1,
+            2
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.02
+            },
+            {
+              "goodId": "Plank",
+              "goodPerHour": 0.02
+            }
+          ],
+          "toolOrder": 122,
+          "templateName": "SteamBoiler.Small.T3.IronTeeth",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Small.T3.IronTeeth.blueprint.json"
+        }
+      }
+    },
+    {
+      "size": "Medium",
+      "tier": "T3",
+      "footprint": {
+        "x": 3,
+        "y": 3
+      },
+      "height": 3,
+      "ratedHorsepower": 680,
+      "scienceCost": 700,
+      "buildCost": [
+        {
+          "good": "MetalBlock",
+          "amount": 50
+        },
+        {
+          "good": "Plank",
+          "amount": 20
+        }
+      ],
+      "fuelPerHour": 0.14,
+      "waterPerHour": 0.27,
+      "fuelStock": 4,
+      "waterTankGoods": 54,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 10,
+      "maintenanceMaterials": [
+        {
+          "good": "MetalBlock",
+          "amount": 10
+        },
+        {
+          "good": "Plank",
+          "amount": 10
+        }
+      ],
+      "factionFuelCollapsed": false,
+      "variants": {
+        "Folktails": {
+          "horsepower": 680,
+          "fuelPerHour": 0.13,
+          "waterPerHour": 0.27,
+          "fuelStock": 4,
+          "waterTankGoods": 54,
+          "fuelGoodIds": [
+            "Log",
+            "Plank"
+          ],
+          "fuelValues": [
+            1,
+            2
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.06
+            },
+            {
+              "goodId": "Plank",
+              "goodPerHour": 0.06
+            }
+          ],
+          "toolOrder": 124,
+          "templateName": "SteamBoiler.Medium.T3.Folktails",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Medium.T3.Folktails.blueprint.json"
+        },
+        "IronTeeth": {
+          "horsepower": 714,
+          "fuelPerHour": 0.14,
+          "waterPerHour": 0.27,
+          "fuelStock": 4,
+          "waterTankGoods": 54,
+          "fuelGoodIds": [
+            "Log",
+            "Plank"
+          ],
+          "fuelValues": [
+            1,
+            2
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.06
+            },
+            {
+              "goodId": "Plank",
+              "goodPerHour": 0.06
+            }
+          ],
+          "toolOrder": 124,
+          "templateName": "SteamBoiler.Medium.T3.IronTeeth",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Medium.T3.IronTeeth.blueprint.json"
+        }
+      }
+    },
+    {
+      "size": "Large",
+      "tier": "T3",
+      "footprint": {
+        "x": 4,
+        "y": 4
+      },
+      "height": 4,
+      "ratedHorsepower": 1060,
+      "scienceCost": 1050,
+      "buildCost": [
+        {
+          "good": "MetalBlock",
+          "amount": 75
+        },
+        {
+          "good": "Plank",
+          "amount": 30
+        }
+      ],
+      "fuelPerHour": 0.22,
+      "waterPerHour": 0.42,
+      "fuelStock": 6,
+      "waterTankGoods": 84,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 10,
+      "maintenanceMaterials": [
+        {
+          "good": "MetalBlock",
+          "amount": 10
+        },
+        {
+          "good": "Plank",
+          "amount": 10
+        }
+      ],
+      "factionFuelCollapsed": false,
+      "variants": {
+        "Folktails": {
+          "horsepower": 1060,
+          "fuelPerHour": 0.2,
+          "waterPerHour": 0.42,
+          "fuelStock": 6,
+          "waterTankGoods": 84,
+          "fuelGoodIds": [
+            "Log",
+            "Plank"
+          ],
+          "fuelValues": [
+            1,
+            2
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.1
+            },
+            {
+              "goodId": "Plank",
+              "goodPerHour": 0.1
+            }
+          ],
+          "toolOrder": 126,
+          "templateName": "SteamBoiler.Large.T3.Folktails",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Large.T3.Folktails.blueprint.json"
+        },
+        "IronTeeth": {
+          "horsepower": 1113,
+          "fuelPerHour": 0.22,
+          "waterPerHour": 0.42,
+          "fuelStock": 6,
+          "waterTankGoods": 84,
+          "fuelGoodIds": [
+            "Log",
+            "Plank"
+          ],
+          "fuelValues": [
+            1,
+            2
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.1
+            },
+            {
+              "goodId": "Plank",
+              "goodPerHour": 0.1
+            }
+          ],
+          "toolOrder": 126,
+          "templateName": "SteamBoiler.Large.T3.IronTeeth",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Large.T3.IronTeeth.blueprint.json"
+        }
+      }
+    },
+    {
+      "size": "Small",
+      "tier": "T4",
+      "footprint": {
+        "x": 2,
+        "y": 2
+      },
+      "height": 3,
+      "ratedHorsepower": 520,
+      "scienceCost": 900,
+      "buildCost": [
+        {
+          "good": "MetalBlock",
+          "amount": 45
+        }
+      ],
+      "fuelPerHour": 0.08,
+      "waterPerHour": 0.09,
+      "fuelStock": 2,
+      "waterTankGoods": 18,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 12,
+      "maintenanceMaterials": [
+        {
+          "good": "MetalBlock",
+          "amount": 12
+        },
+        {
+          "good": "Gear",
+          "amount": 6
+        }
+      ],
+      "factionFuelCollapsed": false,
+      "variants": {
+        "Folktails": {
+          "horsepower": 520,
+          "fuelPerHour": 0.07,
+          "waterPerHour": 0.09,
+          "fuelStock": 2,
+          "waterTankGoods": 18,
+          "fuelGoodIds": [
+            "Log",
+            "Plank"
+          ],
+          "fuelValues": [
+            1,
+            2
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.02
+            },
+            {
+              "goodId": "Plank",
+              "goodPerHour": 0.02
+            }
+          ],
+          "toolOrder": 128,
+          "templateName": "SteamBoiler.Small.T4.Folktails",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Small.T4.Folktails.blueprint.json"
+        },
+        "IronTeeth": {
+          "horsepower": 546,
+          "fuelPerHour": 0.08,
+          "waterPerHour": 0.09,
+          "fuelStock": 2,
+          "waterTankGoods": 18,
+          "fuelGoodIds": [
+            "Log",
+            "Plank"
+          ],
+          "fuelValues": [
+            1,
+            2
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.02
+            },
+            {
+              "goodId": "Plank",
+              "goodPerHour": 0.02
+            }
+          ],
+          "toolOrder": 128,
+          "templateName": "SteamBoiler.Small.T4.IronTeeth",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Small.T4.IronTeeth.blueprint.json"
+        }
+      }
+    },
+    {
+      "size": "Medium",
+      "tier": "T4",
+      "footprint": {
+        "x": 3,
+        "y": 3
+      },
+      "height": 3,
+      "ratedHorsepower": 920,
+      "scienceCost": 1500,
+      "buildCost": [
+        {
+          "good": "MetalBlock",
+          "amount": 70
+        }
+      ],
+      "fuelPerHour": 0.15,
+      "waterPerHour": 0.17,
+      "fuelStock": 4,
+      "waterTankGoods": 34,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 12,
+      "maintenanceMaterials": [
+        {
+          "good": "MetalBlock",
+          "amount": 12
+        },
+        {
+          "good": "Gear",
+          "amount": 6
+        }
+      ],
+      "factionFuelCollapsed": false,
+      "variants": {
+        "Folktails": {
+          "horsepower": 920,
+          "fuelPerHour": 0.14,
+          "waterPerHour": 0.17,
+          "fuelStock": 4,
+          "waterTankGoods": 34,
+          "fuelGoodIds": [
+            "Log",
+            "Plank"
+          ],
+          "fuelValues": [
+            1,
+            2
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.06
+            },
+            {
+              "goodId": "Plank",
+              "goodPerHour": 0.06
+            }
+          ],
+          "toolOrder": 130,
+          "templateName": "SteamBoiler.Medium.T4.Folktails",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Medium.T4.Folktails.blueprint.json"
+        },
+        "IronTeeth": {
+          "horsepower": 966,
+          "fuelPerHour": 0.15,
+          "waterPerHour": 0.17,
+          "fuelStock": 4,
+          "waterTankGoods": 34,
+          "fuelGoodIds": [
+            "Log",
+            "Plank"
+          ],
+          "fuelValues": [
+            1,
+            2
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.06
+            },
+            {
+              "goodId": "Plank",
+              "goodPerHour": 0.06
+            }
+          ],
+          "toolOrder": 130,
+          "templateName": "SteamBoiler.Medium.T4.IronTeeth",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Medium.T4.IronTeeth.blueprint.json"
+        }
+      }
+    },
+    {
+      "size": "Large",
+      "tier": "T4",
+      "footprint": {
+        "x": 4,
+        "y": 4
+      },
+      "height": 4,
+      "ratedHorsepower": 1500,
+      "scienceCost": 2250,
+      "buildCost": [
+        {
+          "good": "MetalBlock",
+          "amount": 105
+        }
+      ],
+      "fuelPerHour": 0.24,
+      "waterPerHour": 0.27,
+      "fuelStock": 6,
+      "waterTankGoods": 54,
+      "fullInventoryWorkHours": 25,
+      "maintenanceIntervalDays": 12,
+      "maintenanceMaterials": [
+        {
+          "good": "MetalBlock",
+          "amount": 12
+        },
+        {
+          "good": "Gear",
+          "amount": 6
+        }
+      ],
+      "factionFuelCollapsed": false,
+      "variants": {
+        "Folktails": {
+          "horsepower": 1500,
+          "fuelPerHour": 0.22,
+          "waterPerHour": 0.27,
+          "fuelStock": 6,
+          "waterTankGoods": 54,
+          "fuelGoodIds": [
+            "Log",
+            "Plank"
+          ],
+          "fuelValues": [
+            1,
+            2
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.1
+            },
+            {
+              "goodId": "Plank",
+              "goodPerHour": 0.1
+            }
+          ],
+          "toolOrder": 132,
+          "templateName": "SteamBoiler.Large.T4.Folktails",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Large.T4.Folktails.blueprint.json"
+        },
+        "IronTeeth": {
+          "horsepower": 1575,
+          "fuelPerHour": 0.24,
+          "waterPerHour": 0.27,
+          "fuelStock": 6,
+          "waterTankGoods": 54,
+          "fuelGoodIds": [
+            "Log",
+            "Plank"
+          ],
+          "fuelValues": [
+            1,
+            2
+          ],
+          "consumedGoods": [
+            {
+              "goodId": "Log",
+              "goodPerHour": 0.1
+            },
+            {
+              "goodId": "Plank",
+              "goodPerHour": 0.1
+            }
+          ],
+          "toolOrder": 132,
+          "templateName": "SteamBoiler.Large.T4.IronTeeth",
+          "blueprint": "data/Buildings/Power/SteamBoiler/SteamBoiler.Large.T4.IronTeeth.blueprint.json"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    SEE.Integration: the only assembly allowed to touch third-party mod types at runtime, and it
+    never references those assemblies at compile time.
+
+    It owns the three-stage compatibility detector (assembly simple name -> anchor types), the
+    Timber Pipes / Power Lines / Conveyor Belts adapters, the optional runtime patch host (closed
+    by default, no compile-time patching-library reference) and the world-node save serializer, migrator
+    and checksum. Every external feature is SHOULD: with none of the optional mods installed the
+    core gameplay still runs on vanilla blueprints and components (REQ-COMPAT-01..18).
+  -->
+
+  <PropertyGroup>
+    <SeeGameProject>true</SeeGameProject>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>SEE.Integration</AssemblyName>
+    <RootNamespace>SEE.Integration</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- R-1 (LEAD_RULINGS_ADDENDUM 2026-11-06): Integration may reference Gameplay so it can publish
+         the compat snapshot through SeeSaveBridge.RecordCompatSnapshot and read the resolved config
+         from SEERuntime. Exactly one ProjectReference; SEE.Core arrives transitively (and still
+         appears directly in the metadata because Core types are used in the IL). -->
+    <ProjectReference Include="..\SEE.Gameplay\SEE.Gameplay.csproj" />
+  </ItemGroup>
+
+</Project>

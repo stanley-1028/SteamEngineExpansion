@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    SEE.UI: the entity panel fragment of the steam boiler (status badge, power, fuel, water,
+    condition/maintenance rows and the per-boiler buttons). References SEE.Core only (single
+    ProjectReference) plus the game UI assemblies. The gameplay assembly registers the
+    SEE.Core IBoilerQuery singleton the panel reads; SEE.UI never references gameplay code.
+  -->
+
+  <PropertyGroup>
+    <SeeGameProject>true</SeeGameProject>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>SEE.UI</AssemblyName>
+    <RootNamespace>SEE.UI</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SEE.Core\SEE.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(TimberbornManagedDir)\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.CoreUI">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.CoreUI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.EntityPanelSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.EntityPanelSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.Localization">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.Localization.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.UIFormatters">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.UIFormatters.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.StatusSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.StatusSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.EntityNaming">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.EntityNaming.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

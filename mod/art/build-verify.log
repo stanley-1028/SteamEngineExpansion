@@ -1,0 +1,204 @@
+
+== Build ==================================================================
+> dotnet build C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Core\SEE.Core.csproj -c Release -m:1 --nologo -v m -p:TimberbornDir=C:\Program Files (x86)\Steam\steamapps\common\Timberborn
+  Determining projects to restore...
+  Restored C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Core\SEE.Core.csproj (in 81 ms).
+  SEE.Core -> C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Core\bin\Release\netstandard2.1\SEE.Core.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.60
+> dotnet build C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Gameplay\SEE.Gameplay.csproj -c Release -m:1 --nologo -v m -p:TimberbornDir=C:\Program Files (x86)\Steam\steamapps\common\Timberborn
+  Determining projects to restore...
+  Restored C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Gameplay\SEE.Gameplay.csproj (in 102 ms).
+  1 of 2 projects are up-to-date for restore.
+  SEE.Core -> C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Core\bin\Release\netstandard2.1\SEE.Core.dll
+  SEE.Gameplay -> C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Gameplay\bin\Release\netstandard2.1\SEE.Gameplay.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.33
+> dotnet build C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Integration\SEE.Integration.csproj -c Release -m:1 --nologo -v m -p:TimberbornDir=C:\Program Files (x86)\Steam\steamapps\common\Timberborn
+  Determining projects to restore...
+  Restored C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Integration\SEE.Integration.csproj (in 163 ms).
+  2 of 3 projects are up-to-date for restore.
+  SEE.Core -> C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Core\bin\Release\netstandard2.1\SEE.Core.dll
+  SEE.Gameplay -> C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Gameplay\bin\Release\netstandard2.1\SEE.Gameplay.dll
+  SEE.Integration -> C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Integration\bin\Release\netstandard2.1\SEE.Integration.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:05.05
+> dotnet build C:\Users\user\Downloads\timber steam engine\mod\src\SEE.UI\SEE.UI.csproj -c Release -m:1 --nologo -v m -p:TimberbornDir=C:\Program Files (x86)\Steam\steamapps\common\Timberborn
+  Determining projects to restore...
+  Restored C:\Users\user\Downloads\timber steam engine\mod\src\SEE.UI\SEE.UI.csproj (in 113 ms).
+  1 of 2 projects are up-to-date for restore.
+  SEE.Core -> C:\Users\user\Downloads\timber steam engine\mod\src\SEE.Core\bin\Release\netstandard2.1\SEE.Core.dll
+  SEE.UI -> C:\Users\user\Downloads\timber steam engine\mod\src\SEE.UI\bin\Release\netstandard2.1\SEE.UI.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.55
+  gate G01 PASS  0 warnings x 4 shipping projects
+
+== Tests ==================================================================
+> dotnet run --project C:\Users\user\Downloads\timber steam engine\mod\tests\SEE.Tests\SEE.Tests.csproj -c Release -m:1 --nologo
+RECON|fuel-full|expected=2.6400|booked=2.6400|bookedErr=0.000005%|noCarryErr=24.2424%|goods=2|carry=0.6400
+RECON|fuel-half|expected=1.3200|booked=1.3200|bookedErr=0.000005%|noCarryErr=24.2424%|goods=1|carry=0.3200
+RECON|fuel-idle|expected=0.0000|booked=0.0000|bookedErr=0.000000%|noCarryErr=0.0000%|goods=0|carry=0.2500
+RECON|fuel-empty|expected=0.0000|booked=0.0000|bookedErr=0.000000%|noCarryErr=0.0000%|goods=0|carry=1.0000
+RECON|fuel-vanilla|expected=2.6400|booked=2.6400|bookedErr=0.000005%|noCarryErr=24.2424%|goods=2|carry=0.6400
+RECON|water-full|expected=7.6800|booked=7.6800|bookedErr=0.000000%|noCarryErr=8.8542%|goods=7|carry=0.6800
+RECON|water-half|expected=3.8400|booked=3.8400|bookedErr=0.000000%|noCarryErr=21.8750%|goods=3|carry=0.8400
+RECON|water-idle|expected=0.0000|booked=0.0000|bookedErr=0.000000%|noCarryErr=0.0000%|goods=0|carry=0.4000
+RECON|water-empty|expected=0.0000|booked=0.0000|bookedErr=0.000000%|noCarryErr=0.0000%|goods=0|carry=1.0000
+RECON|water-30d|expected=230.4000|booked=230.4000|bookedErr=0.000000%|noCarryErr=0.1736%|goods=230|carry=0.4000
+RECON|fuel-plank-fallback|expected=7.9200|booked=7.9200|bookedErr=0.000002%|noCarryErr=11.6162%|goods=4|carry=0.9200
+RECON|fuel-30d|expected=79.2000|booked=79.2000|bookedErr=0.000003%|noCarryErr=0.2525%|goods=79|carry=0.2000
+PERF|pure-fuel+water-step|ns/step=31.52
+PERF|core-state+formula|ns/step=31.66|checksum=397000000
+PASS 504/504
+  gate G02 PASS  PASS 504/504
+
+== Generate (--check) =====================================================
+> dotnet run --project C:\Users\user\Downloads\timber steam engine\mod\tools\generate-blueprints\generate-blueprints.csproj -c Release -m:1 --nologo -- --check
+SEE blueprint generator
+  mod root     : C:\Users\user\Downloads\timber steam engine\mod
+  engines.json : 12 rows (dataVersion 1)
+  factions     : Folktails output x1 fuel x0.9, IronTeeth output x1.05 fuel x1
+  tool orders  : 12 entries, range 110-142
+  blueprints   : 24 (12 size/tier x 2 factions)
+  gates        : 5/5 PASS
+    [1] PASS water tank / fuel stock >= 8x: min 8.5 (Medium.T4)
+    [2] PASS dedicated water tank (no Water in ConsumedGoods, table tank size): 12 rows x 2 factions
+    [3] PASS efficiency criterion (T2-T4 <= vanilla, T1 <= 1.3 x T2): T2 fuel 0.025/0.025 water 0.07/0.075, T3 fuel 0.021/0.025 water 0.04/0.075, T4 fuel 0.016/0.025 water 0.018/0.075, T1 fuel 0.032 <= 1.3 x T2 0.0325
+    [4] PASS capacity equals the table cell by cell: 12 rows x 2 factions, float32 ceil derivation verified
+    [5] PASS no BuildingPipeSpec / PowerLineSpec / WorkplaceSpec: 24 blueprints scanned
+  fields       : 24/24 files x 12/12 authoritative fields PASS (48 extra checks)
+  localization : 63 keys x 3 languages (enUS, zhTW, zhCN)
+  icons        : 24 png + 24 meta
+  golden hash  : 24 entries
+  files        : 80
+CHECK PASS (0 differences, 80 files, 24 blueprints)
+  gate G03 PASS  CHECK PASS (0 differences)
+  gate G04 PASS  generator data gates 5/5 PASS
+
+== Validate ==============================================================
+> dotnet run --project C:\Users\user\Downloads\timber steam engine\mod\tools\validate\validate.csproj -c Release -m:1 --nologo -- C:\Users\user\Downloads\timber steam engine\mod\data --managed C:\Program Files (x86)\Steam\steamapps\common\Timberborn\Timberborn_Data\Managed --mod C:\Users\user\Downloads\timber steam engine\mod
+SEE data validator
+  data dir        : C:\Users\user\Downloads\timber steam engine\mod\data
+  mod root        : C:\Users\user\Downloads\timber steam engine\mod
+  managed dir     : C:\Program Files (x86)\Steam\steamapps\common\Timberborn\Timberborn_Data\Managed
+  game assemblies : 660
+  spec types      : 509 (ComponentSpec subclasses + aliases)
+  mod assemblies  : 4 (SEE.Core.dll, SEE.Gameplay.dll, SEE.Integration.dll, SEE.UI.dll)
+  vanilla models  : 1067 blueprints indexed from Blueprints.zip
+  localizations   : 63 canonical keys required
+  blueprint files : 26
+
+PASS  manifest.json
+PASS  engines.json (12 rows)
+      12 rows, dataVersion 1
+PASS  blueprint spec schema
+      26 documents (24 boilers + 2 template collections) validated against the game and SEE spec metadata
+PASS  blueprint table (24 x 12 authoritative fields)
+      24/24 files x 12/12 fields, 0 mismatch(es) against engines.json + engines.derived.json
+PASS  fuel/water capacity derivation
+PASS  boiler blueprint rules (AD-9 / AD-5)
+PASS  localization (63 keys >= 54, enUS/zhTW/zhCN)
+PASS  config schema and clamp
+PASS  golden hash (24 blueprints)
+      24/24 golden entries verified against tests/SEE.Tests/Golden/blueprints.sha256
+PASS  forbidden static scan
+      136 source files, 26 data documents, 24 TemplateName declarations, 0 red-line hit(s)
+PASS  assembly whitelist and layering
+PASS  source facts
+      215 source files, 15584 C# lines, 0 stub exception file(s)
+
+Gate summary
+  PASS  manifest.json
+  PASS  engines.json (12 rows)
+  PASS  blueprint spec schema
+  PASS  blueprint table (24 x 12 authoritative fields)
+  PASS  fuel/water capacity derivation
+  PASS  boiler blueprint rules (AD-9 / AD-5)
+  PASS  localization (63 keys >= 54, enUS/zhTW/zhCN)
+  PASS  config schema and clamp
+  PASS  golden hash (24 blueprints)
+  PASS  forbidden static scan
+  PASS  assembly whitelist and layering
+  PASS  source facts
+
+  12/12 gate group(s) passed, 1 warning(s), 0 error(s)
+
+WARN: [table] ConstructionBase recorded deviation (contract §4.5/§4.8): Small uses ConstructionBase2x2#nested (contract XxZ expects 2x3)
+
+VALIDATION PASSED
+  gate G05 PASS  VALIDATION PASSED
+  gate G06 PASS  manifest.json
+  gate G07 PASS  engines.json (12 rows)
+  gate G08 PASS  blueprint spec schema
+  gate G09 PASS  blueprint table (24 x 12 authoritative fields)
+  gate G10 PASS  fuel/water capacity derivation
+  gate G11 PASS  boiler blueprint rules (AD-9 / AD-5)
+  gate G12 PASS  localization (63 keys >= 54, enUS/zhTW/zhCN)
+  gate G13 PASS  config schema and clamp
+  gate G14 PASS  golden hash (24 blueprints)
+  gate G15 PASS  forbidden static scan
+  gate G16 PASS  assembly whitelist and layering
+  gate G17 PASS  source facts
+  gate G14 PASS  golden hash 24/24 (build.ps1 independent re-hash)
+
+== Stage =================================================================
+  gate G18 PASS  4 shipping assemblies only, no deps/pdb/tests/src/tools
+  gate G19 PASS  24 blueprints + 2 template collections
+  gate G20 PASS  63 localization keys x enUS/zhTW/zhCN
+  gate G21 PASS  24 png icons + 24 isSprite metas
+  gate G22 PASS  version tracks 0.1.0/1/1, package hash 6d6ee3858cb9...
+
+== Release gates =========================================================
+  G01  PASS  0 warnings in all four shipping assemblies
+  G02  PASS  offline test runner passes PASS n/n
+  G03  PASS  blueprint generator --check reproduces every generated file
+  G04  PASS  generator's five data gates pass
+  G05  PASS  data validator prints VALIDATION PASSED for every gate group
+  G06  PASS  manifest.json contract (7 fields, Id, empty mod lists, version 0.1.0)
+  G07  PASS  engines.json is the single 12-row number source
+  G08  PASS  blueprint documents resolve against the game and SEE spec metadata
+  G09  PASS  24 blueprints x 12 authoritative fields match engines.json + engines.derived.json with zero error
+  G10  PASS  fuel capacity and dedicated water tank derive exactly to the tabulated values
+  G11  PASS  boiler blueprint rules (no GoodPoweredGeneratorSpec / BuildingPipeSpec / PowerLineSpec / WorkplaceSpec, PowerOutput = Horsepower, Log+Plank fuel whitelist, no Up/Top transput)
+  G12  PASS  localization: enUS, zhTW and zhCN each carry exactly the 63 canonical keys (54-key requirements baseline + 9 P4B additions; AC-16 requires >= 54), no raw key, no simplified characters, no vanilla key overwrite
+  G13  PASS  SEE_Config.json schema 1, all documented groups, every default inside its clamp range
+  G14  PASS  golden hash: the 24 shipped blueprints are byte-identical to tests/SEE.Tests/Golden/blueprints.sha256 (validator and build.ps1 re-hash independently)
+  G15  PASS  forbidden static scan: no per-frame Update work/FindObjects, no unsafe/P-Invoke/process/network/thread, no Harmony outside Integration, no hard-coded balance table, no SteamEngine/SteamPlant template or loc names
+  G16  PASS  shipping-assembly whitelist and layering: exactly SEE.Core/Gameplay/Integration/UI, no SEE.Tests, no external mod DLL, no NuGet, no Harmony reference, Core game-independent, frozen specs intact
+  G17  PASS  source facts: no fork leftovers, no compile-time external-mod reference, no NuGet PackageReference, file/line limits
+  G18  PASS  staged package contains exactly the four shipping assemblies; no .deps.json, .pdb, SEE.Tests.dll, src/, tools/ or tests/
+  G19  PASS  staged package carries 24 generated blueprints (12 size/tier x 2 factions) and the two TemplateCollection appends
+  G20  PASS  staged localizations: enUS.csv, zhTW.csv and zhCN.csv each contain the same key count, at least 54 (currently 63)
+  G21  PASS  staged icons: 24 PNG sprites plus 24 .png.meta.json with isSprite=true
+  G22  PASS  version tracks are consistent (manifest 0.1.0 / save schema 1 / config schema 1) and the package hash file is written
+
+BUILD PASSED
+  mod id      : SteamEngineExpansion
+  version     : 0.1.0 (save schema 1, config schema 1)
+  package     : C:\Users\user\Downloads\timber steam engine\mod\build\SteamEngineExpansion
+  files       : 132
+  size        : 2,322 KB
+  assemblies  : SEE.Core, SEE.Gameplay, SEE.Integration, SEE.UI
+  blueprints  : 24 (+2 template collections)
+  localizations: 63 keys x enUS/zhTW/zhCN
+  icons       : 24 png + 24 meta
+  timbermesh  : 48 (P9 art deliverable; not required for v1)
+  package sha : 6d6ee3858cb93987a3355fdcf449d65951828cc3dc95c4db293e926e0b3ed57c
+  inventory   : C:\Users\user\Downloads\timber steam engine\mod\build\SteamEngineExpansion.sha256
+  build report: C:\Users\user\Downloads\timber steam engine\mod\build\build-report.json

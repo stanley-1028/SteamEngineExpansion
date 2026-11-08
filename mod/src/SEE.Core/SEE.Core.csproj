@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    SEE.Core: pure, game-free domain logic of the steam boiler mod.
+
+    No reference to Timberborn, Unity, Bindito or any third-party mod assembly is allowed here
+    (REQ-NFR-01, REQ-ARCH-03). That is what makes the production formulas, the boiler state
+    machine, the maintenance ledger, config validation and the save codec unit-testable without
+    launching the game.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>SEE.Core</AssemblyName>
+    <RootNamespace>SEE.Core</RootNamespace>
+  </PropertyGroup>
+
+</Project>
