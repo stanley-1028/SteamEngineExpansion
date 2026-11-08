@@ -14,8 +14,12 @@
 | `cover/qa-322x181.png` | 縮圖可讀性檢查 |
 | `cover/qa-square-1080.jpg` | 中心 1:1 方裁檢查 |
 | `DESCRIPTION.md` | 工作坊標題／描述（可直接貼上，含 BBCode） |
-| `workshop_data.json` | 首次上傳後由 Mods 管理器寫入 ItemId；現為空值模板 |
+| `workshop_data.template.json` | 上傳設定模板（**首次上傳前不要**把它改名成 `workshop_data.json`，見下方「常見錯誤」） |
 | `COVER_PROMPTS.md` | 封面 AI 提示詞與規格（可重生成） |
+
+> **常見錯誤（2026-11-08 實測）**：把 `workshop_data.json` 的 `ItemId` 留成空字串（`""`）放進 Mods 資料夾，
+> 遊戲在上傳面板開啟時會 `UInt64.Parse("")` → `FormatException` 崩潰。**首次上傳前不要有
+> `workshop_data.json`**；發佈成功後由遊戲寫入真正的 ItemId，或手動填入數字 ItemId。
 
 ## 發佈步驟（首次）
 
