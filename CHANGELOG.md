@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.0 發佈 — 2026-11-08（GitHub 開源發佈）
+
+- 新增 Steam Workshop 封面素材：`mod/workshop/cover/`（去浮水印的 1920×1080、壓字版、1280×720 縮圖、322×181／1:1 QA）與 `mod/workshop/thumbnail.png`；提示詞見 `mod/workshop/COVER_PROMPTS.md`。
+- 新增工作坊文案與上傳說明：`mod/workshop/DESCRIPTION.md`、`mod/workshop/README.md`、`mod/workshop/workshop_data.json`。
+- GitHub 發佈：<https://github.com/stanley-1028/SteamEngineExpansion>（MIT License；README 增列製作與致謝）。
+- 致謝：本模組與 **DeepSeek V4.1 Flash 1017** 共同完成。
+- Steam 工作坊：素材與文案已備，需在遊戲內 Mods 管理器以擁有者 Steam 帳號發佈（Steam 不提供可代發的公開 API）。
+
 ## 0.1.0 hotfix-4 — 2026-11-08（夜間待機運轉：有燃料與水就不再熄火；版本號不變）
 
 - **修正**：玩家回報「steam engine 一旦有燃料和水，就應該一直運作，而不是到了晚上就停機」。

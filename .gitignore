@@ -16,3 +16,6 @@ __pycache__/
 # os
 .DS_Store
 Thumbs.db
+
+# release assets
+dist/
