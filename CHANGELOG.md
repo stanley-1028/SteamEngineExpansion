@@ -6,6 +6,8 @@
 - 新增工作坊文案與上傳說明：`mod/workshop/DESCRIPTION.md`、`mod/workshop/README.md`、`mod/workshop/workshop_data.json`。
 - GitHub 發佈：<https://github.com/stanley-1028/SteamEngineExpansion>（MIT License；README 增列製作與致謝）。
 - **修正工作坊上傳崩潰**：`workshop_data.json` 的 `ItemId` 留空（`""`）會讓遊戲 `UInt64.Parse("")` 拋 `FormatException`；已從遊戲 Mods 資料夾移除該檔，repo 改為 `workshop_data.template.json`（不含 ItemId）。首次上傳前不要放 `workshop_data.json`，發佈成功後由遊戲寫入數字 ItemId。
+- **Steam 工作坊已上架（2026-11-08）**：<https://steamcommunity.com/sharedfiles/filedetails/?id=3836039641>（ItemId `3836039641`）。
+- 新增完整工作坊介绍文（简中 BBCode＋English summary）：`mod/workshop/DESCRIPTION.md`；README/工作坊说明同步更新上架链接与 ItemId。
 - 致謝：本模組與 **DeepSeek V4.1 Flash 1017** 共同完成。
 - Steam 工作坊：素材與文案已備，需在遊戲內 Mods 管理器以擁有者 Steam 帳號發佈（Steam 不提供可代發的公開 API）。
 

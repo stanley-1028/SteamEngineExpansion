@@ -1,8 +1,8 @@
 # Steam Workshop 發佈流程（本機已備好素材）
 
-> 為何以手動為主：Steam Workshop 的「建立／更新物品」只能由 Steam 用戶端在 Timberborn 的
-> Mods 管理器內完成（需要你的 Steam 帳號與遊戲授權）；GitHub Actions／SteamCMD 不能代為發佈
-> Timberborn 模組。本資料夾已把可上傳的素材與文案準備好。
+> **已上架（2026-11-08）**：<https://steamcommunity.com/sharedfiles/filedetails/?id=3836039641>
+> ItemId = `3836039641`，版本 0.1.0。`workshop_data.json` 已由遊戲寫入（repo 與已安裝模組皆同步）。
+> 本檔其餘內容保留作「更新／重新上傳」的參考。
 
 ## 已備素材
 
