@@ -24,7 +24,7 @@
       "name": "offline test runner passes PASS n/n",
       "blocking": true,
       "enforcedBy": "mod/build.ps1",
-      "evidence": "dotnet run --project tests/SEE.Tests -> 'PASS 495/495', exit code 0",
+      "evidence": "dotnet run --project tests/SEE.Tests -> 'PASS 510/510', exit code 0",
       "req": ["REQ-TEST-01", "REQ-NFR-07", "REQ-NFR-08"],
       "ac": ["AC-05", "AC-07", "AC-08", "AC-12", "AC-13"],
       "goNoGo": ["19.2-6"]
@@ -34,7 +34,7 @@
       "name": "blueprint generator --check reproduces every generated file",
       "blocking": true,
       "enforcedBy": "mod/build.ps1 (tools/generate-blueprints --check)",
-      "evidence": "'CHECK PASS (0 differences, 79 files, 24 blueprints)'",
+      "evidence": "'CHECK PASS (0 differences, 80 files, 24 blueprints)'",
       "req": ["REQ-ARCH-04", "REQ-ARCH-06", "REQ-NFR-09", "REQ-IMPL-02"],
       "ac": ["AC-01"],
       "goNoGo": ["19.2-3", "19.2-6"]
@@ -44,7 +44,7 @@
       "name": "generator's five data gates pass",
       "blocking": true,
       "enforcedBy": "mod/build.ps1 (tools/generate-blueprints)",
-      "evidence": "'gates : 5/5 PASS' (water tank / fuel stock >= 8x, dedicated water tank: no Water in ConsumedGoods and table tank size, efficiency criterion, fuel capacity equals the table cell by cell, no BuildingPipeSpec/PowerLineSpec/WorkplaceSpec)",
+      "evidence": "'gates : 5/5 PASS' (water tank autonomy >= 8x fuel autonomy (200 >= 8x25 hours), dedicated water tank: no Water in ConsumedGoods and table tank size, efficiency criterion, fuel capacity equals the table cell by cell, no BuildingPipeSpec/PowerLineSpec/WorkplaceSpec)",
       "req": ["REQ-BLD-09", "REQ-FUEL-08", "REQ-COMPAT-04", "REQ-COMPAT-05", "REQ-BAL-11"],
       "ac": ["AC-01", "AC-03"],
       "goNoGo": ["19.2-3", "19.2-6"]

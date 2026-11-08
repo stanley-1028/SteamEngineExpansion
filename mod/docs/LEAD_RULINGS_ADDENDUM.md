@@ -78,4 +78,23 @@
 | **AD-16** 夜間待機運轉 | 只要燃料與水充足且未暫停／維護／機況 0，鍋爐**不因電網需求 0 而停機**：`λ_run = max(λ, balance.standbyLoadRatio)`（預設 0.10、範圍 0.00–1.00；`0` 可恢復舊行為）。輸出、耗燃料、耗水、磨損一律使用 `λ_run`；`Idle` 只保留給「未接電網（`Graph==null`）」或玩家把 `standbyLoadRatio` 設 0 的情況。視覺依據：原版 `GoodPoweredGeneratorAnimator.UpdateAnimation` 只看 `MechanicalNode.OutputMultiplier > 0`（動畫速度為常數），因此待機 10% 與滿載在畫面上同為「持續運轉」。 | P2（`BoilerFormulas.OperationalLoadRatio`）／P3（controller `λ_run`）／P6（config validator）／P8 |
 | **AD-17** 待機運轉的取捨與驗收 | 取捨：夜間仍按待機比例燒燃料／水，且磨損公式有 0.40 下限（待機磨損≈0.46×滿載速率），維護會比純待機略頻繁；要完全省料可把 `balance.standbyLoadRatio` 設 0。離線驗收：`OperationalLoadRatio` 公式＋config clamp＋狀態機（待機 0.10 → `Running`）測試。實機驗收：白天照常按需求調節；**入夜後**引擎仍 `Running`、飛輪/煙霧持續、燃料與水緩慢下降、輸出約額定 10%（× 機況）；把 `standbyLoadRatio` 設 0 並重載後應恢復舊的 `Idle` 行為。未經人類簽核前不得宣稱通過。 | P6／P8 |
 
+## 八、2026-11-08 玩家回報：搬運工需求狀態＋耗水（Lead 裁定）
+
+> 來源：玩家回報「即便是沒有搬運工也好，也不會顯示『沒有搬運工就不能運作』，以及耗水量不要太大」。
+> 取證：本次以 `ApiIndex il` 重新 dump 遊戲 IL（`_investigate/out5-bugfix/il-nohaulingpost.txt`、`il-gcb-describer.txt`），
+> 並沿用 `_investigate/out2/inventory/il-goodconsuming.txt`、`il-gcb-config.txt`。離線門禁全綠後由 Lead 記錄。
+> 本節新增 AD-18～AD-20；其餘（燃料 GCB＋原版消耗永久 pause、λ、維護、存檔、AD-16 待機運轉）不變。
+
+| # | 裁定 | 生效範圍 |
+|---|---|---|
+| **AD-18** 完工鍋爐不得顯示原版「需要搬運工才能運轉」狀態 | 玩家要求：即使沒有搬運工，引擎也不顯示 `Status.Hauling.NoHaulingPost`（zhTW「需要搬運工才能運轉。」／enUS「Requires haulers to function.」）。根因（IL 已證實）：任何含 `GoodConsumingBuildingSpec` 的建築都由 `GoodConsumingBuildingSystemConfigurator` 掛上 `GoodConsumingBuildingStatusInitializer`＋`NoHaulingPostStatus`；該 initializer 的 `OnEnterFinishedState` **只在建築沒有 `Workplace` 時**呼叫 `NoHaulingPostStatus.Initialize(...)`。本模組鍋爐刻意免工人（生成器閘門 5 禁止 `WorkplaceSpec`），因此被原版判定為「需要搬運工」。修法：`SEEBoilerController` 在完工／讀檔啟用後以 public `NoHaulingPostStatus.Disable()` 關閉該狀態（**不刪除燃料 GCB、不改原版庫存／搬運路徑、不用 Harmony**）。`Disable()` 會移除 `HaulCandidate.InHaulingCenterRangeChanged` 訂閱並停用 toggle，但 `DistrictBuilding.ReassignedDistrict` 仍會呼叫 `UpdateStatus()`，故區域重指派後延後一個 settlement tick 再關一次；每次啟用連續關 3 個 tick，涵蓋 `IFinishedStateListener` 順序不確定。完工建築燃料／水耗盡仍以我方面板 `NoFuel`／`NoWater` 呈現；原版 `LackOfResourcesStatus`（區域內完全沒有該貨物的紅色示警）保留。擺放預覽（`BlockObject.IsPreview`）時原版說明列「需要搬運工。」屬原版預覽 UI、不是完工狀態，v1 不改，列 P8 觀察。 | P3（`SEEBoilerController.HaulerStatus.cs`）／P6（source-scan 測試）／P8 |
+| **AD-19** 全 12 檔耗水率減半（玩家要求「耗水量不要太大」） | `tierWaterRatePer100Hp`：T1 0.080→**0.040**、T2 0.070→**0.035**、T3 0.040→**0.020**、T4 0.018→**0.010**（每 100 hp 每小時；T4 取 0.010 以維持 `balance.waterRatePer100hp` 的 0.010 下限）。逐檔 `waterPerHour = round(hp/100 × rate, 2)`、水艙 `waterTankGoods = round(waterPerHour × 200)` **同步重算**（例：Small.T1 0.10→0.05、水艙 20→10；Large.T1 0.29→0.14、水艙 58→28；Large.T2 0.50→0.25、水艙 100→50）。`waterTankHours` 維持 200（**滿水艙自主時間不變**，每次補水只需一半貨物）；燃料、hp、研究／建造費、維護不變。水曲線仍嚴格遞減且 Mk.IV／Mk.I = 4.0×（REQ-BAL-09 下限）；T2–T4 仍 ≤ 原版 0.075（REQ-BAL-03）。需求文檔 §4.1／§6.2／§8 的舊耗水數值由本裁定取代。 | P1（`data/engines.json`、`SEE_Config.json`、生成器）／P3／P6（validator／balance-sim）／P7（BALANCE_REPORT）／P8 |
+| **AD-20** 生成器閘門 1 由「水艙貨物 ≥ 8× 燃料貨物」改為「水艙自主時間 ≥ 8× 燃料庫存自主時間」 | 舊閘門是「貨物比」代理量，只在舊耗水率成立；耗水減半後貨物比必然下降，但設計不變量並不是貨物比。新閘門：`waterTankHours ≥ 8 × fullInventoryWorkHours`（現值 200 ≥ 8×25 = 200），直接檢查 `engines.json` 的兩個契約常數，與費率無關；語意＝「滿水艙可撐滿燃料庫存 8 倍的時間」。生成器 gate 1 名稱／detail 改為 autonomy；`tools/release/release-gates.json` G04 evidence 文字同步。 | P1／P6 |
+
+> 離線門禁與實機待簽核項見 `docs/VERIFICATION.md`、`CHANGELOG.md`。本輪（2026-11-08 熱修-5）實測：
+> `build.ps1 -Clean` → **BUILD PASSED（G01–G22）**、**PASS 510/510**、generator `CHECK PASS（80 files）`＋`gates 5/5`、
+> validator **VALIDATION PASSED**（12/12）、balance-sim **PASS 12/12（4/4）**、負向測試 **control + 6/6**、
+> staged **132 檔／2,379,665 bytes**、package sha256 `4a661a1ed86301131b267ec7253c7972f36deeabcbd70d206bc29fd7023142c5`。
+> 實機驗收（AI 不得宣告通過）：完工鍋爐不再出現搬運工需求狀態、面板耗水換算約減半、既有存檔可正常載入、搬運工仍可補燃料與水。
+
 

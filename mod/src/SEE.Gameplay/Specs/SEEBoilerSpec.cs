@@ -40,7 +40,7 @@ namespace SEE.Gameplay
 
         /// <summary>Rated water items per game hour at full load (no faction multiplier).</summary>
         [Serialize]
-        public float WaterPerHour { get; set; } = 0.32f;
+        public float WaterPerHour { get; set; } = 0.16f;
 
         /// <summary>Fuel inventory capacity in whole goods (table value, both factions identical).</summary>
         [Serialize]
@@ -48,7 +48,7 @@ namespace SEE.Gameplay
 
         /// <summary>Water tank capacity in whole goods (table value, both factions identical).</summary>
         [Serialize]
-        public int WaterCapacityGoods { get; set; } = 64;
+        public int WaterCapacityGoods { get; set; } = 32;
 
         /// <summary>Fuel good ids this boiler accepts, for example ["Log"] or ["Log", "Plank"].</summary>
         [Serialize]

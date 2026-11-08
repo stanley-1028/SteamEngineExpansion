@@ -305,9 +305,9 @@ spec，**不使用命名空間全名**；缺 `[SpecAlias]` 會讓藍圖的自訂
 | `Faction` | string | `"Folktails"` | 顯示與診斷用 |
 | `Horsepower` | int | `460` | **已乘陣營輸出係數**（藍圖 `PowerOutput` 同值；控制器不得二次乘陣營，PLAN §4.5 裁決 D-3） |
 | `FuelPerHour` | float | `0.11f` | 已乘陣營燃料係數、2 位小數；**實際消耗率＝此值 × λ**（由 controller 以能量結算，見 §3.5.2）；**不等於** `ConsumedGoods.GoodPerHour`（後者僅供容量派生） |
-| `WaterPerHour` | float | `0.32f` | 未乘陣營（水耗兩陣營相同）；實際耗水＝此值 × λ |
+| `WaterPerHour` | float | `0.16f` | 未乘陣營（水耗兩陣營相同）；實際耗水＝此值 × λ。**2026-11-08 AD-19 起全 12 檔耗水率減半**（T1 0.040／T2 0.035／T3 0.020／T4 0.010 每 100 hp） |
 | `FuelCapacityGoods` | int | `3` | 表定值；兩陣營相同。容量由 `ConsumedGoods.GoodPerHour` 派生（§3.5.2），此欄位供生成器／validator 對帳 |
-| `WaterCapacityGoods` | int | `64` | 表定值為權威（液體 Stockpile 容量） |
+| `WaterCapacityGoods` | int | `32` | 表定值為權威（程式建立的水艙 `Inventory` 容量；AD-14） |
 | `FuelGoodIds` | string[] | `{ "Log" }` | 預設只允許 Log；T3／T4 由生成器逐檔寫入 `{ "Log", "Plank" }`（C-7） |
 | `FuelValues` | float[] | `{ 1.0f }` | 能量值：Log＝1.0、Plank＝2.0（1 木板＝2 原木能量） |
 | `FuelScaling` | string | `"proportional"` | `proportional`（預設）／`vanilla` |
@@ -363,7 +363,7 @@ IL 證實藍圖反序列化器**只對 `ImmutableArray<T>` 逐元素遞迴**；`
 |---|---|
 | 燃料庫存容量 | `Σ ceil(GoodPerHour_i × FullInventoryWorkHours)`；每項獨立 ceil 後相加 |
 | 水艙容量 | **不經 `GoodConsumingBuildingSpec`**；由程式建立的 `WaterTank` public input `Inventory` 以 `WaterCapacityGoods` 為容量（表定值權威；REQ-FUEL-08、REQ-BLD-09）。**不用液體 `StockpileSpec`**：Stockpile＋GCB 會雙初始化 `NoHaulingPostStatus` 而崩潰（2026-11-08 修根因） |
-| 生成器驗算 | 必須以 **float32 模擬** `CeilToInt` 後與表定 `fuelStock`／`waterTankGoods` 逐格相等（含 `Large.T1 = 58`）；生成器五道閘門之一 |
+| 生成器驗算 | 必須以 **float32 模擬** `CeilToInt` 後與表定 `fuelStock`／`waterTankGoods` 逐格相等（含 `Large.T1 = 28`，AD-19）；生成器五道閘門之一 |
 | 容量來源 | 由**表定 `fuelStock` 反推** `GoodPerHour`（見 §3.5.2）；**不是**由表定燃料率正向派生，避免陣營取整造成容量差 1 |
 
 - IL 補充（AD-10）：`GoodConsumingBuilding.MaximumWorkingTime = FullInventoryWorkHours + 1 / Max(GoodPerHour)`
@@ -446,29 +446,31 @@ IL 證實藍圖反序列化器**只對 `ImmutableArray<T>` 逐元素遞迴**；`
 
 | # | Blueprint（省略 `.Faction`） | 尺寸 | 占地 X×Y | 高 Z | hp | 研究點 | 建造費 | 燃料 Log/h | 水/h | 燃料庫存 | 水艙 |
 |---:|---|---|---|---:|---:|---:|---|---:|---:|---:|---:|
-| 1 | `SteamBoiler.Small.T1` | 小型 | 2×2 | 3 | 130 | 90 | Log 20 | 0.04 | 0.10 | 1 | 20 |
-| 2 | `SteamBoiler.Medium.T1` | 中型 | 3×3 | 3 | 230 | 150 | Log 30 | 0.07 | 0.18 | 2 | 36 |
-| 3 | `SteamBoiler.Large.T1` | 大型 | 4×4 | 4 | 360 | 225 | Log 45 | 0.12 | 0.29 | 3 | 58 |
-| 4 | `SteamBoiler.Small.T2` | 小型 | 2×2 | 3 | 260 | 240 | Plank 25＋Log 5 | 0.07 | 0.18 | 2 | 36 |
-| 5 | `SteamBoiler.Medium.T2` | 中型 | 3×3 | 3 | 460 | 400 | Plank 40＋Log 10 | 0.12 | 0.32 | 3 | 64 |
-| 6 | `SteamBoiler.Large.T2` | 大型 | 4×4 | 4 | 720 | 600 | Plank 60＋Log 15 | 0.18 | 0.50 | 5 | 100 |
-| 7 | `SteamBoiler.Small.T3` | 小型 | 2×2 | 3 | 380 | 420 | MetalBlock 30＋Plank 10 | 0.08 | 0.15 | 2 | 30 |
-| 8 | `SteamBoiler.Medium.T3` | 中型 | 3×3 | 3 | 680 | 700 | MetalBlock 50＋Plank 20 | 0.14 | 0.27 | 4 | 54 |
-| 9 | `SteamBoiler.Large.T3` | 大型 | 4×4 | 4 | 1060 | 1050 | MetalBlock 75＋Plank 30 | 0.22 | 0.42 | 6 | 84 |
-| 10 | `SteamBoiler.Small.T4` | 小型 | 2×2 | 3 | 520 | 900 | MetalBlock 45 | 0.08 | 0.09 | 2 | 18 |
-| 11 | `SteamBoiler.Medium.T4` | 中型 | 3×3 | 3 | 920 | 1500 | MetalBlock 70 | 0.15 | 0.17 | 4 | 34 |
-| 12 | `SteamBoiler.Large.T4` | 大型 | 4×4 | 4 | 1500 | 2250 | MetalBlock 105 | 0.24 | 0.27 | 6 | 54 |
+| 1 | `SteamBoiler.Small.T1` | 小型 | 2×2 | 3 | 130 | 90 | Log 20 | 0.04 | 0.05 | 1 | 10 |
+| 2 | `SteamBoiler.Medium.T1` | 中型 | 3×3 | 3 | 230 | 150 | Log 30 | 0.07 | 0.09 | 2 | 18 |
+| 3 | `SteamBoiler.Large.T1` | 大型 | 4×4 | 4 | 360 | 225 | Log 45 | 0.12 | 0.14 | 3 | 28 |
+| 4 | `SteamBoiler.Small.T2` | 小型 | 2×2 | 3 | 260 | 240 | Plank 25＋Log 5 | 0.07 | 0.09 | 2 | 18 |
+| 5 | `SteamBoiler.Medium.T2` | 中型 | 3×3 | 3 | 460 | 400 | Plank 40＋Log 10 | 0.12 | 0.16 | 3 | 32 |
+| 6 | `SteamBoiler.Large.T2` | 大型 | 4×4 | 4 | 720 | 600 | Plank 60＋Log 15 | 0.18 | 0.25 | 5 | 50 |
+| 7 | `SteamBoiler.Small.T3` | 小型 | 2×2 | 3 | 380 | 420 | MetalBlock 30＋Plank 10 | 0.08 | 0.08 | 2 | 16 |
+| 8 | `SteamBoiler.Medium.T3` | 中型 | 3×3 | 3 | 680 | 700 | MetalBlock 50＋Plank 20 | 0.14 | 0.14 | 4 | 28 |
+| 9 | `SteamBoiler.Large.T3` | 大型 | 4×4 | 4 | 1060 | 1050 | MetalBlock 75＋Plank 30 | 0.22 | 0.21 | 6 | 42 |
+| 10 | `SteamBoiler.Small.T4` | 小型 | 2×2 | 3 | 520 | 900 | MetalBlock 45 | 0.08 | 0.05 | 2 | 10 |
+| 11 | `SteamBoiler.Medium.T4` | 中型 | 3×3 | 3 | 920 | 1500 | MetalBlock 70 | 0.15 | 0.09 | 4 | 18 |
+| 12 | `SteamBoiler.Large.T4` | 大型 | 4×4 | 4 | 1500 | 2250 | MetalBlock 105 | 0.24 | 0.15 | 6 | 30 |
 
 > 表列為**基礎值（未乘陣營）**；研究點逐列加總 **8,525**。表中數值均為初版可調（需求 §20），但**任何調整
 > 只能改 `engines.json` 並重跑生成器＋判準**（PLAN §2.2、REQ-RISK-01）。
+> **2026-11-08 AD-19**：水/h 與水艙欄位全 12 檔減半（舊值 0.10/0.18/0.29/0.18/0.32/0.50/0.15/0.27/0.42/0.09/0.17/0.27
+> 與水艙 20/36/58/36/64/100/30/54/84/18/34/54 為歷史值）；`waterTankHours` 仍為 200，故滿水艙自主時間不變。
 
 **派生與陣營規則（凍結）**
 
 | 項目 | 規則 | 例 |
 |---|---|---|
 | 燃料率 | `round(ratedHorsepower/100 × tierFuelRate, 2)`；`T1 0.032／T2 0.025／T3 0.021／T4 0.016` | Medium.T2：460/100×0.025=0.115→0.12 |
-| 水耗率 | `round(ratedHorsepower/100 × tierWaterRate, 2)`；`T1 0.080／T2 0.070／T3 0.040／T4 0.018` | Medium.T2：0.161→0.16？**不**：表定 0.32 → 以 §4.2 表為準，生成器逐格驗算 |
-| 水艙 | `round(waterPerHour × 200)`（以 2 位小數水耗率算） | Large.T1：0.29×200=58 |
+| 水耗率 | `round(ratedHorsepower/100 × tierWaterRate, 2)`；**2026-11-08 AD-19 起** `T1 0.040／T2 0.035／T3 0.020／T4 0.010`（舊值 0.080／0.070／0.040／0.018） | Medium.T2：460/100×0.035=0.161→0.16（以 §4.2 表為準，生成器逐格驗算） |
+| 水艙 | `round(waterPerHour × 200)`（以 2 位小數水耗率算；`waterTankHours` 仍 200，AD-19） | Large.T1：0.14×200=28 |
 | 燃料庫存 | 表定值為權威（兩陣營相同）；容量由 `GoodPerHour` 反推生成（§3.5.2 最終公式：T1/T2 `(fuelStock−0.5)/25`；T3/T4 每項 `(fuelStock/2−0.5)/25`） | Medium.T2：fuelStock 3、容量速率 0.10 |
 | 陣營輸出 | `ceil(ratedHorsepower × factionOutput)`；FT 1.00／IT 1.05，**無條件進位** | Medium.T2 IT：ceil(483)=483 |
 | 陣營燃料 | `round(fuelPerHour × factionFuel, 2)`；FT 0.90／IT 1.00 | Medium.T2 FT：0.12×0.90=0.108→0.11 |
@@ -523,7 +525,7 @@ IL 證實藍圖反序列化器**只對 `ImmutableArray<T>` 逐元素遞迴**；`
 | `StockpileSpec`（含液體水艙） | Stockpile＋GCB 同棟會各加一個 `NoHaulingPostStatus` 初始化器，完工時崩潰；水艙改用程式建立的 public input 庫存 | Player.log 2026-11-07、2026-11-08 修根因 |
 | `GoodPoweredGeneratorSpec` | 原版 `PowerGenerationConfigurator` 會掛 `GoodPoweredGenerator`，其 `UpdateState` **每 tick** 執行 `node.SetOutputMultiplier(IsConsuming ? 1 : 0)` 並依 `Graph.RequiresPower` 自動 `PauseConsumption()/ResumeConsumption()` → 覆寫我方 λ、與我方燃料 toggle 互搶（AD-9） | `_investigate/findings-power.md` §1.5／§4.1；`_investigate/out2/power/il-goodpoweredgen.txt`、`il-powergen-configurator.txt` |
 | `PoweredGoodConsumingBuildingSpec` | 原版自動消耗／恢復元件，會與 controller 的「永久 pause＋手動扣料」互搶（AD-3／AD-9） | Lead 2026-11-06 指示；IL 待補 |
-| 自訂 `InventorySpec`／自訂庫存型別 | `InventorySpec` 不存在；水艙用原版 `StockpileSpec` | PLAN §1.4 第 10 條 |
+| 自訂 `InventorySpec`／自訂庫存型別 | `InventorySpec` 不存在；自訂庫存以 `IDedicatedDecoratorInitializer<SEEBoilerSpec, Inventory>`＋`InventoryInitializerFactory` 建立（水艙＝`SEEWaterInventoryInitializer`，AD-14） | PLAN §1.4 第 10 條 |
 | 覆寫原版藍圖路徑／loc key | 需求紅線 | SHARED_BRIEF §2 |
 
 ### 4.5 軸序、Blocks 與碰撞（R-B，必讀）
@@ -559,13 +561,13 @@ IL 證實藍圖反序列化器**只對 `ImmutableArray<T>` 逐元素遞迴**；`
 |---|---|---|
 | 燃料庫存 | 原版 `GoodConsumingBuildingSpec`（保留原版搬運／輸送帶／`EnterableSpec` 物流） | `FullInventoryWorkHours=25`；`ConsumedGoods` 只列 Log（T1/T2）或 Log＋Plank（T3/T4）；**`GoodPerHour` 只作容量派生**（§3.5.2 最終公式，不等於實際消耗率）；`InputGoods` 納入 Log／Plank 供輸送帶餵料（REQ-FUEL-16） |
 | 燃料消耗 | **原版消耗永久暫停**：`SEEBoilerController` 完成時呼叫 `GetGoodConsumingToggle().PauseConsumption()`；由 controller 以 `Inventory.TakeConsumed` 結算 `SEEBoilerSpec.FuelPerHour × λ` | AD-3 裁決；能量換算 Log=1.0／Plank=2.0；先 Log 後 Plank（1 Plank 抵 2 Log 能量）；`fuelScaling="vanilla"` 也由 controller 以 λ=1 實現，不恢復原版線性消耗 |
-| 水 | 我方 `SEEBoilerSpec`＋液體 `StockpileSpec`（容量 200 工時） | 由 controller 扣水；浮點餘量累積、滿 1 貨物才扣庫存；餘量不存檔（REQ-IMPL-06） |
-| 水艙貨物允許（AD-10） | `SEEBoilerController` 在初始化／完成時執行：`var allower = GetComponent<SingleGoodAllower>(); if (!allower.HasAllowedGood) allower.Allow("Water");`；**只在尚未設定時**設定，**不覆寫玩家選擇**（玩家選 Badwater 時引擎顯示 `NoWater`，屬預期） | IL：`StockpileInventoryInitializer.Initialize` 只呼叫 `AddAllowedGoodType(spec.WhitelistedGoodType)`＋`AddGoodDisallower(SingleGoodAllower)`；`SingleGoodAllower.AllowedAmount(good)` 在 `AllowedGood == null` 時對任何貨物回 0 → **不做 `Allow` 則水艙永遠收不到水**（搬運工／管網全被擋）。`Allow`／`HasAllowedGood` 皆 public（已 IL 證實） |
+| 水 | 程式建立的 `WaterTank` public input `Inventory`（AD-14；容量＝`SEEBoilerSpec.WaterCapacityGoods`，工時換算基準 200 h） | 由 controller 以 `TakeExisting` 扣水；浮點餘量累積、滿 1 貨物才扣庫存；餘量不存檔（REQ-IMPL-06）；容量於 AD-19 起依新耗水率重算（表定值） |
+| 水艙貨物允許（AD-14，取代 AD-10） | `SEEWaterInventoryInitializer` 以 `StorableGood.CreateGiveableAndTakeable("Water")` 建立貨物＋`initializer.HasPublicInput()`；**不再**需要 `SingleGoodAllower.Allow("Water")`（該路徑隨液體 `StockpileSpec` 一併退役） | IL：`InventoryInitializer.AddAllowedGood`／`HasPublicInput` 皆 public（已證實）；giveable-and-takeable 讓搬運工可補、controller 可 `TakeExisting` 扣（`_investigate/out2/inventory/il-inventory-initializer.txt`、2026-11-08 修根因） |
 | 燃料庫存貨物允許（AD-10 補充） | `GoodConsumingBuildingSpec` 的 allowed goods 為 `Givable`（非 takeable），搬運工走 `FillInput` 路徑；**不需** `SingleGoodAllower` | `_investigate/findings-inventory-maintenance.md` §2.2／§6 |
 | 消耗對帳（AD-10 補充） | 原版消耗永久暫停後 `GoodConsumingBuilding._suppliesLeft` **不會累積**；燃料對帳只算 **Inventory 整數差值** vs `FuelPerHour×24`，不需緩衝項 | `_investigate/findings-inventory-maintenance.md` §6 |
 | 消耗對帳 | 連續 1 遊戲日：實際扣除量 vs 表定 ≤ **±2%**；須分別涵蓋燃料（Log-only／Plank-fallback 兩路徑）與水 | REQ-IMPL-04；T2 門檻（§1.4）；P8 實機 gate |
 | 重複扣料 | 原版消耗已永久 pause；若實機仍重複扣料或 pause 無效 → 走 §3.5.3 備援（方案 C／單一 Log），**不得自行改契約** | AD-3；PLAN §4.5 D-10 |
-| 混裝 | 水艙／燃料庫存比 **≥8×**；混裝體積誤差上界 **≤12%** | REQ-COMPAT-04/05；生成器閘門 |
+| 混裝 | 生成器閘門 1（**AD-20**，取代舊「水艙／燃料庫存貨物比 ≥8×」）＝**水艙自主時間 ≥8× 燃料庫存自主時間**（`waterTankHours ≥ 8 × fullInventoryWorkHours`，現值 200 ≥ 8×25）；液體 `PipeTank` 混裝體積誤差上界仍 ≤12%（僅在 P8 接管管網時適用） | REQ-COMPAT-04/05；AD-20 |
 | 能量換算 | `FuelGoodIds`／`FuelValues` 由 spec 提供；程式不得硬寫 `Plank=2` | REQ-IMPL-05；需求 §13.4 E/value |
 
 ### 4.8 `Children` 結構（固定三層；template-reuse §3.3）
@@ -612,9 +614,11 @@ IL 證實藍圖反序列化器**只對 `ImmutableArray<T>` 逐元素遞迴**；`
 2. 派生驗算（燃料率、水耗率、水艙、燃料庫存），不直接寫值。
 3. 陣營展開（輸出 ceil、燃料 round；容量／成本／研究點不變）。
 4. 產生 24 份藍圖（路徑與 TemplateName 照 §4.1／§2.7）。
-5. 五道閘門（任一失敗即中止，不產生半套）：水艙／燃料庫存 ≥8×；混裝誤差 ≤12%；每 100hp 燃料與水 T2–T4 ≤ 原版
-   （0.025 Log/h、0.075 Water/h）、T1 燃料 ≤T2×1.3；`fuelStock`／`waterTankGoods` 與表定逐格相等（`ConsumedGoods.GoodPerHour`
-   依 §3.5.2 最終公式生成，並以 float32 模擬 `CeilToInt` 驗算容量）；藍圖不含 `BuildingPipeSpec`／`PowerLineSpec`。
+5. 五道閘門（任一失敗即中止，不產生半套）：**水艙自主時間 ≥8× 燃料庫存自主時間**（AD-20：
+   `waterTankHours ≥ 8×fullInventoryWorkHours`，現值 200 ≥ 8×25；舊「貨物比 ≥8×」已由 AD-20 取代）；混裝誤差 ≤12%；
+   每 100hp 燃料與水 T2–T4 ≤ 原版（0.025 Log/h、0.075 Water/h）、T1 燃料 ≤T2×1.3；`fuelStock`／`waterTankGoods`
+   與表定逐格相等（`ConsumedGoods.GoodPerHour` 依 §3.5.2 最終公式生成，並以 float32 模擬 `CeilToInt` 驗算容量）；
+   藍圖不含 `BuildingPipeSpec`／`PowerLineSpec`。
 6. 輸出黃金檔：`SEE.Tests/Golden/blueprints.sha256`（24 檔雜湊）與 `engines.derived.json`（派生對帳表）。
 7. `--check` 模式：只驗證不寫檔；CI 雜湊不符即 FAIL。
 
@@ -1041,10 +1045,10 @@ GetSingletons<ISaveableSingleton>() → Save`；存讀用 `SingletonKey("SEE")`�
 | 2 | `balance.fuelRatePer100hp.T2` | 0.025 | 0.010–0.040 |
 | 3 | `balance.fuelRatePer100hp.T3` | 0.021 | 0.010–0.040 |
 | 4 | `balance.fuelRatePer100hp.T4` | 0.016 | 0.010–0.040 |
-| 5 | `balance.waterRatePer100hp.T1` | 0.080 | 0.010–0.100 Water/h |
-| 6 | `balance.waterRatePer100hp.T2` | 0.070 | 0.010–0.100 |
-| 7 | `balance.waterRatePer100hp.T3` | 0.040 | 0.010–0.100 |
-| 8 | `balance.waterRatePer100hp.T4` | 0.018 | 0.010–0.100 |
+| 5 | `balance.waterRatePer100hp.T1` | 0.040 | 0.010–0.100 Water/h |
+| 6 | `balance.waterRatePer100hp.T2` | 0.035 | 0.010–0.100 |
+| 7 | `balance.waterRatePer100hp.T3` | 0.020 | 0.010–0.100 |
+| 8 | `balance.waterRatePer100hp.T4` | 0.010 | 0.010–0.100 |
 | 9 | `balance.faction.outputMultiplier.Folktails` | 1.00 | 0.95–1.10 |
 | 10 | `balance.faction.outputMultiplier.IronTeeth` | 1.05 | 0.95–1.10 |
 | 11 | `balance.faction.fuelMultiplier.Folktails` | 0.90 | 0.80–1.10 |
@@ -1164,6 +1168,10 @@ GetSingletons<ISaveableSingleton>() → Save`；存讀用 `SingletonKey("SEE")`�
 
 - 磨損只發生在**帶載運轉**（實際輸出 > 0，即 `Running`／`MaintenanceDue`／`Worn`／`Critical`）；其餘狀態不磨損（C-4）。
 - 狀態門檻 100/60/40/20/0 與乘數同段、無重疊；邊界逐一斷言（REQ-MAINT-05）。
+- **原版搬運工需求狀態（AD-18，2026-11-08）**：完工鍋爐上原版 `Status.Hauling.NoHaulingPost`（zhTW「需要搬運工才能運轉。」／
+  enUS「Requires haulers to function.」）由 `SEEBoilerController.HaulerStatus.cs` 以 public `NoHaulingPostStatus.Disable()`
+  關閉；`DistrictBuilding.ReassignedDistrict` 之後延後一個 settlement tick 再關一次。此為**原版狀態覆寫，不是新狀態**：
+  我方 `NoFuel`／`NoWater`／`NeedsMaintenance` 等九主狀態（SEE 面板徽章自行繪製）不受影響。
 
 **AD-12 裁決（Lead 2026-11-06）：狀態優先序以本表為準，並以「適用性」解決 Idle／磨損帶的文件內部矛盾。**
 需求 §13.5 偽代碼（其註解其實寫 `Paused > NoFuel > NoWater > NeedsMaintenance`）的程式碼把 `condition<=0` 放在燃料之前、`Idle` 放在磨損帶之前，與 §3.3 表／§15.3（「不得改寫」）／REQ-CORE-06（「依 3.3 表優先序判定」）衝突。裁定：
@@ -1185,7 +1193,7 @@ GetSingletons<ISaveableSingleton>() → Save`；存讀用 `SingletonKey("SEE")`�
 | 水 | `表定耗水率 × min(1, 實際輸出/額定)`；無水 → 輸出 0、`NoWater`、燃料停止扣除（REQ-FUEL-07） |
 | 扣除時機 | 只在帶載運轉扣除（λ_run>0，含夜間待機運轉）；`Idle`／`Paused`／`NoFuel`／`NoWater`／`NeedsMaintenance`／`Maintaining` 不扣（REQ-FUEL-05；2026-11-08 AD-16） |
 | 扣料路徑 | 單一消耗路徑（controller）、不得重複扣料；連續 1 遊戲日對帳 ≤±2%（REQ-IMPL-04、AD-3） |
-| 水艙允許（AD-10） | controller 初始化時確保 `SingleGoodAllower` 已 `Allow("Water")`（僅未設定時；不覆寫玩家選擇）；否則液體貨物被 disallower 擋住、永不進水，所有水相關 REQ 失效 |
+| 水艙允許（AD-14） | 水艙貨物由 `SEEWaterInventoryInitializer` 以 `StorableGood.CreateGiveableAndTakeable("Water")`＋`HasPublicInput()` 建立；不再使用 `SingleGoodAllower`（液體 `StockpileSpec` 路徑已退役） |
 | 對帳口徑（AD-10） | 原版消耗永久暫停 → `_suppliesLeft` 不累積；燃料／水對帳以 **Inventory 整數差值** 計算，不含浮點緩衝項 |
 | 水貨物整數化 | 浮點餘量累積、滿 1 貨物才扣庫存；餘量不存檔、載入歸零（REQ-IMPL-06） |
 | 燃料能量 | `FuelGoodIds`／`FuelValues` 資料驅動；Log 1.0／Plank 2.0；程式不得硬寫（REQ-IMPL-05） |
@@ -1378,6 +1386,7 @@ GetSingletons<ISaveableSingleton>() → Save`；存讀用 `SingletonKey("SEE")`�
 | 1.3-P0-rev | 2026-11-06 | 納入 `findings-inventory-maintenance` 取證與 Lead 裁決 **AD-10**：§4.7／§8.3 新增「水艙必須由 controller `SingleGoodAllower.Allow("Water")`（僅未設定時、不覆寫玩家）」、燃料 GCB `Givable`／`FillInput` 說明、對帳只算 Inventory 整數差值；§3.5.1 補 `MaximumWorkingTime = FullInventoryWorkHours + 1/Max(GoodPerHour)` 診斷註記 | docs-contract（P0） |
 | 1.4-P0-rev | 2026-11-06 | 依 Lead D-6 最終裁決改為**混合形態**：§6.1／§6.2／§6.4–§6.9 改寫（世界節點 `Singletons.SEE` 只存版本／checksum／4 欄索引／compat；逐棟 7 欄狀態存 `ComponentKey("SEE")` 的 `IPersistentEntity`）＋**AD-11** 偏離登記；補列舉限制（不得 `EntityComponentRegistry.GetAll<T>()`）、Guid 原生存檔 primitive、附錄 C（A5 載入／格式事實） | docs-contract（P0） |
 | 1.5-P0-rev | 2026-11-08 | 納入 Lead 裁決 **AD-16（夜間待機運轉，取代 D-4 的「需求 0→Idle」）**：新增 `balance.standbyLoadRatio`（預設 0.10、範圍 0.00–1.00）與 `λ_run = max(λ, standbyLoadRatio)`；§5.2 狀態表 `Idle`／`Running` 適用性、§8.3 扣除時機、§8.4 λ／零需求列同步；根因＝`WorkplacePowerConsumptionSwitch` 在非工作時間停用耗電端使 `Graph.PowerDemand=0`（玩家回報「晚上引擎停機」） | Lead（本輪修根因） |
+| 1.6-P0-rev | 2026-11-08 | 納入 Lead 裁決 **AD-18／AD-19／AD-20**（玩家回報「沒有搬運工就顯示不能運轉＋耗水太大」）：§8.2 新增完工鍋爐原版 `Status.Hauling.NoHaulingPost` 由 public `NoHaulingPostStatus.Disable()` 關閉（區域重指派後延後再關）；§4.2／§3.2／§7.4 耗水率全 12 檔減半（T1 0.040／T2 0.035／T3 0.020／T4 0.010）與水艙重算（水自主時間仍 200 h）；§4.7／§4.10 生成器閘門 1 改為「水艙自主時間 ≥8× 燃料庫存自主時間」；§4.7 水艙庫存描述更新為 AD-14 的程式建立 public input `Inventory`（舊 `StockpileSpec`／`SingleGoodAllower` 敘述退役） | Lead（本輪修根因） |
 
 > 後續變更必須由 Lead 核准並在此表累加；任何卡片不得直接改本檔。
 

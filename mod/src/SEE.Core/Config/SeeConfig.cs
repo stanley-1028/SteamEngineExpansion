@@ -100,7 +100,7 @@ namespace SEE.Core.Config
         private static SeeConfig BuildDefault()
         {
             var fuel = new ReadOnlyCollection<float>(new[] { 0.032f, 0.025f, 0.021f, 0.016f });
-            var water = new ReadOnlyCollection<float>(new[] { 0.080f, 0.070f, 0.040f, 0.018f });
+            var water = new ReadOnlyCollection<float>(new[] { 0.040f, 0.035f, 0.020f, 0.010f });
             var intervals = new ReadOnlyCollection<float>(new[] { 6f, 8f, 10f, 12f });
             var lod = new ReadOnlyCollection<float>(new[] { 18f, 40f });
             var tris = new ReadOnlyCollection<int>(new[] { 3500, 6000, 9000 });

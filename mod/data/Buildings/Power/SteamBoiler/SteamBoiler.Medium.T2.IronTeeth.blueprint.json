@@ -325,9 +325,9 @@
     "Faction": "IronTeeth",
     "Horsepower": 483,
     "FuelPerHour": 0.12,
-    "WaterPerHour": 0.32,
+    "WaterPerHour": 0.16,
     "FuelCapacityGoods": 3,
-    "WaterCapacityGoods": 64,
+    "WaterCapacityGoods": 32,
     "FuelGoodIds": [
       "Log"
     ],

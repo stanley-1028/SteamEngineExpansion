@@ -37,10 +37,10 @@ internal sealed class EnginesChecks
 
     private static readonly Dictionary<string, decimal> TierWaterRate = new(StringComparer.Ordinal)
     {
-        ["T1"] = 0.080m,
-        ["T2"] = 0.070m,
-        ["T3"] = 0.040m,
-        ["T4"] = 0.018m,
+        ["T1"] = 0.040m,
+        ["T2"] = 0.035m,
+        ["T3"] = 0.020m,
+        ["T4"] = 0.010m,
     };
 
     private static readonly Dictionary<string, int> TierIntervalDays = new(StringComparer.Ordinal)

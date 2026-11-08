@@ -28,16 +28,23 @@
   </ItemGroup>
 
   <!--
-    One game assembly the shared reference set in Directory.Build.targets does not list yet
-    (P3 needs it for the fuel inventory, CONTRACT_SEE §3.5/§4.7):
-      * Timberborn.GoodConsumingBuildingSystem: GoodConsumingBuilding / GoodConsumingToggle (AD-3).
+    Two game assemblies the shared reference set in Directory.Build.targets does not list yet:
+      * Timberborn.GoodConsumingBuildingSystem: GoodConsumingBuilding / GoodConsumingToggle (AD-3,
+        P3 needs it for the fuel inventory, CONTRACT_SEE §3.5/§4.7).
+      * Timberborn.Hauling: NoHaulingPostStatus. Gameplay fix 2026-11-08: the vanilla
+        GoodConsumingBuildingStatusInitializer shows its "requires haulers" status on our
+        worker-free boilers; the controller calls the component's public Disable() opt-out.
     The water tank is a plain Inventory created by SEEWaterInventoryInitializer, so
     Timberborn.Stockpiles is no longer referenced (bug fix 2026-11-08).
-    Private=false keeps the reference out of the shipped output (the game supplies it).
+    Private=false keeps the references out of the shipped output (the game supplies them).
   -->
   <ItemGroup>
     <Reference Include="Timberborn.GoodConsumingBuildingSystem">
       <HintPath>$(TimberbornManagedDir)\Timberborn.GoodConsumingBuildingSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Timberborn.Hauling">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.Hauling.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>

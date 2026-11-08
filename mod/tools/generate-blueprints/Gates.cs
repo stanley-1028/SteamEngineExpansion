@@ -34,7 +34,7 @@ internal static class Gates
     {
         var results = new List<GateResult>
         {
-            TankToFuelRatio(rows),
+            WaterTankAutonomy(catalog),
             WaterTankSeparation(rows),
             EfficiencyCriterion(catalog),
             CapacityTable(rows),
@@ -52,23 +52,20 @@ internal static class Gates
         return results;
     }
 
-    private static GateResult TankToFuelRatio(IReadOnlyList<DerivedRow> rows)
+    /// <summary>
+    /// Gate 1 (repurposed by AD-20 after the AD-19 water-rate halving). Halving the rated water rates
+    /// shrinks the dedicated water tank, so the old <c>waterTankGoods / fuelStock &gt;= 8x</c> goods
+    /// ratio proxy no longer holds by design. The meaningful invariant is autonomy, not goods volume:
+    /// a full water tank must still last at least eight full fuel inventories
+    /// (<c>catalog.WaterTankHours &gt;= 8 x catalog.FullInventoryWorkHours</c>, i.e. 200 &gt;= 8 x 25 = 200).
+    /// </summary>
+    private static GateResult WaterTankAutonomy(Catalog catalog)
     {
-        var minimum = decimal.MaxValue;
-        var minimumLabel = string.Empty;
-        foreach (var row in rows)
-        {
-            var ratio = (decimal)row.Engine.WaterTankGoods / row.Engine.FuelStock;
-            if (ratio < minimum)
-            {
-                minimum = ratio;
-                minimumLabel = row.Engine.Size + "." + row.Engine.Tier;
-            }
-        }
-
-        var pass = minimum >= 8m;
-        return new GateResult(1, "water tank / fuel stock >= 8x", pass,
-            "min " + Show(minimum) + " (" + minimumLabel + ")");
+        var minimum = 8m * catalog.FullInventoryWorkHours;
+        var pass = catalog.WaterTankHours >= minimum;
+        return new GateResult(1, "water tank autonomy >= 8x fuel autonomy", pass,
+            Show(catalog.WaterTankHours) + " water-tank hours >= 8 x " + Show(catalog.FullInventoryWorkHours)
+            + " fuel-inventory hours (" + Show(minimum) + ")");
     }
 
     /// <summary>

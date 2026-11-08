@@ -14,6 +14,13 @@
 > 2026-11-08 行為修正（熱修-4，Lead 裁決 AD-16）：**夜間待機運轉**——只要燃料與水充足且未暫停／維護／機況 0，
 > 即使入夜後電網需求為 0，引擎仍以 `balance.standbyLoadRatio`（預設 **0.10**）持續運轉，不再熄火停機；
 > 設 `0` 可恢復舊的 `Idle` 行為（玩家回報「晚上引擎停機」；根因＝原版在非工作時間停用耗電端使 `PowerDemand` 歸零）。
+>
+> 2026-11-08 修正（熱修-5，Lead 裁決 AD-18／AD-19／AD-20，玩家回報）：
+> **① 不再顯示「需要搬運工才能運轉」**——完工鍋爐以 public `NoHaulingPostStatus.Disable()` 關閉原版搬運工需求狀態
+> （沒有搬運工／搬運站時也不顯示；根因＝原版對「無 `Workplace` 的 GCB 建築」自動掛上該狀態；不刪燃料庫存、不改搬運路徑、不用 Harmony）。
+> **② 耗水量全 12 檔減半**——每 100 hp 耗水 T1 0.040／T2 0.035／T3 0.020／T4 0.010（舊值 0.080／0.070／0.040／0.018）；
+> 水艙容量依新耗水率重算（`waterTankHours` 仍 200，滿艙自主時間不變），燃料與其他數值不變。
+> 生成器閘門 1 同步改為「水艙自主時間 ≥8× 燃料庫存自主時間」（AD-20）。
 
 ---
 
@@ -48,20 +55,23 @@
 
 | 檔位 | 佔地×高 | 輸出 hp（FT／IT） | 燃料 Log/h（FT／IT） | 水/h | 燃料庫存 | 水艙 | 研究點 | 維護間隔 | 維護材料／次 |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---|
-| 小型 Mk.I | 2×2×3 | 130／137 | 0.04／0.04 | 0.10 | 1 | 20 | 90 | 6 日 | Log 8 |
-| 中型 Mk.I | 3×3×3 | 230／242 | 0.06／0.07 | 0.18 | 2 | 36 | 150 | 6 日 | Log 8 |
-| 大型 Mk.I | 4×4×4 | 360／378 | 0.11／0.12 | 0.29 | 3 | 58 | 225 | 6 日 | Log 8 |
-| 小型 Mk.II | 2×2×3 | 260／273 | 0.06／0.07 | 0.18 | 2 | 36 | 240 | 8 日 | Plank 12＋Gear 2 |
-| 中型 Mk.II | 3×3×3 | 460／483 | 0.11／0.12 | 0.32 | 3 | 64 | 400 | 8 日 | Plank 12＋Gear 2 |
-| 大型 Mk.II | 4×4×4 | 720／756 | 0.16／0.18 | 0.50 | 5 | 100 | 600 | 8 日 | Plank 12＋Gear 2 |
-| 小型 Mk.III | 2×2×3 | 380／399 | 0.07／0.08 | 0.15 | 2 | 30 | 420 | 10 日 | MetalBlock 10＋Plank 10 |
-| 中型 Mk.III | 3×3×3 | 680／714 | 0.13／0.14 | 0.27 | 4 | 54 | 700 | 10 日 | MetalBlock 10＋Plank 10 |
-| 大型 Mk.III | 4×4×4 | 1060／1113 | 0.20／0.22 | 0.42 | 6 | 84 | 1050 | 10 日 | MetalBlock 10＋Plank 10 |
-| 小型 Mk.IV | 2×2×3 | 520／546 | 0.07／0.08 | 0.09 | 2 | 18 | 900 | 12 日 | MetalBlock 12＋Gear 6 |
-| 中型 Mk.IV | 3×3×3 | 920／966 | 0.14／0.15 | 0.17 | 4 | 34 | 1500 | 12 日 | MetalBlock 12＋Gear 6 |
-| 大型 Mk.IV | 4×4×4 | 1500／1575 | 0.22／0.24 | 0.27 | 6 | 54 | 2250 | 12 日 | MetalBlock 12＋Gear 6 |
+| 小型 Mk.I | 2×2×3 | 130／137 | 0.04／0.04 | 0.05 | 1 | 10 | 90 | 6 日 | Log 8 |
+| 中型 Mk.I | 3×3×3 | 230／242 | 0.06／0.07 | 0.09 | 2 | 18 | 150 | 6 日 | Log 8 |
+| 大型 Mk.I | 4×4×4 | 360／378 | 0.11／0.12 | 0.14 | 3 | 28 | 225 | 6 日 | Log 8 |
+| 小型 Mk.II | 2×2×3 | 260／273 | 0.06／0.07 | 0.09 | 2 | 18 | 240 | 8 日 | Plank 12＋Gear 2 |
+| 中型 Mk.II | 3×3×3 | 460／483 | 0.11／0.12 | 0.16 | 3 | 32 | 400 | 8 日 | Plank 12＋Gear 2 |
+| 大型 Mk.II | 4×4×4 | 720／756 | 0.16／0.18 | 0.25 | 5 | 50 | 600 | 8 日 | Plank 12＋Gear 2 |
+| 小型 Mk.III | 2×2×3 | 380／399 | 0.07／0.08 | 0.08 | 2 | 16 | 420 | 10 日 | MetalBlock 10＋Plank 10 |
+| 中型 Mk.III | 3×3×3 | 680／714 | 0.13／0.14 | 0.14 | 4 | 28 | 700 | 10 日 | MetalBlock 10＋Plank 10 |
+| 大型 Mk.III | 4×4×4 | 1060／1113 | 0.20／0.22 | 0.21 | 6 | 42 | 1050 | 10 日 | MetalBlock 10＋Plank 10 |
+| 小型 Mk.IV | 2×2×3 | 520／546 | 0.07／0.08 | 0.05 | 2 | 10 | 900 | 12 日 | MetalBlock 12＋Gear 6 |
+| 中型 Mk.IV | 3×3×3 | 920／966 | 0.14／0.15 | 0.09 | 4 | 18 | 1500 | 12 日 | MetalBlock 12＋Gear 6 |
+| 大型 Mk.IV | 4×4×4 | 1500／1575 | 0.22／0.24 | 0.15 | 6 | 30 | 2250 | 12 日 | MetalBlock 12＋Gear 6 |
 
 - 燃料庫存＝`ceil(燃料/h × 25)`；水艙＝`round(水/h × 200)`（水貨物量；1 m³＝5 水，V-07 待證實）。
+- **2026-11-08 AD-19**：水/h 與水艙欄位全 12 檔減半（上述為新值；舊值 0.10/0.18/0.29/0.18/0.32/0.50/0.15/0.27/0.42/0.09/0.17/0.27
+  與水艙 20/36/58/36/64/100/30/54/84/18/34/54 為歷史值）。`waterTankHours` 仍 200 → 滿艙可運轉 200 遊戲小時不變，
+  每小時耗水減半、每次補水也只需一半貨物。
 - 燃料白名單：T1／T2 只收 **Log**；T3／T4 收 **Log＋Plank**（Plank 消耗率 ×0.5、能量 ×2）。
 - 陣營燃料值為 2 位小數量化後結果；FT 有 3 檔因進位與基礎值相同（資料標記 `factionFuelCollapsed`）。
 - 建造費：T1 Log 20／30／45；T2 Plank 25+Log 5／40+10／60+15；T3 MetalBlock 30+Plank 10／50+20／75+30；
@@ -106,6 +116,9 @@
   失去獨立搬運目標），也不再使用會觸發 `NoHaulingPostStatus` 雙初始化崩潰的 `StockpileSpec`。
   Timber Pipes 的 `tank`／`valve` 模式仍暫不支援（`auto`→`hauler`）。
 - 半載時燃料／水耗約為滿載 50%；夜間/零需求時以待機負載（預設 10%）運轉、燃料與水按比例消耗（實機待驗，見 TEST_PROTOCOL 步驟 2／4／5／5b）。
+- **不顯示原版搬運工需求狀態（AD-18，2026-11-08）**：完工鍋爐以 public `NoHaulingPostStatus.Disable()`
+  關閉原版 `Status.Hauling.NoHaulingPost`（zhTW「需要搬運工才能運轉。」）；區域重指派後延後一個結算 tick 再關一次。
+  我方 `NoFuel`／`NoWater` 等面板狀態不受影響；**擺放預覽**時原版說明列（「需要搬運工。」）仍會出現，屬原版工具 UI、v1 不改。
 
 ### 3.3 維護（照需求 §9／§6）
 
@@ -142,7 +155,7 @@
 3. 啟動遊戲 → Mods 清單應出現 **Steam Engine Expansion v0.1.0**。
 4. 依賴：**只需遊戲本體**（1.1.0.0+，實測 1.1.2.8）；不需要 Harmony，三個外部模組皆為選用。
 
-> 本機已安裝於 `C:\Users\user\Documents\Timberborn\Mods\SteamEngineExpansion`（132 檔、2,378,127 bytes、
+> 本機已安裝於 `C:\Users\user\Documents\Timberborn\Mods\SteamEngineExpansion`（132 檔、2,379,665 bytes、
 > 與 `build/` 逐檔 SHA-256 0 mismatch）。詳細清單與雜湊見 `docs/PACKAGE.md`。
 
 ### 4.2 移除
@@ -155,7 +168,7 @@
 ```powershell
 cd "C:\Users\user\Downloads\timber steam engine"
 powershell -NoProfile -ExecutionPolicy Bypass -File mod/build.ps1 -Clean
-# 產出 mod/build/SteamEngineExpansion/（0 warning、PASS 504/504、VALIDATION PASSED、22 gates）
+# 產出 mod/build/SteamEngineExpansion/（0 warning、PASS 510/510、VALIDATION PASSED、22 gates）
 
 dotnet run --project mod/tools/balance-sim -c Release -m:1        # 30 日平衡／四判準
 dotnet run --project mod/tools/generate-blueprints -c Release -m:1 -- --check   # 0 diff
@@ -171,7 +184,7 @@ mod/
 ├── src/SEE.Gameplay     # spec／控制器／tick／燃料水消耗／維護／存檔橋
 ├── src/SEE.Integration  # TP／PL／CB 偵測與降級、供水模式、存檔整合
 ├── src/SEE.UI           # 建築面板、狀態徽章、63 鍵 loc 對映
-├── tests/SEE.Tests      # 零 NuGet 測試 runner（504 項）
+├── tests/SEE.Tests      # 零 NuGet 測試 runner（510 項）
 ├── tools/               # generate-blueprints／validate／balance-sim／ApiIndex／stage-json-mvp
 ├── data/                # engines.json（唯一數值源）、生成物、loc、icons、config、manifest
 └── build/SteamEngineExpansion  # 可安裝包（見 docs/PACKAGE.md）
@@ -198,6 +211,7 @@ mod/
 9. **平衡敏感列**：小型 Mk.II 燃料 0.07 的 ±8% 捨入上界、大型 Mk.IV 30 日餘裕 +2.93%；調整前須重跑判準。
 10. **V-10 外部模組競爭**：`More Mines` 的 `TWSteamEngine`（750 hp）定位未實測；本模組只承諾不新增燃料。
 11. **夜間待機運轉的代價（2026-11-08 AD-16）**：預設 `balance.standbyLoadRatio=0.10`，夜間仍耗 10% 燃料／水並累積磨損（係數下限 0.40 → 約滿載磨損的 0.46 倍）；把該值設 0 可完全恢復舊的「需求 0 不耗料」行為。夜間待機的實機表現尚待人類簽核。
+12. **原版搬運工需求狀態只剩「擺放預覽」（2026-11-08 AD-18）**：完工鍋爐的原版 `Status.Hauling.NoHaulingPost` 已由我方關閉；但**建造預覽**面板仍顯示原版「需要搬運工。」說明列（`GoodConsumingBuildingDescriber` 只在 `BlockObject.IsPreview` 且無 `Workplace` 時建立，屬原版工具 UI）。v1 不 patch 原版 UI，列 P8 觀察。
 
 ### 6.1 V-01～V-10 待證實（不得當成事實）
 

@@ -32,11 +32,28 @@
 7. 發佈後，把新物品的 **ItemId** 填回 `workshop_data.json` 的 `ItemId`（供之後更新使用）。
 8. 把工作坊連結補到 repo README 與 GitHub About。
 
-## 之後更新
+## 之後更新（v0.1.0 熱修-5 之後）
 
-1. 重新 `powershell -NoProfile -ExecutionPolicy Bypass -File mod/build.ps1 -Clean`
-2. 在 Mods 管理器選 **Update**；`workshop_data.json` 的 `Update*` 欄位控制要同步的內容。
-3. 版本號與 `CHANGELOG.md` 同步。
+> **重要**：Steam 工作坊**沒有可供外部程式發佈／更新的公開 API**。更新只能由擁有者在 Timberborn 遊戲內
+> 的 **Mods → Steam Engine Expansion → Update（發佈到工作坊）** 按鈕完成（需要擁有者 Steam 帳號）。
+> AI 已把更新所需的檔案與文案備好，下列步驟可由任何人執行。
+
+**更新前置（已安裝模組資料夾內必須有）**：
+- `workshop_data.json`（`ItemId = 3836039641`，`UpdateDescription/UpdateVisibility/UpdatePreview/UpdateTags = true`）
+- `thumbnail.png` ＋ `thumbnail.png.meta.json`（工作坊預覽，1280×720）
+- 以上檔案不在 `mod/build/SteamEngineExpansion/` 的出貨白名單內；更新前請從 `mod/workshop/` 複製到
+  `%USERPROFILE%\Documents\Timberborn\Mods\SteamEngineExpansion\`（不要覆蓋其他 132 檔）。
+
+**更新步驟**：
+1. 完成安裝（見 `docs/PACKAGE.md`）：把 `Documents\Timberborn\Mods\SteamEngineExpansion\` 更新為最新建置（132 檔）。
+2. 將 `mod/workshop/workshop_data.json`、`thumbnail.png`、`thumbnail.png.meta.json` 複製到同一資料夾。
+3. 啟動 Timberborn → 主選單 **Mods** → **Steam Engine Expansion** → **Update**（按鈕可能顯示 `Update`／`Publish`）；
+   標題、描述、封面、標籤照 `DESCRIPTION.md`（中文）／`DESCRIPTION.en.md`（English）。`Update*` 欄位會同步描述／可見性／預覽／標籤。
+4. 上傳完成後，把 `CHANGELOG.md` 的 hotfix-5 摘要貼到工作坊公告（可選）。
+5. 確認 `Player.log` 無 `FormatException`／上傳錯誤；`workshop_data.json` 的 ItemId 不應改變。
+
+**熱修-5 已備內容（2026-11-08）**：完工引擎移除原版「需要搬運工才能運轉」狀態、全 12 檔耗水減半、水艙同步重算；
+`DESCRIPTION.md`／`DESCRIPTION.en.md` 已加入「更新（熱修-5）」段，以及已知限制「擺放預覽仍會顯示原版說明列（完工建築不會）」。
 
 ## 注意
 

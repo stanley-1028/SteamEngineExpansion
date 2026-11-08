@@ -109,6 +109,9 @@ namespace SEE.Gameplay.Components
             {
                 ResolveEntityId();
                 TryResolveComponents();
+                // Gameplay fix 2026-11-08: drop the vanilla "requires haulers" status the
+                // GoodConsumingBuildingStatusInitializer adds to every workplace-less consumer.
+                ResolveHaulerStatusSuppression();
                 ApplyRules();
                 // P4B read-only snapshot: the panel shows a real material list from the first frame
                 // instead of the unknown glyph while the 10-tick refresh has not run yet.
@@ -184,6 +187,9 @@ namespace SEE.Gameplay.Components
             // Owner-side parity with vanilla inventory owners: an unfinished/reverted building must
             // not stay a hauling target.
             DisableWaterInventory();
+            // Gameplay fix 2026-11-08: unsubscribe the district reassignment handler and drop the
+            // status reference before the component is disabled.
+            ReleaseHaulerStatusSuppression();
             DisableComponent();
         }
 

@@ -45,6 +45,11 @@ namespace SEE.Gameplay.Components
                 }
 
                 TryResolveComponents();
+                // Gameplay fix 2026-11-08: the vanilla good-consumer status initializer initialises
+                // NoHaulingPostStatus at finish time (listener order is unspecified), so the deferred
+                // disable runs on the settlement ticks instead of once during activation.
+                ResolveHaulerStatusSuppression();
+                ApplyHaulerStatusSuppression();
                 EnsureVanillaConsumptionPaused();
                 EnableWaterInventory();
                 WarnIfWaterTankMissing();

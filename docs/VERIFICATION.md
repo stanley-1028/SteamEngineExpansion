@@ -16,12 +16,21 @@
 > `standbyLoadRatio=0`。離線門禁：`build.ps1 -Clean` → **BUILD PASSED（G01–G22 全綠）**、**PASS 504/504**、
 > generator `CHECK PASS（0 differences, 80 files）`、validator `VALIDATION PASSED`（12/12）、**132 檔／2,317 KB**、
 > package sha `d9863428…`；夜間行為仍待人類實機簽核（AC-04、TEST_PROTOCOL 新步驟）。
+>
+> **2026-11-08 熱修-5（玩家回報：沒有搬運工就顯示不能運轉＋耗水太大；Lead 裁決 AD-18／AD-19／AD-20）**：
+> ① 完工鍋爐原版狀態 `Status.Hauling.NoHaulingPost`（zhTW「需要搬運工才能運轉。」）由 **public `NoHaulingPostStatus.Disable()`**
+> 關閉（`SEEBoilerController.HaulerStatus.cs`；區域重指派後延後一個結算 tick 再關；不刪燃料 GCB、不改搬運路徑、無 Harmony）；
+> ② 全 12 檔耗水率減半（T1 0.040／T2 0.035／T3 0.020／T4 0.010 每 100 hp）與水艙重算（`waterTankHours` 仍 200）；
+> ③ 生成器閘門 1 改「水艙自主時間 ≥8× 燃料庫存自主時間」（AD-20）。離線門禁：`build.ps1 -Clean` → **BUILD PASSED（G01–G22 全綠）**、
+> **PASS 510/510**、generator `CHECK PASS（0 differences, 80 files）`＋`gates 5/5`、validator **VALIDATION PASSED**（12/12）、
+> balance-sim **PASS 12/12（4/4 判準）**、**132 檔／2,379,665 bytes**、package sha `4a661a1e…`；負向測試 **control + 6/6**；
+> 實機行為（狀態消失、耗水減半、既有存檔、搬運工補料）仍待人類 P8 簽核（TEST_PROTOCOL 新步驟 5c）。
 
 > 卡片：SEE-P8（打包＋安裝＋人類實機驗收 gate）｜整理日：2026-11-06｜模組版本：**0.1.0**（尚未發佈）
 > 遊戲基準：Timberborn `1.1.2.8-ffc2de0-sw`｜安裝位置：`%USERPROFILE%\Documents\Timberborn\Mods\SteamEngineExpansion`
 >
 > **證據分類（互不替代）**
-> - **離線 PASS**：本機可重跑（`mod/build.ps1 -Clean`、`SEE.Tests` 504/504、validator G01–G22、生成器 5 閘門、balance-sim）。
+> - **離線 PASS**：本機可重跑（`mod/build.ps1 -Clean`、`SEE.Tests` 510/510、validator G01–G22、生成器 5 閘門、balance-sim）。
 > - **待實機**：只能在遊戲內由人類照 `docs/TEST_PROTOCOL.md` 驗證；**AI 不得宣告通過**。
 > - **人類簽核**：僅當人類在 `docs/TEST_PROTOCOL.md` §5 簽核表填寫並回傳後更新。
 >
@@ -35,12 +44,12 @@
 | 證據 | 真實輸出 |
 |---|---|
 | 建置 | 四支程式集 **0 警告 / 0 錯誤**（G01） |
-| 測試 | **PASS 504/504**（G02；`dotnet run --project mod/tests/SEE.Tests -c Release -m:1`） |
+| 測試 | **PASS 510/510**（G02；`dotnet run --project mod/tests/SEE.Tests -c Release -m:1`） |
 | 生成器 | **CHECK PASS（0 differences, 80 files, 24 blueprints）**；資料閘門 **5/5 PASS**（G03／G04） |
 | validator | **VALIDATION PASSED**；12/12 gate group、1 WARN、0 error（G05） |
-| 發佈門禁 | **G01–G22 全 PASS**；套件雜湊 `6d6ee3858cb93987a3355fdcf449d65951828cc3dc95c4db293e926e0b3ed57c` |
-| 成品 | 132 檔、2,378,127 bytes、4 DLL、24 藍圖、2 TemplateCollection、63 鍵×3 語系、24 icon＋24 meta、48 timbermesh |
-| 安裝 | `Mods\SteamEngineExpansion`：132 檔、2,378,127 bytes、與來源逐檔 SHA-256 **0 mismatch**（額外檔案 0） |
+| 發佈門禁 | **G01–G22 全 PASS**；套件雜湊 `4a661a1ed86301131b267ec7253c7972f36deeabcbd70d206bc29fd7023142c5` |
+| 成品 | 132 檔、2,379,665 bytes、4 DLL、24 藍圖、2 TemplateCollection、63 鍵×3 語系、24 icon＋24 meta、48 timbermesh |
+| 安裝 | `Mods\SteamEngineExpansion`：132 檔、2,379,665 bytes、與來源逐檔 SHA-256 **0 mismatch**（額外檔案 0） |
 | 缺少的離線證據 | **覆蓋率報告**（`SEE.Core` 行 ≥80%／分支 ≥70%、T0 全域 ≥70%，REQ-NFR-07／§17.1）本次未重跑 → **列發佈前待補**（不影響 G01–G22） |
 
 離線 WARN（已記錄、非阻擋）：
@@ -64,7 +73,7 @@ WARN: [table] ConstructionBase recorded deviation (contract §4.5/§4.8):
 |---|---|---|---|---|---|
 | AC-01 | 24 藍圖全部載入；12 檔數值逐格相符（誤差 0） | T1 自動比對 | **離線 PASS**：G03（24 份重生成 0 diff）、G05/G09（24×12 欄位 0 mismatch）、G14（golden hash 24/24）、G19 | REQ-TEST-01 | P1／P6 |
 | AC-02 | 24 藍圖 loc 鍵全存在、未覆寫原版鍵 | 掃描腳本 | **離線 PASS**：G12（63 鍵×2、無原版覆寫、無 raw key）、G20 | REQ-TEST-02、REQ-UI-08 | P1／P6 |
-| AC-03 | 免工人；`PowerOutput`＝§3、`PowerInput=0`、`IsShaft=false` | 藍圖檢查 | **離線 PASS**：G11（24 份逐份檢查）、G09 權威欄位 | REQ-TEST-03 | P1／P6 |
+| AC-03 | 免工人；`PowerOutput`＝§3、`PowerInput=0`、`IsShaft=false`；完工建築不顯示原版搬運工需求狀態（AD-18） | 藍圖檢查＋source-scan | **離線 PASS**：G11（24 份逐份檢查）、G09 權威欄位；AD-18 `HaulerWarningSuppressionTests`（public `NoHaulingPostStatus.Disable()`、區域重指派後延後再關、無 Harmony）＋**待實機**（協定步驟 5c：無搬運站時狀態不出現） | REQ-TEST-03、REQ-BLD-04、AD-18 | P1／P3／P6／P8 |
 | AC-04 | 夜間電網需求 0 時：有燃料＋水→待機運轉（`λ_run≥standbyLoadRatio`，預設 0.10；飛輪/煙霧持續、燃料水按比例、磨損照算）；玩家把 `standbyLoadRatio` 設 0 或未接電網時才 `Idle`（輸出 0、不耗料、不磨損） | T3 零需求案例（白天與夜間各一次） | **離線邏輯 PASS**（`BoilerFormulas.OperationalLoadRatio`＋config clamp＋狀態機「待機 0.10→Running」測試；`StandbyLoadRatio=0` 仍走舊 `Idle` 帳本案例 booked=0）＋**待實機**（協定步驟 5／§3.2 零需求＋新增夜間待機步驟） | REQ-TEST-04、AD-16 | P2／P3／P6／P8 |
 | AC-05 | 半載燃料與水耗為滿載 50%（±2%） | T0＋T2 | **離線 PASS**：`ConsumptionReconciliationTests` `fuel-half` / `water-half` bookedErr≈0.000005%／0、30 日整數差 0.25%／0.17%＋**待實機**量測（協定步驟 2） | REQ-TEST-05 | P2／P3／P8 |
 | AC-06 | 水源中斷顯示 `NoWater` 且輸出 0；同時缺燃料顯示 `NoFuel` | T2／T3 | **離線邏輯 PASS**（AD-12 優先序測試）＋**待實機**（協定步驟 3、4） | REQ-TEST-06、REQ-UI-03 | P2／P3／P4／P8 |
@@ -102,7 +111,7 @@ WARN: [table] ConstructionBase recorded deviation (contract §4.5/§4.8):
 
 | 層級 | 範圍 | 自動化 | 目前狀態 | 證據／缺口 |
 |---|---|---|---|---|
-| **T0** | 純邏輯單元（輸出／燃料／水／磨損／維護／存檔／loc） | 100% | **PASS（504/504）**；**覆蓋率待補** | `SEE.Tests`；覆蓋率報告未重跑 |
+| **T0** | 純邏輯單元（輸出／燃料／水／磨損／維護／存檔／loc） | 100% | **PASS（510/510）**；**覆蓋率待補** | `SEE.Tests`；覆蓋率報告未重跑 |
 | **T1** | 24 藍圖 schema／數值／loc／未覆寫原版 | 100% | **PASS** | G03／G05／G09／G14／G19／G20 |
 | **T2** | 單棟實機（建造／供料／供水／輸出／維護／UI） | 0% | **待驗（0%）** | 僅有離線契約測試；須人類照協定步驟 1–9 |
 | **T3** | 三模組 8 組合與降級 | 部分 | **待驗**（離線僅假探針 12 情境） | 協定步驟 10；12 情境見 `docs/COMPAT_MATRIX.md` |

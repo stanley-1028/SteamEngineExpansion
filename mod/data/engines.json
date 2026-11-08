@@ -8,10 +8,10 @@
     "T4": 0.016
   },
   "tierWaterRatePer100Hp": {
-    "T1": 0.080,
-    "T2": 0.070,
-    "T3": 0.040,
-    "T4": 0.018
+    "T1": 0.040,
+    "T2": 0.035,
+    "T3": 0.020,
+    "T4": 0.010
   },
   "waterTankHours": 200,
   "factions": {
@@ -75,9 +75,9 @@
         { "good": "Log", "amount": 20 }
       ],
       "fuelPerHour": 0.04,
-      "waterPerHour": 0.10,
+      "waterPerHour": 0.05,
       "fuelStock": 1,
-      "waterTankGoods": 20,
+      "waterTankGoods": 10,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 6,
       "maintenanceMaterials": [
@@ -95,9 +95,9 @@
         { "good": "Log", "amount": 30 }
       ],
       "fuelPerHour": 0.07,
-      "waterPerHour": 0.18,
+      "waterPerHour": 0.09,
       "fuelStock": 2,
-      "waterTankGoods": 36,
+      "waterTankGoods": 18,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 6,
       "maintenanceMaterials": [
@@ -115,9 +115,9 @@
         { "good": "Log", "amount": 45 }
       ],
       "fuelPerHour": 0.12,
-      "waterPerHour": 0.29,
+      "waterPerHour": 0.14,
       "fuelStock": 3,
-      "waterTankGoods": 58,
+      "waterTankGoods": 28,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 6,
       "maintenanceMaterials": [
@@ -136,9 +136,9 @@
         { "good": "Log", "amount": 5 }
       ],
       "fuelPerHour": 0.07,
-      "waterPerHour": 0.18,
+      "waterPerHour": 0.09,
       "fuelStock": 2,
-      "waterTankGoods": 36,
+      "waterTankGoods": 18,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 8,
       "maintenanceMaterials": [
@@ -158,9 +158,9 @@
         { "good": "Log", "amount": 10 }
       ],
       "fuelPerHour": 0.12,
-      "waterPerHour": 0.32,
+      "waterPerHour": 0.16,
       "fuelStock": 3,
-      "waterTankGoods": 64,
+      "waterTankGoods": 32,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 8,
       "maintenanceMaterials": [
@@ -180,9 +180,9 @@
         { "good": "Log", "amount": 15 }
       ],
       "fuelPerHour": 0.18,
-      "waterPerHour": 0.50,
+      "waterPerHour": 0.25,
       "fuelStock": 5,
-      "waterTankGoods": 100,
+      "waterTankGoods": 50,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 8,
       "maintenanceMaterials": [
@@ -202,9 +202,9 @@
         { "good": "Plank", "amount": 10 }
       ],
       "fuelPerHour": 0.08,
-      "waterPerHour": 0.15,
+      "waterPerHour": 0.08,
       "fuelStock": 2,
-      "waterTankGoods": 30,
+      "waterTankGoods": 16,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 10,
       "maintenanceMaterials": [
@@ -224,9 +224,9 @@
         { "good": "Plank", "amount": 20 }
       ],
       "fuelPerHour": 0.14,
-      "waterPerHour": 0.27,
+      "waterPerHour": 0.14,
       "fuelStock": 4,
-      "waterTankGoods": 54,
+      "waterTankGoods": 28,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 10,
       "maintenanceMaterials": [
@@ -246,9 +246,9 @@
         { "good": "Plank", "amount": 30 }
       ],
       "fuelPerHour": 0.22,
-      "waterPerHour": 0.42,
+      "waterPerHour": 0.21,
       "fuelStock": 6,
-      "waterTankGoods": 84,
+      "waterTankGoods": 42,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 10,
       "maintenanceMaterials": [
@@ -267,9 +267,9 @@
         { "good": "MetalBlock", "amount": 45 }
       ],
       "fuelPerHour": 0.08,
-      "waterPerHour": 0.09,
+      "waterPerHour": 0.05,
       "fuelStock": 2,
-      "waterTankGoods": 18,
+      "waterTankGoods": 10,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 12,
       "maintenanceMaterials": [
@@ -288,9 +288,9 @@
         { "good": "MetalBlock", "amount": 70 }
       ],
       "fuelPerHour": 0.15,
-      "waterPerHour": 0.17,
+      "waterPerHour": 0.09,
       "fuelStock": 4,
-      "waterTankGoods": 34,
+      "waterTankGoods": 18,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 12,
       "maintenanceMaterials": [
@@ -309,9 +309,9 @@
         { "good": "MetalBlock", "amount": 105 }
       ],
       "fuelPerHour": 0.24,
-      "waterPerHour": 0.27,
+      "waterPerHour": 0.15,
       "fuelStock": 6,
-      "waterTankGoods": 54,
+      "waterTankGoods": 30,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 12,
       "maintenanceMaterials": [

@@ -67,7 +67,7 @@ internal static class References
     public static readonly decimal[] ExpectedFuelRatesPer100Hp = { 0.032m, 0.025m, 0.021m, 0.016m };
 
     /// <summary>Expected tier water rates per 100 hp (requirements §4.1 / §5.4).</summary>
-    public static readonly decimal[] ExpectedWaterRatesPer100Hp = { 0.080m, 0.070m, 0.040m, 0.018m };
+    public static readonly decimal[] ExpectedWaterRatesPer100Hp = { 0.040m, 0.035m, 0.020m, 0.010m };
 
     /// <summary>Expected maintenance intervals in running days (requirements §5.5 / §20.2).</summary>
     public static readonly int[] ExpectedMaintenanceIntervals = { 6, 8, 10, 12 };

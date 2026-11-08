@@ -118,7 +118,7 @@
 | REQ-BLD-06 | 入口與可達：Entrance.HasEntrance=true 且正面臨路才可建；搬運工可達入口 | P1 | ✅ §4.3（實機 P8） |
 | REQ-BLD-07 | 燃料接口：接受清單含 Log；Mk.III／IV 另含 Plank；搬運工與帶子皆可送入 | P1 | ✅ §4.7 |
 | REQ-BLD-08 | 水接口分離：水艙為程式建立的 `WaterTank` public input Inventory（2026-11-08 修根因；不用 StockpileSpec），與燃料庫存為不同庫存 | P1＋P3 | ✅ §4.7（AD-14） |
-| REQ-BLD-09 | 庫存容量：燃料＝ceil(燃料率×25)、水艙＝round(耗水率×200)；大型 Mk.I 水艙=58 | P1＋P3 | ✅ §3.5.2（AD-3 容量口徑）；P3 消耗對帳 |
+| REQ-BLD-09 | 庫存容量：燃料＝ceil(燃料率×25)、水艙＝round(耗水率×200)；大型 Mk.I 水艙=28（AD-19 新耗水率；舊 58） | P1＋P3 | ✅ §3.5.2（AD-3 容量口徑）；P3 消耗對帳 |
 | REQ-BLD-10 | 陣營輸出係數：FT ×1.00／IT ×1.05，馬力無條件進位（中型 Mk.I IT ceil(241.5)=242） | P1 | ✅ §4.2 |
 | REQ-BLD-11 | 陣營燃料係數：FT ×0.90／IT ×1.00，四捨五入 2 位；量化偏差上限 4.8% 須寫入測試報告 | P1 | ✅ §4.2 |
 | REQ-BLD-12 | 陣營其餘不變：研究點／建造費／耗水／維護間隔／維護材料兩陣營逐值相同 | P1 | ✅ §4.2 |
@@ -137,7 +137,7 @@
 | REQ-BAL-06 | 規模效應：同級內尺寸越大，研究點/hp 與 BCI/hp 單調下降；下限 ≥ 小型 Mk.I 的 40% | P2 | — |
 | REQ-BAL-07 | 密度梯度：同尺寸內每格馬力嚴格遞增（小型 32.5<65<95<130 等） | P2 | — |
 | REQ-BAL-08 | 燃料曲線：0.032>0.025>0.021>0.016，Mk.IV 相對 Mk.I 改善 ≥2.0× | P2 | — |
-| REQ-BAL-09 | 水曲線：0.080>0.070>0.040>0.018，Mk.IV 相對 Mk.I 改善 ≥4.0× | P2 | — |
+| REQ-BAL-09 | 水曲線（AD-19）：0.040>0.035>0.020>0.010，Mk.IV 相對 Mk.I 改善 ≥4.0×（恰 4.0×） | P2 | — |
 | REQ-BAL-10 | 維護負擔：滿載＋自動維護下 30 日停機占比 ≤3%（實測 0.69%–1.37%） | P7 | — |
 | REQ-BAL-11 | 比例消耗一致：同一負載下燃料／水實際消耗比＝表定比（±2%）；100/75/50/25% 四點量測 | P3 | ✅ §8.3 |
 | REQ-BAL-12 | 陣營平衡：以未取整乘數計，每 100 hp 燃料效率差 ≤6%、水效率差 ≤5% | P2 | — |
@@ -169,8 +169,8 @@
 | REQ-FUEL-05 | 只在帶載運轉扣除；Idle/Paused/NoFuel/NoWater/NeedsMaintenance/Maintaining 皆不扣 | P3 | ✅ §8.3 |
 | REQ-FUEL-06 | 燃料扣除 = 表定率 × min(1, 實際輸出/額定)；負載 50% → 一半（±2%） | P3 | ✅ §8.3 |
 | REQ-FUEL-07 | 水耗率符合 §3；無水時輸出 0、狀態 NoWater、燃料停止扣除 | P3 | ✅ §8.3 |
-| REQ-FUEL-08 | 水艙 = round(耗水率×200)；12 檔誤差 0 | P1 | ✅ §3.5.1 |
-| REQ-FUEL-09 | 每檔水艙 ≥ 燃料庫存 ×8（最小比值 ≥8） | P1 | ✅ §4.7 |
+| REQ-FUEL-08 | 水艙 = round(耗水率×200)（AD-19 新耗水率）；12 檔誤差 0 | P1 | ✅ §3.5.1 |
+| REQ-FUEL-09 | 水艙自主時間 ≥8× 燃料庫存自主時間（`waterTankHours ≥ 8×fullInventoryWorkHours`，現值 200 ≥ 8×25）；**AD-20 取代舊「貨物比 ≥8×」** | P1 | ✅ §4.10 |
 | REQ-FUEL-10 | 燃料庫存與水艙為兩個獨立庫存，不得共用宣告；水艙由 `SEEWaterInventoryInitializer` 建立、燃料仍為 GCB | P3 | ✅ §4.7（AD-14） |
 | REQ-FUEL-11 | 水艙容量＝`SEE.SEEBoilerSpec.WaterCapacityGoods`；庫存由 `SEEWaterInventoryInitializer` 建立、`Water` 為 giveable-and-takeable public input；不放 `StockpileSpec`／`BuildingPipeSpec` | P1＋P3 | ✅ §4.3／§4.7（AD-14） |
 | REQ-FUEL-12 | tank 模式：V-01/V-02 通過後，管道接上即自動補水與排水，不需閥門 | P5 | — |
@@ -236,9 +236,9 @@
 | REQ ID | 一句摘要 | 負責卡 | P0 狀態 |
 |---|---|---|---|
 | REQ-COMPAT-01 | 無任何外部模組時 12 檔全部可建/可運轉/可存讀檔；核心玩法不依賴外部模組（乾淨環境 30 遊戲日） | P5 | 🔧 P8 |
-| REQ-COMPAT-02 | 水艙以原版 StockpileSpec{WhitelistedGoodType:"Liquid"} 宣告、容量＝表定值；不用自訂庫存型別 | P1 | ✅ §4.3／§4.7（AD-10） |
+| REQ-COMPAT-02 | 水艙為程式建立的 `WaterTank` public input `Inventory`、容量＝表定值（AD-14；舊 StockpileSpec 路徑已退役）；不用自訂庫存型別 | P1 | ✅ §4.3／§4.7（AD-14） |
 | REQ-COMPAT-03 | 燃料庫存獨立於水艙，且接受 Log（T1/T2）與 Log/Plank（T3/T4） | P1 | ✅ §4.7 |
-| REQ-COMPAT-04 | 全 12 檔水艙/燃料庫存比 ≥8×；超出時建置期即失敗（生成器閘門） | P1 | ✅ §4.10 |
+| REQ-COMPAT-04 | 全 12 檔水艙自主時間 ≥8× 燃料庫存自主時間（AD-20；舊「貨物比 ≥8×」已取代）；超出時建置期即失敗（生成器閘門 1） | P1 | ✅ §4.10 |
 | REQ-COMPAT-05 | 混裝體積誤差上界 ≤12%；V-02 實測超出時 auto 須解析為 valve | P5 | ⏳ V-02 |
 | REQ-COMPAT-06 | 三種供水模式皆可玩/可存檔/可執行期切換；切換不清空水艙、不改變 condition | P5 | ✅ §8.6 |
 | REQ-COMPAT-07 | 藍圖不得出現 BuildingPipeSpec／BuildingPipeTargetPortsSpec／PowerLineSpec（CI 靜態掃描） | P1 | ✅ §4.4 |
@@ -265,7 +265,7 @@
 | REQ-ARCH-05 | 生成器必須產生恰好 24 份藍圖（12 檔 × 2 陣營），檔名與路徑符合 §2 | P1 | ✅ §4.10 |
 | REQ-ARCH-06 | 24 份藍圖必須有黃金雜湊；重新生成後與 repo 逐位元組相同（時間戳除外） | P1 | ✅ §4.10 |
 | REQ-ARCH-07 | 生成器必須套用並驗算陣營乘數（輸出 1.00/1.05、燃料 0.90/1.00），結果與 §3 派生規則一致 | P1 | ✅ §4.2 |
-| REQ-ARCH-08 | 生成器內建五道閘門（8× 水艙比、≤12% 誤差、每 100hp 燃料/水上限、燃料庫存與水艙對帳、禁用 spec 掃描） | P1 | ✅ §4.10 |
+| REQ-ARCH-08 | 生成器內建五道閘門（水艙自主時間 ≥8× 燃料庫存自主時間（AD-20）、≤12% 誤差、每 100hp 燃料/水上限、燃料庫存與水艙對帳、禁用 spec 掃描） | P1 | ✅ §4.10 |
 | REQ-ARCH-09 | 程式碼不得出現白名單外裸數值；全數集中 SEEConst 或 spec/config | P6 | ✅ §10 |
 | REQ-ARCH-10 | 單檔 ≤400 行（spec ≤600）、方法 ≤60 行、圈複雜度 ≤10、巢狀 ≤3、參數 ≤5；超出建置警告 | P6 | ✅ §1.2 |
 | REQ-ARCH-11 | 三套版本（modVersion/schemaVersion/configSchemaVersion）各自獨立齊備；任一缺失即載入失敗並提示 | P0 | ✅ §9 |
@@ -483,14 +483,14 @@
 | REQ-SAVE-02 | `EntityComponent.EntityId` 是 `System.Guid`、無 int id → 存檔 `entityId` 用 Guid 字串（D-8） | IL（`gameplay-findings.md` §1） | §6.2 |
 | REQ-SAVE-01 | 存檔形態可用（`ISaveableSingleton`／`ISingletonSaver`／`ISingletonLoader`／`SerializedWorldFactory`＋`EntityRegistry` 列舉）→ **D-6 定案＝混合**：世界節點只存版本／checksum／索引，狀態走 per-entity `IPersistentEntity` | `_investigate/findings-persistence-loading.md`、`_investigate/out2/save/` | §6.9 |
 | REQ-FUEL-03 | 容量派生＝逐項 `CeilToInt((float)GoodPerHour × FullInventoryWorkHours)`；AD-3 定容量由表定 `fuelStock` 反推 | D-3 取證＋Lead AD-3 裁決 | §3.5.1／§3.5.2 |
-| REQ-FUEL-08 | 水艙獨立（液體 StockpileSpec.MaxCapacity 表定），不經 `GoodConsumingBuildingSpec` | D-3 取證 | §3.5.1 |
+| REQ-FUEL-08 | 水艙獨立於 `GoodConsumingBuildingSpec`，容量＝表定 `waterTankGoods`（2026-11-08 AD-14：程式建立的 `WaterTank` public input `Inventory`） | D-3 取證＋AD-14 | §3.5.1／§4.7 |
 | REQ-BLD-09 | 燃料容量生成公式（單燃料 `(fuelStock−0.5)/25`；雙燃料每項 `(fuelStock/2−0.5)/25`）12 檔逐格等於表定 | Lead AD-3 裁決＋float32 驗算 | §3.5.2 |
 | REQ-IMPL-01 | `[SpecAlias]` 必要（`SpecTypeCache` 只用 alias＋Type.Name）；藍圖 key＝`SEE.SEEBoilerSpec`／`SEE.SEEMaintenanceSpec` | IL（`gameplay-findings.md` §5）＋Lead 補充 | §3.1 |
 | REQ-IMPL-15 | 藍圖反序列化只對 `ImmutableArray<T>` 逐元素遞迴；`SEEMaintenanceSpec.Materials` 採 `ImmutableArray<GoodAmountSpec>` | IL＋Lead AD-4 裁決 | §3.4 |
 | REQ-IMPL-04 | 原版消耗可永久 pause（`GetGoodConsumingToggle().PauseConsumption()` public）；`Inventory.TakeConsumed` public → 單一消耗路徑可行 | IL（Lead AD-3 補充） | §3.5.2／§8.3 |
 | REQ-ARCH-02 | 分層掃描以 `Assembly.GetReferencedAssemblies()` 強制；D-11 讓 Core 可離線測試 | IL／分叉骨架 | §1.3／§2.3 |
 | REQ-POWER-08／REQ-IMPL-11 | `GoodPoweredGeneratorSpec` 必須移除（原版每 tick `SetOutputMultiplier` 覆寫 λ）；λ 防回授公式取得 | `_investigate/findings-power.md` §2.4／§4.4；`out2/power/il-goodpoweredgen.txt` | §4.4／§8.4 |
-| REQ-FUEL-11／REQ-COMPAT-02 | 水艙庫存需 controller `SingleGoodAllower.Allow("Water")`（`AllowedGood == null` 時所有貨物回 0）；燃料 GCB 走 `Givable`／`FillInput` | `_investigate/findings-inventory-maintenance.md` §2.2／§6 | §4.7／§8.3 |
+| REQ-FUEL-11／REQ-COMPAT-02 | 水艙為 `SEEWaterInventoryInitializer` 建立的 public input `Inventory`（AD-14 起；`Water` giveable-and-takeable）；燃料 GCB 走 `Givable`／`FillInput` | `_investigate/findings-inventory-maintenance.md` §2.2／§6；AD-14 | §4.7／§8.3 |
 
 ### 3.3 P0 待取證／待裁決（開放項對映）
 
@@ -539,6 +539,18 @@
 | **AD-9** `GoodPoweredGeneratorSpec` 移除；controller 接管輸出倍率（λ 防回授）＋燃料 toggle＋零需求邏輯 | §4.3／§4.4／§8.4 | IMPL-01/04、POWER-01/05～14、CORE-08 | P1 生成器移除＋P6 掃描；P3 以 λ 公式實作；P8 驗證動畫／煙霧（僅視覺 spec 可留） |
 | **AD-10** 水艙需 controller `SingleGoodAllower.Allow("Water")`（僅未設定時、不覆寫玩家）；燃料 GCB 走 `Givable`／`FillInput`；對帳用 Inventory 整數差值 | §4.7／§8.3 | FUEL-10/11/12～15、COMPAT-02、IMPL-04/06 | P3 於完成／初始化時設定；P8 驗證搬運／管網進水 |
 
+### 3.7 AD-14／AD-16～AD-20 後續裁決對映（2026-11-08，Lead）
+
+| 裁決 | 契約位置 | 受影響 REQ | 後續卡動作 |
+|---|---|---|---|
+| **AD-14** 水艙獨立為程式建立的 public input `Inventory`（`SEEWaterInventoryInitializer`；不用 `StockpileSpec`、不放進 GCB） | §4.7／§8.3 | BLD-08、FUEL-10/11/14、COMPAT-02 | P1 生成器（水不列 ConsumedGoods）／P3 初始化器＋controller／P6 validator＋source-scan 測試；P8 驗搬運工補水 |
+| **AD-16** 夜間待機運轉：`λ_run = max(λ, balance.standbyLoadRatio)`（預設 0.10；0 恢復舊行為） | §8.2／§8.3／§8.4 | CORE-08、POWER-09、FUEL-05 | P2 公式／P3 controller／P6 config clamp；P8 驗證 |
+| **AD-17** 待機運轉的取捨與驗收（夜間仍耗 10% 燃料／水、磨損 ≈0.46× 滿載；`standbyLoadRatio=0` 可完全省料） | §8.2／§8.3 | FUEL-05、POWER-09 | P6 測試／P8 人類簽核 |
+| **AD-18** 完工鍋爐關閉原版「需要搬運工才能運轉」狀態（public `NoHaulingPostStatus.Disable()`；區域重指派後延後再關） | §8.2 | BLD-04（免工人延伸）、UI 狀態呈現 | P3 `SEEBoilerController.HaulerStatus.cs`／P6 `HaulerWarningSuppressionTests`；P8 驗證狀態消失 |
+| **AD-19** 全 12 檔耗水率減半（T1 0.040／T2 0.035／T3 0.020／T4 0.010 每 100 hp）＋水艙同步重算；`waterTankHours` 仍 200 | §3.2／§4.2／§7.4 | BLD-02/09、BAL-03/09、FUEL-08 | P1 `engines.json`＋生成器重生成；P6 validator／balance-sim；P7 BALANCE_REPORT |
+| **AD-20** 生成器閘門 1 改「水艙自主時間 ≥8× 燃料庫存自主時間」（舊貨物比 ≥8× 取代） | §4.7／§4.10 | FUEL-09、COMPAT-04、ARCH-08 | P1 `Gates.cs`＋`release-gates.json` G04 evidence；P6 validator |
+
+
 ---
 
 ## 4. 卡→REQ 反向索引（摘要）
@@ -577,5 +589,6 @@
 | 1.1-P0-rev | 2026-11-06 | 納入 Lead 裁決：AD-3（BLD-09／FUEL-01/02/03 改 `P1＋P3`；容量／消耗口徑）、AD-4（`GoodAmountSpec` 欄位）、D-6（純世界節點）；更新 §3.2／§3.6 與核對行 | docs-contract（P0） |
 | 1.2-P0-rev | 2026-11-06 | 納入 AD-9（`GoodPoweredGeneratorSpec` 移除、λ 公式）、AD-10（水艙 `SingleGoodAllower.Allow("Water")`、`Givable`／`FillInput`、對帳口徑）、D-1／D-4 取證；POWER-08/09、IMPL-11、CORE-08、FUEL-11、COMPAT-02 狀態更新 | docs-contract（P0） |
 | 1.3-P0-rev | 2026-11-06 | **D-6 最終裁決改為混合形態**＋AD-11（7 欄狀態改存 per-entity、世界節點留 4 索引）；更新 §3.1／§3.2／§3.6 與 SAVE-01/02 狀態 | docs-contract（P0） |
+| 1.4-P0-rev | 2026-11-08 | 納入 **AD-14**（水艙改程式建立 public input `Inventory`）、**AD-16／AD-17**（夜間待機運轉）、**AD-18**（關閉原版搬運工需求狀態）、**AD-19**（耗水率減半）、**AD-20**（生成器閘門 1 改自主時間 ≥8×）；更新 BLD-08/09、BAL-09、FUEL-08/09/10/11、COMPAT-02/04、ARCH-08 與 §3.2／§3.7 | Lead（本輪修根因） |
 
 > 資料來源：`_investigate/doc-extract.md` §11（274 條）、§0.2（域清點）；並交叉核對 `CONTRACT_SEE.md` 各凍結章節。

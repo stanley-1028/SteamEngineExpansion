@@ -127,7 +127,7 @@ Namespaces: `SEE.Core.{Constants,Abstractions,Formulas,State,Maintenance,Save,Co
 **Gameplay (compile-time only; tests must not load it in net9)** — `namespace SEE.Gameplay`:
 - `[SpecAlias("SEE.SEEBoilerSpec")] SEEBoilerSpec : ComponentSpec` — `[Serialize]` members exactly:
   `string Tier="T2"`, `string Size="Medium"`, `string Faction="Folktails"`, `int Horsepower=460`,
-  `float FuelPerHour=0.11f`, `float WaterPerHour=0.32f`, `int FuelCapacityGoods=3`, `int WaterCapacityGoods=64`,
+  `float FuelPerHour=0.11f`, `float WaterPerHour=0.16f`, `int FuelCapacityGoods=3`, `int WaterCapacityGoods=32`,
   `ImmutableArray<string> FuelGoodIds`, `ImmutableArray<float> FuelValues`, `string FuelScaling="proportional"`,
   `bool AutoMaintenanceDefault=true` (+ helpers `ResolveTier/ResolveSize/ResolveFaction/FuelValueFor/IsFuelAllowed`).
 - `[SpecAlias("SEE.SEEMaintenanceSpec")] SEEMaintenanceSpec : ComponentSpec` — `[Serialize]` members exactly:

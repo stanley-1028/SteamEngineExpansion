@@ -55,9 +55,9 @@ namespace SEE.Tests
                 var definition = BuildCatalog().Get(BoilerSize.Medium, BoilerTier.T2);
                 Assert.Equal(460, definition.BaseHorsepower, "base horsepower");
                 Assert.Near(0.12, definition.BaseFuelPerHour, 1e-6, "base fuel");
-                Assert.Near(0.32, definition.WaterPerHour, 1e-6, "water");
+                Assert.Near(0.16, definition.WaterPerHour, 1e-6, "water");
                 Assert.Equal(3, definition.FuelStockGoods, "fuel stock");
-                Assert.Equal(64, definition.WaterTankGoods, "water tank");
+                Assert.Equal(32, definition.WaterTankGoods, "water tank");
                 Assert.Near(8.0, definition.MaintenanceIntervalDays, 1e-6, "interval");
             });
 
@@ -202,18 +202,18 @@ namespace SEE.Tests
         {
             return new TierCatalog(new[]
             {
-                BuildDefinition(BoilerSize.Small, BoilerTier.T1, 130, 0.04f, 0.10f, 1, 20, 6),
-                BuildDefinition(BoilerSize.Medium, BoilerTier.T1, 230, 0.07f, 0.18f, 2, 36, 6),
-                BuildDefinition(BoilerSize.Large, BoilerTier.T1, 360, 0.12f, 0.29f, 3, 58, 6),
-                BuildDefinition(BoilerSize.Small, BoilerTier.T2, 260, 0.07f, 0.18f, 2, 36, 8),
-                BuildDefinition(BoilerSize.Medium, BoilerTier.T2, 460, 0.12f, 0.32f, 3, 64, 8),
-                BuildDefinition(BoilerSize.Large, BoilerTier.T2, 720, 0.18f, 0.50f, 5, 100, 8),
-                BuildDefinition(BoilerSize.Small, BoilerTier.T3, 380, 0.08f, 0.15f, 2, 30, 10),
-                BuildDefinition(BoilerSize.Medium, BoilerTier.T3, 680, 0.14f, 0.27f, 4, 54, 10),
-                BuildDefinition(BoilerSize.Large, BoilerTier.T3, 1060, 0.22f, 0.42f, 6, 84, 10),
-                BuildDefinition(BoilerSize.Small, BoilerTier.T4, 520, 0.08f, 0.09f, 2, 18, 12),
-                BuildDefinition(BoilerSize.Medium, BoilerTier.T4, 920, 0.15f, 0.17f, 4, 34, 12),
-                BuildDefinition(BoilerSize.Large, BoilerTier.T4, 1500, 0.24f, 0.27f, 6, 54, 12),
+                BuildDefinition(BoilerSize.Small, BoilerTier.T1, 130, 0.04f, 0.05f, 1, 10, 6),
+                BuildDefinition(BoilerSize.Medium, BoilerTier.T1, 230, 0.07f, 0.09f, 2, 18, 6),
+                BuildDefinition(BoilerSize.Large, BoilerTier.T1, 360, 0.12f, 0.14f, 3, 28, 6),
+                BuildDefinition(BoilerSize.Small, BoilerTier.T2, 260, 0.07f, 0.09f, 2, 18, 8),
+                BuildDefinition(BoilerSize.Medium, BoilerTier.T2, 460, 0.12f, 0.16f, 3, 32, 8),
+                BuildDefinition(BoilerSize.Large, BoilerTier.T2, 720, 0.18f, 0.25f, 5, 50, 8),
+                BuildDefinition(BoilerSize.Small, BoilerTier.T3, 380, 0.08f, 0.08f, 2, 16, 10),
+                BuildDefinition(BoilerSize.Medium, BoilerTier.T3, 680, 0.14f, 0.14f, 4, 28, 10),
+                BuildDefinition(BoilerSize.Large, BoilerTier.T3, 1060, 0.22f, 0.21f, 6, 42, 10),
+                BuildDefinition(BoilerSize.Small, BoilerTier.T4, 520, 0.08f, 0.05f, 2, 10, 12),
+                BuildDefinition(BoilerSize.Medium, BoilerTier.T4, 920, 0.15f, 0.09f, 4, 18, 12),
+                BuildDefinition(BoilerSize.Large, BoilerTier.T4, 1500, 0.24f, 0.15f, 6, 30, 12),
             });
         }
 

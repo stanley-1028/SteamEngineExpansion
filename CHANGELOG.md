@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 0.1.0 hotfix-5 — 2026-11-08（搬運工需求狀態移除＋耗水減半；離線門禁全綠）
+
+- **修正**：完工蒸汽引擎不再顯示原版狀態「需要搬運工才能運轉。」（`Status.Hauling.NoHaulingPost`）。
+  根因：本模組鍋爐刻意免工人（無 `WorkplaceSpec`），原版 `GoodConsumingBuildingStatusInitializer` 對「沒有 `Workplace` 的 GCB 建築」
+  一律初始化 `NoHaulingPostStatus`（IL：`_investigate/out5-bugfix/il-nohaulingpost.txt`、`_investigate/out2/inventory/il-goodconsuming.txt`）。
+  修法：`SEEBoilerController.HaulerStatus.cs` 在完工／讀檔啟用後以 public `NoHaulingPostStatus.Disable()` 關閉；區域重指派後延後一個結算 tick 再關。
+  燃料庫存、搬運路徑與我方狀態不變（不用 Harmony、不 patch 原版 UI）。擺放預覽時原版說明列仍會出現，列已知限制。
+- **平衡調整（玩家回報「耗水太大」，AD-19）**：全 12 檔耗水率減半——每 100 hp T1 0.080→0.040、T2 0.070→0.035、
+  T3 0.040→0.020、T4 0.018→0.010；逐檔 `waterPerHour` 與水艙 `waterTankGoods` 同步重算（例：Small.T1 0.10/20→0.05/10、
+  Large.T1 0.29/58→0.14/28、Large.T2 0.50/100→0.25/50）。`waterTankHours` 維持 200 → 滿水艙自主時間不變、每次補水只需一半貨物。
+  燃料、hp、研究／建造費、維護與 30 日平衡判準全部不變（四判準仍 4/4 PASS）。
+- **生成器閘門 1（AD-20）**：舊「水艙貨物 ≥8× 燃料貨物」是只在舊費率成立的代理量，改為「水艙自主時間 ≥8× 燃料庫存自主時間」
+  （`waterTankHours ≥ 8×fullInventoryWorkHours`，200 ≥ 8×25）；`release-gates.json` G04 evidence 同步。
+- **測試**：新增 `HaulerWarningSuppressionTests`（source-scan 契約）；`TierCatalogTests` 表定 fixture 更新為新耗水值；
+  其餘資料驅動測試（藍圖／golden／validator／balance-sim）全數重生成並重跑。
+- **文件**：`mod/docs/LEAD_RULINGS_ADDENDUM.md` §八（AD-18/19/20）、`CONTRACT_SEE` §3.2／§4.2／§4.7／§4.10／§7.4／§8.2、
+  `API_FACTS_SEE` §2.7、`README` 12 檔表與 §3.2／§6、`REQ_TRACEABILITY`、`docs/BALANCE_REPORT.md`、`docs/VERIFICATION.md`、`docs/PACKAGE.md`。
+- **離線門禁（最終，2026-11-08 熱修-5 實測）**：`build.ps1 -Clean` → **BUILD PASSED（G01–G22 全綠）**、0 warning ×4、**PASS 510/510**、
+  generator `CHECK PASS（0 differences, 80 files, 24 blueprints）`＋`gates 5/5 PASS`、validator **VALIDATION PASSED**（12/12 gate groups、1 既有 WARN、0 error）；
+  balance-sim **PASS 12/12（四判準 4/4）**；staged **132 檔、2,379,665 bytes**；package sha256 `4a661a1ed86301131b267ec7253c7972f36deeabcbd70d206bc29fd7023142c5`；
+  已安裝至 `Documents\Timberborn\Mods\SteamEngineExpansion`（132 檔、與 `build/` 逐檔 SHA-256 0 mismatch）。
+- **實機未驗**：完工建築狀態消失、面板耗水換算減半、既有存檔載入、搬運工仍可補燃料／水——皆待人類 P8 簽核（AI 不得宣告通過）。
+
 ## 0.1.0 發佈 — 2026-11-08（GitHub 開源發佈）
 
 - 新增 Steam Workshop 封面素材：`mod/workshop/cover/`（去浮水印的 1920×1080、壓字版、1280×720 縮圖、322×181／1:1 QA）與 `mod/workshop/thumbnail.png`；提示詞見 `mod/workshop/COVER_PROMPTS.md`。

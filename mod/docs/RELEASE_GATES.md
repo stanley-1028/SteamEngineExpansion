@@ -39,9 +39,9 @@ pwsh -File mod/tools/validate/negative-tests.ps1
 | ID | 門禁內容（可判定） | 執行者 | 通過證據（真實輸出樣式） | 對映 |
 |---|---|---|---|---|
 | **G01** | 4 個出貨程式集 0 warning（`TreatWarningsAsErrors=true`） | `build.ps1` | 每個專案 `0 个警告 / 0 Warning(s)` | REQ-NFR-01/02/06、19.2-6 |
-| **G02** | 離線測試 runner 全綠 | `build.ps1` | `PASS 504/504` | REQ-TEST-01、AC-05/07/08/12/13、19.2-6 |
+| **G02** | 離線測試 runner 全綠 | `build.ps1` | `PASS 510/510` | REQ-TEST-01、AC-05/07/08/12/13、19.2-6 |
 | **G03** | 生成器 `--check` 與磁碟檔案逐 byte 相同 | `build.ps1` | `CHECK PASS (0 differences, 80 files, 24 blueprints)` | REQ-ARCH-04/06、REQ-NFR-09、AC-01 |
-| **G04** | 生成器 5 道資料閘門全過（水艙/燃料 ≥8×、水艙獨立（ConsumedGoods 無 Water、容量＝表定）、效率判準、燃料容量逐格、無禁用 spec） | `build.ps1` | `gates : 5/5 PASS` | REQ-BLD-09、FUEL-08、COMPAT-04/05 |
+| **G04** | 生成器 5 道資料閘門全過（水艙自主時間 ≥8× 燃料庫存自主時間（AD-20）、水艙獨立（ConsumedGoods 無 Water、容量＝表定）、效率判準、燃料容量逐格、無禁用 spec） | `build.ps1` | `gates : 5/5 PASS` | REQ-BLD-09、FUEL-08/09、COMPAT-04/05、ARCH-08 |
 | **G05** | validator 全部 gate group PASS | `build.ps1` | `VALIDATION PASSED`、`12/12 gate group(s)` | REQ-TEST-01/02/03、AC-01/02/03/16 |
 | **G06** | `manifest.json` 契約（7 欄位、Id、空 mod 清單、Version 0.1.0） | `tools/validate` | `PASS  manifest.json` | REQ-ARCH-11、19.2-5 |
 | **G07** | `engines.json` 為 12 列唯一數值源（`dataVersion=1`、列舉/派生驗算） | `tools/validate` | `PASS  engines.json (12 rows)` | REQ-ARCH-04/05/06、AC-01 |

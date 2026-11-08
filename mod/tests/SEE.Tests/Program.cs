@@ -32,6 +32,7 @@ namespace SEE.Tests
             ContractSurfaceTests.Run(runner);
             BlueprintContractTests.Run(runner);
             WaterTankSupplyTests.Run(runner);
+            HaulerWarningSuppressionTests.Run(runner);
             SaveBridgeContractTests.Run(runner);
             ConsumptionReconciliationTests.Run(runner);
             UiContractTests.Run(runner);

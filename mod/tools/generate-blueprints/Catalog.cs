@@ -106,10 +106,10 @@ internal static class CatalogLoader
     public static readonly IReadOnlyDictionary<string, decimal> DefaultTierWaterRate =
         new Dictionary<string, decimal>(StringComparer.Ordinal)
         {
-            ["T1"] = 0.080m,
-            ["T2"] = 0.070m,
-            ["T3"] = 0.040m,
-            ["T4"] = 0.018m,
+            ["T1"] = 0.040m,
+            ["T2"] = 0.035m,
+            ["T3"] = 0.020m,
+            ["T4"] = 0.010m,
         };
 
     public static readonly IReadOnlyDictionary<string, (int X, int Y, int Z)> Structure =

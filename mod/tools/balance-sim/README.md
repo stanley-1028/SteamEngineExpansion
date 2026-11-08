@@ -34,7 +34,7 @@ dotnet run --project mod/tools/balance-sim -c Release -m:1 -- --mod mod
 輸出章節（Console）：
 
 0. 資料來源與對帳
-1. §4.3 派生指標＋REQ-BLD-09 容量（含大型 Mk.I 水艙 58）
+1. §4.3 派生指標＋REQ-BLD-09 容量（含大型 Mk.I 水艙 28）
 2. 判準 ① 滿載輸出
 3. 判準 ② 每 100 hp 燃料／水（含 ±8% 捨入、T1 燃料上限 1.6% 餘裕）
 4. 判準 ③ 30 日平均（L=1.0、維護停機 2 h、6/8/10/12 日）

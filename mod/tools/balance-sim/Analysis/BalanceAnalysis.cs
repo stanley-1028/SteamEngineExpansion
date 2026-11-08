@@ -41,7 +41,7 @@ internal sealed class RowAnalysis
     /// <summary>Tier derived fuel rate per 100 hp (0.032/0.025/0.021/0.016).</summary>
     public double TierFuelRate { get; init; }
 
-    /// <summary>Tier derived water rate per 100 hp (0.080/0.070/0.040/0.018).</summary>
+    /// <summary>Tier derived water rate per 100 hp (0.040/0.035/0.020/0.010).</summary>
     public double TierWaterRate { get; init; }
 
     /// <summary>Back-calculation deviation from the tier fuel rate, in percent (rounding only).</summary>

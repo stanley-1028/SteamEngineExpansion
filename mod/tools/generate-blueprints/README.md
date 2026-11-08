@@ -42,7 +42,8 @@ derivation / gate / self-verification / diff failure.
 
 ## The five gates (all must pass)
 
-1. Water tank / fuel stock >= 8x (minimum 8.5 at Medium.T4).
+1. Water tank autonomy >= 8x fuel autonomy (200 water-tank hours >= 8 x 25 fuel-inventory
+   hours; AD-20, after the AD-19 water-rate halving).
 2. Mixing volume error upper bound `fuelStock / (fuelStock + tank)` <= 12% (maximum 10.5%).
 3. Efficiency: T2-T4 fuel <= 0.025 and water <= 0.075 per 100 hp; T1 fuel <= 1.3 x T2.
 4. Capacity equals the table cell by cell, including the vanilla float32

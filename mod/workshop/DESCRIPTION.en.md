@@ -3,6 +3,13 @@
 
 In Timberborn, power and drinking water both compete for the same beavers: every extra water pump and every extra power wheel is another worker you don't have. This mod turns power into infrastructure. Feed it logs and water, and get steady horsepower for your mechanical pumps, sawmills, and production lines — without hiring a single beaver.
 
+[h1]Update (2026-11-08, hotfix-5)[/h1]
+[list]
+[*][b]No more “Requires haulers to function”[/b]: finished engines no longer show that vanilla status, even with no Hauling Post or haulers nearby. Fuel can come from haulers or conveyor belts; water is delivered to the tank by haulers.
+[*][b]Water use halved[/b]: every tier now consumes half the water, and the panel's water row and “≈N beavers' daily drinking water” conversion follow automatically (Large Mk.II: 0.50/h → 0.25/h, about 6 water/day ≈ 2.8 beavers).
+[*][b]Water tanks rescaled[/b]: tank capacity follows the new rates, but a full tank still lasts 200 game hours and each refill carries half the water.
+[/list]
+
 [h1]What you get[/h1]
 [list]
 [*][b]12 steam engines[/b]: Small 2×2, Medium 3×3, Large 4×4, four tiers each. Buildable by both Folktails and Iron Teeth, with small faction modifiers to output and fuel use.
@@ -59,6 +66,7 @@ The mod folder includes [b]SEE_Config.json[/b]. Useful keys:
 [h1]Known limitations (v0.1.0)[/h1]
 [list]
 [*]Timber Pipes tank/valve supply modes are not supported yet. Water is supplied by haulers; auto mode always resolves to haulers.
+[*]The placement preview still shows the vanilla “Requires haulers.” note; finished buildings do not show it, and it does not affect operation (vanilla preview UI).
 [*]Custom models and animations are still being polished. If the visual footprint looks off, trust the build grid.
 [*]Some in-game acceptance checks (T2–T6) are still in progress. If you run into a bug, please attach Player.log and a screenshot.
 [/list]

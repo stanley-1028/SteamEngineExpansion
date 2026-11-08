@@ -580,9 +580,9 @@
     "Faction": "Folktails",
     "Horsepower": 360,
     "FuelPerHour": 0.11,
-    "WaterPerHour": 0.29,
+    "WaterPerHour": 0.14,
     "FuelCapacityGoods": 3,
-    "WaterCapacityGoods": 58,
+    "WaterCapacityGoods": 28,
     "FuelGoodIds": [
       "Log"
     ],

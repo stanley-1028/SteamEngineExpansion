@@ -26,6 +26,8 @@
 | `_investigate\out2\power\**` | D-1／D-4 補強（`forensics-power`） | 隊友 |
 | `_investigate\out2\save\**` | D-6／A5 存檔與載入（`forensics-persistence`；`findings-persistence-loading.md`） | 隊友 |
 | `_investigate\out2\inventory\**` | D-2／D-3／A4 庫存與維護（`forensics-inventory`；`findings-inventory-maintenance.md`） | 隊友 |
+| `_investigate\out5-bugfix\il-nohaulingpost.txt` | `Timberborn.Hauling.NoHaulingPostStatus` 全方法 IL（`Initialize`／`Disable`／`UpdateStatus`／事件訂閱、`Status.Hauling.NoHaulingPost` key） | Lead（2026-11-08 玩家回報） |
+| `_investigate\out5-bugfix\il-gcb-describer.txt` | `GoodConsumingBuildingSystemUI.GoodConsumingBuildingDescriber` IL（`GoodConsuming.NeedsHaulers` 只在 `IsPreview` 且無 `Workplace` 時顯示） | Lead（同上） |
 | `mod\docs\api\**` | 由 MWP 專案繼承的歷史 IL dump（交叉比對用；本檔不以其為唯一證據） | MWP |
 
 ### 0.2 重現指令（唯讀）
@@ -176,7 +178,7 @@ Actuals.SetPowerOutput( Active
 ### 2.4 管網混裝（Timber Pipes）— **已證實機制；誤差在門檻內（待實機）**
 - `PipeTank.get_StoredGoods` 會加總「**所有 `EnabledInventories`** 的 `TotalAmountInStock`」，且 `FluidGoodId` 取「任一庫存中 amount>0 的 good」—**沒有液體過濾**。
 - 影響：同棟燃料庫存的 Log 會被算進水體積，且可能被當成 fluid id；混裝誤差 ≈ `fuelStock / waterTankGoods`。
-- 12 檔中最大誤差＝Medium.T4 的 **11.76%**（≤ PLAN 12% 驗收線）；其餘皆更低。→ 8× 水艙硬門檻成立。
+- 12 檔中最大誤差＝Medium.T4 的 **11.76%**（≤ PLAN 12% 驗收線）；其餘皆更低。→ 舊「水艙貨物 ≥8× 燃料貨物」硬門檻已由 **AD-20** 取代（自主時間 ≥8×，`waterTankHours ≥ 8×fullInventoryWorkHours`）。
 - 結論：**不得**在藍圖宣告 `BuildingPipeSpec`；水艙維持液體 `StockpileSpec`。實際管網行為列 P8 實機 V-01／V-02。
 
 ### 2.5 R-C（EnterableSpec）— **已證實 NRE 來源**
@@ -193,6 +195,21 @@ Actuals.SetPowerOutput( Active
 - 方案 A 維持（2026-11-08 修正水側）：燃料＝`GoodConsumingBuildingSpec`（只列 Log／Plank）＋原版消耗**永久暫停**＋控制器 `TakeConsumed`；水＝程式建立的 `WaterTank` public input `Inventory`＋控制器 `TakeExisting` 扣水。不再用液體 `StockpileSpec`。
 - 容量派生與雙燃料速率見 §3 與 CONTRACT_SEE §3.5.2（AD-3）。
 - 備援（僅 P8 失敗）：自訂 Inventory decorator（`InventoryInitializerFactory`/`InventoryInitializer.Initialize` 皆 public，方案 C；V-04 風險）。
+
+### 2.7 搬運工需求狀態的來源與關閉（2026-11-08 玩家回報，AD-18）— **已證實**
+
+| 事實 | 內容 | 證據 |
+|---|---|---|
+| 誰掛上狀態 | `GoodConsumingBuildingSystemConfigurator+TemplateModuleProvider.Get()`：`AddDecorator<GoodConsumingBuilding, FillInputHaulBehaviorProvider>`、`AddDecorator<GoodConsumingBuilding, GoodConsumingBuildingStatusInitializer>`、`AddDecorator<GoodConsumingBuildingStatusInitializer, LackOfResourcesStatus>`、`AddDecorator<GoodConsumingBuildingStatusInitializer, NoHaulingPostStatus>` | `_investigate\out2\inventory\il-gcb-config.txt` |
+| 何時顯示 | `GoodConsumingBuildingStatusInitializer.OnEnterFinishedState`：`LackOfResourcesStatus.Initialize(CheckIfSupplyIsUnavailable)`；**只有 `Workplace` 為 null 時**才 `NoHaulingPostStatus.Initialize(常數 true predicate)`（有 Workplace 的建築改走「缺工」語意） | `_investigate\out2\inventory\il-goodconsuming.txt`（IL_0000–IL_004e） |
+| `NoHaulingPostStatus` 公開 API | `public void Initialize(Func<bool>)`（內部 `Asserts.FieldIsNull(_activePredicate)`：同元件只能初始化一次）；`public void Disable()`＝移除 `HaulCandidate.InHaulingCenterRangeChanged` 訂閱＋`DeactivateStatus()`；`public void UpdateStatus()`＝`predicate() && !haulCandidate.IsInHaulingCenterRange && district != null → Activate` | `_investigate\out5-bugfix\il-nohaulingpost.txt` |
+| 誰會重啟狀態 | `UpdateStatus()` 只由 `Initialize`、`HaulCandidate.InHaulingCenterRangeChanged`、`DistrictBuilding.ReassignedDistrict` 觸發。`Disable()` 解除前者、**保留後者** → 區域重指派後可能重現，需再關一次。`StatusToggle.IsActive`／`Toggle(bool)` 為 public 且冪等（同值不發事件）。 | 同上；`_investigate\out5-bugfix\il-status-toggle2.txt` |
+| 面板文字 | `GoodConsumingBuildingDescriber` 的「Requires haulers」列（`GoodConsuming.NeedsHaulers`）只在 `BlockObject.IsPreview` 且 `Workplace` 為 null 時建立；**完工建築不顯示**。擺放預覽時仍會出現（原版工具 UI，v1 不改） | `_investigate\out5-bugfix\il-gcb-describer.txt` |
+
+結論（AD-18）：鍋爐是刻意免工人（無 `WorkplaceSpec`）的 `GoodConsumingBuilding`，完工後原版一定會掛上
+`Status.Hauling.NoHaulingPost`；本模組以 public `NoHaulingPostStatus.Disable()` 在完工／讀檔啟用後關閉它，
+並在 `DistrictBuilding.ReassignedDistrict` 之後延後一個 settlement tick 再關一次（見
+`SEEBoilerController.HaulerStatus.cs`）。
 
 ## 3. D-3 ＝ 容量派生取整與貨物整數化 — **已證實**
 
@@ -211,7 +228,7 @@ inventoryInitializer.AddAllowedGoods(各項 StorableGoodAmount(GoodId, cap))
 - 容量派生＝**逐項無條件進位（CeilToInt）後加總**，不是 floor、不是 round。
 - 單一燃料（只列 Log 或只列 Plank）時：`capacity == ceil(FuelPerHour × 25)`，與需求 §11.3 的 `fuelStock == ceil(燃料×25)` 一致。
 - T3／T4 若同時列 Log＋Plank，容量是 `Σ ceil(rate×25)` 而非單一表格值 → 由 AD-3 的「容量速率公式」反推（`rate = (fuelStock−0.5)/25` 或雙燃料每項 `(fuelStock/2−0.5)/25`），保證逐檔等於表定 `fuelStock`；此 rate **只供容量派生**，實際消耗見 §3.2。
-- **float32 警訊（已證實）**：原版 SteamEngine 的 `Water 0.3f × FullInventoryWorkHours 50 = 15.000001f → CeilToInt = 16`（不是 15）→ **水艙容量不得由「耗水率×工時」派生，必須藍圖直接寫死表定 `WaterCapacityGoods`**（本專案水艙走液體 `StockpileSpec.MaxCapacity`，正確）。燃料 12 檔以 float32 模擬 `ceil` 逐檔驗算 12/12 等於表定 `fuelStock`。
+- **float32 警訊（已證實）**：原版 SteamEngine 的 `Water 0.3f × FullInventoryWorkHours 50 = 15.000001f → CeilToInt = 16`（不是 15）→ **水艙容量不得由「耗水率×工時」派生，必須藍圖直接寫死表定 `WaterCapacityGoods`**（本專案水艙走程式建立的 `Inventory`，容量＝`SEE.SEEBoilerSpec.WaterCapacityGoods` 直接指定，正確）。燃料 12 檔以 float32 模擬 `ceil` 逐檔驗算 12/12 等於表定 `fuelStock`。
 - `GoodConsumingBuilding.Awake` IL：`MaximumWorkingTime = FullInventoryWorkHours + 1 / Max(GoodPerHour)`（浮點，僅 UI/參考用；早前若寫成除式是誤讀）。
 
 ### 3.2 貨物整數化與餘量

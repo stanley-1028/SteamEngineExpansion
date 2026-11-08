@@ -4,7 +4,7 @@
   "generator": "tools/generate-blueprints",
   "dataVersion": 1,
   "source": "data/engines.json",
-  "sourceSha256": "501cdf6664c7a6f452e04eafbb82201588e7257d59ba938515501599d42ada74",
+  "sourceSha256": "b23ba6080e622dee82fdbba9a71ebe24e33152ac58d73b96b8217cbdf02b72ed",
   "blueprintCount": 24,
   "authoritativeFields": {
     "files": 24,
@@ -13,9 +13,9 @@
   "gates": [
     {
       "id": 1,
-      "name": "water tank / fuel stock >= 8x",
+      "name": "water tank autonomy >= 8x fuel autonomy",
       "pass": true,
-      "detail": "min 8.5 (Medium.T4)"
+      "detail": "200 water-tank hours >= 8 x 25 fuel-inventory hours (200)"
     },
     {
       "id": 2,
@@ -27,7 +27,7 @@
       "id": 3,
       "name": "efficiency criterion (T2-T4 <= vanilla, T1 <= 1.3 x T2)",
       "pass": true,
-      "detail": "T2 fuel 0.025/0.025 water 0.07/0.075, T3 fuel 0.021/0.025 water 0.04/0.075, T4 fuel 0.016/0.025 water 0.018/0.075, T1 fuel 0.032 <= 1.3 x T2 0.0325"
+      "detail": "T2 fuel 0.025/0.025 water 0.035/0.075, T3 fuel 0.021/0.025 water 0.02/0.075, T4 fuel 0.016/0.025 water 0.01/0.075, T1 fuel 0.032 <= 1.3 x T2 0.0325"
     },
     {
       "id": 4,
@@ -63,9 +63,9 @@
         }
       ],
       "fuelPerHour": 0.04,
-      "waterPerHour": 0.1,
+      "waterPerHour": 0.05,
       "fuelStock": 1,
-      "waterTankGoods": 20,
+      "waterTankGoods": 10,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 6,
       "maintenanceMaterials": [
@@ -79,9 +79,9 @@
         "Folktails": {
           "horsepower": 130,
           "fuelPerHour": 0.04,
-          "waterPerHour": 0.1,
+          "waterPerHour": 0.05,
           "fuelStock": 1,
-          "waterTankGoods": 20,
+          "waterTankGoods": 10,
           "fuelGoodIds": [
             "Log"
           ],
@@ -101,9 +101,9 @@
         "IronTeeth": {
           "horsepower": 137,
           "fuelPerHour": 0.04,
-          "waterPerHour": 0.1,
+          "waterPerHour": 0.05,
           "fuelStock": 1,
-          "waterTankGoods": 20,
+          "waterTankGoods": 10,
           "fuelGoodIds": [
             "Log"
           ],
@@ -139,9 +139,9 @@
         }
       ],
       "fuelPerHour": 0.07,
-      "waterPerHour": 0.18,
+      "waterPerHour": 0.09,
       "fuelStock": 2,
-      "waterTankGoods": 36,
+      "waterTankGoods": 18,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 6,
       "maintenanceMaterials": [
@@ -155,9 +155,9 @@
         "Folktails": {
           "horsepower": 230,
           "fuelPerHour": 0.06,
-          "waterPerHour": 0.18,
+          "waterPerHour": 0.09,
           "fuelStock": 2,
-          "waterTankGoods": 36,
+          "waterTankGoods": 18,
           "fuelGoodIds": [
             "Log"
           ],
@@ -177,9 +177,9 @@
         "IronTeeth": {
           "horsepower": 242,
           "fuelPerHour": 0.07,
-          "waterPerHour": 0.18,
+          "waterPerHour": 0.09,
           "fuelStock": 2,
-          "waterTankGoods": 36,
+          "waterTankGoods": 18,
           "fuelGoodIds": [
             "Log"
           ],
@@ -215,9 +215,9 @@
         }
       ],
       "fuelPerHour": 0.12,
-      "waterPerHour": 0.29,
+      "waterPerHour": 0.14,
       "fuelStock": 3,
-      "waterTankGoods": 58,
+      "waterTankGoods": 28,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 6,
       "maintenanceMaterials": [
@@ -231,9 +231,9 @@
         "Folktails": {
           "horsepower": 360,
           "fuelPerHour": 0.11,
-          "waterPerHour": 0.29,
+          "waterPerHour": 0.14,
           "fuelStock": 3,
-          "waterTankGoods": 58,
+          "waterTankGoods": 28,
           "fuelGoodIds": [
             "Log"
           ],
@@ -253,9 +253,9 @@
         "IronTeeth": {
           "horsepower": 378,
           "fuelPerHour": 0.12,
-          "waterPerHour": 0.29,
+          "waterPerHour": 0.14,
           "fuelStock": 3,
-          "waterTankGoods": 58,
+          "waterTankGoods": 28,
           "fuelGoodIds": [
             "Log"
           ],
@@ -295,9 +295,9 @@
         }
       ],
       "fuelPerHour": 0.07,
-      "waterPerHour": 0.18,
+      "waterPerHour": 0.09,
       "fuelStock": 2,
-      "waterTankGoods": 36,
+      "waterTankGoods": 18,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 8,
       "maintenanceMaterials": [
@@ -315,9 +315,9 @@
         "Folktails": {
           "horsepower": 260,
           "fuelPerHour": 0.06,
-          "waterPerHour": 0.18,
+          "waterPerHour": 0.09,
           "fuelStock": 2,
-          "waterTankGoods": 36,
+          "waterTankGoods": 18,
           "fuelGoodIds": [
             "Log"
           ],
@@ -337,9 +337,9 @@
         "IronTeeth": {
           "horsepower": 273,
           "fuelPerHour": 0.07,
-          "waterPerHour": 0.18,
+          "waterPerHour": 0.09,
           "fuelStock": 2,
-          "waterTankGoods": 36,
+          "waterTankGoods": 18,
           "fuelGoodIds": [
             "Log"
           ],
@@ -379,9 +379,9 @@
         }
       ],
       "fuelPerHour": 0.12,
-      "waterPerHour": 0.32,
+      "waterPerHour": 0.16,
       "fuelStock": 3,
-      "waterTankGoods": 64,
+      "waterTankGoods": 32,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 8,
       "maintenanceMaterials": [
@@ -399,9 +399,9 @@
         "Folktails": {
           "horsepower": 460,
           "fuelPerHour": 0.11,
-          "waterPerHour": 0.32,
+          "waterPerHour": 0.16,
           "fuelStock": 3,
-          "waterTankGoods": 64,
+          "waterTankGoods": 32,
           "fuelGoodIds": [
             "Log"
           ],
@@ -421,9 +421,9 @@
         "IronTeeth": {
           "horsepower": 483,
           "fuelPerHour": 0.12,
-          "waterPerHour": 0.32,
+          "waterPerHour": 0.16,
           "fuelStock": 3,
-          "waterTankGoods": 64,
+          "waterTankGoods": 32,
           "fuelGoodIds": [
             "Log"
           ],
@@ -463,9 +463,9 @@
         }
       ],
       "fuelPerHour": 0.18,
-      "waterPerHour": 0.5,
+      "waterPerHour": 0.25,
       "fuelStock": 5,
-      "waterTankGoods": 100,
+      "waterTankGoods": 50,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 8,
       "maintenanceMaterials": [
@@ -483,9 +483,9 @@
         "Folktails": {
           "horsepower": 720,
           "fuelPerHour": 0.16,
-          "waterPerHour": 0.5,
+          "waterPerHour": 0.25,
           "fuelStock": 5,
-          "waterTankGoods": 100,
+          "waterTankGoods": 50,
           "fuelGoodIds": [
             "Log"
           ],
@@ -505,9 +505,9 @@
         "IronTeeth": {
           "horsepower": 756,
           "fuelPerHour": 0.18,
-          "waterPerHour": 0.5,
+          "waterPerHour": 0.25,
           "fuelStock": 5,
-          "waterTankGoods": 100,
+          "waterTankGoods": 50,
           "fuelGoodIds": [
             "Log"
           ],
@@ -547,9 +547,9 @@
         }
       ],
       "fuelPerHour": 0.08,
-      "waterPerHour": 0.15,
+      "waterPerHour": 0.08,
       "fuelStock": 2,
-      "waterTankGoods": 30,
+      "waterTankGoods": 16,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 10,
       "maintenanceMaterials": [
@@ -567,9 +567,9 @@
         "Folktails": {
           "horsepower": 380,
           "fuelPerHour": 0.07,
-          "waterPerHour": 0.15,
+          "waterPerHour": 0.08,
           "fuelStock": 2,
-          "waterTankGoods": 30,
+          "waterTankGoods": 16,
           "fuelGoodIds": [
             "Log",
             "Plank"
@@ -595,9 +595,9 @@
         "IronTeeth": {
           "horsepower": 399,
           "fuelPerHour": 0.08,
-          "waterPerHour": 0.15,
+          "waterPerHour": 0.08,
           "fuelStock": 2,
-          "waterTankGoods": 30,
+          "waterTankGoods": 16,
           "fuelGoodIds": [
             "Log",
             "Plank"
@@ -643,9 +643,9 @@
         }
       ],
       "fuelPerHour": 0.14,
-      "waterPerHour": 0.27,
+      "waterPerHour": 0.14,
       "fuelStock": 4,
-      "waterTankGoods": 54,
+      "waterTankGoods": 28,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 10,
       "maintenanceMaterials": [
@@ -663,9 +663,9 @@
         "Folktails": {
           "horsepower": 680,
           "fuelPerHour": 0.13,
-          "waterPerHour": 0.27,
+          "waterPerHour": 0.14,
           "fuelStock": 4,
-          "waterTankGoods": 54,
+          "waterTankGoods": 28,
           "fuelGoodIds": [
             "Log",
             "Plank"
@@ -691,9 +691,9 @@
         "IronTeeth": {
           "horsepower": 714,
           "fuelPerHour": 0.14,
-          "waterPerHour": 0.27,
+          "waterPerHour": 0.14,
           "fuelStock": 4,
-          "waterTankGoods": 54,
+          "waterTankGoods": 28,
           "fuelGoodIds": [
             "Log",
             "Plank"
@@ -739,9 +739,9 @@
         }
       ],
       "fuelPerHour": 0.22,
-      "waterPerHour": 0.42,
+      "waterPerHour": 0.21,
       "fuelStock": 6,
-      "waterTankGoods": 84,
+      "waterTankGoods": 42,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 10,
       "maintenanceMaterials": [
@@ -759,9 +759,9 @@
         "Folktails": {
           "horsepower": 1060,
           "fuelPerHour": 0.2,
-          "waterPerHour": 0.42,
+          "waterPerHour": 0.21,
           "fuelStock": 6,
-          "waterTankGoods": 84,
+          "waterTankGoods": 42,
           "fuelGoodIds": [
             "Log",
             "Plank"
@@ -787,9 +787,9 @@
         "IronTeeth": {
           "horsepower": 1113,
           "fuelPerHour": 0.22,
-          "waterPerHour": 0.42,
+          "waterPerHour": 0.21,
           "fuelStock": 6,
-          "waterTankGoods": 84,
+          "waterTankGoods": 42,
           "fuelGoodIds": [
             "Log",
             "Plank"
@@ -831,9 +831,9 @@
         }
       ],
       "fuelPerHour": 0.08,
-      "waterPerHour": 0.09,
+      "waterPerHour": 0.05,
       "fuelStock": 2,
-      "waterTankGoods": 18,
+      "waterTankGoods": 10,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 12,
       "maintenanceMaterials": [
@@ -851,9 +851,9 @@
         "Folktails": {
           "horsepower": 520,
           "fuelPerHour": 0.07,
-          "waterPerHour": 0.09,
+          "waterPerHour": 0.05,
           "fuelStock": 2,
-          "waterTankGoods": 18,
+          "waterTankGoods": 10,
           "fuelGoodIds": [
             "Log",
             "Plank"
@@ -879,9 +879,9 @@
         "IronTeeth": {
           "horsepower": 546,
           "fuelPerHour": 0.08,
-          "waterPerHour": 0.09,
+          "waterPerHour": 0.05,
           "fuelStock": 2,
-          "waterTankGoods": 18,
+          "waterTankGoods": 10,
           "fuelGoodIds": [
             "Log",
             "Plank"
@@ -923,9 +923,9 @@
         }
       ],
       "fuelPerHour": 0.15,
-      "waterPerHour": 0.17,
+      "waterPerHour": 0.09,
       "fuelStock": 4,
-      "waterTankGoods": 34,
+      "waterTankGoods": 18,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 12,
       "maintenanceMaterials": [
@@ -943,9 +943,9 @@
         "Folktails": {
           "horsepower": 920,
           "fuelPerHour": 0.14,
-          "waterPerHour": 0.17,
+          "waterPerHour": 0.09,
           "fuelStock": 4,
-          "waterTankGoods": 34,
+          "waterTankGoods": 18,
           "fuelGoodIds": [
             "Log",
             "Plank"
@@ -971,9 +971,9 @@
         "IronTeeth": {
           "horsepower": 966,
           "fuelPerHour": 0.15,
-          "waterPerHour": 0.17,
+          "waterPerHour": 0.09,
           "fuelStock": 4,
-          "waterTankGoods": 34,
+          "waterTankGoods": 18,
           "fuelGoodIds": [
             "Log",
             "Plank"
@@ -1015,9 +1015,9 @@
         }
       ],
       "fuelPerHour": 0.24,
-      "waterPerHour": 0.27,
+      "waterPerHour": 0.15,
       "fuelStock": 6,
-      "waterTankGoods": 54,
+      "waterTankGoods": 30,
       "fullInventoryWorkHours": 25,
       "maintenanceIntervalDays": 12,
       "maintenanceMaterials": [
@@ -1035,9 +1035,9 @@
         "Folktails": {
           "horsepower": 1500,
           "fuelPerHour": 0.22,
-          "waterPerHour": 0.27,
+          "waterPerHour": 0.15,
           "fuelStock": 6,
-          "waterTankGoods": 54,
+          "waterTankGoods": 30,
           "fuelGoodIds": [
             "Log",
             "Plank"
@@ -1063,9 +1063,9 @@
         "IronTeeth": {
           "horsepower": 1575,
           "fuelPerHour": 0.24,
-          "waterPerHour": 0.27,
+          "waterPerHour": 0.15,
           "fuelStock": 6,
-          "waterTankGoods": 54,
+          "waterTankGoods": 30,
           "fuelGoodIds": [
             "Log",
             "Plank"

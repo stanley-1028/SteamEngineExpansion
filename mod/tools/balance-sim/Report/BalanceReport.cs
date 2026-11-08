@@ -21,7 +21,7 @@ internal static class BalanceReport
             + (data.Derived.Rows.Count * 2) + " faction variants / blueprintCount "
             + data.Derived.BlueprintCount);
         Fmt.Info("P1 gates", (data.Derived.AllGatesPass ? "PASS 5/5" : "FAIL")
-            + " (tank/fuel ratio, mixing error, efficiency, capacities, forbidden spec scan)");
+            + " (water tank autonomy, dedicated water tank, efficiency, capacities, forbidden spec scan)");
         Fmt.Info("formula source", "SEE.Core BoilerFormulas + ConditionCurve + BoilerStateMachine");
         Fmt.Info("workload", "30-day average, L=1.0, maintenance 2 h, intervals 6/8/10/12 days");
         Console.WriteLine("  cross-checks passed : " + data.CrossCheckCount
@@ -58,7 +58,7 @@ internal static class BalanceReport
         }
 
         Console.WriteLine("  note: fuelStock = ceil(fuel/h x 25), waterTank = round(water/h x 200), both via SEE.Core.");
-        Console.WriteLine("  REQ-BLD-09 spot value: Large.T1 waterTankGoods = 58 (round(0.29 x 200) = 58).");
+        Console.WriteLine("  REQ-BLD-09 spot value: Large.T1 waterTankGoods = 28 (round(0.14 x 200) = 28).");
     }
 
     /// <summary>Prints Criterion 1 (full-load output vs the §5.1 counter proposal).</summary>
