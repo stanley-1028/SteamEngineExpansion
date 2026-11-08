@@ -1,7 +1,8 @@
 # Steam Engine Expansion（SEE）— 蒸汽引擎擴充
 
 > Timberborn `1.1.2.8` 模組｜版本 **0.1.0**｜狀態：**離線門禁全綠、已安裝、待人類實機驗收（P8）**
-> GitHub：<https://github.com/stanley-1028/SteamEngineExpansion>｜Steam 工作坊：**尚未上架**（素材已備於 `mod/workshop/`）
+> GitHub：<https://github.com/stanley-1028/SteamEngineExpansion>｜Release v0.1.0：<https://github.com/stanley-1028/SteamEngineExpansion/releases/tag/v0.1.0>
+> Steam 工作坊：**尚未上架**（封面與文案已備於 `mod/workshop/`，需在遊戲內 Mods 管理器以擁有者 Steam 帳號發佈）
 > 12 種「免工人、燒燃料、耗水」的蒸汽引擎：3 尺寸 × 4 等級 × 2 陣營，附週期維護系統與三外部模組軟依賴。
 >
 > ⚠ 本版本**尚未發佈**（工作坊未上架）。離線門檻（建置／測試／validator／平衡模擬）全 PASS，
