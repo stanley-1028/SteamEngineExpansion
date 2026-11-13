@@ -15,6 +15,7 @@
 | `cover/qa-322x181.png` | 縮圖可讀性檢查 |
 | `cover/qa-square-1080.jpg` | 中心 1:1 方裁檢查 |
 | `DESCRIPTION.md` | 工作坊標題／描述（可直接貼上，含 BBCode） |
+| `UPDATE-hotfix-6.md` | 熱修-6 更新時可直接貼上的 Name／Description／Changelog／Tags |
 | `workshop_data.template.json` | 上傳設定模板（**首次上傳前不要**把它改名成 `workshop_data.json`，見下方「常見錯誤」） |
 | `COVER_PROMPTS.md` | 封面 AI 提示詞與規格（可重生成） |
 
