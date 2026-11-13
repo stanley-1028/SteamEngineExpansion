@@ -103,7 +103,7 @@ internal static class Verification
             if (placeable is not null)
             {
                 var toolGroup = Str(placeable, "ToolGroupId", errors, context);
-                Equal(toolGroup, "Power", "PlaceableBlockObjectSpec.ToolGroupId", context, errors);
+                Equal(toolGroup, ToolGroup.Id, "PlaceableBlockObjectSpec.ToolGroupId", context, errors);
                 var order = Int(placeable, "ToolOrder", errors, context);
                 if (order < 110 || order > 142)
                 {

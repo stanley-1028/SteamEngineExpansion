@@ -97,4 +97,24 @@
 > staged **132 檔／2,379,665 bytes**、package sha256 `4a661a1ed86301131b267ec7253c7972f36deeabcbd70d206bc29fd7023142c5`。
 > 實機驗收（AI 不得宣告通過）：完工鍋爐不再出現搬運工需求狀態、面板耗水換算約減半、既有存檔可正常載入、搬運工仍可補燃料與水。
 
+## 九、2026-11-14 UI／GUI 原版化＋專屬 Steam Engines 工具組（Lead 裁定；玩家要求）
 
+> 來源：玩家要求「把 UI 和 GUI 都原版化，收縮型菜單也是，同時為他們的建築菜單做收縮型菜單」。
+> 考察：原版 `BlockObjectToolGroupSpec` 只有 Id/Order/NameLocKey/Icon/FallbackGroup（無嵌套）；`ToolGroupButton`
+> 點分類＝`EnterToolGroup` 展開該組建築列、再點／切換＝收合（即「收縮型菜單」）。原版面板語彙取自遊戲內建
+> `StreamingAssets/Modding/UI.zip` 的 UXML/USS（`entity-sub-panel`／`entity-panel__*`／`progress-bar`／`game-toggle`／
+> `game-dropdown`），按鈕以 `VisualElementLoader` 取原版 `Game/EntityPanel/DemolishableFragment` 的
+> `entity-fragment__button`（`NineSliceButton` 為 internal，不能直接 new）。離線門禁全綠後由 Lead 記錄。
+
+| # | 裁定 | 生效範圍 |
+|---|---|---|
+| **AD-21** 面板原版化（不新增 UXML/USS 資產） | SEE 面板改用原版 USS 類別與原生控制項（九宮格卡片、原版字體/狀態色類、原生九宮格按鈕、`Timberborn.CoreUI.ProgressBar`、`game-toggle`、`Timberborn.DropdownSystem.Dropdown`）；原本 Unity `Foldout` 改為原版風格收合標題（預設展開、跨 Render 保留、不寫存檔）。禁止 inline 顏色/字級，唯一例外是需求 §15.6 A1 的形狀/顏色 swatch。原生 dropdown/按鈕取用失敗時必須 fallback（`DropdownField`／plain `Button`＋原版 class），不得讓面板初始化拋例外。行為、4 Hz 髒標記、命令與 loc key 集合不變（本輪 loc 只 +1 工具組鍵，見 AD-23）。 | P4／P6／P8 |
+| **AD-22** 24 檔改用專屬底部工具組（覆寫需求 §15.1 P3「不新增工具組」） | 新增 `BlockObjectToolGroupSpec`：`Id=SteamEngines`、`Order=72`（原版 Power 70 之後、Science 80 之前）、`NameLocKey=UI.SEE.ToolGroup.SteamEngines`、`Icon=ToolGroupIcons/SteamEngines`、`FallbackGroup=false`；24 份藍圖 `PlaceableBlockObjectSpec.ToolGroupId` 由 `Power` 改 `SteamEngines`（`ToolOrder` 110–142 不變）。玩家可見效果＝底部分類列多一個可展開／收合的分類按鈕，24 檔不再混進原版 Power。group 藍圖與圖示放 `data/BlockObjectToolGroups/`、`data/ToolGroupIcons/`，**不**列入 TemplateCollection（IL 已證 mod 內所有 `*.blueprint.json` 由 `ModSystemFileProvider<BlueprintAsset>` 掃描載入）。此裁定取代需求 §15.1 P3「不新增工具組」與 CONTRACT §4.9 舊文；需求其餘 UI 條文不變。 | P1／P6／P8 |
+| **AD-23** 本地化 63→64 鍵 | 新增 `UI.SEE.ToolGroup.SteamEngines`（enUS "Steam Engines"／zhTW、zhCN「蒸汽引擎」），作為 AD-22 分類按鈕顯示名；三語 CSV、生成器 `ExpectedKeyCount=64`、validator、`UiContractTests`、文件同步。前綴仍為允許的 `UI.SEE.`；不得覆寫任何原版鍵。 | P1／P4／P6 |
+
+> 本輪（2026-11-14）離線實測：`build.ps1 -Clean` → **BUILD PASSED（G01–G22 全綠）**、四程式集 0 warning、
+> **PASS 522/522**（含新增 `NativePanelContractTests` 12 項）、generator `CHECK PASS（0 differences, 83 files, 24 blueprints）`＋
+> `gates 5/5`、validator **VALIDATION PASSED（13/13 gate group、1 既有 WARN、0 error）**、
+> staged **135 檔／2,385,102 bytes**、package sha256 `9977ed808df154171913eaefc76a05087f75af1cb75989adccb2afa58699cca3`。
+> 實機待簽核：面板原版外觀、收合 glyph、原生 dropdown、150% 縮放、底部 Steam Engines 按鈕/圖示/展開收合/24 檔排序、
+> 重載不重複（`docs/TEST_PROTOCOL.md` 步驟 1b／1c；`mod/src/SEE.UI/README.md` 待人工清單）。

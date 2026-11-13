@@ -26,7 +26,8 @@ namespace SEE.Tools.Validate;
 /// <item>SEE.SEEBoilerSpec.WaterCapacityGoods (the dedicated water inventory's capacity);</item>
 /// <item>BuildingSpec.ScienceCost;</item>
 /// <item>BuildingSpec.BuildingCost (goods and amounts, in table order);</item>
-/// <item>PlaceableBlockObjectSpec.ToolOrder (110–142 and after the vanilla steam engine's 50).</item>
+/// <item>PlaceableBlockObjectSpec.ToolGroupId (the dedicated SEE "SteamEngines" group) and ToolOrder
+/// (110–142 and after the vanilla steam engine's 50).</item>
 /// </list>
 ///
 /// Extra contract checks on the same pass: fuel goods/energy, the <c>GoodConsumingBuildingSpec</c>
@@ -719,7 +720,7 @@ internal sealed class BlueprintTableChecks
             return;
         }
 
-        ExpectText(relative, "PlaceableBlockObjectSpec", "ToolGroupId", placeable.Value, "Power");
+        ExpectText(relative, "PlaceableBlockObjectSpec", "ToolGroupId", placeable.Value, ContractSpecs.ToolGroupId);
 
         if (!TryInt(placeable.Value, "ToolOrder", out var order))
         {

@@ -1,5 +1,34 @@
 # CHANGELOG
 
+## 0.1.0 hotfix-6 — 2026-11-14（UI／GUI 原版化＋專屬 Steam Engines 工具組；版本號不變）
+
+- **面板原版化（AD-21）**：`SEE.UI` 不再自帶 inline 顏色/字級，也不再使用 Unity 預設皮膚；改為遊戲原生的建築面板語彙：
+  - 原生九宮格卡片（`entity-sub-panel`＋`bg-sub-box--green`）、`entity-panel__text`／`__sub-text`／`__heading-text`、`text--bold`、狀態色 `game-text--red`／`text--yellow`。
+  - 原生九宮格 fragment 按鈕（`VisualElementLoader` 取 `Game/EntityPanel/DemolishableFragment` 的 `entity-fragment__button`，取不到有 fallback）、原生 `Timberborn.CoreUI.ProgressBar`、`game-toggle`、`game-dropdown`（`Timberborn.DropdownSystem.Dropdown`＋`IDropdownProvider`＋`DropdownItemsSetter`，建構失敗 fallback `DropdownField`）。
+  - 原本的 Unity `Foldout` 改為原版風格的收合標題（箭頭＋建築名）；預設展開、跨 Render 保留、不寫存檔（REQ-UI-12）。
+  - 刷新仍是 4 Hz 髒標記；程式刷新不會重送命令（dropdown 走 `UpdateSelectedValue`、toggle 走 `SetValueWithoutNotify`）；元素樹只建一次。
+  - 需求 §15.6 A1 的形狀/顏色 swatch 是唯一保留的 inline 顏色（在 `BoilerPanelNativeStyles` 註解說明）。
+- **專屬底部工具組「Steam Engines」（AD-22，玩家要求的「收縮型菜單」）**：新增 `BlockObjectToolGroupSpec`：
+  `Id=SteamEngines`、`Order=72`（原版 Power 70 之後、Science 80 之前）、`NameLocKey=UI.SEE.ToolGroup.SteamEngines`、
+  `Icon=ToolGroupIcons/SteamEngines`、`FallbackGroup=false`；24 份藍圖 `ToolGroupId` 由 `Power` 改 `SteamEngines`
+  （`ToolOrder` 110–142 不變）。底部列因此多一個可展開／收合的分類按鈕，不再把 24 檔塞進原版 Power 分類。
+  生成器輸出 group 藍圖與 128×128 placeholder 圖示；validator 新增 `PASS tool group (SteamEngines spec, icon, 24 members)`；
+  `build.ps1` 的 stage 加入 `BlockObjectToolGroups/`、`ToolGroupIcons/`。group 藍圖不需列入 TemplateCollection
+  （mod 內所有 `*.blueprint.json` 由 `ModSystemFileProvider<BlueprintAsset>` 扫描載入；IL 取證見 PR/commit notes）。
+- **本地化 63→64 鍵（AD-23）**：新增 `UI.SEE.ToolGroup.SteamEngines`（enUS "Steam Engines"／zhTW、zhCN「蒸汽引擎」）；
+  三語 CSV、生成器、validator、測試與文件同步。
+- **測試**：新增 `NativePanelContractTests`（12 項 source-scan：無 Foldout/DropdownField 主路徑、收合預設展開且 Render 不碰狀態、
+  原生類別/控制項齊備、唯一 inline swatch、View 零 inline style）；`ContractSurfaceTests`、`UiContractTests`（64 鍵）更新；測試總數 **510→522**。
+- **文件**：`mod/src/SEE.UI/README.md`（原版化說明＋待實機清單）、`mod/docs/CONTRACT_SEE.md`（§4.3／§4.9／§5.2）、
+  `mod/docs/LEAD_RULINGS_ADDENDUM.md` §九（AD-21～AD-23）、`mod/docs/RELEASE_GATES.md`、`docs/PACKAGE.md`、
+  `docs/VERIFICATION.md`、`docs/TEST_PROTOCOL.md`（步驟 1b／1c）、`mod/workshop/*`。
+- **離線門禁（2026-11-14 實測）**：`build.ps1 -Clean` → **BUILD PASSED（G01–G22 全綠）**、四程式集 **0 warning**、**PASS 522/522**、
+  generator `CHECK PASS（0 differences, 83 files, 24 blueprints）`＋`gates 5/5 PASS`、validator **VALIDATION PASSED**
+  （13/13 gate group、1 既有 WARN、0 error）、staged **135 檔、2,385,102 bytes**、
+  package sha256 `9977ed808df154171913eaefc76a05087f75af1cb75989adccb2afa58699cca3`。
+- **待實機（AI 不得宣告通過）**：面板原版外觀、▾/▸ glyph、原生 dropdown 展開收合、150% UI 縮放不裁切、
+  底部「Steam Engines」按鈕出現/位置、展開後 24 檔排序、圖示顯示、重載不重複；照 `docs/TEST_PROTOCOL.md` 步驟 1b／1c 由人類簽核。
+
 ## 0.1.0 hotfix-5 — 2026-11-08（搬運工需求狀態移除＋耗水減半；離線門禁全綠）
 
 - **修正**：完工蒸汽引擎不再顯示原版狀態「需要搬運工才能運轉。」（`Status.Hauling.NoHaulingPost`）。

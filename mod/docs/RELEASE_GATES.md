@@ -39,17 +39,17 @@ pwsh -File mod/tools/validate/negative-tests.ps1
 | ID | 門禁內容（可判定） | 執行者 | 通過證據（真實輸出樣式） | 對映 |
 |---|---|---|---|---|
 | **G01** | 4 個出貨程式集 0 warning（`TreatWarningsAsErrors=true`） | `build.ps1` | 每個專案 `0 个警告 / 0 Warning(s)` | REQ-NFR-01/02/06、19.2-6 |
-| **G02** | 離線測試 runner 全綠 | `build.ps1` | `PASS 510/510` | REQ-TEST-01、AC-05/07/08/12/13、19.2-6 |
-| **G03** | 生成器 `--check` 與磁碟檔案逐 byte 相同 | `build.ps1` | `CHECK PASS (0 differences, 80 files, 24 blueprints)` | REQ-ARCH-04/06、REQ-NFR-09、AC-01 |
+| **G02** | 離線測試 runner 全綠 | `build.ps1` | `PASS 522/522` | REQ-TEST-01、AC-05/07/08/12/13、19.2-6 |
+| **G03** | 生成器 `--check` 與磁碟檔案逐 byte 相同 | `build.ps1` | `CHECK PASS (0 differences, 83 files, 24 blueprints)` | REQ-ARCH-04/06、REQ-NFR-09、AC-01 |
 | **G04** | 生成器 5 道資料閘門全過（水艙自主時間 ≥8× 燃料庫存自主時間（AD-20）、水艙獨立（ConsumedGoods 無 Water、容量＝表定）、效率判準、燃料容量逐格、無禁用 spec） | `build.ps1` | `gates : 5/5 PASS` | REQ-BLD-09、FUEL-08/09、COMPAT-04/05、ARCH-08 |
-| **G05** | validator 全部 gate group PASS | `build.ps1` | `VALIDATION PASSED`、`12/12 gate group(s)` | REQ-TEST-01/02/03、AC-01/02/03/16 |
+| **G05** | validator 全部 gate group PASS | `build.ps1` | `VALIDATION PASSED`、`13/13 gate group(s)` | REQ-TEST-01/02/03、AC-01/02/03/16 |
 | **G06** | `manifest.json` 契約（7 欄位、Id、空 mod 清單、Version 0.1.0） | `tools/validate` | `PASS  manifest.json` | REQ-ARCH-11、19.2-5 |
 | **G07** | `engines.json` 為 12 列唯一數值源（`dataVersion=1`、列舉/派生驗算） | `tools/validate` | `PASS  engines.json (12 rows)` | REQ-ARCH-04/05/06、AC-01 |
-| **G08** | 26 份 blueprint 文件對遊戲＋SEE spec metadata 解析成功、欄位型別正確 | `tools/validate` | `PASS  blueprint spec schema` | REQ-IMPL-01/15、AC-01/03 |
+| **G08** | 27 份 blueprint 文件對遊戲＋SEE spec metadata 解析成功、欄位型別正確 | `tools/validate` | `PASS  blueprint spec schema` | REQ-IMPL-01/15、AC-01/03 |
 | **G09** | **24 份藍圖 × 12 個權威欄位** 與 `engines.json`＋`engines.derived.json` **零誤差** | `tools/validate` | `PASS  blueprint table (24 x 12 authoritative fields)`；`24/24 files x 12/12 fields, 0 mismatch` | REQ-TEST-01、ARCH-14、BLD-09、FUEL-01/08、AC-01/03 |
 | **G10** | 燃料容量與獨立水艙逐格等於表定（`float32 ceil(GoodPerHour×25)`、`SEE.SEEBoilerSpec.WaterCapacityGoods`；藍圖不得有 StockpileSpec／Water consumed good） | `tools/validate` | `PASS  fuel/water capacity derivation` | REQ-BLD-09、FUEL-08/11、AC-01/03 |
 | **G11** | 鍋爐藍圖紅線：無 `GoodPoweredGeneratorSpec`／`BuildingPipeSpec`／`PowerLineSpec`／`WorkplaceSpec`；`PowerOutput=Horsepower`、`PowerInput=0`、`IsShaft=false`；燃料白名單 Log（T1/T2）／Log+Plank（T3/T4）；無 Up/Top transput | `tools/validate` | `PASS  boiler blueprint rules (AD-9 / AD-5)` | REQ-BLD-04/05、POWER-16、COMPAT-07/11 |
-| **G12** | enUS／zhTW 各恰 63 鍵（≥54 基準）、無 raw key、無簡體、未覆寫原版鍵、placeholder 一致 | `tools/validate` | `PASS  localization (63 keys >= 54, enUS/zhTW)` | REQ-UI-04/05/08/09、AC-02/16 |
+| **G12** | enUS／zhTW／zhCN 各恰 64 鍵（≥54 基準）、無 raw key、無簡體、未覆寫原版鍵、placeholder 一致 | `tools/validate` | `PASS  localization (64 keys >= 54, enUS/zhTW/zhCN)` | REQ-UI-04/05/08/09、AC-02/16 |
 | **G13** | `SEE_Config.json` schema 1、六組齊全、每個預設值在 clamp 範圍 | `tools/validate` | `PASS  config schema and clamp` | REQ-SAFE-04/12、19.2-5/6 |
 | **G14** | **黃金雜湊**：24 份藍圖 byte 等於 `tests/SEE.Tests/Golden/blueprints.sha256`（validator＋build.ps1 各自獨立重算） | `tools/validate`＋`build.ps1` | `PASS  golden hash (24 blueprints)`；`24/24 golden entries verified` | REQ-ARCH-14、NFR-09、AC-01 |
 | **G15** | 禁止項靜態掃描 0 命中：`Update` 內 `FindObjects`／每幀全圖掃描／每幀字串插值或讀 config、`unsafe`/P-Invoke/`Process.Start`/網路/背景執行緒、Harmony 出現在 `SEE.Integration` 以外、硬寫平衡值表、`SteamEngine`/`SteamPlant` 作 TemplateName/loc key | `tools/validate` | `PASS  forbidden static scan`；`0 red-line hit(s)` | REQ-SAFE-07/15、NFR-15、OPS-05/07、AFR-09、RISK-09、AC-18 |
@@ -57,7 +57,7 @@ pwsh -File mod/tools/validate/negative-tests.ps1
 | **G17** | 原始碼事實：無分叉舊識別字、無編譯期外部模組參考、無 NuGet `PackageReference`、檔案行數上限（400／spec 600） | `tools/validate` | `PASS  source facts` | REQ-ARCH-10、NFR-03/05、RISK-09 |
 | **G18** | 成品包恰 4 個 DLL；無 `.deps.json`、`.pdb`、`SEE.Tests.dll`、`src/`、`tools/`、`tests/` | `build.ps1` | staged inventory 檢查 | R-E/R-F/R-G、19.2-3/4 |
 | **G19** | 成品包含 24 份藍圖（12 檔×2 陣營）＋2 份 TemplateCollection | `build.ps1` | staged inventory 檢查 | REQ-ARCH-05、AC-01/02 |
-| **G20** | 成品 enUS／zhTW 各 ≥54 鍵（目前 63，兩語相同；header 3 欄） | `build.ps1` | staged key count 檢查 | REQ-UI-04/05/09、AC-02/16 |
+| **G20** | 成品 enUS／zhTW／zhCN 各 ≥54 鍵（目前 64，三語相同；header 3 欄） | `build.ps1` | staged key count 檢查 | REQ-UI-04/05/09、AC-02/16 |
 | **G21** | 成品 24 個 PNG icon ＋ 24 個 `.png.meta.json`（`isSprite: true`），一一對應 | `build.ps1` | staged inventory 檢查 | REQ-UI-07、AC-16 |
 | **G22** | 版本三軌一致（manifest `0.1.0`／save schema `1`／config schema `1`）＋寫出套件雜湊檔 | `build.ps1` | `SEEVersion.cs`／manifest／config 檢查；`build/SteamEngineExpansion.sha256` | REQ-ARCH-11、SAVE-01、19.2-5 |
 

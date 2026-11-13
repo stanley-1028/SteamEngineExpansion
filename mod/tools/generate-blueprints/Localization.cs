@@ -10,20 +10,21 @@ internal sealed record LocRow(string Key, string English, string Traditional, st
 /// <summary>
 /// Builds the two shipped localization CSVs (requirements 15.5, contract 5).
 ///
-/// The twelve display names are generated from the engine table; the description, flavor, status
-/// and panel strings come verbatim from <c>data/loc_keys.json</c> (the authored static segment file).
-/// The generator re-validates the frozen 63-key set (54-key requirements baseline plus the 9 P4B
-/// additions), the placeholder sets and the Traditional-only character rule before writing a single byte.
+/// The twelve display names are generated from the engine table; the description, flavor, status,
+/// panel and tool-group strings come verbatim from <c>data/loc_keys.json</c> (the authored static
+/// segment file). The generator re-validates the frozen 64-key set (54-key requirements baseline,
+/// 9 P4B additions and the SEE bottom-bar tool-group label), the placeholder sets and the
+/// Traditional-only character rule before writing a single byte.
 /// </summary>
 internal static class Localization
 {
-    public const int ExpectedKeyCount = 63;
+    public const int ExpectedKeyCount = 64;
 
     private static readonly string[] Sizes = { "Small", "Medium", "Large" };
     private static readonly string[] Tiers = { "T1", "T2", "T3", "T4" };
     private static readonly string[] Roman = { "I", "II", "III", "IV" };
     private static readonly string[] TraditionalSize = { "小型", "中型", "大型" };
-    // Simplified display names: the game may run in zhCN (Player.log 2026-11-08 showed 63 missing keys).
+    // Simplified display names: the game may run in zhCN (Player.log 2026-11-08 showed missing keys).
     private static readonly string[] SimplifiedSize = { "小型", "中型", "大型" };
     private static readonly string[] ForbiddenKeyFragments = { "SteamEngine", "Building.SteamEngine.", "SteamPlant" };
     private static readonly string[] AllowedKeyPrefixes = { "Building.SEE.", "Status.SEE.", "UI.SEE." };
@@ -34,7 +35,7 @@ internal static class Localization
         + "误运转暂继续补给与为会说话问题实现计画优变应该显隐权限链储读写删选择档库车号轮轴"
         + "灯费启闭资";
 
-    /// <summary>Builds and validates the full 63-row localization table.</summary>
+    /// <summary>Builds and validates the full 64-row localization table.</summary>
     public static IReadOnlyList<LocRow> Build(Catalog catalog, string staticTextsPath)
     {
         if (!File.Exists(staticTextsPath))
@@ -60,6 +61,7 @@ internal static class Localization
             AddDisplayNames(rows);
             AddSingleton(rows, segments, "description", "Building.SEE.SteamBoiler.Description");
             AddFlavors(rows, segments);
+            AddSingleton(rows, segments, "toolGroup", ToolGroup.NameLocKey);
             AddList(rows, segments, "status", 22);
             AddList(rows, segments, "panel", 24);
 
@@ -177,12 +179,18 @@ internal static class Localization
                 throw new GeneratorException("localization: '" + row.Key + "' uses a forbidden key prefix");
             }
 
-            foreach (var fragment in ForbiddenKeyFragments)
+            // The SEE tool-group label is the one key that intentionally carries "SteamEngine" in its
+            // name; it lives in the UI.SEE.* namespace and can never overwrite a vanilla key (vanilla
+            // group labels are ToolGroups.*), so the "previous mod namespace" fragment rule skips it.
+            if (!string.Equals(row.Key, ToolGroup.NameLocKey, StringComparison.Ordinal))
             {
-                if (row.Key.Contains(fragment, StringComparison.Ordinal))
+                foreach (var fragment in ForbiddenKeyFragments)
                 {
-                    throw new GeneratorException("localization: '" + row.Key + "' contains forbidden fragment '"
-                                                 + fragment + "'");
+                    if (row.Key.Contains(fragment, StringComparison.Ordinal))
+                    {
+                        throw new GeneratorException("localization: '" + row.Key + "' contains forbidden fragment '"
+                                                     + fragment + "'");
+                    }
                 }
             }
 

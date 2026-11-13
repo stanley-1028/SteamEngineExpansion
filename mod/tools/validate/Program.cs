@@ -14,8 +14,9 @@ namespace SEE.Tools.Validate;
 ///
 /// Gate groups (each prints one PASS/FAIL line; build.ps1 matches them against
 /// tools/release/release-gates.json): manifest, engines.json, blueprint spec schema, the 24 x 12
-/// authoritative-field table, fuel/water capacity derivation, boiler blueprint rules, the 63-key
-/// localization set (54-key requirements baseline + 9 P4B additions), config schema and clamp
+/// authoritative-field table, fuel/water capacity derivation, boiler blueprint rules, the dedicated
+/// "SteamEngines" tool group (blueprint + icon + 24 members), the 64-key localization set (54-key
+/// requirements baseline + 9 P4B additions + the bottom-bar group label), config schema and clamp
 /// ranges, the golden hash, the forbidden static scan,
 /// the assembly whitelist/layering/spec shape, and the source facts.
 ///
@@ -142,8 +143,14 @@ internal static class Program
                 blueprintValidator.ValidateFile(file, relative);
             }
         });
-        Console.WriteLine("      " + blueprintFiles.Count + " documents (24 boilers + 2 template collections) validated "
-                          + "against the game and SEE spec metadata");
+        var collectionDocuments = blueprintFiles.Count(path =>
+            path.Replace('\\', '/').Contains("/TemplateCollections/", StringComparison.OrdinalIgnoreCase));
+        var toolGroupDocuments = blueprintFiles.Count(path =>
+            path.Replace('\\', '/').Contains("/BlockObjectToolGroups/", StringComparison.OrdinalIgnoreCase));
+        var boilerDocuments = blueprintFiles.Count - collectionDocuments - toolGroupDocuments;
+        Console.WriteLine("      " + blueprintFiles.Count + " documents (" + boilerDocuments + " boilers + "
+                          + collectionDocuments + " template collections + " + toolGroupDocuments
+                          + " tool group) validated against the game and SEE spec metadata");
 
         var table = new BlueprintTableChecks(dataDir, report, game);
         report.Check("blueprint table (24 x 12 authoritative fields)", table.Validate);
@@ -157,7 +164,10 @@ internal static class Program
         report.Check("boiler blueprint rules (AD-9 / AD-5)", () =>
             new BoilerBlueprintChecks(dataDir, report).Validate());
 
-        report.Check("localization (63 keys >= 54, enUS/zhTW/zhCN)", () =>
+        report.Check("tool group (SteamEngines spec, icon, 24 members)", () =>
+            new ToolGroupChecks(dataDir, report).Validate());
+
+        report.Check("localization (64 keys >= 54, enUS/zhTW/zhCN)", () =>
             new Localizations(report).Validate(dataDir, blueprintValidator.UsedLocKeys));
 
         report.Check("config schema and clamp", () =>

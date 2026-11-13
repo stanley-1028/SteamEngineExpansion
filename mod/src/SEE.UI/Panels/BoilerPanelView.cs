@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using SEE.Core.Abstractions;
+using SEE.Core.Constants;
 using SEE.UI.Status;
+using Timberborn.CoreUI;
+using Timberborn.DropdownSystem;
 using Timberborn.Localization;
 using UnityEngine.UIElements;
 
@@ -11,23 +14,51 @@ namespace SEE.UI.Panels
     /// The UIElements tree of the boiler panel plus its one-way rendering path
     /// (requirements §15.1 P3/P4, §15.2, §15.4, REQ-UI-01/05/12).
     ///
-    /// The tree is built exactly once in the constructor (never per frame, REQ-OPS-02). The six
-    /// information blocks live inside one vanilla <see cref="Foldout"/>, so the SEE block is
-    /// collapsible inside the regular building panel and keeps its collapsed state for the session
-    /// (REQ-UI-12). <see cref="Render"/> only assigns text, colours, one bar width and two control
-    /// values; the auto-maintenance toggle and the water-mode dropdown are updated with
-    /// <c>SetValueWithoutNotify</c>, so a refresh can never re-trigger a command.
+    /// The visual language is the shipped game's own and nothing else: the SEE block is a native
+    /// collapsible header row (the vanilla clickable entity-name button) followed by vanilla
+    /// nine-slice sub-panel cards (<see cref="NineSliceVisualElement"/> with
+    /// <c>entity-sub-panel bg-sub-box--green</c>) whose rows use <c>entity-panel__text</c> /
+    /// <c>entity-panel__sub-text</c> / <c>entity-panel__heading-text</c> and the native red/yellow
+    /// severity classes, a native <see cref="Timberborn.CoreUI.ProgressBar"/>, a native
+    /// <c>game-toggle</c>, native nine-slice buttons taken from a vanilla UXML template and the
+    /// game's own <see cref="Timberborn.DropdownSystem.Dropdown"/> for the water-supply mode. No
+    /// inline colour, font size or fixed size is set, except the A1 status swatch (the one
+    /// documented shape/colour cue).
+    ///
+    /// The tree is built exactly once in the constructor (never per frame, REQ-OPS-02).
+    /// <see cref="Render"/> only assigns text, class membership, display visibility, one progress
+    /// value and two control values; the auto-maintenance toggle is updated with
+    /// <c>SetValueWithoutNotify</c> and the water-mode dropdown through its provider plus
+    /// <c>UpdateSelectedValue</c>, so a refresh can never re-trigger a command. The collapsed flag
+    /// is kept in <see cref="PanelCollapseState"/> for the lifetime of the view and is never reset
+    /// by <see cref="Render"/> (REQ-UI-12).
     /// </summary>
-    public sealed class BoilerPanelView
+    public sealed partial class BoilerPanelView
     {
-        private readonly Foldout _root;
-        private readonly VisualElement _statusRow;
+        /// <summary>Header glyph while the block body is expanded.</summary>
+        private const string ExpandedChevron = "▾";
+
+        /// <summary>Header glyph while the block body is collapsed.</summary>
+        private const string CollapsedChevron = "▸";
+
+        private readonly VisualElementLoader _loader;
+        private readonly DropdownItemsSetter _dropdownItemsSetter;
+        private readonly PanelCollapseState _collapse = new PanelCollapseState();
+        private readonly List<string> _modeLabels = new List<string>(4);
+
+        private readonly VisualElement _root;
+        private readonly Button _header;
+        private readonly Label _headerChevron;
+        private readonly Label _headerTitle;
+        private readonly VisualElement _body;
+
         private readonly VisualElement _badgeSwatch;
         private readonly Label _status;
         private readonly Label _subStatus;
         private readonly Label _fixHint;
         private readonly Label _hint1;
         private readonly Label _hint2;
+
         private readonly Label _powerHeader;
         private readonly Label _output;
         private readonly Label _network;
@@ -37,29 +68,39 @@ namespace SEE.UI.Panels
         private readonly Label _waterHeader;
         private readonly Label _waterDetail;
         private readonly Label _waterBeaver;
+
+        private readonly NineSliceVisualElement _maintenanceSection;
         private readonly Label _condition;
-        private readonly VisualElement _conditionBar;
-        private readonly VisualElement _conditionFill;
+        private readonly global::Timberborn.CoreUI.ProgressBar _conditionBar;
         private readonly Label _nextMaintenance;
         private readonly Label _materials;
         private readonly Toggle _autoMaintenance;
         private readonly Button _maintainButton;
+
         private readonly Label _waterModeHeader;
-        private readonly DropdownField _waterMode;
         private readonly Label _waterModeUnavailable;
         private readonly Button _pauseButton;
-        private readonly List<string> _modeLabels = new List<string>(4);
+
+        private Dropdown? _waterMode;
+        private DropdownField? _waterModeFallback;
+        private WaterModeDropdownProvider? _provider;
 
         private int _modeIndex;
 
         /// <summary>Builds the panel once and wires the four commands (CONTRACT_SEE §5.2 D).</summary>
         /// <param name="loc">Localization service for the static control labels.</param>
+        /// <param name="visualElementLoader">Game service that loads the vanilla UXML templates (native buttons).</param>
+        /// <param name="dropdownListDrawer">Game singleton that opens/closes the vanilla dropdown list.</param>
+        /// <param name="dropdownItemsSetter">Game singleton that fills a vanilla dropdown from a provider.</param>
         /// <param name="pauseToggled">Invoked by the pause/resume button.</param>
         /// <param name="maintainRequested">Invoked by the maintain-now button.</param>
         /// <param name="autoMaintenanceChanged">Invoked with the new auto-maintenance value.</param>
         /// <param name="waterModeChanged">Invoked with the new zero-based water-supply mode index.</param>
         public BoilerPanelView(
             ILoc loc,
+            VisualElementLoader visualElementLoader,
+            DropdownListDrawer dropdownListDrawer,
+            DropdownItemsSetter dropdownItemsSetter,
             Action pauseToggled,
             Action maintainRequested,
             Action<bool> autoMaintenanceChanged,
@@ -70,92 +111,90 @@ namespace SEE.UI.Panels
                 throw new ArgumentNullException(nameof(loc));
             }
 
-            // Expanded by default: a collapsed Foldout made the whole SEE panel look missing
-            // (user report 2026-11-08: only a "Small Steam Engine Mk.I" chevron was visible).
-            _root = new Foldout { value = true };
-            _root.style.marginTop = 4f;
-            _root.style.display = DisplayStyle.None;
+            _loader = visualElementLoader ?? throw new ArgumentNullException(nameof(visualElementLoader));
+            _dropdownItemsSetter = dropdownItemsSetter ?? throw new ArgumentNullException(nameof(dropdownItemsSetter));
+            if (dropdownListDrawer is null)
+            {
+                throw new ArgumentNullException(nameof(dropdownListDrawer));
+            }
 
-            _statusRow = new VisualElement();
-            _statusRow.style.flexDirection = FlexDirection.Row;
-            _root.Add(_statusRow);
-            _badgeSwatch = BoilerPanelStyles.CreateBadgeSwatch(_statusRow);
-            _status = BoilerPanelStyles.AddRow(_statusRow);
+            // Native collapsible block: the vanilla clickable entity-name row (Button) with the
+            // chevron and the display name as child labels. It starts expanded (a collapsed block
+            // once made the whole SEE panel look missing), and the state is kept for the session.
+            _root = new VisualElement();
+            BoilerPanelNativeStyles.SetVisible(_root, false);
 
-            _subStatus = BoilerPanelStyles.AddRow(_root);
-            BoilerPanelStyles.ApplyError(_subStatus);
-            _fixHint = BoilerPanelStyles.AddRow(_root);
-            BoilerPanelStyles.ApplyHint(_fixHint);
-            _hint1 = BoilerPanelStyles.AddRow(_root);
-            BoilerPanelStyles.ApplyHint(_hint1);
-            _hint2 = BoilerPanelStyles.AddRow(_root);
-            BoilerPanelStyles.ApplyHint(_hint2);
+            _header = BoilerPanelNativeStyles.CreateCollapseHeader(_root, ToggleCollapsed);
+            _headerChevron = BoilerPanelNativeStyles.CreateCollapseChevron(_header);
+            _headerChevron.text = ExpandedChevron;
+            _headerTitle = BoilerPanelNativeStyles.CreateCollapseTitle(_header);
 
-            _powerHeader = BoilerPanelStyles.AddHeader(_root);
-            _output = BoilerPanelStyles.AddRow(_root);
-            _network = BoilerPanelStyles.AddRow(_root);
-            _efficiency = BoilerPanelStyles.AddRow(_root);
+            _body = new VisualElement();
+            _root.Add(_body);
 
-            _fuelHeader = BoilerPanelStyles.AddHeader(_root);
-            _fuelDetail = BoilerPanelStyles.AddRow(_root);
+            // Status card: the A1 swatch + native status text, reason line, fix hint and hints.
+            NineSliceVisualElement statusSection = BoilerPanelNativeStyles.CreateSection(_body);
+            VisualElement statusRow = BoilerPanelNativeStyles.CreateRow(statusSection);
+            _badgeSwatch = BoilerPanelNativeStyles.CreateBadgeSwatch(statusRow);
+            _status = BoilerPanelNativeStyles.CreateStatusText(statusRow);
+            _subStatus = BoilerPanelNativeStyles.CreateErrorText(statusSection);
+            _fixHint = BoilerPanelNativeStyles.CreateSubTextRow(statusSection);
+            _hint1 = BoilerPanelNativeStyles.CreateSubTextRow(statusSection);
+            _hint2 = BoilerPanelNativeStyles.CreateSubTextRow(statusSection);
 
-            _waterHeader = BoilerPanelStyles.AddHeader(_root);
-            _waterDetail = BoilerPanelStyles.AddRow(_root);
-            _waterBeaver = BoilerPanelStyles.AddRow(_root);
-            BoilerPanelStyles.ApplyHint(_waterBeaver);
+            // Production card: power, fuel and water blocks in one native card.
+            NineSliceVisualElement productionSection = BoilerPanelNativeStyles.CreateSection(_body);
+            _powerHeader = BoilerPanelNativeStyles.CreateSectionHeader(productionSection);
+            _output = BoilerPanelNativeStyles.CreateTextRow(productionSection);
+            _network = BoilerPanelNativeStyles.CreateTextRow(productionSection);
+            _efficiency = BoilerPanelNativeStyles.CreateTextRow(productionSection);
+            _fuelHeader = BoilerPanelNativeStyles.CreateSectionHeader(productionSection);
+            _fuelDetail = BoilerPanelNativeStyles.CreateTextRow(productionSection);
+            _waterHeader = BoilerPanelNativeStyles.CreateSectionHeader(productionSection);
+            _waterDetail = BoilerPanelNativeStyles.CreateTextRow(productionSection);
+            _waterBeaver = BoilerPanelNativeStyles.CreateSubTextRow(productionSection);
 
-            _condition = BoilerPanelStyles.AddRow(_root);
-            _conditionBar = BoilerPanelStyles.CreateProgressBar(out _conditionFill);
-            _root.Add(_conditionBar);
-            _nextMaintenance = BoilerPanelStyles.AddRow(_root);
-            _materials = BoilerPanelStyles.AddRow(_root);
-
-            _autoMaintenance = new Toggle(loc.T(SEE.Core.Constants.SeeLocKeys.UiActionAutoMaintenance));
-            BoilerPanelStyles.ApplyToggle(_autoMaintenance);
+            // Maintenance card: condition bar (DeteriorableFragment pattern), countdown/material
+            // rows, the native toggle and the native maintain button. Hidden as a whole when the
+            // maintenance system is disabled.
+            _maintenanceSection = BoilerPanelNativeStyles.CreateSection(_body);
+            _conditionBar = BoilerPanelNativeStyles.CreateProgressBar(_maintenanceSection, out Label condition);
+            _condition = condition;
+            _nextMaintenance = BoilerPanelNativeStyles.CreateTextRow(_maintenanceSection);
+            _materials = BoilerPanelNativeStyles.CreateTextRow(_maintenanceSection);
+            _autoMaintenance = BoilerPanelNativeStyles.CreateToggle(_maintenanceSection,
+                loc.T(SeeLocKeys.UiActionAutoMaintenance));
             _autoMaintenance.RegisterValueChangedCallback(evt => autoMaintenanceChanged(evt.newValue));
-            _root.Add(_autoMaintenance);
+            _maintainButton = BoilerPanelNativeStyles.CreateFragmentButton(
+                BoilerPanelNativeStyles.CreateButtonWrapper(_maintenanceSection), _loader,
+                loc.T(SeeLocKeys.UiActionMaintainNow), green: true, maintainRequested);
 
-            _maintainButton = new Button(maintainRequested)
-            {
-                text = loc.T(SEE.Core.Constants.SeeLocKeys.UiActionMaintainNow)
-            };
-            BoilerPanelStyles.ApplyButton(_maintainButton);
-            _root.Add(_maintainButton);
-
-            _waterModeHeader = BoilerPanelStyles.AddRow(_root);
-            _waterModeHeader.style.marginTop = 4f;
-
-            var choices = new List<string>(4)
-            {
-                loc.T(StatusDescriptors.WaterSupplyModeLocKey(WaterSupplyMode.Auto)),
-                loc.T(StatusDescriptors.WaterSupplyModeLocKey(WaterSupplyMode.Tank)),
-                loc.T(StatusDescriptors.WaterSupplyModeLocKey(WaterSupplyMode.Valve)),
-                loc.T(StatusDescriptors.WaterSupplyModeLocKey(WaterSupplyMode.Hauler))
-            };
-            _modeLabels.AddRange(choices);
-            _waterMode = new DropdownField(choices, 0, value => value, value => value);
-            BoilerPanelStyles.ApplyDropdown(_waterMode);
-            _waterMode.RegisterValueChangedCallback(evt => OnModePicked(evt.newValue, waterModeChanged));
-            _root.Add(_waterMode);
-
-            _waterModeUnavailable = BoilerPanelStyles.AddRow(_root);
-            BoilerPanelStyles.ApplyError(_waterModeUnavailable);
-
-            _pauseButton = new Button(pauseToggled)
-            {
-                text = loc.T(SEE.Core.Constants.SeeLocKeys.UiActionPause)
-            };
-            BoilerPanelStyles.ApplyButton(_pauseButton);
-            _root.Add(_pauseButton);
+            // Controls card: water-supply mode and the pause/resume button.
+            NineSliceVisualElement controlsSection = BoilerPanelNativeStyles.CreateSection(_body);
+            _waterModeHeader = BoilerPanelNativeStyles.CreateTextRow(controlsSection);
+            CreateWaterModeControl(loc, dropdownListDrawer, controlsSection, waterModeChanged);
+            _waterModeUnavailable = BoilerPanelNativeStyles.CreateErrorText(controlsSection);
+            _pauseButton = BoilerPanelNativeStyles.CreateFragmentButton(
+                BoilerPanelNativeStyles.CreateButtonWrapper(controlsSection), _loader,
+                loc.T(SeeLocKeys.UiActionPause), green: false, pauseToggled);
         }
 
         /// <summary>Root element handed to the entity panel system.</summary>
         public VisualElement Root => _root;
 
+        /// <summary>True while the SEE block body is expanded (survives renders, never saved).</summary>
+        public bool IsExpanded => _collapse.IsExpanded;
+
         /// <summary>Shows or hides the whole fragment (other entity types add no rows).</summary>
         /// <param name="visible">True to show the boiler block.</param>
-        public void SetVisible(bool visible) =>
-            _root.style.display = visible ? DisplayStyle.Flex : DisplayStyle.None;
+        public void SetVisible(bool visible)
+        {
+            BoilerPanelNativeStyles.SetVisible(_root, visible);
+            if (!visible)
+            {
+                _waterMode?.Hide();
+            }
+        }
 
         /// <summary>Applies one localized payload to the existing elements.</summary>
         /// <param name="data">Payload from <see cref="BoilerPanelDataFactory"/>.</param>
@@ -167,12 +206,11 @@ namespace SEE.UI.Panels
                 return;
             }
 
-            _root.text = string.IsNullOrEmpty(data.Status)
-                ? data.Title
-                : data.Title + " · " + data.Status;
-            _root.tooltip = data.TitleTooltip;
+            SetText(_headerTitle, data.Title);
+            _header.tooltip = data.TitleTooltip;
+
             SetText(_status, data.Status);
-            BoilerPanelStyles.SetBadge(_status, _badgeSwatch, data.StatusColor, data.BadgeVisible);
+            BoilerPanelNativeStyles.SetBadge(_status, _badgeSwatch, data.StatusColor, data.BadgeVisible);
 
             SetOptional(_subStatus, data.SubStatus);
             SetOptional(_fixHint, data.FixHint);
@@ -190,15 +228,18 @@ namespace SEE.UI.Panels
             SetOptional(_waterBeaver, data.WaterBeaver);
 
             SetText(_condition, data.Condition);
-            BoilerPanelStyles.SetProgress(_conditionFill, data.ConditionPercent);
+            BoilerPanelNativeStyles.SetProgress(_conditionBar, data.ConditionPercent);
             SetText(_nextMaintenance, data.NextMaintenance);
             SetText(_materials, data.Materials);
             SetMaintenanceVisible(data.MaintenanceVisible);
 
             _autoMaintenance.SetValueWithoutNotify(data.AutoMaintenance);
-            _maintainButton.text = data.MaintainLabel;
-            BoilerPanelStyles.SetButtonEnabled(_maintainButton, data.CanMaintain);
-            _pauseButton.text = data.PauseLabel;
+            SetText(_maintainButton, data.MaintainLabel);
+            _maintainButton.SetEnabled(data.CanMaintain);
+            BoilerPanelNativeStyles.ApplyButtonTone(_maintainButton, data.CanMaintain);
+
+            SetText(_pauseButton, data.PauseLabel);
+            BoilerPanelNativeStyles.ApplyButtonTone(_pauseButton, data.Paused);
 
             SetText(_waterModeHeader, data.WaterModeHeader);
             UpdateModeChoices(data);
@@ -206,70 +247,8 @@ namespace SEE.UI.Panels
             SetVisible(true);
         }
 
-        private void UpdateModeChoices(BoilerPanelData data)
-        {
-            if (data.WaterModeLabels.Length != _modeLabels.Count)
-            {
-                return;
-            }
-
-            bool changed = false;
-            for (int i = 0; i < _modeLabels.Count; i++)
-            {
-                if (!string.Equals(_modeLabels[i], data.WaterModeLabels[i], StringComparison.Ordinal))
-                {
-                    _modeLabels[i] = data.WaterModeLabels[i];
-                    changed = true;
-                }
-            }
-
-            if (changed)
-            {
-                _waterMode.choices = new List<string>(_modeLabels);
-            }
-
-            int index = data.WaterModeIndex;
-            if (index < 0 || index >= _modeLabels.Count)
-            {
-                index = 0;
-            }
-
-            _modeIndex = index;
-            _waterMode.SetValueWithoutNotify(_modeLabels[index]);
-        }
-
-        private void OnModePicked(string label, Action<int> waterModeChanged)
-        {
-            if (label is null)
-            {
-                return;
-            }
-
-            for (int i = 0; i < _modeLabels.Count; i++)
-            {
-                if (string.Equals(_modeLabels[i], label, StringComparison.Ordinal))
-                {
-                    if (i != _modeIndex)
-                    {
-                        _modeIndex = i;
-                        waterModeChanged(i);
-                    }
-
-                    return;
-                }
-            }
-        }
-
-        private void SetMaintenanceVisible(bool visible)
-        {
-            var display = visible ? DisplayStyle.Flex : DisplayStyle.None;
-            _condition.style.display = display;
-            _conditionBar.style.display = display;
-            _nextMaintenance.style.display = display;
-            _materials.style.display = display;
-            _autoMaintenance.style.display = display;
-            _maintainButton.style.display = display;
-        }
+        private void SetMaintenanceVisible(bool visible) =>
+            BoilerPanelNativeStyles.SetVisible(_maintenanceSection, visible);
 
         private static void SetText(Label label, string text)
         {
@@ -279,18 +258,19 @@ namespace SEE.UI.Panels
             }
         }
 
-        private static void SetText(Foldout root, string text)
+        private static void SetText(Button button, string text)
         {
-            if (!string.Equals(root.text, text, StringComparison.Ordinal))
+            if (!string.Equals(button.text, text, StringComparison.Ordinal))
             {
-                root.text = text;
+                button.text = text;
             }
         }
 
         private static void SetOptional(Label label, string text)
         {
             SetText(label, text);
-            label.style.display = string.IsNullOrEmpty(text) ? DisplayStyle.None : DisplayStyle.Flex;
+            BoilerPanelNativeStyles.SetVisible(label, !string.IsNullOrEmpty(text));
         }
+
     }
 }

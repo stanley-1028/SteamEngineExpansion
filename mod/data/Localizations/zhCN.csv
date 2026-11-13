@@ -16,6 +16,7 @@ Building.SEE.SteamBoiler.Flavor.T1,谦卑的小锅炉，只要一点木头和一
 Building.SEE.SteamBoiler.Flavor.T2,压力、木材与黄铜——现在还多了压力表。,req 15.5
 Building.SEE.SteamBoiler.Flavor.T3,铸铁低鸣，铆钉撑起动力的承诺。,req 15.5
 Building.SEE.SteamBoiler.Flavor.T4,每个阀门都精准，每一转都有代价。,req 15.5
+UI.SEE.ToolGroup.SteamEngines,蒸汽引擎,req 15.5
 Status.SEE.Running,运转中,req 15.5
 Status.SEE.Idle,待机（无负载）,req 15.5
 Status.SEE.Paused,已暂停,req 15.5

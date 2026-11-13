@@ -1,12 +1,13 @@
 # Steam Engine Expansion（SEE）— 蒸汽引擎擴充
 
 > Timberborn `1.1.2.8` 模組｜版本 **0.1.0**｜狀態：**離線門禁全綠、已安裝、待人類實機驗收（P8）**
-> GitHub：<https://github.com/stanley-1028/SteamEngineExpansion>｜Release v0.1.0：<https://github.com/stanley-1028/SteamEngineExpansion/releases/tag/v0.1.0>
+> GitHub：<https://github.com/stanley-1028/SteamEngineExpansion>｜Release（latest）：<https://github.com/stanley-1028/SteamEngineExpansion/releases/latest>
 > Steam 工作坊：<https://steamcommunity.com/sharedfiles/filedetails/?id=3836039641>（ItemId 3836039641，v0.1.0）
 > 12 種「免工人、燒燃料、耗水」的蒸汽引擎：3 尺寸 × 4 等級 × 2 陣營，附週期維護系統與三外部模組軟依賴。
 >
-> ⚠ 本版本**尚未發佈**（工作坊未上架）。離線門檻（建置／測試／validator／平衡模擬）全 PASS，
-> 但 T2–T6 實機項與動畫（AC-21）仍待驗；請照 `docs/TEST_PROTOCOL.md` 執行並由人類簽核。
+> ⚠ **工作坊已上架 v0.1.0**（ItemId 3836039641）；本輪熱修-6 的重新上傳需由擁有者在遊戲內 **Mods → Update**
+> 執行（Steam 無公開發佈 API；`mod/workshop/DESCRIPTION.md` 已備好貼上文案）。離線門檻（建置／測試／validator／平衡模擬）全 PASS，
+> 但 T2–T6 實機項、UI 原版化外觀（步驟 1b／1c）與動畫（AC-21）仍待驗；請照 `docs/TEST_PROTOCOL.md` 執行並由人類簽核。
 >
 > 2026-11-08 UI 修正：SEE 面板**預設展開**（標題含目前狀態）、新增 **zhCN** 63 鍵本地化
 > （遊戲簡中環境不再出現空白列與 63 條 missing-key 警告）。
@@ -21,6 +22,17 @@
 > **② 耗水量全 12 檔減半**——每 100 hp 耗水 T1 0.040／T2 0.035／T3 0.020／T4 0.010（舊值 0.080／0.070／0.040／0.018）；
 > 水艙容量依新耗水率重算（`waterTankHours` 仍 200，滿艙自主時間不變），燃料與其他數值不變。
 > 生成器閘門 1 同步改為「水艙自主時間 ≥8× 燃料庫存自主時間」（AD-20）。
+>
+> 2026-11-14 更新（熱修-6，Lead 裁決 AD-21／AD-22／AD-23，玩家要求「UI／GUI 原版化＋收縮型菜單」）：
+> **① 面板原版化**——SEE 區塊改用原版九宮格卡片／字體／九宮格按鈕／原生 `ProgressBar`／`game-toggle`／`game-dropdown`，
+> 原本的 Unity `Foldout` 換成原版風格的收合標題（預設展開、跨刷新保留）；面板不再自帶 inline 顏色或字級
+> （唯一例外是 A1 形狀/顏色 swatch）。
+> **② 新增專屬底部工具組「Steam Engines」**——24 檔不再混在原版 Power 分類：底部分類列多一個可展開／收合的分類按鈕
+> （`Id=SteamEngines`、Order 72，位於 Power 之後），點開顯示全部 24 檔，再點或切到別組即收合（AD-22）。
+> **③ 本地化 63→64 鍵**（新增 `UI.SEE.ToolGroup.SteamEngines`，AD-23）。
+> 離線門禁：`build.ps1 -Clean` → **BUILD PASSED（G01–G22 全綠）**、**PASS 522/522**、generator `CHECK PASS（83 files）`、
+> validator **VALIDATION PASSED（13/13）**、成品 **135 檔／2,385,102 bytes**、package sha256 `9977ed808df1…`；
+> 實機外觀與工具組展開/收合待人類簽核（`docs/TEST_PROTOCOL.md` 步驟 1b／1c）。
 
 ---
 
@@ -155,7 +167,7 @@
 3. 啟動遊戲 → Mods 清單應出現 **Steam Engine Expansion v0.1.0**。
 4. 依賴：**只需遊戲本體**（1.1.0.0+，實測 1.1.2.8）；不需要 Harmony，三個外部模組皆為選用。
 
-> 本機已安裝於 `C:\Users\user\Documents\Timberborn\Mods\SteamEngineExpansion`（132 檔、2,379,665 bytes、
+> 本機已安裝於 `C:\Users\user\Documents\Timberborn\Mods\SteamEngineExpansion`（135 檔、2,385,102 bytes、
 > 與 `build/` 逐檔 SHA-256 0 mismatch）。詳細清單與雜湊見 `docs/PACKAGE.md`。
 
 ### 4.2 移除
@@ -168,7 +180,7 @@
 ```powershell
 cd "C:\Users\user\Downloads\timber steam engine"
 powershell -NoProfile -ExecutionPolicy Bypass -File mod/build.ps1 -Clean
-# 產出 mod/build/SteamEngineExpansion/（0 warning、PASS 510/510、VALIDATION PASSED、22 gates）
+# 產出 mod/build/SteamEngineExpansion/（0 warning、PASS 522/522、VALIDATION PASSED 13/13、22 gates）
 
 dotnet run --project mod/tools/balance-sim -c Release -m:1        # 30 日平衡／四判準
 dotnet run --project mod/tools/generate-blueprints -c Release -m:1 -- --check   # 0 diff
@@ -183,7 +195,7 @@ mod/
 ├── src/SEE.Core         # 純邏輯：公式、狀態機、維護帳本、存檔編解碼、config（零遊戲相依）
 ├── src/SEE.Gameplay     # spec／控制器／tick／燃料水消耗／維護／存檔橋
 ├── src/SEE.Integration  # TP／PL／CB 偵測與降級、供水模式、存檔整合
-├── src/SEE.UI           # 建築面板、狀態徽章、63 鍵 loc 對映
+├── src/SEE.UI           # 建築面板（原版樣式、可收合）、狀態徽章、64 鍵 loc 對映
 ├── tests/SEE.Tests      # 零 NuGet 測試 runner（510 項）
 ├── tools/               # generate-blueprints／validate／balance-sim／ApiIndex／stage-json-mvp
 ├── data/                # engines.json（唯一數值源）、生成物、loc、icons、config、manifest
@@ -212,6 +224,7 @@ mod/
 10. **V-10 外部模組競爭**：`More Mines` 的 `TWSteamEngine`（750 hp）定位未實測；本模組只承諾不新增燃料。
 11. **夜間待機運轉的代價（2026-11-08 AD-16）**：預設 `balance.standbyLoadRatio=0.10`，夜間仍耗 10% 燃料／水並累積磨損（係數下限 0.40 → 約滿載磨損的 0.46 倍）；把該值設 0 可完全恢復舊的「需求 0 不耗料」行為。夜間待機的實機表現尚待人類簽核。
 12. **原版搬運工需求狀態只剩「擺放預覽」（2026-11-08 AD-18）**：完工鍋爐的原版 `Status.Hauling.NoHaulingPost` 已由我方關閉；但**建造預覽**面板仍顯示原版「需要搬運工。」說明列（`GoodConsumingBuildingDescriber` 只在 `BlockObject.IsPreview` 且無 `Workplace` 時建立，屬原版工具 UI）。v1 不 patch 原版 UI，列 P8 觀察。
+13. **原版化面板與新工具組待實機簽核（2026-11-14 AD-21／AD-22）**：面板的原版外觀（九宮格卡片、原生按鈕/開關/下拉/進度條、字型與換行）、收合標題的 ▾/▸ glyph、原生 Dropdown 展開，以及底部「Steam Engines」工具組的按鈕／圖示／展開收合與 24 檔排序，離線只能驗證程式與資料契約，外觀需人類進遊戲確認（清單見 `mod/src/SEE.UI/README.md`、`docs/TEST_PROTOCOL.md` 步驟 1b／1c）。
 
 ### 6.1 V-01～V-10 待證實（不得當成事實）
 
@@ -225,7 +238,7 @@ mod/
 | V-06 | 原版蒸汽機水庫存 15/16、待機燃料行為 | 未測（不影響本模組） |
 | V-07 | 管網 headlift 2 m 對高處引擎供水 | 待實機 |
 | V-08 | 兩陣營皆可生產 MetalBlock／Gear | 待實機（AC-20） |
-| V-09 | 24 藍圖載入與工具列排序 | 離線 PASS；實機待驗 |
+| V-09 | 24 藍圖載入、新 Steam Engines 工具組（展開/收合）與工具列排序 | 離線 PASS；實機待驗 |
 | V-10 | `More Mines` `TWSteamEngine` 定位競爭 | 未測（非 v1 阻擋） |
 
 > 完整待驗與簽核狀態見 `docs/VERIFICATION.md`。**在人類簽核前，本 README 不代表任何實機功能已通過。**

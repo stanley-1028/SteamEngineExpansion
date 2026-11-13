@@ -3,11 +3,12 @@
 
 In Timberborn, power and drinking water both compete for the same beavers: every extra water pump and every extra power wheel is another worker you don't have. This mod turns power into infrastructure. Feed it logs and water, and get steady horsepower for your mechanical pumps, sawmills, and production lines — without hiring a single beaver.
 
-[h1]Update (2026-11-08, hotfix-5)[/h1]
+[h1]Update (2026-11-14, hotfix-6)[/h1]
 [list]
-[*][b]No more “Requires haulers to function”[/b]: finished engines no longer show that vanilla status, even with no Hauling Post or haulers nearby. Fuel can come from haulers or conveyor belts; water is delivered to the tank by haulers.
-[*][b]Water use halved[/b]: every tier now consumes half the water, and the panel's water row and “≈N beavers' daily drinking water” conversion follow automatically (Large Mk.II: 0.50/h → 0.25/h, about 6 water/day ≈ 2.8 beavers).
-[*][b]Water tanks rescaled[/b]: tank capacity follows the new rates, but a full tank still lasts 200 game hours and each refill carries half the water.
+[*][b]Vanilla-looking panel[/b]: the engine panel now matches Timberborn's own building panels — dark nine-slice cards, native fonts, buttons, toggles, progress bars and dropdowns. The SEE block can be collapsed and expanded from its title (expanded by default), and all existing status/water/maintenance rows are kept.
+[*][b]Dedicated “Steam Engines” build category[/b]: the 12 tiers no longer crowd the vanilla [b]Power[/b] category. A new expandable/collapsible category button appears in the bottom bar right after Power; open it to see all 24 entries for your faction.
+[*][b]Three UI languages updated[/b]: the new category label is translated into English, Simplified Chinese and Traditional Chinese (64 localization keys in total).
+[*][b]Includes hotfix-5[/b]: finished engines no longer show “Requires haulers to function”, and all 12 tiers use half the water with rescaled tanks.
 [/list]
 
 [h1]What you get[/h1]
@@ -49,7 +50,7 @@ Mk.III and Mk.IV can also burn planks (1 plank = 2 logs of energy). All values a
 [list]
 [*]Subscribe on the Steam Workshop.
 [*]Launch Timberborn → [b]Mods[/b] → enable [b]Steam Engine Expansion[/b] → restart the game.
-[*]Find the engines in the [b]Power[/b] build category, after the vanilla Steam Engine.
+[*]Find the new [b]Steam Engines[/b] build category in the bottom bar (right after Power) and open it to build.
 [*]Fill them with logs and water via haulers, then connect shafts or cables. That's it.
 [/list]
 
@@ -68,13 +69,14 @@ The mod folder includes [b]SEE_Config.json[/b]. Useful keys:
 [*]Timber Pipes tank/valve supply modes are not supported yet. Water is supplied by haulers; auto mode always resolves to haulers.
 [*]The placement preview still shows the vanilla “Requires haulers.” note; finished buildings do not show it, and it does not affect operation (vanilla preview UI).
 [*]Custom models and animations are still being polished. If the visual footprint looks off, trust the build grid.
+[*]The vanilla-look panel and the new Steam Engines category are still being accepted in-game. If you run into a bug, please attach Player.log and a screenshot.
 [*]Some in-game acceptance checks (T2–T6) are still in progress. If you run into a bug, please attach Player.log and a screenshot.
 [/list]
 
 [h1]Feedback and source[/h1]
 [list]
 [*]GitHub (source, issues, releases): [url=https://github.com/stanley-1028/SteamEngineExpansion]github.com/stanley-1028/SteamEngineExpansion[/url]
-[*]Release v0.1.0: [url=https://github.com/stanley-1028/SteamEngineExpansion/releases/tag/v0.1.0]downloads and changelog[/url]
+[*]Release: [url=https://github.com/stanley-1028/SteamEngineExpansion/releases/latest]downloads and changelog[/url]
 [*]MIT License.
 [/list]
 

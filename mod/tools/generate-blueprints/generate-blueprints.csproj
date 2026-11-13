@@ -3,9 +3,10 @@
   <!--
     SEE blueprint generator (P1 scope, contract CONTRACT_SEE 4.10 / requirements 11.3).
 
-    Single offline command that turns data/engines.json into the 24 shipped blueprints,
-    the two template collections, the two localization files, the 24 icons and the golden
-    hash file. Runs on net9.0 with zero NuGet packages, exactly like tools/validate.
+    Single offline command that turns data/engines.json into the 24 shipped blueprints, the
+    SteamEngines bottom-bar tool group (spec + icon), the two template collections, the three
+    localization files, the 24 building icons and the golden hash file. Runs on net9.0 with zero
+    NuGet packages, exactly like tools/validate.
 
         dotnet run (project mod/tools/generate-blueprints, config Release, -m:1)
         dotnet run (project mod/tools/generate-blueprints, config Release, -m:1) in check mode (see README)

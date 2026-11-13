@@ -84,8 +84,12 @@ namespace SEE.Core.Constants
         /// <summary>Mod-relative blueprint folder for the 24 boiler blueprints (D-9).</summary>
         public const string BlueprintFolder = "Buildings/Power/SteamBoiler";
 
-        /// <summary>Tool group the boilers are placed in (requirements §10.10).</summary>
-        public const string ToolGroupId = "Power";
+        /// <summary>
+        /// Dedicated bottom-bar tool group of the boilers (the collapsible "Steam Engines" building
+        /// menu; data/BlockObjectToolGroups/BlockObjectToolGroup.SteamEngines.blueprint.json). Seat it
+        /// between the vanilla Power group (order 70) and Science group (order 80).
+        /// </summary>
+        public const string ToolGroupId = "SteamEngines";
 
         /// <summary>First tool-group order of the boiler family; the 12 base entries use 110..121.</summary>
         public const int ToolOrderStart = 110;

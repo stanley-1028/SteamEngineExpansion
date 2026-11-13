@@ -17,7 +17,6 @@ internal static class BlueprintFactory
     private const string SelectionSound = "Engine";
     private const string LoopingSound = "PrintingPress";
     private const string SmokePrefab = "Buildings/Power/SteamEngine/SteamEngineSmoke";
-    private const string ToolGroup = "Power";
 
     private static readonly string[] SmokeIds = { "Smoke1", "Smoke2", "Smoke3" };
 
@@ -282,9 +281,14 @@ internal static class BlueprintFactory
             .Add("Materials", materials);
     }
 
+    /// <summary>
+    /// Build menu placement of one variant: every boiler joins the dedicated SEE "Steam Engines" group
+    /// (<see cref="ToolGroup"/>, order 72, seated between vanilla Power 70 and Science 80) instead of
+    /// the vanilla Power group. <c>ToolOrder</c> still orders the 24 buttons inside that group.
+    /// </summary>
     private static JsonObject PlaceableBlockObjectSpec(FactionVariant variant) =>
         new JsonObject()
-            .Add("ToolGroupId", new JsonString(ToolGroup))
+            .Add("ToolGroupId", new JsonString(ToolGroup.Id))
             .Add("ToolOrder", Numbers.Integer(variant.ToolOrder))
             .Add("ToolShape", new JsonString("Square"))
             .Add("Layout", new JsonString("Single"))

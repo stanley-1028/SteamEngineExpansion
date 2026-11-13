@@ -1,0 +1,9 @@
+{
+  "BlockObjectToolGroupSpec": {
+    "Id": "SteamEngines",
+    "Order": 72,
+    "NameLocKey": "UI.SEE.ToolGroup.SteamEngines",
+    "Icon": "ToolGroupIcons/SteamEngines",
+    "FallbackGroup": false
+  }
+}

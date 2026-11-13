@@ -13,7 +13,7 @@ namespace SEE.Tests
     /// P4 UI contract tests (CONTRACT_SEE §5, requirements §15.2–§15.7, REQ-UI-01..12,
     /// REQ-OPS-01..04). They exercise only the pure UI data layer of <c>SEE.UI</c> - the same
     /// classes the UIElements fragment consumes - so the whole panel contract is verified offline
-    /// without the game: status/priority mapping, every panel row, the frozen 54 localization
+    /// without the game: status/priority mapping, every panel row, the frozen 64 localization
     /// keys, the 4 Hz refresh gate, the badge policy and the "no gameplay reference" rule.
     /// </summary>
     internal static class UiContractTests
@@ -82,7 +82,8 @@ namespace SEE.Tests
             "UI.SEE.Action.MaintainNow",
             "UI.SEE.Action.AutoMaintenance",
             "UI.SEE.Error.MaterialsMissing",
-            "UI.SEE.Error.BeltNoPower"
+            "UI.SEE.Error.BeltNoPower",
+            "UI.SEE.ToolGroup.SteamEngines"
         };
 
         private static readonly string[] SimplifiedCharacters =
@@ -112,6 +113,18 @@ namespace SEE.Tests
             "UI.SEE.Panel.Materials"
         };
 
+        /// <summary>
+        /// Shipped keys that belong to neither the panel code nor the building blueprints: the
+        /// label of the dedicated bottom-bar building group (the collapsible SEE building menu).
+        /// They are generated from <c>data/loc_keys.json</c> and referenced by the generated
+        /// <c>BlockObjectToolGroup.SteamEngines</c> blueprint, so they count as packaged keys in
+        /// the completeness diff without being panel rows.
+        /// </summary>
+        private static readonly string[] NonPanelLocKeys =
+        {
+            "UI.SEE.ToolGroup.SteamEngines"
+        };
+
         internal static void Run(TestRunner t)
         {
             LocalizationTests(t);
@@ -128,10 +141,10 @@ namespace SEE.Tests
 
         private static void LocalizationTests(TestRunner t)
         {
-            t.Run("enUS and zhTW ship exactly the canonical SEE localization keys (63: 54 baseline + 9 P4B)", () =>
+            t.Run("enUS and zhTW ship exactly the canonical SEE localization keys (64: 54 baseline + 9 P4B + 1 tool group)", () =>
             {
                 var expected = new HashSet<string>(FrozenLocKeys, StringComparer.Ordinal);
-                Assert.Equal(63, expected.Count, "frozen key count");
+                Assert.Equal(64, expected.Count, "frozen key count");
                 HashSet<string> enUs = ReadLocKeys("enUS.csv");
                 HashSet<string> zhTw = ReadLocKeys("zhTW.csv");
                 AssertSetEqual(expected, enUs, "enUS key set");
@@ -169,6 +182,7 @@ namespace SEE.Tests
                 var combined = new HashSet<string>(usedByUi, StringComparer.Ordinal);
                 combined.UnionWith(usedByBlueprints);
                 combined.UnionWith(ReservedLocKeys);
+                combined.UnionWith(NonPanelLocKeys);
                 HashSet<string> packaged = ReadLocKeys("enUS.csv");
                 AssertSetEqual(combined, packaged, "packaged keys vs (UI + blueprint label + reserved keys)");
             });

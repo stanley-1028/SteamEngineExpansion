@@ -27,6 +27,12 @@
       <HintPath>$(TimberbornManagedDir)\Timberborn.CoreUI.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <!-- The water-supply mode control is the game's own Dropdown (native list drawer, items
+         setter and skins), not the Unity DropdownField default skin. -->
+    <Reference Include="Timberborn.DropdownSystem">
+      <HintPath>$(TimberbornManagedDir)\Timberborn.DropdownSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Reference Include="Timberborn.EntityPanelSystem">
       <HintPath>$(TimberbornManagedDir)\Timberborn.EntityPanelSystem.dll</HintPath>
       <Private>false</Private>

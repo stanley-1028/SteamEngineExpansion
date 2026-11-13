@@ -16,6 +16,7 @@ Building.SEE.SteamBoiler.Flavor.T1,A humble boiler that asks for a little wood a
 Building.SEE.SteamBoiler.Flavor.T2,"Pressure, timber and brass—now with a gauge.",req 15.5
 Building.SEE.SteamBoiler.Flavor.T3,Cast iron rumbles; rivets hold the promise of power.,req 15.5
 Building.SEE.SteamBoiler.Flavor.T4,"Precision in every valve, and a price in every turn.",req 15.5
+UI.SEE.ToolGroup.SteamEngines,Steam Engines,req 15.5
 Status.SEE.Running,Running,req 15.5
 Status.SEE.Idle,Idle (no demand),req 15.5
 Status.SEE.Paused,Paused,req 15.5

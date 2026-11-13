@@ -14,9 +14,10 @@
 #   5. tools/validate prints "VALIDATION PASSED" and every gate group named in
 #      release-gates.json prints its own "PASS  <name>" line;
 #   6. the staged package build\SteamEngineExpansion\ is verified structurally (exactly four
-#      shipping assemblies, 24 blueprints, 2 template collections, matching localization key
-#      counts >= 54 per language, 24 PNG icons + 24 .png.meta.json, manifest/version tracks) and
-#      hashed (build\SteamEngineExpansion.sha256).
+#      shipping assemblies, 24 blueprints, 2 template collections, 1 bottom-bar tool-group spec,
+#      matching localization key counts >= 54 per language, 24 PNG icons + 24 .png.meta.json,
+#      the tool-group icon + its isSprite meta, manifest/version tracks) and hashed
+#      (build\SteamEngineExpansion.sha256).
 #
 # See mod/docs/RELEASE_GATES.md for the requirement mapping (requirements 19.2 Go/No-Go).
 #
@@ -324,8 +325,9 @@ foreach ($assembly in $assemblies) {
 }
 
 # Only game-facing artifacts are staged: the four DLLs above plus manifest, config, blueprints,
-# localizations, icons and template collections. Generator inputs (engines.json,
-# engines.derived.json, loc_keys.json) and documentation stay out of the shipped package.
+# the bottom-bar tool-group spec and icon, localizations, building icons and template collections.
+# Generator inputs (engines.json, engines.derived.json, loc_keys.json) and documentation stay out
+# of the shipped package.
 foreach ($file in @('manifest.json', 'SEE_Config.json')) {
     $source = Join-Path $root "data\$file"
     if (-not (Test-Path $source)) {
@@ -335,13 +337,25 @@ foreach ($file in @('manifest.json', 'SEE_Config.json')) {
     Copy-Item $source $stageDir
 }
 
-foreach ($directory in @('Buildings', 'Localizations', 'Icons', 'TemplateCollections')) {
+foreach ($directory in @('Buildings', 'BlockObjectToolGroups', 'Localizations', 'Icons', 'TemplateCollections', 'ToolGroupIcons')) {
     $source = Join-Path $root "data\$directory"
     if (-not (Test-Path $source)) {
         throw "expected data directory missing: $source"
     }
 
     Copy-Item $source (Join-Path $stageDir $directory) -Recurse -Force
+}
+
+# The bottom-bar group is new in P10: the folder copy above cannot fail on a missing member, so
+# assert the three staged files exist (their contents are covered by tools/validate before staging).
+foreach ($required in @(
+    'BlockObjectToolGroups\BlockObjectToolGroup.SteamEngines.blueprint.json',
+    'ToolGroupIcons\SteamEngines.png',
+    'ToolGroupIcons\SteamEngines.png.meta.json'
+)) {
+    if (-not (Test-Path (Join-Path $stageDir $required))) {
+        throw "staged package is missing $required (the collapsible Steam Engines building group would not appear)"
+    }
 }
 
 $stagedFiles = @(Get-ChildItem $stageDir -Recurse -File)
@@ -395,8 +409,8 @@ Set-Gate 'G19' '24 blueprints + 2 template collections'
 
 # ---- G20: localization keys per language (header + matching counts, >= 54 baseline) --------
 # The exact count is read from the staged files instead of being hard-coded, so an intentional
-# key addition (P4B: 54 -> 63) does not have to touch this script again; the 54-key requirements
-# baseline stays the floor and both languages must agree.
+# key addition (P4B: 54 -> 63, P10 tool group: 63 -> 64) does not have to touch this script
+# again; the 54-key requirements baseline stays the floor and both languages must agree.
 $localizationBaseline = 54
 $localizationKeys = $null
 foreach ($language in @('enUS', 'zhTW', 'zhCN')) {

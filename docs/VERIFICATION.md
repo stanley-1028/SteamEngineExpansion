@@ -25,12 +25,22 @@
 > **PASS 510/510**、generator `CHECK PASS（0 differences, 80 files）`＋`gates 5/5`、validator **VALIDATION PASSED**（12/12）、
 > balance-sim **PASS 12/12（4/4 判準）**、**132 檔／2,379,665 bytes**、package sha `4a661a1e…`；負向測試 **control + 6/6**；
 > 實機行為（狀態消失、耗水減半、既有存檔、搬運工補料）仍待人類 P8 簽核（TEST_PROTOCOL 新步驟 5c）。
+>
+> **2026-11-14 熱修-6（UI／GUI 原版化＋專屬 Steam Engines 工具組，Lead 裁決 AD-21／AD-22／AD-23）**：
+> ① SEE 面板改原版外觀：九宮格卡片＋原版字體/狀態色類＋原生九宮格按鈕＋原生 `ProgressBar`／`game-toggle`／
+> `game-dropdown`（`Timberborn.DropdownSystem.Dropdown`，失敗 fallback）；Unity `Foldout` 改為原版風格收合標題
+> （預設展開、跨 Render 保留）。② 24 檔 `ToolGroupId` 改 `SteamEngines`，底部新增可展開／收合的分類按鈕
+> （Order 72，Power 之後）；圖示 `ToolGroupIcons/SteamEngines`；不需新增 TemplateCollection。
+> ③ 新增 `UI.SEE.ToolGroup.SteamEngines`，loc 63→64；新增 `NativePanelContractTests` 12 項。
+> 離線門禁：`build.ps1 -Clean` → **BUILD PASSED（G01–G22 全綠）**、**PASS 522/522**、generator `CHECK PASS（83 files）`＋`gates 5/5`、
+> validator **VALIDATION PASSED（13/13、1 既有 WARN、0 error）**、**135 檔／2,385,102 bytes**、
+> package sha `9977ed80…`。實機外觀/收合/工具組行為仍待人類（TEST_PROTOCOL 新步驟 1b／1c）。
 
 > 卡片：SEE-P8（打包＋安裝＋人類實機驗收 gate）｜整理日：2026-11-06｜模組版本：**0.1.0**（尚未發佈）
 > 遊戲基準：Timberborn `1.1.2.8-ffc2de0-sw`｜安裝位置：`%USERPROFILE%\Documents\Timberborn\Mods\SteamEngineExpansion`
 >
 > **證據分類（互不替代）**
-> - **離線 PASS**：本機可重跑（`mod/build.ps1 -Clean`、`SEE.Tests` 510/510、validator G01–G22、生成器 5 閘門、balance-sim）。
+> - **離線 PASS**：本機可重跑（`mod/build.ps1 -Clean`、`SEE.Tests` 522/522、validator G01–G22、生成器 5 閘門、balance-sim）。
 > - **待實機**：只能在遊戲內由人類照 `docs/TEST_PROTOCOL.md` 驗證；**AI 不得宣告通過**。
 > - **人類簽核**：僅當人類在 `docs/TEST_PROTOCOL.md` §5 簽核表填寫並回傳後更新。
 >
@@ -44,12 +54,12 @@
 | 證據 | 真實輸出 |
 |---|---|
 | 建置 | 四支程式集 **0 警告 / 0 錯誤**（G01） |
-| 測試 | **PASS 510/510**（G02；`dotnet run --project mod/tests/SEE.Tests -c Release -m:1`） |
-| 生成器 | **CHECK PASS（0 differences, 80 files, 24 blueprints）**；資料閘門 **5/5 PASS**（G03／G04） |
-| validator | **VALIDATION PASSED**；12/12 gate group、1 WARN、0 error（G05） |
-| 發佈門禁 | **G01–G22 全 PASS**；套件雜湊 `4a661a1ed86301131b267ec7253c7972f36deeabcbd70d206bc29fd7023142c5` |
-| 成品 | 132 檔、2,379,665 bytes、4 DLL、24 藍圖、2 TemplateCollection、63 鍵×3 語系、24 icon＋24 meta、48 timbermesh |
-| 安裝 | `Mods\SteamEngineExpansion`：132 檔、2,379,665 bytes、與來源逐檔 SHA-256 **0 mismatch**（額外檔案 0） |
+| 測試 | **PASS 522/522**（G02；`dotnet run --project mod/tests/SEE.Tests -c Release -m:1`） |
+| 生成器 | **CHECK PASS（0 differences, 83 files, 24 blueprints）**；資料閘門 **5/5 PASS**（G03／G04） |
+| validator | **VALIDATION PASSED**；13/13 gate group、1 WARN、0 error（G05） |
+| 發佈門禁 | **G01–G22 全 PASS**；套件雜湊 `9977ed808df154171913eaefc76a05087f75af1cb75989adccb2afa58699cca3` |
+| 成品 | 135 檔、2,385,102 bytes、4 DLL、24 藍圖、2 TemplateCollection、1 BlockObjectToolGroup＋1 圖示、64 鍵×3 語系、24 icon＋24 meta、48 timbermesh |
+| 安裝 | `Mods\SteamEngineExpansion`：135 檔、2,385,102 bytes、與來源逐檔 SHA-256 **0 mismatch**（另含 3 個工作坊更新用中繼檔，不在出貨包） |
 | 缺少的離線證據 | **覆蓋率報告**（`SEE.Core` 行 ≥80%／分支 ≥70%、T0 全域 ≥70%，REQ-NFR-07／§17.1）本次未重跑 → **列發佈前待補**（不影響 G01–G22） |
 
 離線 WARN（已記錄、非阻擋）：
@@ -72,7 +82,7 @@ WARN: [table] ConstructionBase recorded deviation (contract §4.5/§4.8):
 | AC | 驗收條件（摘要） | 判定方式 | 目前證據 | 對應 REQ | 負責卡 |
 |---|---|---|---|---|---|
 | AC-01 | 24 藍圖全部載入；12 檔數值逐格相符（誤差 0） | T1 自動比對 | **離線 PASS**：G03（24 份重生成 0 diff）、G05/G09（24×12 欄位 0 mismatch）、G14（golden hash 24/24）、G19 | REQ-TEST-01 | P1／P6 |
-| AC-02 | 24 藍圖 loc 鍵全存在、未覆寫原版鍵 | 掃描腳本 | **離線 PASS**：G12（63 鍵×2、無原版覆寫、無 raw key）、G20 | REQ-TEST-02、REQ-UI-08 | P1／P6 |
+| AC-02 | 24 藍圖 loc 鍵全存在、未覆寫原版鍵 | 掃描腳本 | **離線 PASS**：G12（64 鍵×3、無原版覆寫、無 raw key）、G20 | REQ-TEST-02、REQ-UI-08 | P1／P6 |
 | AC-03 | 免工人；`PowerOutput`＝§3、`PowerInput=0`、`IsShaft=false`；完工建築不顯示原版搬運工需求狀態（AD-18） | 藍圖檢查＋source-scan | **離線 PASS**：G11（24 份逐份檢查）、G09 權威欄位；AD-18 `HaulerWarningSuppressionTests`（public `NoHaulingPostStatus.Disable()`、區域重指派後延後再關、無 Harmony）＋**待實機**（協定步驟 5c：無搬運站時狀態不出現） | REQ-TEST-03、REQ-BLD-04、AD-18 | P1／P3／P6／P8 |
 | AC-04 | 夜間電網需求 0 時：有燃料＋水→待機運轉（`λ_run≥standbyLoadRatio`，預設 0.10；飛輪/煙霧持續、燃料水按比例、磨損照算）；玩家把 `standbyLoadRatio` 設 0 或未接電網時才 `Idle`（輸出 0、不耗料、不磨損） | T3 零需求案例（白天與夜間各一次） | **離線邏輯 PASS**（`BoilerFormulas.OperationalLoadRatio`＋config clamp＋狀態機「待機 0.10→Running」測試；`StandbyLoadRatio=0` 仍走舊 `Idle` 帳本案例 booked=0）＋**待實機**（協定步驟 5／§3.2 零需求＋新增夜間待機步驟） | REQ-TEST-04、AD-16 | P2／P3／P6／P8 |
 | AC-05 | 半載燃料與水耗為滿載 50%（±2%） | T0＋T2 | **離線 PASS**：`ConsumptionReconciliationTests` `fuel-half` / `water-half` bookedErr≈0.000005%／0、30 日整數差 0.25%／0.17%＋**待實機**量測（協定步驟 2） | REQ-TEST-05 | P2／P3／P8 |
@@ -85,8 +95,8 @@ WARN: [table] ConstructionBase recorded deviation (contract §4.5/§4.8):
 | AC-12 | 存檔往返一致、未知欄位保留 | T5 | **離線 PASS**（`SaveCodecTests`／`SaveNodeTests`／`IntegrationSaveTests`；round-trip、未知欄位）＋**待實機**（協定步驟 9） | REQ-TEST-12 | P2／P3／P5／P8 |
 | AC-13 | 單棟資料損壞重置、其他棟不受影響 | T5 | **離線 PASS**（12 類損壞隔離測試）＋**待實機**（協定步驟 9 的可選破壞測試） | REQ-TEST-13 | P5／P8 |
 | AC-14 | 1,000 棟符合 §17.3 全部效能門檻 | T4＋Profiler | **離線代理部分達標**：Core tick p95 **108.20 µs**、p99 **167.80 µs**（門檻 3 ms／6 ms）；1,000 棟存檔 gzip **31,238 B**（門檻 400 KiB）；序列化 3.05 ms／反序列化 7.30 ms（門檻各 2 s）＋**待實機**：Unity Profiler p95／p99、GC、FPS↓≤2、UI ≤1.0 ms/frame、存讀實測、記憶體 ≤32 MB | REQ-TEST-14、REQ-OPS-05、REQ-SAFE-08 | P7／P8 |
-| AC-15 | 面板 ≤4 Hz、關閉後零背景更新、無每幀字串 | T4＋Profiler | **離線契約 PASS**（`BoilerPanelRefreshPolicy`／`Fingerprint`、髒標記測試、63 鍵 loc）＋**待實機**（Profiler） | REQ-OPS-01、REQ-OPS-02 | P4／P7／P8 |
-| AC-16 | ≥54 鍵齊備、zhTW 無簡體、字元上限與 1.4× 假字串 | 腳本＋截圖 | **離線 PASS（鍵數／語系／placeholder）**：G12（63 鍵 ≥54、zhTW 無簡體、placeholder 一致）、G21（icon 24＋meta）＋**待實機**：1.4× 假字串與 zhTW/enUS 截圖（協定步驟 1、10） | REQ-UI-09、REQ-UI-10 | P1／P4／P6／P8 |
+| AC-15 | 面板 ≤4 Hz、關閉後零背景更新、無每幀字串 | T4＋Profiler | **離線契約 PASS**（`BoilerPanelRefreshPolicy`／`Fingerprint`、髒標記測試、64 鍵 loc）＋**待實機**（Profiler） | REQ-OPS-01、REQ-OPS-02 | P4／P7／P8 |
+| AC-16 | ≥54 鍵齊備、zhTW 無簡體、字元上限與 1.4× 假字串 | 腳本＋截圖 | **離線 PASS（鍵數／語系／placeholder）**：G12（64 鍵 ≥54、zhTW 無簡體、placeholder 一致）、G21（icon 24＋meta）＋**待實機**：1.4× 假字串與 zhTW/enUS 截圖（協定步驟 1、10） | REQ-UI-09、REQ-UI-10 | P1／P4／P6／P8 |
 | AC-17 | 30 日平均有效輸出 ≥ 對照×0.95 | T4 模擬 | **離線 PASS**（`docs/BALANCE_REPORT.md`：12/12、四判準 4/4；最敏感大型 Mk.IV **+2.93%**）＋**待實機**：30 遊戲日實測（協定 §7） | REQ-TEST-15 | P7／P8 |
 | AC-18 | 靜態與 Profiler 皆無每幀全圖掃描、無 `Update` 內 `FindObjects` | 程式碼審查 | **離線 PASS**：G15（133 原始檔、0 red-line）、G17（source facts）＋**待實機**：Profiler 期間審查（協定 §7） | REQ-OPS-07 | P6／P8 |
 | AC-19 | 移除任一外部模組後既有存檔可載入、建築不消失 | T5 | **離線決策表 PASS**（12 情境第 12 項：模組移除後重算、不壞檔）＋**待實機**（協定步驟 10） | REQ-TEST-16 | P5／P8 |
@@ -111,7 +121,7 @@ WARN: [table] ConstructionBase recorded deviation (contract §4.5/§4.8):
 
 | 層級 | 範圍 | 自動化 | 目前狀態 | 證據／缺口 |
 |---|---|---|---|---|
-| **T0** | 純邏輯單元（輸出／燃料／水／磨損／維護／存檔／loc） | 100% | **PASS（510/510）**；**覆蓋率待補** | `SEE.Tests`；覆蓋率報告未重跑 |
+| **T0** | 純邏輯單元（輸出／燃料／水／磨損／維護／存檔／loc） | 100% | **PASS（522/522）**；**覆蓋率待補** | `SEE.Tests`；覆蓋率報告未重跑 |
 | **T1** | 24 藍圖 schema／數值／loc／未覆寫原版 | 100% | **PASS** | G03／G05／G09／G14／G19／G20 |
 | **T2** | 單棟實機（建造／供料／供水／輸出／維護／UI） | 0% | **待驗（0%）** | 僅有離線契約測試；須人類照協定步驟 1–9 |
 | **T3** | 三模組 8 組合與降級 | 部分 | **待驗**（離線僅假探針 12 情境） | 協定步驟 10；12 情境見 `docs/COMPAT_MATRIX.md` |

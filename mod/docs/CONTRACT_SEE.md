@@ -487,7 +487,7 @@ IL 證實藍圖反序列化器**只對 `ImmutableArray<T>` 逐元素遞迴**；`
 | 4 | `BlockObjectSpec` | ✅ | `Size{X,Y,Z}` 照 §4.5；`Blocks` 長度＝X*Y*Z；`Entrance.HasEntrance=true`、`Flippable=true` | R-B、R-C |
 | 5 | `EnterableSpec` | ✅ | 所有含庫存建築一律帶（否則取水／庫存需求 NRE、模擬中止，R-C） | PLAN §1.6 R-C |
 | 6 | `BuildingAccessibleSpec` | ✅ | 入口／搬運可達；維護道路判定依此 | 需求 §4、PLAN §1.5 D-5 |
-| 7 | `PlaceableBlockObjectSpec` | ✅ | `ToolGroupId="Power"`、`ToolOrder` 於 **110–142**（排原版蒸汽機 50 之後）、`ToolShape="Square"`、`Layout="Single"`、`CustomPivot.HasCustomPivot=false` | 需求 §10.10、PLAN P1 |
+| 7 | `PlaceableBlockObjectSpec` | ✅ | `ToolGroupId="SteamEngines"`（專屬工具組，AD-22）、`ToolOrder` 於 **110–142**（同組內排序；分類按鈕 Order 72 位於原版 Power 70 之後）、`ToolShape="Square"`、`Layout="Single"`、`CustomPivot.HasCustomPivot=false` | 需求 §10.10、PLAN P1 |
 | 8 | `LabeledEntitySpec` | ✅ | `DisplayNameLocKey`／`DescriptionLocKey`／`FlavorDescriptionLocKey` 照 §5.2；`Icon` 不含副檔名 | 需求 §15.5 |
 | 9 | `ConstructionSiteProgressVisualizerSpec` | ✅ | `ProgressThresholds=[0.0]` | 原版模板 |
 | 10 | `MechanicalNodeSpec` | ✅ | `PowerOutput`＝`SEEBoilerSpec.Horsepower`（已含陣營）、`PowerInput=0`、`IsShaft=false` | 需求 §8、REQ-BLD-05 |
@@ -603,7 +603,7 @@ IL 證實藍圖反序列化器**只對 `ImmutableArray<T>` 逐元素遞迴**；`
 | 檔案 | `TemplateCollections/TemplateCollection.Buildings.Folktails.blueprint.json`、`.IronTeeth.blueprint.json`（與原版同名，靠 `Blueprints#append` 修改原版 collection，官方跨 mod 機制） |
 | 內容 | 各 append 該陣營 12 檔路徑（`Buildings/Power/SteamBoiler/…`） |
 | 一檔一陣營 | 不得把 IT 藍圖 append 到 FT collection（反之亦然） |
-| 工具組 | 沿用原版 `Power`；**不新增工具群組**；`ToolOrder` 110–142 且排在原版蒸汽機（50）之後、跨陣營一致 |
+| 工具組 | 新增 SEE 專屬 `SteamEngines`（AD-22）：`BlockObjectToolGroups/BlockObjectToolGroup.SteamEngines.blueprint.json`，`Order=72`、`NameLocKey=UI.SEE.ToolGroup.SteamEngines`、`Icon=ToolGroupIcons/SteamEngines`、`FallbackGroup=false`；24 檔 `ToolGroupId=SteamEngines`、`ToolOrder` 110–142、跨陣營一致；**不需**新增 TemplateCollection（mod 內所有 `*.blueprint.json` 由 `ModSystemFileProvider<BlueprintAsset>` 掃描載入） |
 | 顯示名 | 見 §5.2 A 段（「小型蒸汽引擎 Mk.I」…「大型蒸汽引擎 Mk.IV」） |
 
 ### 4.10 生成器流程與閘門（凍結；PLAN §7.4、doc-extract §3.3）
@@ -650,7 +650,7 @@ IL 證實藍圖反序列化器**只對 `ImmutableArray<T>` 逐元素遞迴**；`
 
 來源：需求 §15.5 L1–L6、doc-extract §5.6、template-reuse §3.7、`feasibility.md` §1.3。
 
-### 5.2 63 鍵清單（A 12／B 5／C 22／D 15＋D2 9；需求 §15.5 逐字＋P4B 擴充）
+### 5.2 64 鍵清單（A 12／B 5／C 22／D 24／E 1；需求 §15.5 逐字＋P4B 擴充＋AD-23 工具組標籤）
 
 #### A. 顯示名（12 鍵，由生成器產生）
 
@@ -740,8 +740,17 @@ IL 證實藍圖反序列化器**只對 `ImmutableArray<T>` 逐元素遞迴**；`
 | 57 | `UI.SEE.Hint.FixNeedsMaintenance` | 進行維護：確保地區內備有維護材料。 | Run maintenance: keep the required materials in the district. |
 | 58 | `UI.SEE.WaterModeUnavailable` | 所選供水模式無法使用：{0} | Selected water mode unavailable: {0} |
 
-**清點核對**：12（A）＋5（B）＋22（C）＋24（D）＝ **63 鍵** ✓（P4B 擴充；AC-16 只要求 ≥54，54 為需求基準）。
-B 段 5 鍵未編號，A／C／D 共 58 個編號鍵。
+#### E. 工具組標籤（1 鍵，AD-23，2026-11-14）
+
+| # | Key | zhTW | enUS |
+|---:|---|---|---|
+| 59 | `UI.SEE.ToolGroup.SteamEngines` | 蒸汽引擎 | Steam Engines |
+
+> E 段是底部建造分類「Steam Engines」的顯示名（`BlockObjectToolGroupSpec.NameLocKey`），不屬於面板列；
+> 由 `data/loc_keys.json` 的 `toolGroup` segment 產生，三語一致。
+
+**清點核對**：12（A）＋5（B）＋22（C）＋24（D）＋1（E）＝ **64 鍵** ✓（P4B 擴充＋AD-23 工具組標籤；AC-16 只要求 ≥54，54 為需求基準）。
+B 段 5 鍵未編號，A／C／D／E 共 59 個編號鍵。
 
 > 補充（SHARED_BRIEF §13 末）：低燃料提示統一為「剩餘燃料 <8 遊戲小時的消耗量」，鍵名 `Status.SEE.LowFuel`；
 > 廢除舊名 `UI.SEE.FuelLow`。供水模式四鍵（Auto／Tank／Valve／Hauler）必須四種齊全。
@@ -759,7 +768,7 @@ B 段 5 鍵未編號，A／C／D 共 58 個編號鍵。
 
 ### 5.4 驗證規則（P6 門禁）
 
-1. 三語 key 集合完全相同（若出 zhCN）；≥54 鍵齊全（目前 63）、無多餘 key、無 raw key。
+1. 三語 key 集合完全相同（若出 zhCN）；≥54 鍵齊全（目前 64）、無多餘 key、無 raw key。
 2. placeholder 集合一致；`{0}`／`{1}` 數量與 UI 呼叫一致。
 3. 字元上限逐鍵檢查（L3）；`zhTW` 簡體字掃描＝0；原版鍵未被覆寫。
 4. A 段 12 鍵由生成器產生，不得手改（`--check` 失敗即擋）。

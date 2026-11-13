@@ -16,6 +16,7 @@ Building.SEE.SteamBoiler.Flavor.T1,謙卑的小鍋爐，只要一點木頭和一
 Building.SEE.SteamBoiler.Flavor.T2,壓力、木材與黃銅——現在還多了壓力錶。,req 15.5
 Building.SEE.SteamBoiler.Flavor.T3,鑄鐵低鳴，鉚釘撐起動能的承諾。,req 15.5
 Building.SEE.SteamBoiler.Flavor.T4,每個閥門都精準，每一轉都有代價。,req 15.5
+UI.SEE.ToolGroup.SteamEngines,蒸汽引擎,req 15.5
 Status.SEE.Running,運轉中,req 15.5
 Status.SEE.Idle,待機（無負載）,req 15.5
 Status.SEE.Paused,已暫停,req 15.5

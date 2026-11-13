@@ -2,6 +2,8 @@ using System;
 using SEE.Core.Abstractions;
 using SEE.UI.Status;
 using Timberborn.BaseComponentSystem;
+using Timberborn.CoreUI;
+using Timberborn.DropdownSystem;
 using Timberborn.EntityPanelSystem;
 using Timberborn.EntitySystem;
 using Timberborn.Localization;
@@ -37,6 +39,9 @@ namespace SEE.UI.Panels
         private readonly IBoilerQuery _query;
         private readonly IBoilerLogic _logic;
         private readonly ILoc _loc;
+        private readonly VisualElementLoader _visualElementLoader;
+        private readonly DropdownListDrawer _dropdownListDrawer;
+        private readonly DropdownItemsSetter _dropdownItemsSetter;
         private readonly BoilerPanelOptions _options;
         private readonly float _refreshIntervalSeconds;
 
@@ -51,15 +56,26 @@ namespace SEE.UI.Panels
         private int _snapshotReads;
         private int _renders;
 
-        /// <summary>Creates the fragment; Bindito injects the query, command and localization services.</summary>
+        /// <summary>
+        /// Creates the fragment; Bindito injects the query, command, localization and the vanilla
+        /// UI services the native panel controls need (native buttons and the vanilla dropdown).
+        /// </summary>
         /// <param name="query">Read-only boiler query registered by the gameplay assembly.</param>
         /// <param name="logic">Per-boiler command surface registered by the gameplay assembly.</param>
         /// <param name="loc">Localization service.</param>
-        public BoilerPanelFragment(IBoilerQuery query, IBoilerLogic logic, ILoc loc)
+        /// <param name="visualElementLoader">Game singleton that loads the vanilla UXML templates.</param>
+        /// <param name="dropdownListDrawer">Game singleton that shows the vanilla dropdown list.</param>
+        /// <param name="dropdownItemsSetter">Game singleton that fills a vanilla dropdown.</param>
+        public BoilerPanelFragment(IBoilerQuery query, IBoilerLogic logic, ILoc loc,
+            VisualElementLoader visualElementLoader, DropdownListDrawer dropdownListDrawer,
+            DropdownItemsSetter dropdownItemsSetter)
         {
             _query = query ?? throw new ArgumentNullException(nameof(query));
             _logic = logic ?? throw new ArgumentNullException(nameof(logic));
             _loc = loc ?? throw new ArgumentNullException(nameof(loc));
+            _visualElementLoader = visualElementLoader ?? throw new ArgumentNullException(nameof(visualElementLoader));
+            _dropdownListDrawer = dropdownListDrawer ?? throw new ArgumentNullException(nameof(dropdownListDrawer));
+            _dropdownItemsSetter = dropdownItemsSetter ?? throw new ArgumentNullException(nameof(dropdownItemsSetter));
             _options = SeeUiConfigSource.Options;
             _refreshIntervalSeconds = BoilerPanelRefreshPolicy.IntervalSeconds(_options.UiRefreshHz);
         }
@@ -73,8 +89,8 @@ namespace SEE.UI.Panels
         /// <inheritdoc />
         public VisualElement InitializeFragment()
         {
-            _view = new BoilerPanelView(_loc, OnPauseToggled, OnMaintainRequested, OnAutoMaintenanceChanged,
-                OnWaterModeChanged);
+            _view = new BoilerPanelView(_loc, _visualElementLoader, _dropdownListDrawer, _dropdownItemsSetter,
+                OnPauseToggled, OnMaintainRequested, OnAutoMaintenanceChanged, OnWaterModeChanged);
             return _view.Root;
         }
 

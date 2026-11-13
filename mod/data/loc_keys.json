@@ -6,6 +6,11 @@
       "zhTW": "消耗燃料與水產生動能。需定期維護。",
       "zhCN": "消耗燃料与水产生动力。需要定期维护。"
     },
+    "toolGroup": {
+      "enUS": "Steam Engines",
+      "zhTW": "蒸汽引擎",
+      "zhCN": "蒸汽引擎"
+    },
     "flavor": {
       "T1": {
         "enUS": "A humble boiler that asks for a little wood and a little water.",

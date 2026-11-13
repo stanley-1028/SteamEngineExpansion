@@ -9,7 +9,7 @@
     deliberate defect, and runs the already-built validator DLL against it:
 
         N1  blueprint fuel rate drifted to 0.13 (the faction-derived value is 0.11)
-        N2  one of the 63 localization keys deleted from enUS.csv
+        N2  one of the 64 localization keys deleted from enUS.csv
         N3  SEE.UI.dll rewritten so it references SEE.Gameplay (layering violation)
         N4  BuildingPipeSpec inserted back into a boiler blueprint (forbidden spec, AD-5)
         N5  SEE_Config.json perf.tickSeconds set out of range (0.1, range 0.5-2.0)
@@ -180,7 +180,7 @@ Invoke-NegativeCase -Id 'N1' -Title 'blueprint fuel rate drifted to 0.13 (factio
 # ---------------------------------------------------------------------------------------------
 # N2: a missing localization key (REQ-UI-04/05).
 # ---------------------------------------------------------------------------------------------
-Invoke-NegativeCase -Id 'N2' -Title 'one of the 63 localization keys deleted from enUS.csv' `
+Invoke-NegativeCase -Id 'N2' -Title 'one of the 64 localization keys deleted from enUS.csv' `
     -ExpectPattern "missing key 'Status\.SEE\.Running'" -Break {
     $file = Join-Path $tempRoot 'data\Localizations\enUS.csv'
     $lines = Get-Content $file -Encoding UTF8

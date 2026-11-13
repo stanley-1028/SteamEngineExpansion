@@ -36,6 +36,7 @@ namespace SEE.Tests
             SaveBridgeContractTests.Run(runner);
             ConsumptionReconciliationTests.Run(runner);
             UiContractTests.Run(runner);
+            NativePanelContractTests.Run(runner);
             MiniJsonTests.Run(runner);
             ThrottledLogTests.Run(runner);
             CompatScenarioTests.Run(runner);

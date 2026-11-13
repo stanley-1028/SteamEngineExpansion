@@ -120,7 +120,7 @@ namespace SEE.Tests
                 Assert.Equal("SEE_Config.json", SEEConst.ConfigFileName, "config file name");
                 Assert.Near(24.0, SEEConst.HoursPerDay, 1e-12, "hours per day");
                 Assert.Near(100.0, SEEConst.MaxCondition, 1e-6, "max condition");
-                Assert.Equal("Power", SEEConst.ToolGroupId, "tool group");
+                Assert.Equal("SteamEngines", SEEConst.ToolGroupId, "tool group");
                 Assert.Near(2.12, SEEConst.BeaverWaterPerDay, 1e-6, "beaver water per day");
             });
         }

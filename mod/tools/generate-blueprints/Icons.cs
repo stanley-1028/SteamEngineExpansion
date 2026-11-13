@@ -4,7 +4,9 @@ using System.Text;
 namespace SEE.Tools.GenerateBlueprints;
 
 /// <summary>
-/// Generates the 24 icons (128x128 PNG) plus one <c>.png.meta.json</c> per icon.
+/// Generates the 24 building icons (128x128 PNG) plus one <c>.png.meta.json</c> per icon, and the
+/// single 128x128 icon of the SEE "Steam Engines" bottom-bar building group
+/// (<see cref="RenderToolGroupIcon"/>).
 ///
 /// P9 ingest hook: when the art card has rendered the final sprite at
 /// <c>&lt;mod root&gt;/art/icons/&lt;IconName&gt;.png</c>, that file is the source of truth and its bytes
@@ -78,6 +80,58 @@ internal static class Icons
         {
             FillRect(pixels, 14 + index * 12, 110, 8, 8, trim);
         }
+
+        return EncodePng(pixels);
+    }
+
+    /// <summary>
+    /// Renders the 128x128 bottom-bar group icon of the SEE "Steam Engines" building group.
+    ///
+    /// It reuses the same text-free boiler vocabulary as the building icons (dome-topped boiler,
+    /// chimney, water window) but on a transparent background in a neutral near-white tone, so it
+    /// reads like the vanilla bottom-bar group glyphs. It is a placeholder: the P9 art pipeline can
+    /// replace <c>data/ToolGroupIcons/SteamEngines.png</c> (and keep the generated
+    /// <c>.png.meta.json</c>) without touching a blueprint, because the group's <c>Icon</c> AssetRef
+    /// carries no file extension.
+    /// </summary>
+    public static byte[] RenderToolGroupIcon()
+    {
+        var pixels = new byte[PixelSize * PixelSize * 4];
+        var body = new Rgba(226, 232, 238);
+        var shade = new Rgba(152, 164, 176);
+        var window = new Rgba(88, 146, 196);
+        var windowLight = new Rgba(140, 192, 232);
+
+        // Base plate and feet.
+        FillRect(pixels, 28, 92, 64, 10, shade);
+        FillRect(pixels, 31, 94, 58, 6, body);
+        FillRect(pixels, 32, 100, 12, 12, shade);
+        FillRect(pixels, 35, 102, 6, 8, body);
+        FillRect(pixels, 76, 100, 12, 12, shade);
+        FillRect(pixels, 79, 102, 6, 8, body);
+
+        // Chimney with its cap (right of the dome, as on the vanilla engine).
+        FillRect(pixels, 61, 17, 18, 34, shade);
+        FillRect(pixels, 64, 20, 12, 31, body);
+        FillRect(pixels, 55, 9, 30, 10, shade);
+        FillRect(pixels, 58, 12, 24, 6, body);
+
+        // Dome and boiler body: the shade pass is a 3 px outline.
+        FillCircle(pixels, 60, 46, 26, shade);
+        FillCircle(pixels, 60, 46, 22, body);
+        FillRoundedRect(pixels, 29, 42, 62, 56, 14, shade);
+        FillRoundedRect(pixels, 32, 45, 56, 50, 12, body);
+
+        // Water window (the dedicated tank) and a piston rod.
+        FillRoundedRect(pixels, 42, 68, 36, 12, 4, window);
+        FillRect(pixels, 44, 70, 32, 3, windowLight);
+        FillRect(pixels, 88, 52, 6, 30, shade);
+        FillRect(pixels, 89, 54, 4, 4, new Rgba(196, 156, 92));
+
+        // Three steam puffs above the chimney.
+        FillCircle(pixels, 78, 10, 5, shade);
+        FillCircle(pixels, 85, 6, 4, shade);
+        FillCircle(pixels, 90, 2, 3, shade);
 
         return EncodePng(pixels);
     }

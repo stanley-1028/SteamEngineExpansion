@@ -34,7 +34,7 @@
       "name": "blueprint generator --check reproduces every generated file",
       "blocking": true,
       "enforcedBy": "mod/build.ps1 (tools/generate-blueprints --check)",
-      "evidence": "'CHECK PASS (0 differences, 80 files, 24 blueprints)'",
+      "evidence": "'CHECK PASS (0 differences, 83 files, 24 blueprints)'",
       "req": ["REQ-ARCH-04", "REQ-ARCH-06", "REQ-NFR-09", "REQ-IMPL-02"],
       "ac": ["AC-01"],
       "goNoGo": ["19.2-3", "19.2-6"]
@@ -54,7 +54,7 @@
       "name": "data validator prints VALIDATION PASSED for every gate group",
       "blocking": true,
       "enforcedBy": "mod/build.ps1 (tools/validate)",
-      "evidence": "'VALIDATION PASSED', 12/12 gate groups passed, exit code 0",
+      "evidence": "'VALIDATION PASSED', 13/13 gate groups passed, exit code 0",
       "req": ["REQ-TEST-01", "REQ-TEST-02", "REQ-TEST-03", "REQ-ARCH-05"],
       "ac": ["AC-01", "AC-02", "AC-03", "AC-16"],
       "goNoGo": ["19.2-3", "19.2-6"]
@@ -87,7 +87,7 @@
       "blocking": true,
       "enforcedBy": "tools/validate",
       "validatorCheck": "blueprint spec schema",
-      "evidence": "PASS  blueprint spec schema (all 26 documents)",
+      "evidence": "PASS  blueprint spec schema (all 27 documents)",
       "req": ["REQ-IMPL-01", "REQ-IMPL-15", "REQ-CORE-04"],
       "ac": ["AC-01", "AC-03"],
       "goNoGo": ["19.2-3"]
@@ -127,11 +127,11 @@
     },
     {
       "id": "G12",
-      "name": "localization: enUS, zhTW and zhCN each carry exactly the 63 canonical keys (54-key requirements baseline + 9 P4B additions; AC-16 requires >= 54), no raw key, no simplified characters, no vanilla key overwrite",
+      "name": "localization: enUS, zhTW and zhCN each carry exactly the 64 canonical keys (54-key requirements baseline + 9 P4B additions + 1 bottom-bar tool-group label; AC-16 requires >= 54), no raw key, no simplified characters, no vanilla key overwrite",
       "blocking": true,
       "enforcedBy": "tools/validate",
-      "validatorCheck": "localization (63 keys >= 54, enUS/zhTW/zhCN)",
-      "evidence": "PASS  localization (63 keys >= 54, enUS/zhTW/zhCN)",
+      "validatorCheck": "localization (64 keys >= 54, enUS/zhTW/zhCN)",
+      "evidence": "PASS  localization (64 keys >= 54, enUS/zhTW/zhCN)",
       "req": ["REQ-UI-04", "REQ-UI-05", "REQ-UI-08", "REQ-UI-09"],
       "ac": ["AC-02", "AC-16"],
       "goNoGo": ["19.2-3"]
@@ -213,10 +213,10 @@
     },
     {
       "id": "G20",
-      "name": "staged localizations: enUS.csv, zhTW.csv and zhCN.csv each contain the same key count, at least 54 (currently 63)",
+      "name": "staged localizations: enUS.csv, zhTW.csv and zhCN.csv each contain the same key count, at least 54 (currently 64)",
       "blocking": true,
       "enforcedBy": "mod/build.ps1",
-      "evidence": "staged key count: 63 rows (+header) per language file, both languages equal and >= 54",
+      "evidence": "staged key count: 64 rows (+header) per language file, both languages equal and >= 54",
       "req": ["REQ-UI-04", "REQ-UI-05", "REQ-UI-09"],
       "ac": ["AC-02", "AC-16"],
       "goNoGo": ["19.2-3"]

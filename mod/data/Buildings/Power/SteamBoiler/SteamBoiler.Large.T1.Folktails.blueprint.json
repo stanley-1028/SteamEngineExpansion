@@ -616,7 +616,7 @@
     ]
   },
   "PlaceableBlockObjectSpec": {
-    "ToolGroupId": "Power",
+    "ToolGroupId": "SteamEngines",
     "ToolOrder": 114,
     "ToolShape": "Square",
     "Layout": "Single",

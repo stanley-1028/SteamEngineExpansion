@@ -1,9 +1,10 @@
 namespace SEE.Tools.Validate;
 
 /// <summary>
-/// The authoritative localization key set of SEE: 63 keys (12 display names + 5 text keys +
-/// 22 status keys + 24 panel/action keys). The 54-key requirements §15.5 baseline is preserved;
-/// the 9 P4B additions (numbered 50-58 below) are the P4B card's exact texts.
+/// The authoritative localization key set of SEE: 64 keys (12 display names + 5 text keys +
+/// 22 status keys + 24 panel/action keys + 1 bottom-bar tool-group label). The 54-key requirements
+/// §15.5 baseline is preserved; the 9 P4B additions (numbered 50-58 below) are the P4B card's exact
+/// texts; the tool-group key labels the dedicated "Steam Engines" building group.
 ///
 /// The canonical list lives here (not in Core) on purpose: the validator must be able to catch
 /// a Core-side key rename as a data problem instead of silently following it. A shipped CSV must
@@ -86,12 +87,26 @@ internal static class LocKeys
         "UI.SEE.WaterModeUnavailable",
     };
 
-    /// <summary>All 63 keys (ordinal, de-duplicated).</summary>
+    /// <summary>Label of the dedicated SEE bottom-bar building group.</summary>
+    public const string SteamEnginesToolGroup = "UI.SEE.ToolGroup.SteamEngines";
+
+    /// <summary>E: 1 bottom-bar building-group label (the collapsible "Steam Engines" menu).</summary>
+    public static readonly string[] ToolGroups =
+    {
+        SteamEnginesToolGroup,
+    };
+
+    /// <summary>All 64 keys (ordinal, de-duplicated).</summary>
     public static readonly IReadOnlyList<string> All = BuildAll();
 
     public static readonly int ExpectedCount = All.Count;
 
-    /// <summary>Keys the requirements forbid in any localization file.</summary>
+    /// <summary>
+    /// Fragments the requirements forbid in a localization key (the previous mod's namespaces). The
+    /// one intentional exception is <see cref="SteamEnginesToolGroup"/>: it is the SEE bottom-bar
+    /// group label, lives in the UI.SEE.* namespace and can never overwrite a vanilla key (vanilla
+    /// group labels are ToolGroups.*), so the localization check skips that key.
+    /// </summary>
     public static readonly string[] ForbiddenFragments = { "SteamEngine", "Building.SteamEngine.", "SteamPlant" };
 
     private static string[] BuildDisplayNames()
@@ -127,6 +142,11 @@ internal static class LocKeys
         }
 
         foreach (var key in PanelAndActions)
+        {
+            all.Add(key);
+        }
+
+        foreach (var key in ToolGroups)
         {
             all.Add(key);
         }

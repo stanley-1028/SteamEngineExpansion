@@ -59,7 +59,7 @@ internal static class Program
         var gates = Gates.Run(catalog, rows, texts);
         var verification = Verification.Verify(variants, trees);
 
-        var files = new List<GeneratedFile>(79);
+        var files = new List<GeneratedFile>(83);
         var blueprintFiles = new List<GeneratedFile>(24);
         foreach (var variant in variants)
         {
@@ -78,6 +78,13 @@ internal static class Program
                 "data/TemplateCollections/TemplateCollection.Buildings." + faction.Name + ".blueprint.json",
                 Outputs.Utf8(JsonText.Serialize(collection))));
         }
+
+        // The dedicated bottom-bar building group ("Steam Engines", order 72): its spec blueprint and
+        // its sprite + isSprite sidecar. ModSystemFileProvider converts every *.blueprint.json and
+        // every .png under the mod root, so neither needs a TemplateCollection entry.
+        files.Add(new GeneratedFile(ToolGroup.BlueprintRelativePath, Outputs.Utf8(JsonText.Serialize(ToolGroup.Blueprint()))));
+        files.Add(new GeneratedFile(ToolGroup.IconRelativePath, Icons.RenderToolGroupIcon()));
+        files.Add(new GeneratedFile(ToolGroup.IconMetaRelativePath, Icons.MetaJson()));
 
         var locRows = Localization.Build(catalog, Path.Combine(dataDir, "loc_keys.json"));
         files.Add(new GeneratedFile("data/Localizations/enUS.csv", Outputs.Utf8(Localization.ToCsv(locRows, "enUS"))));
@@ -130,6 +137,8 @@ internal static class Program
             faction.Name + " output x" + Show(faction.OutputMultiplier) + " fuel x" + Show(faction.FuelMultiplier))));
         Console.WriteLine("  tool orders  : " + catalog.ToolOrders.Count + " entries, range 110-142");
         Console.WriteLine("  blueprints   : " + (rows.Count * catalog.Factions.Count) + " (12 size/tier x 2 factions)");
+        Console.WriteLine("  tool group   : " + ToolGroup.Id + " (bottom-bar order " + ToolGroup.Order + ", "
+                          + ToolGroup.NameLocKey + ")");
         Console.WriteLine("  gates        : " + gates.Count(gate => gate.Pass) + "/" + gates.Count + " PASS");
         foreach (var gate in gates)
         {
@@ -140,8 +149,9 @@ internal static class Program
                           + verification.FieldsPerFile + "/" + verification.FieldsPerFile
                           + " authoritative fields PASS (" + verification.ExtraChecks + " extra checks)");
         Console.WriteLine("  localization : " + locCount + " keys x 3 languages (enUS, zhTW, zhCN)");
-        Console.WriteLine("  icons        : " + (rows.Count * catalog.Factions.Count) + " png + "
-                          + (rows.Count * catalog.Factions.Count) + " meta");
+        var buildingIcons = rows.Count * catalog.Factions.Count;
+        Console.WriteLine("  icons        : " + (buildingIcons + 1) + " png + " + (buildingIcons + 1) + " meta ("
+                          + buildingIcons + " buildings + 1 tool group)");
         Console.WriteLine("  golden hash  : " + (rows.Count * catalog.Factions.Count) + " entries");
         Console.WriteLine("  files        : " + fileCount);
     }
@@ -176,9 +186,14 @@ internal static class Program
         }
 
         var expected = new HashSet<string>(blueprintFiles.Select(file => file.RelativePath), StringComparer.Ordinal);
-        var blueprintDirectory = Path.Combine(modRoot, "data", "Buildings", "Power", "SteamBoiler");
-        if (Directory.Exists(blueprintDirectory))
+        expected.Add(ToolGroup.BlueprintRelativePath);
+        foreach (var blueprintDirectory in GeneratedBlueprintDirectories(modRoot))
         {
+            if (!Directory.Exists(blueprintDirectory))
+            {
+                continue;
+            }
+
             foreach (var path in Directory.GetFiles(blueprintDirectory, "*.blueprint.json"))
             {
                 var relative = Path.GetRelativePath(modRoot, path).Replace('\\', '/');
@@ -207,14 +222,19 @@ internal static class Program
     private static void WriteAll(string modRoot, IReadOnlyList<GeneratedFile> files, IReadOnlyList<GeneratedFile> blueprintFiles)
     {
         var expected = new HashSet<string>(blueprintFiles.Select(file => file.RelativePath), StringComparer.Ordinal);
+        expected.Add(ToolGroup.BlueprintRelativePath);
         var expectedIcons = new HashSet<string>(files
             .Where(file => file.RelativePath.StartsWith("data/Icons/", StringComparison.Ordinal))
             .Select(file => file.RelativePath), StringComparer.Ordinal);
 
-        var blueprintDirectory = Path.Combine(modRoot, "data", "Buildings", "Power", "SteamBoiler");
-        if (Directory.Exists(blueprintDirectory))
+        foreach (var directory in GeneratedBlueprintDirectories(modRoot))
         {
-            foreach (var path in Directory.GetFiles(blueprintDirectory, "*.blueprint.json"))
+            if (!Directory.Exists(directory))
+            {
+                continue;
+            }
+
+            foreach (var path in Directory.GetFiles(directory, "*.blueprint.json"))
             {
                 var relative = Path.GetRelativePath(modRoot, path).Replace('\\', '/');
                 if (!expected.Contains(relative))
@@ -252,6 +272,16 @@ internal static class Program
             File.WriteAllBytes(path, file.Bytes);
         }
     }
+
+    /// <summary>
+    /// The two folders that hold generated blueprint documents: the 24 boilers and the one
+    /// bottom-bar tool-group spec. <c>--check</c> reports strays here and write mode removes them.
+    /// </summary>
+    private static string[] GeneratedBlueprintDirectories(string modRoot) =>
+    [
+        Path.Combine(modRoot, "data", "Buildings", "Power", "SteamBoiler"),
+        Path.Combine(modRoot, "data", "BlockObjectToolGroups"),
+    ];
 
     private static string AbsolutePath(string modRoot, string relativePath) =>
         Path.Combine(modRoot, relativePath.Replace('/', Path.DirectorySeparatorChar));
@@ -321,8 +351,9 @@ internal static class Program
     {
         Console.WriteLine("usage: SeeGenerateBlueprints [--check] [--mod <modRoot>]");
         Console.WriteLine();
-        Console.WriteLine("  (no flag)  regenerate the 24 blueprints, template collections, localizations,");
-        Console.WriteLine("             icons, data/engines.derived.json and the golden hash file");
+        Console.WriteLine("  (no flag)  regenerate the 24 blueprints, the SteamEngines tool group + its icon,");
+        Console.WriteLine("             template collections, localizations, building icons, data/engines.derived.json");
+        Console.WriteLine("             and the golden hash file");
         Console.WriteLine("  --check    rebuild everything in memory and fail on the first byte difference");
         Console.WriteLine("  --mod      explicit mod root (default: walk up from the current directory)");
     }

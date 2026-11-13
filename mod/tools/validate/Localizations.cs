@@ -5,9 +5,9 @@ namespace SEE.Tools.Validate;
 ///
 /// <list type="bullet">
 /// <item><c>enUS.csv</c> and <c>zhTW.csv</c> must exist and have the <c>ID,Text,Comment</c> header;</item>
-/// <item>both files must contain exactly the canonical key set (<see cref="LocKeys"/>, 63 keys =
-/// the 54-key requirements baseline + 9 P4B additions) — a missing key, a stale key from the
-/// previous mod or an extra ad-hoc key fails validation;</item>
+/// <item>both files must contain exactly the canonical key set (<see cref="LocKeys"/>, 64 keys =
+/// the 54-key requirements baseline + 9 P4B additions + the bottom-bar tool-group label) — a
+/// missing key, a stale key from the previous mod or an extra ad-hoc key fails validation;</item>
 /// <item>texts must be non-empty, must not echo the raw key, must keep the same <c>{0}</c>/<c>{1}</c>
 /// placeholder set in every language, and zhTW must not contain simplified characters;</item>
 /// <item>keys forbidden by the requirements (<c>SteamEngine</c>/<c>SteamPlant</c> fragments) are rejected;</item>
@@ -108,12 +108,15 @@ internal sealed class Localizations
                                                   + " canonical SEE keys (stale or ad-hoc key)");
                 }
 
-                foreach (var fragment in LocKeys.ForbiddenFragments)
+                if (!string.Equals(key, LocKeys.SteamEnginesToolGroup, StringComparison.Ordinal))
                 {
-                    if (key.Contains(fragment, StringComparison.Ordinal))
+                    foreach (var fragment in LocKeys.ForbiddenFragments)
                     {
-                        _report.Error("localization", "'" + key + "' in " + language + ".csv uses the forbidden fragment '"
-                                                      + fragment + "'");
+                        if (key.Contains(fragment, StringComparison.Ordinal))
+                        {
+                            _report.Error("localization", "'" + key + "' in " + language + ".csv uses the forbidden fragment '"
+                                                          + fragment + "'");
+                        }
                     }
                 }
             }

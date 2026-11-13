@@ -21,10 +21,61 @@ P4B 依 Lead 裁決擴充唯讀契約並關閉 G1／G3／G4／G5：合約新增 
 | `Panels/BoilerPanelFingerprint.cs` | 純資料 | 髒標記指紋（依顯示精度取整） |
 | `Panels/BoilerPanelRefreshPolicy.cs` | 純資料 | ≤ `perf.uiRefreshHz` 節流、面板關閉零查詢 |
 | `Panels/BoilerPanelData.cs`／`BoilerPanelDataFactory.cs` | 需 `ILoc` | 只在髒標記成立時把 key 在地化 |
-| `Panels/BoilerPanelStyles.cs`／`BoilerPanelView.cs` | UIElements | 元素樹只建一次；Render 只改 text／顏色／一條進度條／兩個控制值 |
-| `Panels/BoilerPanelFragment.cs` | UIElements | `IEntityPanelFragment` 生命週期、4 Hz 節流、髒標記、命令轉發 |
+| `Panels/BoilerPanelNativeStyles.cs`／`BoilerPanelView.cs` | UIElements | 只用原版 USS 類別的原生樣式 helper、元素樹只建一次；Render 只改 text／類別／顯示／一條進度條／控制值 |
+| `Panels/PanelCollapseState.cs` | 純邏輯 | SEE 區塊收合狀態（預設展開、跨 Render 保留、不寫存檔） |
+| `Panels/BoilerPanelFragment.cs` | UIElements | `IEntityPanelFragment` 生命週期、4 Hz 節流、髒標記、命令轉發、注入原版 UI 服務 |
 | `Panels/BoilerPanelModuleProvider.cs`／`SeeUiConfigurator.cs` | DI | 把面板掛進原版 `EntityPanelModule` |
 | `Panels/SeeUiConfigSource.cs` | 啟動期 | 以 Core codec 讀 `SEE_Config.json`，失敗回 `SeeConfig.Default` |
+
+## 原版（vanilla）外觀與收合區塊（REQ-UI-01／05／12）
+
+原則：組件不帶 UXML／USS，面板元素一律使用遊戲原版 entity-panel fragment 的同一批元件與 USS 類別。
+遊戲把 CoreStyle／CommonStyle／EntityPanelCommonStyle／EntityPanelGameStyle／GameStyle 掛在 entity panel
+階層上，所以這些類別的外觀與原版建築面板一致。**不設 inline 顏色、字級、寬高**，唯一例外是 A1 狀態色塊。
+
+### 區塊與類別
+
+- 卡片：`NineSliceVisualElement` + `entity-sub-panel` + `bg-sub-box--green`（九宮格底圖）。共四張：狀態、
+  動力＋燃料＋水、維護、操作。
+- 文字：`entity-panel__text`（13 px、可換行）、`entity-panel__sub-text`（12 px 提示）、
+  `entity-panel__heading-text`（14 px 區塊標頭）、`text--bold`；狀態文字用 `game-text-normal` 作底色、
+  嚴重度用 `game-text--red`／`text--yellow`（刻意不加 `entity-panel__text`，否則 EntityPanelCommonStyle
+  的顏色會蓋掉嚴重度色類）。
+- 列：`entity-panel__row`；按鈕列 `entity-panel__button-wrapper`。
+- 進度條：`Timberborn.CoreUI.ProgressBar` + `progress-bar`／`progress-bar--green`，機況標籤放在 bar 內
+  （原版 DeteriorableFragment 慣例），以 `SetProgress(0..1)` 更新；機況 < 50% 改掛 `progress-bar--red`。
+- Toggle：`Toggle` + `game-toggle entity-panel__text entity-panel__toggle`。
+- 按鈕：原生九宮格按鈕工廠 —— 以 `VisualElementLoader.LoadVisualElement("Game/EntityPanel/DemolishableFragment")`
+  取 `entity-fragment__button` 的九宮格按鈕（原版 hover／press skin 與點擊音效）；取不到就退回
+  `new Button()` 並掛同一組類別。暫停＝`--red`、繼續＝`--green`；立即維護隨 `CanMaintain` 切換
+  `--green`／`--red` 並 `SetEnabled`（全部用 class membership，不用 inline 背景色）。
+- A1 形狀提示：狀態列前的色塊 swatch 保留。它是**唯一**允許 inline `backgroundColor` 的地方
+  （`BoilerPanelNativeStyles.CreateBadgeSwatch`／`SetBadge`）：需求要求在不看顏色的灰階截圖也能分辨狀態，
+  原版 USS 沒有對應的七段類別；文字仍走原版色類（`game-text--red`／`text--yellow`／`game-text-normal`）。
+
+### 供水模式下拉：原生 `Timberborn.DropdownSystem.Dropdown`
+
+- `SEE.UI.csproj` 新增 `Timberborn.DropdownSystem` 參考（`Private=false`）。
+- `BoilerPanelFragment` 由 Bindito 注入 `VisualElementLoader`、`DropdownListDrawer`、`DropdownItemsSetter`
+  （都是原版 Configurator 綁定的 singleton，IL 取證：`_investigate/ui2/il-configurators.txt`），再傳給 View。
+- 建構：`new Dropdown()` → `Initialize(dropdownListDrawer)` → 掛 `game-dropdown` → `Localize(loc)`
+  （樣板內建 header label 隱藏；面板另用原版 `entity-panel__text` 標頭顯示 `data.WaterModeHeader`，
+  語言切換由 Render 更新）→ `dropdownItemsSetter.SetItems(dropdown, provider)`。
+- Provider 實作原版 `IDropdownProvider`（`Items`／`GetValue`／`SetValue`，四個已在地化標籤，索引 0..3）。
+- 使用者選取：`dropdown.ValueChanged` 只在值真的改變時觸發；View 讀 provider 索引，有變才呼叫
+  `waterModeChanged(index)`。程式刷新走 `provider.SetIndex` + `dropdown.UpdateSelectedValue()`
+  （IL 證實不會觸發 `ValueChanged`），所以 Render 永遠不會重送命令。標籤因語系變動而更新時重呼
+  `SetItems`（`Dropdown` 會 cache items）。
+- Fallback：整個 native 建構包在 try/catch；任何資產／API 差異都退回 `DropdownField`（掛
+  `entity-panel__text`），面板不會因此整個壞掉。
+
+### 可收合區塊（REQ-UI-12）
+
+- 不再使用 Unity 預設 `Foldout`；改成原版可點擊名稱列：`Button` + `entity-panel__name-wrapper`，內含
+  chevron 標籤（`▾`／`▸`，`entity-panel__text`）與標題（`entity-panel__name entity-panel__heading-text
+  text--bold`），hover 時標題變黃（原版 entity name 行為）。
+- 點 header 切換 body 顯示；**預設展開**（曾因預設收合讓玩家以為面板不見），狀態存在
+  `PanelCollapseState`（View 實例欄位），跨 Render 與面板開關保留，不寫存檔；`Render` 不碰收合狀態。
 
 ## 面板列與 loc key（CONTRACT_SEE §5.2）
 
@@ -54,7 +105,10 @@ P4B 依 Lead 裁決擴充唯讀契約並關閉 G1／G3／G4／G5：合約新增 
 - `UpdateFragment` 每幀被呼叫，但面板關閉（`ClearFragment`）時在任何查詢前返回 → 關閉後零更新。
 - 開啟時 `BoilerPanelRefreshPolicy` 把讀取壓到 `perf.uiRefreshHz`（預設 4 Hz＝250 ms）。
 - 每次讀取先算 `BoilerPanelFingerprint`；沒變就跳過，**不產生任何字串**（髒標記）。
-- 元素樹只在 `InitializeFragment` 建一次；Render 不做字串拼接以外的工作。
+- 元素樹只在 `InitializeFragment` 建一次；Render 只改文字、class membership、顯示、一條進度值與兩個控制值，
+  不新增每幀工作、不重建元素。
+- 程式刷新不會觸發命令：auto-maintenance 用 `SetValueWithoutNotify`；供水模式下拉用 provider +
+  `UpdateSelectedValue()`，只有玩家在原生下拉清單點選才會呼叫命令。
 - 徽章政策把 `perf.badgeRefreshHz` 夾在 0.5–2 Hz、`perf.maxBadgesVisible` 夾在 16–256；`ui.showIdleBadge` 預設 `false`。
 
 ## 與契約的已知缺口（P4 發現；P4B 收口四項）
@@ -88,4 +142,26 @@ dotnet run --project mod/tests/SEE.Tests -c Release -m:1
 `SEE.Tests/UiContractTests.cs` 離線覆蓋：63 鍵（AC-16 要求 ≥54）齊全／兩語一致／placeholder 一致／zhTW 無簡體、
 狀態→key／顏色／優先序、每個面板列（含 P4B 的 G1/G3/G4/G5 四列與指紋）、徽章政策、4 Hz 節流、面板關閉零查詢、
 `SEE.UI` 原始碼不出現 Gameplay／Integration 字樣，以及封裝 key 集合與（UI＋藍圖標籤＋保留）集合的差異為空。
+
+`SEE.Tests/NativePanelContractTests.cs`（原版化契約，純 source-scan ＋ `PanelCollapseState` 純邏輯）鎖住：
+沒有 `Foldout`、原版 USS 類別字串存在且被使用（`entity-sub-panel`／`bg-sub-box--green`／`entity-panel__text`／
+`entity-fragment__button`／`progress-bar`／`game-toggle`／`game-dropdown` 等）、native 按鈕／ProgressBar／Toggle／
+Dropdown 路徑存在且 Dropdown fallback 只在 try/catch 內、除 A1 swatch 外沒有任何 inline 顏色／字級、
+收合預設展開且 `Render` 不碰收合狀態。
+
+## 待人工實機驗證（離線開發環境無法證明）
+
+本卡只能在離線環境以編譯、source-scan 與 IL/metadata 取證，**不得宣稱實機通過**。進遊戲後需人工確認：
+
+1. 面板外觀：四張 `bg-sub-box--green` 九宮格卡片、文字 13/12/14 px 與原版建築面板一致，無 Unity 預設皮膚殘留。
+2. 原版九宮格按鈕（立即維護／暫停／繼續）的材質、hover／pressed 變化與點擊音效；`DemolishableFragment`
+   樣板取用失敗時 fallback 是否仍可點。
+3. native Toggle（自動維護）外觀與勾選行為。
+4. native Dropdown：點擊展開清單、四模式可選、選中後命令生效、清單樣式與原版一致、Esc／點擊外部關閉。
+5. 收合 header：點擊可展開／收合、chevron 方向正確、hover 變黃；預設為展開。
+6. 收合狀態在面板刷新／關閉再開後保留，且不寫入存檔。
+7. 150%／200% UI 縮放與 zhTW 長字串：文字換行不裁切、325 px 面板寬不被撐開。
+8. 面板不得拋例外：切換不同建築、藍圖模式、拆除建築、語言切換（zhTW↔enUS）後仍正常。
+9. 程式刷新不會重送命令：面板停留時供水模式／自動維護不被自動改動。
+
 `dotnet run --project mod/tests/SEE.Tests -c Release -- --evidence` 會直接印出 G1／G3／G4／G5 四列顯示字串。
