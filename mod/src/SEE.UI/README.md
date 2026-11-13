@@ -7,7 +7,7 @@
 P4B 依 Lead 裁決擴充唯讀契約並關閉 G1／G3／G4／G5：合約新增 `WaterBeaverEquivalent`、`FuelGoods`、
 `MaintenanceMaterials`（含 have/need）、`NextMaintenanceDay`、`MissingMaterialCount`、
 `WaterSupplyAvailability`、`PipeSupplyActive`、`BeltSupplyActive`、`BeltHasPower`；loc 由 54 鍵增加到 63 鍵
-（AC-16 只要求 ≥54）。
+（AC-16 只要求 ≥54）。2026-11-14 AD-23 再新增底部工具組標籤 `UI.SEE.ToolGroup.SteamEngines` → 共 **64 鍵**。
 
 ## 分層與檔案
 
@@ -114,7 +114,7 @@ P4B 依 Lead 裁決擴充唯讀契約並關閉 G1／G3／G4／G5：合約新增 
 ## 與契約的已知缺口（P4 發現；P4B 收口四項）
 
 P4 當時凍結的 `IBoilerStatusView`／54 鍵集合不足以顯示需求 §15.2 的全部欄位。P4B 依 Lead 裁決
-「只加唯讀 snapshot 欄位、不改玩法」擴充契約與 loc（63 鍵），關閉 G1／G3／G4／G5；其餘缺口保留為
+「只加唯讀 snapshot 欄位、不改玩法」擴充契約與 loc（63 鍵；AD-23 後 64 鍵），關閉 G1／G3／G4／G5；其餘缺口保留為
 已記錄限制，等對應卡片（P5 相容接線、P9 美術）處理：
 
 | # | 缺口 | 現況（P4B 後） |
@@ -139,7 +139,7 @@ dotnet build mod/src/SEE.UI/SEE.UI.csproj -c Release -m:1
 dotnet run --project mod/tests/SEE.Tests -c Release -m:1
 ```
 
-`SEE.Tests/UiContractTests.cs` 離線覆蓋：63 鍵（AC-16 要求 ≥54）齊全／兩語一致／placeholder 一致／zhTW 無簡體、
+`SEE.Tests/UiContractTests.cs` 離線覆蓋：64 鍵（AC-16 要求 ≥54）齊全／三語一致／placeholder 一致／zhTW 無簡體、
 狀態→key／顏色／優先序、每個面板列（含 P4B 的 G1/G3/G4/G5 四列與指紋）、徽章政策、4 Hz 節流、面板關閉零查詢、
 `SEE.UI` 原始碼不出現 Gameplay／Integration 字樣，以及封裝 key 集合與（UI＋藍圖標籤＋保留）集合的差異為空。
 
