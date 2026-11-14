@@ -35,12 +35,23 @@
 > 離線門禁：`build.ps1 -Clean` → **BUILD PASSED（G01–G22 全綠）**、**PASS 522/522**、generator `CHECK PASS（83 files）`＋`gates 5/5`、
 > validator **VALIDATION PASSED（13/13、1 既有 WARN、0 error）**、**135 檔／2,385,102 bytes**、
 > package sha `9977ed80…`。實機外觀/收合/工具組行為仍待人類（TEST_PROTOCOL 新步驟 1b／1c）。
+>
+> **2026-11-14/15 熱修-7（玩家回報「作物選擇器一直自己關掉」；Lead 裁決 hotfix 範圍僅 UI 生命週期）**：
+> 根因＝`BoilerPanelView.SetVisible(false)` 無條件呼叫 `_waterMode.Hide()`，而原版 `Dropdown.Hide()` 關的是**單例 drawer**（全遊戲任何
+> 打開中的下拉）；`BoilerPanelFragment.Refresh` 對「非鍋爐」的被選中實體每個更新都走 `Hide → SetVisible(false)`，因此其它模組／原版面板的
+> 下拉都會在約 0.2 秒被關。修法＝只在真正 visible→hidden 轉換時才關自己的下拉（`_visible` 守衛，`mod/src/SEE.UI/Panels/BoilerPanelView.cs`）。
+> 離線門禁：`build.ps1 -Clean -Install` → **BUILD PASSED（G01–G22 全綠）**、**PASS 523/523**（新增 1 項 source-scan）、
+> generator `CHECK PASS（0 differences, 83 files, 24 blueprints）`、validator **VALIDATION PASSED（13/13、1 既有 WARN、0 error）**、
+> **135 檔／2,385,102 bytes**、package sha `51646eb0…`。**實機**（2026-11-15 00:11，與 HDBF 2.6.1 同場，HDBFTest 存檔，
+> `Load time: 119925ms`）：選中 HDBF 農場後打開作物下拉，彈窗保持打開 **5.0 秒**（`vis=1/flag=1` 連續 10 tick）、成功選到「土豆」；
+> 唯一關閉事件來自我們自己的 `Dropdown.SetAndUpdate`。熱修-6 同場景約 0.2 秒被關。證據：`docs/evidence-hotfix7/`。
+> T2–T6 實機項與人類簽核狀態不變（仍待驗）。
 
 > 卡片：SEE-P8（打包＋安裝＋人類實機驗收 gate）｜整理日：2026-11-06｜模組版本：**0.1.0**（尚未發佈）
 > 遊戲基準：Timberborn `1.1.2.8-ffc2de0-sw`｜安裝位置：`%USERPROFILE%\Documents\Timberborn\Mods\SteamEngineExpansion`
 >
 > **證據分類（互不替代）**
-> - **離線 PASS**：本機可重跑（`mod/build.ps1 -Clean`、`SEE.Tests` 522/522、validator G01–G22、生成器 5 閘門、balance-sim）。
+> - **離線 PASS**：本機可重跑（`mod/build.ps1 -Clean`、`SEE.Tests` 523/523、validator G01–G22、生成器 5 閘門、balance-sim）。
 > - **待實機**：只能在遊戲內由人類照 `docs/TEST_PROTOCOL.md` 驗證；**AI 不得宣告通過**。
 > - **人類簽核**：僅當人類在 `docs/TEST_PROTOCOL.md` §5 簽核表填寫並回傳後更新。
 >

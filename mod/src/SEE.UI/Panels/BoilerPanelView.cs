@@ -83,6 +83,8 @@ namespace SEE.UI.Panels
 
         private Dropdown? _waterMode;
         private DropdownField? _waterModeFallback;
+        /// <summary>Last visibility applied by <see cref="SetVisible"/>; false before the first call.</summary>
+        private bool _visible;
         private WaterModeDropdownProvider? _provider;
 
         private int _modeIndex;
@@ -190,10 +192,20 @@ namespace SEE.UI.Panels
         public void SetVisible(bool visible)
         {
             BoilerPanelNativeStyles.SetVisible(_root, visible);
-            if (!visible)
+
+            // 2026-11-14 hotfix-7 (player report "the crop selector closes all the time"):
+            // the vanilla Dropdown.Hide() closes the DRAWER SINGLETON, i.e. every open dropdown
+            // popup in the game - not just ours. BoilerPanelFragment hides this block on every
+            // entity-panel refresh whenever the selected entity is not a boiler, so an
+            // unconditional Hide() here closed other panels' dropdowns too (measured: an HDBF
+            // crop selector closed ~0.2 s after opening while any non-boiler was selected).
+            // Only close OUR popup on a real visible -> hidden transition of this block.
+            if (_visible && !visible)
             {
                 _waterMode?.Hide();
             }
+
+            _visible = visible;
         }
 
         /// <summary>Applies one localized payload to the existing elements.</summary>

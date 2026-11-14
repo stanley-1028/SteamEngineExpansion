@@ -156,6 +156,16 @@ namespace SEE.Tests
                     "the fallback is only reached from the construction try/catch");
             });
 
+            t.Run("Hiding the SEE block cannot close another panel's dropdown", () =>
+            {
+                string body = MethodBody(ViewSource(), "public void SetVisible(bool visible)");
+                int guard = body.IndexOf("_visible && !visible", StringComparison.Ordinal);
+                int hide = body.IndexOf("_waterMode?.Hide()", StringComparison.Ordinal);
+                Assert.True(guard >= 0,
+                    "the shared drawer is only hidden on a visible -> hidden transition");
+                Assert.True(hide > guard, "the transition guard precedes the Hide() call");
+            });
+
             t.Run("The fragment injects the game dropdown services", () =>
             {
                 string fragment = FragmentSource();

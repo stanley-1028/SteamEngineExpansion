@@ -33,6 +33,14 @@
 > 離線門禁：`build.ps1 -Clean` → **BUILD PASSED（G01–G22 全綠）**、**PASS 522/522**、generator `CHECK PASS（83 files）`、
 > validator **VALIDATION PASSED（13/13）**、成品 **135 檔／2,385,102 bytes**、package sha256 `9977ed808df1…`；
 > 實機外觀與工具組展開/收合待人類簽核（`docs/TEST_PROTOCOL.md` 步驟 1b／1c）。
+>
+> 2026-11-14 更新（熱修-7）：**修復「選中任何非鍋爐建築時，SEE 面板隱藏會關掉全遊戲共用的下拉清單」**——
+> 玩家回報 HDBF 作物選擇器在遊戲運行中約 0.2 秒自己關掉；根因是 `BoilerPanelView.SetVisible(false)` 無條件呼叫
+> `Dropdown.Hide()`（原版關的是單例 drawer）。現在只在真正 visible→hidden 轉換時才關自己的下拉。
+> 離線門禁：`build.ps1 -Clean -Install` → **BUILD PASSED（G01–G22）**、**PASS 523/523**、generator `CHECK PASS`、
+> validator **VALIDATION PASSED（13/13）**、**135 檔／2,385,102 bytes**、package sha `51646eb0…`；
+> 實機（與 HDBF 2.6.1 同場）下拉保持打開 5 秒並成功選取，證據 `docs/evidence-hotfix7/`，見 `docs/VERIFICATION.md`。
+> 工作坊已更新：**ManifestID `8352811448294687049`**（2026-11-15 00:17 Asia/Macau；只更新內容＋Description＋Change Note，Preview／可見性／標籤不變）。
 
 ---
 

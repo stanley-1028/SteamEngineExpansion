@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.0 hotfix-7 — 2026-11-14（熱修-7：面板隱藏不再關掉全遊戲共用的下拉清單；修復玩家「作物選擇器一直自己關掉」）
+
+- **玩家回報**（Steam 工作坊留言，2026-11-14）：HDBF（High-Density Box Farm）的「作物選擇器約 0.2 秒自己關掉、選不了作物」；玩家自述前一天還正常。實機 managed stack 取證：`BoilerPanelFragment::Refresh → Hide → BoilerPanelView::SetVisible(false) → Dropdown.Hide → DropdownListDrawer.HideDropdown`。
+- **根因**：熱修-6 的供水模式改用原版 `Timberborn.DropdownSystem.Dropdown`；`BoilerPanelView.SetVisible(false)` **無條件**呼叫 `_waterMode.Hide()`，而原版 `Dropdown.Hide()` 關的是**單例 drawer**（全遊戲任何打開中的下拉），不是只關自己的。`BoilerPanelFragment.Refresh` 在「目前選中的不是鍋爐」時每個 EntityPanel 更新都會走 `Hide(view) → SetVisible(false)`，所以選中任意非鍋爐建築（其它模組的農場、原版建築、其它模組面板）時，其他面板的下拉都會在約 0.2 秒內被關掉。與存檔／資料無關，純 UI 生命週期 bug。
+- **修法**（`mod/src/SEE.UI/Panels/BoilerPanelView.cs`）：新增 `_visible` 記錄目前可見狀態，`SetVisible` 只在**真正 visible→hidden 轉換**（`_visible && !visible`）時才呼叫 `_waterMode?.Hide()`；本來就隱藏的重複呼叫不再碰共用 drawer。無 Harmony、無反射、無新依賴、無資料／存檔變更。
+- **測試**：`NativePanelContractTests` 新增 1 項 source-scan「Hiding the SEE block cannot close another panel's dropdown」（轉換守衛必須在 `Hide()` 之前）；`PASS 522→523`。
+- **離線門禁（2026-11-14/15 實測）**：`build.ps1 -Clean -Install` → **BUILD PASSED（G01–G22 全綠）**、四程式集 0 warning、**PASS 523/523**、generator `CHECK PASS（0 differences, 83 files, 24 blueprints）`、validator **VALIDATION PASSED（13/13 gate groups, 1 warning, 0 error）**、staged **135 檔／2,385,102 bytes**、package sha `51646eb0d0aa7fc2c0e575559fde21dd924e97c4b21853172b438c50a202c3ab`。
+- **實機驗證（2026-11-15 00:11，與 HDBF 2.6.1 同場）**：HDBFTest 存檔（`Load time: 119925ms`），選中 HDBF 農場（非鍋爐）後打開作物下拉：彈窗保持打開 **5.0 秒**（`vis=1/flag=1` 連續 10 次 tick），成功選到「土豆」；唯一的關閉事件來自我們自己的 `Dropdown.SetAndUpdate`（即選取動作）。熱修-6 同場景約 0.2 秒即被 SEE 關閉。證據：`docs/evidence-hotfix7/`（截圖＋日誌節錄；harness 只存在測試會話、未隨模組發佈）。T2–T6 等原有人類簽核項不受本 hotfix 影響，仍待驗。
+- **發佈（2026-11-14/15）**：Steam 工作坊 ItemId 3836039641 於 2026-11-15 00:17（Asia/Macau）以 `steamcmd +workshop_build_item` 更新到 hotfix-7：**ManifestID `8352811448294687049`**；Steam 日誌 `Uploaded new content ... ( ManifestID 8352811448294687049 ) ...` → `Upload finished for workshop item 3836039641 : OK`。內容＋Description＋Change Note 已更新；Preview／Visibility／Tags 保留（`GetPublishedFileDetails`：`result=1`、`file_size 2,823,975`、tags `Mod/Update 1.1/New content`、preview 未變）。
+
 ## 0.1.0 hotfix-6 — 2026-11-14（UI／GUI 原版化＋專屬 Steam Engines 工具組；版本號不變）
 
 - **面板原版化（AD-21）**：`SEE.UI` 不再自帶 inline 顏色/字級，也不再使用 Unity 預設皮膚；改為遊戲原生的建築面板語彙：

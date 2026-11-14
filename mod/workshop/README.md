@@ -1,9 +1,9 @@
 # Steam Workshop 發佈流程（本機已備好素材）
 
-> **已上架（2026-11-08）／已更新至熱修-6（2026-11-14）**：<https://steamcommunity.com/sharedfiles/filedetails/?id=3836039641>
-> ItemId = `3836039641`，版本 0.1.0。熱修-6 已於 2026-11-14 08:42（Asia/Macau）以 `steamcmd +workshop_build_item`
-> 用擁有者帳號上傳成功：內容＝已安裝資料夾（135 檔＋`workshop_data.json`＋`thumbnail.png`）、標題改用長標題、
-> 描述換成熱修-6 版（含 BBCode）、changenote＝熱修-6、可見性 Public；標籤 `Mod`／`Update 1.1`／`New content` 保留。
+> **已上架（2026-11-08）／已更新至熱修-7（2026-11-14/15）**：<https://steamcommunity.com/sharedfiles/filedetails/?id=3836039641>
+> ItemId = `3836039641`，版本 0.1.0。熱修-7 已於 2026-11-14/15（Asia/Macau）以 `steamcmd +workshop_build_item`
+> 用擁有者帳號上傳成功：內容＝已安裝資料夾（135 檔＋`workshop_data.json`＋`thumbnail.png`）、Description 加入熱修-7 段、
+> changenote＝熱修-7；標題／預覽／可見性／標籤保留。熱修-6 的記錄保留在下方歷史。
 > `workshop_data.json` 已由遊戲寫入（repo 與已安裝模組皆同步）。
 > 本檔其餘內容保留作「更新／重新上傳」的參考。
 
@@ -91,3 +91,31 @@
 - 封面右下角的「豆包AI生成」浮水印已用裁切移除；**不要**上傳 `cover/ai-raw-2732x1535.jpg`（保留在 repo 僅作來源存檔）。
 - 遊戲內上傳前建議先照 `docs/TEST_PROTOCOL.md` 做一輪實機檢查。
 - `workshop_data.json` 的 `ItemId` 在首次上傳前為空是正常的；不影響 GitHub 發佈。
+
+## 發佈記錄（2026-11-15，熱修-7）
+
+- **熱修-7 = 面板隱藏不再關掉全遊戲共用的下拉清單**：修復 `BoilerPanelView.SetVisible(false)` 無條件
+  `_waterMode.Hide()`（原版 `Dropdown.Hide()` 關的是單例 drawer）——玩家回報 HDBF 作物選擇器在運行時約 0.2 秒
+  自己關掉。現在只在真正 visible→hidden 轉換時才關自己的下拉（`_visible` 守衛）。只動 `src/SEE.UI` + 1 條
+  `NativePanelContractTests`；資料／藍圖／數值／存檔不變。
+- **上傳**：2026-11-15 00:17:34–00:17:39（Asia/Macau）成功，`ManifestID 8352811448294687049`；
+  `C:\Users\user\steamcmd\logs\workshop_log.txt`：
+  `Uploaded new content ( ManifestID 8352811448294687049 ) for item 3836039641.` →
+  `Upload finished for workshop item 3836039641 : OK`（AppID 1062090；`steamcmd +workshop_build_item`，
+  擁有者帳號 `laustanley` 使用 cached credentials 登入）。
+- **上傳內容** = `Documents\Timberborn\Mods\SteamEngineExpansion`（135 檔／2,385,102 bytes；package sha
+  `51646eb0d0aa7fc2c0e575559fde21dd924e97c4b21853172b438c50a202c3ab`）＋`workshop_data.json`＋`thumbnail.png`。
+  Description／Change Note 取自 `UPDATE-hotfix-7.md`；Preview／Visibility／Tags 不改。
+- **API 核對**：`ISteamRemoteStorage/GetPublishedFileDetails` → `result=1`、title 正確、
+  `file_size 2,823,975`、`tags = Mod / Update 1.1 / New content`、`preview_url` 未變；
+  `time_updated` 對應 2026-11-15 00:17（Asia/Macau）。公開創作頁
+  `profiles/76561199800253923/myworkshopfiles/?appid=1062090` 已列出本 item 與新預覽縮圖。
+  （上傳後數分鐘內直接 `filedetails` 頁曾回「hidden or no permission」，屬更新後的 Steam 傳播/快取狀態；
+  公開列表頁與 API 均已正常，記錄於此不重傳。）
+- **離線門禁**：`build.ps1 -Clean -Install` → **BUILD PASSED（G01–G22 全綠）**、四程式集 0 warning、
+  **PASS 523/523**、generator `CHECK PASS（0 differences, 83 files, 24 blueprints）`、
+  validator **VALIDATION PASSED（13/13 gate groups, 1 warning, 0 error）**、135 檔／2,385,102 bytes。
+- **實機**：2026-11-15 00:11，SEE hotfix-7 + HDBF 2.6.1 同場（HDBFTest 存檔，`Load time: 119925ms`）：
+  選中 HDBF 農場後打開作物下拉，彈窗保持打開 5.0 秒、成功選「土豆」；唯一關閉事件來自選取動作。
+  證據 `docs/evidence-hotfix7/`（截圖 + 日誌節錄）。T2–T6 人類簽核項狀態不變（仍待驗）。
+- **GitHub**：commit／tag `v0.1.0-hotfix-7` 與 release asset 見 GitHub；本記錄 commit 隨後 push。
