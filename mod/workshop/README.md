@@ -1,7 +1,9 @@
 # Steam Workshop 發佈流程（本機已備好素材）
 
-> **已上架（2026-11-08）**：<https://steamcommunity.com/sharedfiles/filedetails/?id=3836039641>
-> ItemId = `3836039641`，版本 0.1.0（2026-11-14 熱修-6 的更新內容已備好，待擁有者在遊戲內按 Update）。
+> **已上架（2026-11-08）／已更新至熱修-6（2026-11-14）**：<https://steamcommunity.com/sharedfiles/filedetails/?id=3836039641>
+> ItemId = `3836039641`，版本 0.1.0。熱修-6 已於 2026-11-14 08:42（Asia/Macau）以 `steamcmd +workshop_build_item`
+> 用擁有者帳號上傳成功：內容＝已安裝資料夾（135 檔＋`workshop_data.json`＋`thumbnail.png`）、標題改用長標題、
+> 描述換成熱修-6 版（含 BBCode）、changenote＝熱修-6、可見性 Public；標籤 `Mod`／`Update 1.1`／`New content` 保留。
 > `workshop_data.json` 已由遊戲寫入（repo 與已安裝模組皆同步）。
 > 本檔其餘內容保留作「更新／重新上傳」的參考。
 
@@ -36,17 +38,42 @@
 
 ## 之後更新（v0.1.0 熱修-6 之後）
 
-> **重要**：Steam 工作坊**沒有可供外部程式發佈／更新的公開 API**。更新只能由擁有者在 Timberborn 遊戲內
-> 的 **Mods → Steam Engine Expansion → Update（發佈到工作坊）** 按鈕完成（需要擁有者 Steam 帳號）。
-> AI 已把更新所需的檔案與文案備好，下列步驟可由任何人執行。
+> **重要**：Steam 工作坊**沒有公開的 Web API**，但擁有者帳號可用 `steamcmd +workshop_build_item` 更新
+> （2026-11-14 熱修-6 即以此方式完成：內容／標題／描述／changenote／預覽／可見性皆更新，標籤保留）。
+> 遊戲內 **Mods → Steam Engine Expansion → Update** 仍是替代路徑。
 
-**更新前置（已安裝模組資料夾內必須有）**：
+**更新前置（A／B 兩條路徑共用，已安裝模組資料夾內必須有）**：
 - `workshop_data.json`（`ItemId = 3836039641`，`UpdateDescription/UpdateVisibility/UpdatePreview/UpdateTags = true`）
 - `thumbnail.png` ＋ `thumbnail.png.meta.json`（工作坊預覽，1280×720）
 - 以上檔案不在 `mod/build/SteamEngineExpansion/` 的出貨白名單內；更新前請從 `mod/workshop/` 複製到
   `%USERPROFILE%\Documents\Timberborn\Mods\SteamEngineExpansion\`（不要覆蓋其他 135 檔）。
 
-**更新步驟**：
+### A. steamcmd（2026-11-14 實測成功，可重複使用）
+
+1. 準備 VDF 暫存檔（不要放進 repo；`description`／`changenote` 取 `UPDATE-hotfix-6.md` 的 bbcode 區塊全文）：
+   ```
+   "workshopitem"
+   {
+       "appid"           "1062090"
+       "publishedfileid" "3836039641"
+       "contentfolder"   "%USERPROFILE%\Documents\Timberborn\Mods\SteamEngineExpansion"
+       "previewfile"     "%USERPROFILE%\Documents\Timberborn\Mods\SteamEngineExpansion\thumbnail.png"
+       "visibility"      "0"
+       "title"           "<UPDATE-hotfix-6.md 的 Name 區塊>"
+       "description"     "<Description bbcode 全文>"
+       "changenote"      "<Changelog bbcode 全文>"
+   }
+   ```
+   用 UTF-8 BOM 存檔，多行值可直接換行；**不要**加 `tags`（steamcmd 不支援；實測更新後原標籤仍在）。
+2. 上傳（沿用 steamcmd 已存帳號；若手機跳出 Steam Guard 確認按同意即可）：
+   ```
+   C:\Users\<user>\steamcmd\steamcmd.exe +login <owner_account> +workshop_build_item "<vdf 路徑>" +quit
+   ```
+3. 驗證：POST `https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/`
+   （`itemcount=1&publishedfileids[0]=3836039641`），確認 `time_updated`、`file_size`、`title`、`description`
+   已更新，且 `tags`／`preview_url` 未消失。
+
+### B. 遊戲內 Update 按鈕（替代路徑）步驟
 1. 完成安裝（見 `docs/PACKAGE.md`）：把 `Documents\Timberborn\Mods\SteamEngineExpansion\` 更新為最新建置（135 檔；含 `BlockObjectToolGroups/`、`ToolGroupIcons/`）。
 2. 將 `mod/workshop/workshop_data.json`、`thumbnail.png`、`thumbnail.png.meta.json` 複製到同一資料夾。
 3. 啟動 Timberborn → 主選單 **Mods** → **Steam Engine Expansion** → **Update**（按鈕可能顯示 `Update`／`Publish`）；

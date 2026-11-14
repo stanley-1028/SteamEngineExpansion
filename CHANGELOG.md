@@ -22,6 +22,9 @@
 - **文件**：`mod/src/SEE.UI/README.md`（原版化說明＋待實機清單）、`mod/docs/CONTRACT_SEE.md`（§4.3／§4.9／§5.2）、
   `mod/docs/LEAD_RULINGS_ADDENDUM.md` §九（AD-21～AD-23）、`mod/docs/RELEASE_GATES.md`、`docs/PACKAGE.md`、
   `docs/VERIFICATION.md`、`docs/TEST_PROTOCOL.md`（步驟 1b／1c）、`mod/workshop/*`。
+- **發佈（2026-11-14）**：GitHub `v0.1.0-hotfix-6` release（資產 `SteamEngineExpansion-0.1.0.zip`，135 檔）與
+  Steam 工作坊 ItemId `3836039641` 均已更新；工作坊以 `steamcmd +workshop_build_item` 上傳（標題／描述／changenote／
+  內容／預覽／可見性皆更新，標籤 `Mod`／`Update 1.1`／`New content` 保留），`time_updated` = 2026-11-14 00:42:52 UTC。
 - **離線門禁（2026-11-14 實測）**：`build.ps1 -Clean` → **BUILD PASSED（G01–G22 全綠）**、四程式集 **0 warning**、**PASS 522/522**、
   generator `CHECK PASS（0 differences, 83 files, 24 blueprints）`＋`gates 5/5 PASS`、validator **VALIDATION PASSED**
   （13/13 gate group、1 既有 WARN、0 error）、staged **135 檔、2,385,102 bytes**、

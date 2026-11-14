@@ -3,7 +3,8 @@
 > 用法：Timberborn → 主選單 **Mods** → **Steam Engine Expansion** → **Update / Publish**。
 > 已安裝的 `%USERPROFILE%\Documents\Timberborn\Mods\SteamEngineExpansion` 已包含熱修-6 的 135 檔＋
 > `workshop_data.json`（ItemId 3836039641、四個 `Update*` 皆 true）＋`thumbnail.png`。
-> Steam 工作坊沒有公開發佈 API，這一步只能由擁有者在遊戲內按 Update 完成。
+> **2026-11-14 已完成上傳**：擁有者帳號以 `steamcmd +workshop_build_item` 更新（ItemId 3836039641；標題／描述／
+> changenote／內容／預覽皆已更新，標籤保留）。本檔欄位可留作下次更新的貼上來源或 steamcmd VDF 內容。
 
 ## Name（Title 欄）
 
