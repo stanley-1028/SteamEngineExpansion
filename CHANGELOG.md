@@ -15,7 +15,9 @@
   `5cdc1f04dee4f8c809a71e0e6897f3372f6ec8b22e267929f736169058ef7ec7`。
 - **實機**：載入本機 `Saves\1110` 存檔，原版 Power 分類展開可見 SteamBoiler 系列；截圖與 `Player.log` 見
   `docs/evidence-hotfix8/`。
-- **發佈狀態**：Steam 工作坊（ItemId 3836039641）與 GitHub release 目前仍是 hotfix-7，熱修-8 待重新上傳。
+- **發佈狀態**：GitHub `v0.1.0-hotfix-8` release 已發佈（資產 `SteamEngineExpansion-0.1.0.zip`、132 檔）；
+  Steam 工作坊（ItemId 3836039641）仍為 hotfix-7——熱修-8 上傳兩次因 Steam Guard 手機確認超時，待擁有者批准後以
+  已備好的 `C:\Users\user\steamcmd\steamengine_workshop_hotfix8.vdf` 重跑即可（或遊戲內 Mods → Update）。
 
 ## 0.1.0 hotfix-7 — 2026-11-14（熱修-7：面板隱藏不再關掉全遊戲共用的下拉清單；修復玩家「作物選擇器一直自己關掉」）
 
