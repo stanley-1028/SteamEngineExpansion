@@ -1,0 +1,38 @@
+[SEE/Info][SEE/Info/Config] SEE 0.1.0 config=C:\Program Files (x86)\Steam\steamapps\workshop\content\1062090\3836039641\SEE_Config.json schema=1 maintenance=on modPath=C:\Program Files (x86)\Steam\steamapps\workshop\content\1062090\3836039641
+[ModdableTimberborn.OptionalMods] Loaded 0 optional DLL(s). Starting mods:
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 5938.
+Unloading 1128 unused Assets to reduce memory usage. Loaded Objects now: 6545.
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 6545.
+Opening file: C:\Users\user\Documents\Timberborn\Saves\SEEShot\seeshot.timber
+[SEE/Info][SEE/Info/Startup] SEE 0.1.0 ready; maintenance=on; fuelScaling=Proportional
+[SEE/Compat][SEE/Compat/Scan] compat scan: TimberPipes=Available@1.0.0+598732e70ea59ea2642811d4b0ca63b4b6034a78 PowerLines=Degraded(anchor-missing: PowerLines.Specs.PowerLineSpec)@0.0.0.0 ConveyorBelt=Degraded(anchor-missing: ConveyorBelt.Specs.BeltSystemSpec)@1.0.0+8ebdf61b1ea6e4c654cb7871281a1cc26be93eed
+Loaded 8 custom tool group specs
+Loaded 8 custom tool specs
+Created custom tool group 'CustomToolsToolGroup' in parent '[NULL]': children=7
+Created custom tool group 'AutomationToolGroupId' in parent '[NULL]': children=12
+Created custom tool group 'AutomationTerrainToolGroupId' in parent 'AutomationToolGroupId': children=6
+Created custom tool group 'AutomationWaterToolGroupId' in parent 'AutomationToolGroupId': children=11
+Created custom tool group 'AutomationStorageToolGroupId' in parent 'AutomationToolGroupId': children=5
+Created custom tool group 'AutomationPopulationToolGroupId' in parent 'AutomationToolGroupId': children=9
+Created custom tool group 'AutomationPlantingToolGroupId' in parent 'AutomationToolGroupId': children=6
+Created custom tool group 'AutomationSignalsToolGroupId' in parent 'AutomationToolGroupId': children=5
+[CargoZiplines] Loaded 2 cargo station blueprint(s): secondsBetweenParcels=3 goodsPerParcel=3 parcelSpeed=6 minSurplus=1
+[CargoZiplines] Loaded 1 cargo receiver blueprint(s).
+Loaded BlockObject Pine(Clone) at (139, 139, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Oak(Clone) at (135, 139, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Pine(Clone) at (140, 139, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Oak(Clone) at (136, 139, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Oak(Clone) at (137, 139, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Pine(Clone) at (139, 140, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Oak(Clone) at (135, 140, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Pine(Clone) at (140, 140, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Oak(Clone) at (136, 140, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Oak(Clone) at (137, 140, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Oak(Clone) at (135, 141, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Oak(Clone) at (136, 141, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Oak(Clone) at (137, 141, 4) is not supported by terrain physics. Deleting it.
+Loaded BlockObject Oak(Clone) at (142, 139, 4) is not supported by terrain physics. Deleting it.
+[SEE/Compat][SEE/Compat/Scan] compat publish: TimberPipes=Enabled PowerLines=Failed ConveyorBelt=Failed water=Hauler patch-host=closed:power-lines-absent
+[Automation system] Loaded 0 rules on 0 behaviors, activated 0
+[Automation system] Loaded and ready
+Load time: 301238ms (scene index: 2)

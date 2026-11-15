@@ -3,11 +3,11 @@
 
 In Timberborn, power and drinking water both compete for the same beavers: every extra water pump and every extra power wheel is another worker you don't have. This mod turns power into infrastructure. Feed it logs and water, and get steady horsepower for your mechanical pumps, sawmills, and production lines — without hiring a single beaver.
 
-[h1]Update (2026-11-14, hotfix-6)[/h1]
+[h1]Update (2026-11-15, hotfix-8)[/h1]
 [list]
 [*][b]Vanilla-looking panel[/b]: the engine panel now matches Timberborn's own building panels — dark nine-slice cards, native fonts, buttons, toggles, progress bars and dropdowns. The SEE block can be collapsed and expanded from its title (expanded by default), and all existing status/water/maintenance rows are kept.
-[*][b]Dedicated “Steam Engines” build category[/b]: the 12 tiers no longer crowd the vanilla [b]Power[/b] category. A new expandable/collapsible category button appears in the bottom bar right after Power; open it to see all 24 entries for your faction.
-[*][b]Three UI languages updated[/b]: the new category label is translated into English, Simplified Chinese and Traditional Chinese (64 localization keys in total).
+[*][b]Integrated into the vanilla Power category[/b]: the 12 tiers are listed directly inside the vanilla [b]Power[/b] build category (which expands/collapses as usual), next to the vanilla power buildings and ordered by size/tier. No separate category is added.
+[*][b]Three UI languages kept in sync[/b]: 63 localization keys across English, Simplified Chinese and Traditional Chinese; also includes the hotfix-7 dropdown fix (selecting a non-engine building no longer closes other panels' dropdowns).
 [*][b]Includes hotfix-5[/b]: finished engines no longer show “Requires haulers to function”, and all 12 tiers use half the water with rescaled tanks.
 [/list]
 
@@ -50,7 +50,7 @@ Mk.III and Mk.IV can also burn planks (1 plank = 2 logs of energy). All values a
 [list]
 [*]Subscribe on the Steam Workshop.
 [*]Launch Timberborn → [b]Mods[/b] → enable [b]Steam Engine Expansion[/b] → restart the game.
-[*]Find the new [b]Steam Engines[/b] build category in the bottom bar (right after Power) and open it to build.
+[*]Open the [b]Power[/b] build category in the bottom bar to find the 12 steam-engine tiers (next to the vanilla power buildings).
 [*]Fill them with logs and water via haulers, then connect shafts or cables. That's it.
 [/list]
 
@@ -69,7 +69,7 @@ The mod folder includes [b]SEE_Config.json[/b]. Useful keys:
 [*]Timber Pipes tank/valve supply modes are not supported yet. Water is supplied by haulers; auto mode always resolves to haulers.
 [*]The placement preview still shows the vanilla “Requires haulers.” note; finished buildings do not show it, and it does not affect operation (vanilla preview UI).
 [*]Custom models and animations are still being polished. If the visual footprint looks off, trust the build grid.
-[*]The vanilla-look panel and the new Steam Engines category are still being accepted in-game. If you run into a bug, please attach Player.log and a screenshot.
+[*]An in-game screenshot of the vanilla-look panel is attached to the release notes. If you run into a bug, please attach Player.log and a screenshot.
 [*]Some in-game acceptance checks (T2–T6) are still in progress. If you run into a bug, please attach Player.log and a screenshot.
 [/list]
 

@@ -5,7 +5,11 @@
 > ③ §19.2 Go/No-Go 全 PASS（目前為 **No-Go**）；④ 用語校對（「蒸汽引擎」用於本模組、「蒸汽機」指原版）。
 > 本文件僅供審閱，**不代表已通過實機驗收或已上架**。
 >
-> **2026-11-14 更新（熱修-6，已上架）**：正式文案 `mod/workshop/DESCRIPTION.md`／`DESCRIPTION.en.md` 已改為熱修-6 內容：
+> **2026-11-15 更新（熱修-8，本地完成；工作坊線上仍是熱修-7）**：24 檔已依玩家要求併回原版 **Power**（動力）分類
+> （`ToolGroupId=Power`、不再新增工具組、loc 回 63 鍵；面板原版化保留）；`DESCRIPTION.md`／`DESCRIPTION.en.md` 已同步
+> 改為「併入 Power」文案，待重新上傳工作坊。
+>
+> **2026-11-14 更新（熱修-6，已上架；②③已於熱修-8 撤銷）**：正式文案 `mod/workshop/DESCRIPTION.md`／`DESCRIPTION.en.md` 已改為熱修-6 內容：
 > 面板原版化（AD-21）、新增專屬底部工具組「Steam Engines」（AD-22）、loc 63→64（AD-23）；安裝說明由 Power 分類改為
 > 「Steam Engines」分類。工作坊已於 2026-11-14 由擁有者帳號以 `steamcmd +workshop_build_item` 更新完成
 > （Steam 無公開 Web API；更新欄位與步驟見 `mod/workshop/README.md`）。

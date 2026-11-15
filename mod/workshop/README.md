@@ -1,9 +1,10 @@
 # Steam Workshop 發佈流程（本機已備好素材）
 
-> **已上架（2026-11-08）／已更新至熱修-7（2026-11-14/15）**：<https://steamcommunity.com/sharedfiles/filedetails/?id=3836039641>
-> ItemId = `3836039641`，版本 0.1.0。熱修-7 已於 2026-11-14/15（Asia/Macau）以 `steamcmd +workshop_build_item`
-> 用擁有者帳號上傳成功：內容＝已安裝資料夾（135 檔＋`workshop_data.json`＋`thumbnail.png`）、Description 加入熱修-7 段、
-> changenote＝熱修-7；標題／預覽／可見性／標籤保留。熱修-6 的記錄保留在下方歷史。
+> **已上架（2026-11-08）／線上版本＝熱修-7（2026-11-14/15）／熱修-8 待上傳（2026-11-15）**：<https://steamcommunity.com/sharedfiles/filedetails/?id=3836039641>
+> ItemId = `3836039641`，版本 0.1.0。熱修-8（24 檔併回原版 Power、撤銷專屬 Steam Engines 分類、loc 回 63 鍵）已完成
+> 離線門禁、實機截圖（`docs/evidence-hotfix8/`）與本機安裝（132 檔），但**尚未上傳工作坊**；線上頁面仍是熱修-7。
+> 上傳方式見下方「A. steamcmd」：內容＝`Documents\Timberborn\Mods\SteamEngineExpansion`、描述取 `DESCRIPTION.md`、
+> changenote 取 `UPDATE-hotfix-8.md`。標題／預覽／可見性／標籤不需變更。
 > `workshop_data.json` 已由遊戲寫入（repo 與已安裝模組皆同步）。
 > 本檔其餘內容保留作「更新／重新上傳」的參考。
 
@@ -81,9 +82,9 @@
 4. 上傳完成後，把 `CHANGELOG.md` 的 hotfix-5 摘要貼到工作坊公告（可選）。
 5. 確認 `Player.log` 無 `FormatException`／上傳錯誤；`workshop_data.json` 的 ItemId 不應改變。
 
-**熱修-6 已備內容（2026-11-14）**：① 面板改用原版外觀（九宮格卡片、原生按鈕/開關/進度條/下拉框；收合標題；AD-21）；
-② 24 檔改專屬底部工具組「Steam Engines」（Order 72，可展開/收合，圖示 `ToolGroupIcons/SteamEngines`，AD-22）；
-③ loc 63→64（AD-23）。`DESCRIPTION.md`／`DESCRIPTION.en.md` 已加入「更新（熱修-6）」段並更新安裝說明（Power → Steam Engines 分類）。
+**熱修-6 已備內容（2026-11-14，②③已於熱修-8 撤銷）**：① 面板改用原版外觀（九宮格卡片、原生按鈕/開關/進度條/下拉框；收合標題；AD-21）；
+② 24 檔改專屬底部工具組「Steam Engines」（AD-22；**熱修-8 已依玩家要求改回原版 Power**）；
+③ loc 63→64（AD-23；**熱修-8 已回到 63 鍵**）。`DESCRIPTION.md`／`DESCRIPTION.en.md` 已更新為熱修-8 內容（併回 Power）。
 先前的熱修-5 內容（完工引擎不再顯示搬運工需求狀態、耗水減半）已一併包含在本版。
 
 ## 注意
@@ -119,3 +120,14 @@
   選中 HDBF 農場後打開作物下拉，彈窗保持打開 5.0 秒、成功選「土豆」；唯一關閉事件來自選取動作。
   證據 `docs/evidence-hotfix7/`（截圖 + 日誌節錄）。T2–T6 人類簽核項狀態不變（仍待驗）。
 - **GitHub**：commit／tag `v0.1.0-hotfix-7` 與 release asset 見 GitHub；本記錄 commit 隨後 push。
+
+
+## 發佈記錄（2026-11-15，熱修-8，尚未上傳）
+
+- **內容**：24 檔 `ToolGroupId` 回到原版 `Power`（`ToolOrder` 110–142 不變）；刪除 `BlockObjectToolGroups/`、`ToolGroupIcons/`、
+  `UI.SEE.ToolGroup.SteamEngines` loc 鍵；面板原版化（AD-21）與 dropdown 修正（hotfix-7）保留。
+- **離線門禁**：`build.ps1 -Clean` → BUILD PASSED（G01–G22）、PASS 523/523、`CHECK PASS（80 files）`、
+  `VALIDATION PASSED（12/12）`、132 檔／2,383,761 bytes、package sha `5cdc1f04…`。
+- **實機**：載入 `Saves\1110`，Power 分類展開可見 SteamBoiler 系列；截圖 `docs/evidence-hotfix8/`。
+- **待上傳**：以 `A. steamcmd` 流程，VDF 的 `changenote` 取 `UPDATE-hotfix-8.md`、描述取 `DESCRIPTION.md`，contentfolder＝已安裝資料夾；
+  GitHub 端另補 `v0.1.0-hotfix-8` tag／release（若需要）。

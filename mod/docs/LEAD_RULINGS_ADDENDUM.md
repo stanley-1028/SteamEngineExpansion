@@ -118,3 +118,20 @@
 > staged **135 檔／2,385,102 bytes**、package sha256 `9977ed808df154171913eaefc76a05087f75af1cb75989adccb2afa58699cca3`。
 > 實機待簽核：面板原版外觀、收合 glyph、原生 dropdown、150% 縮放、底部 Steam Engines 按鈕/圖示/展開收合/24 檔排序、
 > 重載不重複（`docs/TEST_PROTOCOL.md` 步驟 1b／1c；`mod/src/SEE.UI/README.md` 待人工清單）。
+
+
+## 十、2026-11-15 熱修-8：24 檔併回原版 Power（Lead 裁定；玩家要求）
+
+> 來源：玩家「我希望 steam engine 们的建筑菜单能整合到动力中，你改完之后能给我实机图片吗？」。
+> 考察：`GameBlockObjectButtons.CreateRegularBlockObjectToolGroup` 對沒有成員的 group 回傳 null（不建立按鈕）；
+> 原版 `Power` 分類本身即為可展開／收合的底部按鈕。故「整合回動力」＝把 24 檔的 `ToolGroupId` 改回 `Power`，
+> 不需要（也無法）做巢狀群組。
+
+| # | 裁定 | 生效範圍 |
+|---|---|---|
+| **AD-24** 撤銷 AD-22／AD-23 的可見效果，24 檔併回原版 `Power` | 24 份藍圖 `PlaceableBlockObjectSpec.ToolGroupId` 由 `SteamEngines` 改回 `Power`（`ToolOrder` 110–142 不變，仍排原版蒸汽機之後）；刪除 `data/BlockObjectToolGroups/BlockObjectToolGroup.SteamEngines.blueprint.json`、`data/ToolGroupIcons/SteamEngines.png(.meta.json)` 與 `UI.SEE.ToolGroup.SteamEngines` 鍵（loc 回到 63 鍵）；生成器／validator／`build.ps1` stage／`release-gates.json` 回到無工具組形態。AD-21（面板原版化）與 hotfix-7 dropdown 修正維持有效；需求 §15.1 P3「不新增工具組」恢復成立，CONTRACT §4.9 工具組文字回到「沿用原版 Power」。 | P1／P6／P8 |
+
+> 本輪（2026-11-15）離線實測：`build.ps1 -Clean` → **BUILD PASSED（G01–G22 全綠）**、四程式集 0 warning、**PASS 523/523**、
+> generator `CHECK PASS（0 differences, 80 files, 24 blueprints）`、validator **VALIDATION PASSED（12/12、1 既有 WARN、0 error）**、
+> staged **132 檔／2,383,761 bytes**、package sha256 `5cdc1f04dee4f8c809a71e0e6897f3372f6ec8b22e267929f736169058ef7ec7`。
+> 實機（2026-11-15）：載入 `Saves\1110` 存檔，原版 **Power** 分類展開可見 SteamBoiler 系列；證據 `docs/evidence-hotfix8/`。

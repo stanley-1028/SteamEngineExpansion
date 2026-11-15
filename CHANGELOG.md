@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 0.1.0 hotfix-8 — 2026-11-15（24 檔併回原版 Power 分類；撤銷專屬 Steam Engines 工具組）
+
+- **依玩家要求整合回原版 Power**：24 份藍圖 `PlaceableBlockObjectSpec.ToolGroupId` 由 `SteamEngines` 改回
+  `Power`（`ToolOrder` 110–142 不變，仍排原版蒸汽機之後）；底部不再出現專屬「蒸汽引擎／Steam Engines」按鈕，
+  建築直接列在原版 **Power**（動力）分類內（該分類按鈕本身可展開／收合，即玩家要的「收縮型菜單」）。
+- **撤銷 AD-22／AD-23 的可見部分**：刪除 `data/BlockObjectToolGroups/BlockObjectToolGroup.SteamEngines.blueprint.json`、
+  `data/ToolGroupIcons/SteamEngines.png(.meta.json)` 與 `UI.SEE.ToolGroup.SteamEngines` loc 鍵（loc 回到 63 鍵）；
+  生成器、validator、`build.ps1` stage 與 `release-gates.json` 回到無工具組形態（80 files／12 gate groups）。
+  hotfix-6 的面板原版化（AD-21）與 hotfix-7 的 dropdown 修正**保留**。
+- **離線門禁（2026-11-15 熱修-8 實測）**：`build.ps1 -Clean` → **BUILD PASSED（G01–G22 全綠）**、四程式集 **0 warning**、
+  **PASS 523/523**、generator `CHECK PASS（0 differences, 80 files, 24 blueprints）`、validator **VALIDATION PASSED**
+  （12/12 gate group、1 既有 WARN、0 error）、staged **132 檔、2,383,761 bytes**、package sha256
+  `5cdc1f04dee4f8c809a71e0e6897f3372f6ec8b22e267929f736169058ef7ec7`。
+- **實機**：載入本機 `Saves\1110` 存檔，原版 Power 分類展開可見 SteamBoiler 系列；截圖與 `Player.log` 見
+  `docs/evidence-hotfix8/`。
+- **發佈狀態**：Steam 工作坊（ItemId 3836039641）與 GitHub release 目前仍是 hotfix-7，熱修-8 待重新上傳。
+
 ## 0.1.0 hotfix-7 — 2026-11-14（熱修-7：面板隱藏不再關掉全遊戲共用的下拉清單；修復玩家「作物選擇器一直自己關掉」）
 
 - **玩家回報**（Steam 工作坊留言，2026-11-14）：HDBF（High-Density Box Farm）的「作物選擇器約 0.2 秒自己關掉、選不了作物」；玩家自述前一天還正常。實機 managed stack 取證：`BoilerPanelFragment::Refresh → Hide → BoilerPanelView::SetVisible(false) → Dropdown.Hide → DropdownListDrawer.HideDropdown`。
